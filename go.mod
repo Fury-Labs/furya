@@ -22,7 +22,6 @@ require (
 	github.com/iancoleman/orderedmap v0.3.0
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/ory/dockertest/v3 v3.10.0
-	github.com/osmosis-labs/go-mutesting v0.0.0-20221208041716-b43bcd97b3b3
 	github.com/osmosis-labs/osmosis/osmomath v0.0.7-0.20231014001935-1946419d44eb
 	github.com/osmosis-labs/osmosis/osmoutils v0.0.7-0.20231011004221-fd24b80f8366
 	github.com/osmosis-labs/osmosis/x/epochs v0.0.3-0.20231011004221-fd24b80f8366
@@ -36,7 +35,7 @@ require (
 	github.com/stretchr/testify v1.8.4
 	github.com/tendermint/tendermint v0.37.0-rc1
 	github.com/tendermint/tm-db v0.6.8-0.20220506192307-f628bb5dc95b
-	github.com/tidwall/btree v1.6.0
+	github.com/tidwall/btree v1.7.0
 	github.com/tidwall/gjson v1.16.0
 	go.uber.org/multierr v1.11.0
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9
@@ -89,7 +88,6 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/xen0n/gosmopolitan v1.2.1 // indirect
 	github.com/ykadowak/zerologlint v0.1.3 // indirect
-	github.com/zimmski/go-mutesting v0.0.0-20210610104036-6d9217011a00 // indirect
 	github.com/zondax/ledger-go v0.14.1 // indirect
 	go.tmz.dev/musttag v0.7.2 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
@@ -212,7 +210,6 @@ require (
 	github.com/imdario/mergo v0.3.13 // indirect
 	github.com/improbable-eng/grpc-web v0.15.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/jessevdk/go-flags v1.4.0 // indirect
 	github.com/jgautheron/goconst v1.5.1 // indirect
 	github.com/jingyugao/rowserrcheck v1.1.1 // indirect
 	github.com/jirfag/go-printf-func-name v0.0.0-20200119135958-7558a9eaa5af // indirect
@@ -303,8 +300,6 @@ require (
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	github.com/yagipy/maintidx v1.0.0 // indirect
 	github.com/yeya24/promlinter v0.2.0 // indirect
-	github.com/zimmski/go-tool v0.0.0-20150119110811-2dfdc9ac8439 // indirect
-	github.com/zimmski/osutil v0.0.0-20190128123334-0d0b3ca231ac // indirect
 	github.com/zondax/hid v0.9.1 // indirect
 	gitlab.com/bosi/decorder v0.4.0 // indirect
 	go.etcd.io/bbolt v1.3.6 // indirect
