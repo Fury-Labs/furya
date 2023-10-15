@@ -1,4 +1,4 @@
-module github.com/osmosis-labs/osmosis/v20
+module github.com/fury-labs/furya/v20
 
 go 1.20
 

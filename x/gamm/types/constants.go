@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 )
 
 const (

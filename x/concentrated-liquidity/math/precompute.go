@@ -1,7 +1,7 @@
 package math
 
 import (
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 

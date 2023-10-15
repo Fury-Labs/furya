@@ -1,6 +1,6 @@
 package accum
 
-import "github.com/fury-labs/furya/osmomath"
+import "github.com/osmosis-labs/osmosis/osmomath"
 
 var one = osmomath.OneDec()
 

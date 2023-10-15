@@ -35,16 +35,16 @@ update_epochs=$?
 
 if [ $update_osmoutils -eq 1 ]
 then 
-	go get github.com/fury-labs/furya/osmoutils@$commit_after
+	go get github.com/osmosis-labs/osmosis/osmoutils@$commit_after
 
     # x/epochs depends on osmoutils
     cd x/epochs
-    go get github.com/fury-labs/furya/osmoutils@$commit_after
+    go get github.com/osmosis-labs/osmosis/osmoutils@$commit_after
     go mod tidy
 
     # x/ibc-hooks depends on osmoutils
     cd ../ibc-hooks
-    go get github.com/fury-labs/furya/osmoutils@$commit_after
+    go get github.com/osmosis-labs/osmosis/osmoutils@$commit_after
     go mod tidy
     
     # return to root
@@ -53,7 +53,7 @@ fi
 
 if [ $update_osmomath -eq 1 ]
 then 
-	go get github.com/fury-labs/furya/osmomath@$commit_after
+	go get github.com/osmosis-labs/osmosis/osmomath@$commit_after
 fi
 
 if [ $update_ibc_hooks -eq 1 ]

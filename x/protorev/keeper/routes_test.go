@@ -1,7 +1,7 @@
 package keeper_test
 
 import (
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 	"github.com/fury-labs/furya/v20/x/protorev/types"
 )
