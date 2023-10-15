@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/x/mint/keeper"
 	"github.com/fury-labs/furya/v20/x/mint/types"
 )

@@ -3,7 +3,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 )
 
 type SwapAmountInRoutes []SwapAmountInRoute

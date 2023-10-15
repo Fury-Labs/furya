@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	"github.com/fury-labs/furya/v20/app/keepers"
 	v17 "github.com/fury-labs/furya/v20/app/upgrades/v17"

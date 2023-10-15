@@ -46,9 +46,9 @@ import (
 	"github.com/fury-labs/furya/v20/x/poolmanager"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 	"github.com/fury-labs/furya/v20/x/protorev"
-	ibchooks "github.com/fury-labs/furya/x/ibc-hooks"
-	ibchookskeeper "github.com/fury-labs/furya/x/ibc-hooks/keeper"
-	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
+	ibchooks "github.com/osmosis-labs/osmosis/x/ibc-hooks"
+	ibchookskeeper "github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
+	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 
 	icqkeeper "github.com/cosmos/ibc-apps/modules/async-icq/v4/keeper"
 	icahost "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host"
@@ -98,8 +98,8 @@ import (
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
 	valsetpref "github.com/fury-labs/furya/v20/x/valset-pref"
 	valsetpreftypes "github.com/fury-labs/furya/v20/x/valset-pref/types"
-	epochskeeper "github.com/fury-labs/furya/x/epochs/keeper"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochskeeper "github.com/osmosis-labs/osmosis/x/epochs/keeper"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 type AppKeepers struct {

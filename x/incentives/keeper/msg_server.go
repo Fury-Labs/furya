@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/x/incentives/types"
 
 	errorsmod "cosmossdk.io/errors"

@@ -1,6 +1,6 @@
 package types
 
-import "github.com/fury-labs/furya/osmomath"
+import "github.com/osmosis-labs/osmosis/osmomath"
 
 // FuryaDenomination stores the native denom name for Furya on chain used for route building
 var FuryaDenomination string = "ufury"

@@ -13,7 +13,7 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 

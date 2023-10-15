@@ -15,7 +15,7 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/params"
 
 	"github.com/spf13/cast"

@@ -6,7 +6,7 @@ import (
 
 	legacysimulationtype "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/simulation/simtypes"
 	"github.com/fury-labs/furya/v20/x/lockup/keeper"
 	"github.com/fury-labs/furya/v20/x/lockup/types"

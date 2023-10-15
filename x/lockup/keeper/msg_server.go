@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/x/lockup/types"
 
 	errorsmod "cosmossdk.io/errors"

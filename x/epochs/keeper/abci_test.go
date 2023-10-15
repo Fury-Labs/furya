@@ -4,12 +4,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fury-labs/furya/x/epochs/types"
+	"github.com/osmosis-labs/osmosis/x/epochs/types"
 	"github.com/stretchr/testify/require"
 
 	"golang.org/x/exp/maps"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 )
 
 // This test is responsible for testing how epochs increment based off

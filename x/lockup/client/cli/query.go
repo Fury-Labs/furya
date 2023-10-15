@@ -15,8 +15,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/version"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
 	"github.com/fury-labs/furya/v20/x/lockup/types"
 )
 

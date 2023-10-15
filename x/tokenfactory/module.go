@@ -23,7 +23,7 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/simulation/simtypes"
 	simulation "github.com/fury-labs/furya/v20/x/tokenfactory/simulation"
 

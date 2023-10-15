@@ -7,7 +7,7 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	"github.com/fury-labs/furya/v20/x/lockup/types"

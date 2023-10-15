@@ -1,9 +1,9 @@
 package keeper_test
 
 import (
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/accum"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/accum"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"

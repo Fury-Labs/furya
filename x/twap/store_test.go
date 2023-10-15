@@ -5,7 +5,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/twap"
 
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"

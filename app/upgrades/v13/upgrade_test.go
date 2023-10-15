@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
+	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 
 	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 

@@ -12,7 +12,7 @@ import (
 	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	sdkrand "github.com/fury-labs/furya/v20/simulation/simtypes/random"
 	"github.com/fury-labs/furya/v20/x/gamm/types"
 )

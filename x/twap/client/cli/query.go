@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 
-	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
 	poolmanager "github.com/fury-labs/furya/v20/x/poolmanager/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/twap/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/twap/types"

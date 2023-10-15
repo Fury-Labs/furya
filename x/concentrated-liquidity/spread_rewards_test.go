@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/accum"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/accum"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	clmath "github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"

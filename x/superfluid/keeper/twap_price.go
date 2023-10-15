@@ -3,7 +3,7 @@ package keeper
 import (
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	"github.com/fury-labs/furya/v20/x/superfluid/types"
 

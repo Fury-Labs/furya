@@ -12,12 +12,12 @@
       "linux/amd64": "https://github.com/fury-labs/furya/releases/download/v19.2.0/furyad-19.2.0-linux-amd64?checksum=sha256:723ff1c5349eb3c039c3dc5f55895bbde2e1499fe7c0a96960cc6fadeec814c4",
       "linux/arm64": "https://github.com/fury-labs/furya/releases/download/v19.2.0/furyad-19.2.0-linux-arm64?checksum=sha256:d933b893d537422164a25bf161d7f269a59ea26d37f398cdb7dd575a9ec33ed2"
     },
-    "cosmos_sdk_version": "fury-labs/cosmos-sdk@0.45.0-rc1.0.20230927020814-2854ac001f06",
+    "cosmos_sdk_version": "osmosis-labs/cosmos-sdk@0.45.0-rc1.0.20230927020814-2854ac001f06",
     "consensus": {
       "type": "tendermint",
       "version": "informalsystems/tendermint@0.34.24"
     },
-    "cosmwasm_version": "fury-labs/wasmd@0.31.0-fury-v16",
+    "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
     "cosmwasm_enabled": true,
     "ibc_go_version": "4.3.1",
     "ics_enabled": [
@@ -156,12 +156,12 @@
           "v16.1.0",
           "v16.1.1"
         ],
-        "cosmos_sdk_version": "fury-labs/cosmos-sdk@0.45.0-rc1.0.20230703010110-ed4eb883f2a6",
+        "cosmos_sdk_version": "osmosis-labs/cosmos-sdk@0.45.0-rc1.0.20230703010110-ed4eb883f2a6",
         "consensus": {
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "fury-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
@@ -183,12 +183,12 @@
         "compatible_versions": [
           "v17.0.0"
         ],
-        "cosmos_sdk_version": "fury-labs/cosmos-sdk@v0.45.0-rc1.0.20230703010110-ed4eb883f2a6",
+        "cosmos_sdk_version": "osmosis-labs/cosmos-sdk@v0.45.0-rc1.0.20230703010110-ed4eb883f2a6",
         "consensus": {
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "fury-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
@@ -210,12 +210,12 @@
         "compatible_versions": [
           "v18.0.0"
         ],
-        "cosmos_sdk_version": "fury-labs/cosmos-sdk@v0.45.0-rc1.0.20230703010110-ed4eb883f2a6",
+        "cosmos_sdk_version": "osmosis-labs/cosmos-sdk@v0.45.0-rc1.0.20230703010110-ed4eb883f2a6",
         "consensus": {
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "fury-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
@@ -237,12 +237,12 @@
           "v19.1.0",
           "v19.0.0"
         ],
-        "cosmos_sdk_version": "fury-labs/cosmos-sdk@0.45.0-rc1.0.20230927020814-2854ac001f06",
+        "cosmos_sdk_version": "osmosis-labs/cosmos-sdk@0.45.0-rc1.0.20230927020814-2854ac001f06",
         "consensus": {
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "fury-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [

@@ -7,7 +7,7 @@ import (
 
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 

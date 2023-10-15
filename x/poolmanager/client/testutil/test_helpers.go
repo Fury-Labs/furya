@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app"
 	poolmanagercli "github.com/fury-labs/furya/v20/x/poolmanager/client/cli"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"

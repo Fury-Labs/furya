@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
-	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
 	"github.com/fury-labs/furya/v20/x/gamm/client/cli"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	"github.com/fury-labs/furya/v20/x/gamm/types"

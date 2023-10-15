@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/golang/mock/gomock"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	"github.com/fury-labs/furya/v20/tests/mocks"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"

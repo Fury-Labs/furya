@@ -3,10 +3,10 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
-	epochtypes "github.com/fury-labs/furya/x/epochs/types"
+	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // AccountKeeper defines the account contract that must be fulfilled when

@@ -11,8 +11,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/accum"
 	"github.com/fury-labs/furya/v19/app"
 	"github.com/fury-labs/furya/v19/app/apptesting"
 	cl "github.com/fury-labs/furya/v19/x/concentrated-liquidity"

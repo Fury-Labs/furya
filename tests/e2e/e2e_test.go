@@ -16,15 +16,15 @@ import (
 
 	packetforwardingtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	ibchookskeeper "github.com/fury-labs/furya/x/ibc-hooks/keeper"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	ibchookskeeper "github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
 
 	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/tests/e2e/configurer/chain"
 	"github.com/fury-labs/furya/v20/tests/e2e/configurer/config"
 	"github.com/fury-labs/furya/v20/tests/e2e/initialization"

@@ -10,7 +10,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
@@ -18,7 +18,7 @@ import (
 	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
 	"github.com/fury-labs/furya/v20/x/superfluid/keeper"
 	"github.com/fury-labs/furya/v20/x/superfluid/types"
-	epochtypes "github.com/fury-labs/furya/x/epochs/types"
+	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 var DefaultGammAsset = "gamm/pool/1"

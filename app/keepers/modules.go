@@ -54,8 +54,8 @@ import (
 	"github.com/fury-labs/furya/v20/x/txfees"
 	txfeesclient "github.com/fury-labs/furya/v20/x/txfees/client"
 	valsetprefmodule "github.com/fury-labs/furya/v20/x/valset-pref/valpref-module"
-	"github.com/fury-labs/furya/x/epochs"
-	ibc_hooks "github.com/fury-labs/furya/x/ibc-hooks"
+	"github.com/osmosis-labs/osmosis/x/epochs"
+	ibc_hooks "github.com/osmosis-labs/osmosis/x/ibc-hooks"
 )
 
 // AppModuleBasics returns ModuleBasics for the module BasicManager.

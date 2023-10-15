@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	sdkrand "github.com/fury-labs/furya/v20/simulation/simtypes/random"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/internal/cfmm_common"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/internal/test_helpers"

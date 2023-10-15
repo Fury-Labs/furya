@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/osmosis-labs/osmosis/osmoutils/accum"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 

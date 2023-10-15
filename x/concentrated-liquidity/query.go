@@ -8,8 +8,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	db "github.com/tendermint/tm-db"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"

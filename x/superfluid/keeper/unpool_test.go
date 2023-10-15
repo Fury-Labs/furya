@@ -9,7 +9,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"

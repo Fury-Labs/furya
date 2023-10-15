@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"

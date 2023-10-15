@@ -3,9 +3,9 @@ package keeper
 import (
 	"time"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/superfluid/keeper/internal/events"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

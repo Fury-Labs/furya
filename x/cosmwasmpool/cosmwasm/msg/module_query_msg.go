@@ -5,7 +5,7 @@ package msg
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 )
 
 // CalcOutAmtGivenIn

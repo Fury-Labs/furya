@@ -5,7 +5,7 @@ import (
 
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	valPref "github.com/fury-labs/furya/v20/x/valset-pref"
 	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 )

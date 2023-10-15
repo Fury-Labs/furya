@@ -5,8 +5,8 @@ go 1.20
 require (
 	github.com/cosmos/cosmos-sdk v0.47.5
 	github.com/ignite/cli v0.23.0
-	github.com/fury-labs/furya/osmomath v0.0.7
-	github.com/fury-labs/furya/osmoutils v0.0.7
+	github.com/osmosis-labs/osmosis/osmomath v0.0.7
+	github.com/osmosis-labs/osmosis/osmoutils v0.0.7
 	github.com/fury-labs/furya/v19 v19.1.0
 	github.com/tendermint/tendermint v0.37.0-rc1
 )
@@ -101,8 +101,8 @@ require (
 	github.com/mtibben/percent v0.2.1 // indirect
 	github.com/onsi/gomega v1.27.10 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/fury-labs/furya/x/epochs v0.0.2 // indirect
-	github.com/fury-labs/furya/x/ibc-hooks v0.0.8 // indirect
+	github.com/osmosis-labs/osmosis/x/epochs v0.0.2 // indirect
+	github.com/osmosis-labs/osmosis/x/ibc-hooks v0.0.8 // indirect
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
 	github.com/petermattis/goid v0.0.0-20180202154549-b0b1615b78e5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
@@ -162,9 +162,9 @@ require (
 replace (
 	// furya-patched wasmd
 	// ToDo: replace the commit hash with v0.31.0-fury-v15 once the version is tagged
-	github.com/CosmWasm/wasmd => github.com/fury-labs/wasmd v0.31.0-fury-v16
-	// Our cosmos-sdk branch is:  https://github.com/fury-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/fury-labs/cosmos-sdk/commit/05346fa12992
-	github.com/cosmos/cosmos-sdk => github.com/fury-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
+	github.com/CosmWasm/wasmd => github.com/osmosis-labs/wasmd v0.31.0-osmo-v16
+	// Our cosmos-sdk branch is:  https://github.com/osmosis-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/osmosis-labs/cosmos-sdk/commit/05346fa12992
+	github.com/cosmos/cosmos-sdk => github.com/osmosis-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
 
 	// N.B. v0.19.5 contains a breaking change to the IAVL API
 	github.com/cosmos/iavl v0.19.5 => github.com/cosmos/iavl v0.19.7

@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	osmosimtypes "github.com/fury-labs/furya/v20/simulation/simtypes"
 	valsetkeeper "github.com/fury-labs/furya/v20/x/valset-pref"
 	"github.com/fury-labs/furya/v20/x/valset-pref/types"

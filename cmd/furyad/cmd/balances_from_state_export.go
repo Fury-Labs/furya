@@ -12,8 +12,8 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	appparams "github.com/fury-labs/furya/v20/app/params"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"

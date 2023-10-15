@@ -3,8 +3,8 @@ package types
 import (
 	"fmt"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	appparams "github.com/fury-labs/furya/v20/app/params"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"

@@ -8,9 +8,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/fury-labs/furya/osmomath"
-	_ "github.com/fury-labs/furya/osmoutils"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	_ "github.com/osmosis-labs/osmosis/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
 	"github.com/fury-labs/furya/v20/x/gamm/types"

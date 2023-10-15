@@ -4,14 +4,14 @@ package cosmwasmpool
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/x/cosmwasmpool/cosmwasm/msg"
 	"github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
 	"github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
-	"github.com/fury-labs/furya/osmoutils/cosmwasm"
+	"github.com/osmosis-labs/osmosis/osmoutils/cosmwasm"
 )
 
 var (

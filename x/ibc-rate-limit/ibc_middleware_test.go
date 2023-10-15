@@ -15,11 +15,11 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	txfeetypes "github.com/fury-labs/furya/v20/x/txfees/types"
 
 	"github.com/fury-labs/furya/v20/app/apptesting"
-	"github.com/fury-labs/furya/v20/tests/furyaibctesting"
+	"github.com/osmosis-labs/osmosis/v20/tests/osmosisibctesting"
 	"github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 )
 

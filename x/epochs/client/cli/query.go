@@ -3,8 +3,8 @@ package cli
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/fury-labs/furya/osmoutils/osmocli"
-	"github.com/fury-labs/furya/x/epochs/types"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
+	"github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module.

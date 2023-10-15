@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	clquery "github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"

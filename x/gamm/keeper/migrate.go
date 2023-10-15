@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	clmodel "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	"github.com/fury-labs/furya/v20/x/gamm/types"

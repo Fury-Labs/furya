@@ -12,7 +12,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 	"github.com/fury-labs/furya/v20/x/protorev/keeper"

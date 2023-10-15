@@ -7,7 +7,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	incentiveskeeper "github.com/fury-labs/furya/v20/x/incentives/keeper"
 	"github.com/fury-labs/furya/v20/x/incentives/types"

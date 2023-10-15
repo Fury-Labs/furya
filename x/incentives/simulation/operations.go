@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	osmosimtypes "github.com/fury-labs/furya/v20/simulation/simtypes"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"

@@ -8,7 +8,7 @@ import (
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/gamm/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )

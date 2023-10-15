@@ -10,8 +10,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/accum"
 	osmoapp "github.com/fury-labs/furya/v20/app"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	clmodule "github.com/fury-labs/furya/v20/x/concentrated-liquidity/clmodule"

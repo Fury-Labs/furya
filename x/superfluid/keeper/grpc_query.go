@@ -15,7 +15,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	appparams "github.com/fury-labs/furya/v20/app/params"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"

@@ -11,7 +11,7 @@ import (
 	valPref "github.com/fury-labs/furya/v20/x/valset-pref"
 	"github.com/fury-labs/furya/v20/x/valset-pref/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/valset-pref/types"
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 )
 
 type QueryTestSuite struct {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/fury-labs/furya/v20/x/incentives/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

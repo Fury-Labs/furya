@@ -7,7 +7,7 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )

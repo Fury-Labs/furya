@@ -15,7 +15,7 @@ import (
 	transfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 	"github.com/tendermint/tendermint/libs/bytes"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	appparams "github.com/fury-labs/furya/v20/app/params"
 	"github.com/fury-labs/furya/v20/tests/e2e/configurer/config"
 	"github.com/fury-labs/furya/v20/tests/e2e/initialization"

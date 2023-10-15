@@ -29,7 +29,7 @@ import (
 	tokenfactorytypes "github.com/fury-labs/furya/v20/x/tokenfactory/types"
 	twapquerytypes "github.com/fury-labs/furya/v20/x/twap/client/queryproto"
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
-	epochtypes "github.com/fury-labs/furya/x/epochs/types"
+	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // stargateWhitelist keeps whitelist and its deterministic

@@ -8,7 +8,7 @@ import (
 
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"

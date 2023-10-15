@@ -9,7 +9,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	incentivetypes "github.com/fury-labs/furya/v20/x/incentives/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 	"github.com/fury-labs/furya/v20/x/pool-incentives/types"

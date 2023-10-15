@@ -5,11 +5,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // BankKeeper defines the expected interface needed to retrieve account balances.

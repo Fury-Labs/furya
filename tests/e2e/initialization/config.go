@@ -18,7 +18,7 @@ import (
 	"github.com/gogo/protobuf/proto"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
@@ -28,7 +28,7 @@ import (
 	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/types"
 	twaptypes "github.com/fury-labs/furya/v20/x/twap/types"
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
-	epochtypes "github.com/fury-labs/furya/x/epochs/types"
+	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 
 	types1 "github.com/cosmos/cosmos-sdk/codec/types"
 

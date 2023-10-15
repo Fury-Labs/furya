@@ -11,7 +11,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	appParams "github.com/fury-labs/furya/v20/app/params"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"

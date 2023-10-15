@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	v20 "github.com/fury-labs/furya/v20/app/upgrades/v20"
 	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"

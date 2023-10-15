@@ -9,8 +9,8 @@ import (
 	"github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	cosmwasmutils "github.com/fury-labs/furya/osmoutils/cosmwasm"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	cosmwasmutils "github.com/osmosis-labs/osmosis/osmoutils/cosmwasm"
 )
 
 // Pool encapsulates all data and behavior for interacting with a CW pool.

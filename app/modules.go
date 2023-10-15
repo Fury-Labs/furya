@@ -15,7 +15,7 @@ import (
 	packetforward "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router"
 	packetforwardtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router/types"
 
-	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
+	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 
 	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
 	icatypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
@@ -25,7 +25,7 @@ import (
 	downtimemodule "github.com/fury-labs/furya/v20/x/downtime-detector/module"
 	downtimetypes "github.com/fury-labs/furya/v20/x/downtime-detector/types"
 
-	ibc_hooks "github.com/fury-labs/furya/x/ibc-hooks"
+	ibc_hooks "github.com/osmosis-labs/osmosis/x/ibc-hooks"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
@@ -57,7 +57,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/fury-labs/furya/osmoutils/partialord"
+	"github.com/osmosis-labs/osmosis/osmoutils/partialord"
 	appparams "github.com/fury-labs/furya/v20/app/params"
 	_ "github.com/fury-labs/furya/v20/client/docs/statik"
 	"github.com/fury-labs/furya/v20/simulation/simtypes"
@@ -91,8 +91,8 @@ import (
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
 	valsetpreftypes "github.com/fury-labs/furya/v20/x/valset-pref/types"
 	valsetprefmodule "github.com/fury-labs/furya/v20/x/valset-pref/valpref-module"
-	"github.com/fury-labs/furya/x/epochs"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	"github.com/osmosis-labs/osmosis/x/epochs"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // moduleAccountPermissions defines module account permissions

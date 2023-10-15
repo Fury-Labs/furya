@@ -9,8 +9,8 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	appParams "github.com/fury-labs/furya/v20/app/params"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 	"github.com/fury-labs/furya/v20/x/valset-pref/types"

@@ -3,7 +3,7 @@ package ibc_hooks
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/fury-labs/furya/x/ibc-hooks/keeper"
+	"github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -12,12 +12,12 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/spf13/cobra"
 
-	"github.com/fury-labs/furya/x/ibc-hooks/client/cli"
-	"github.com/fury-labs/furya/x/ibc-hooks/types"
+	"github.com/osmosis-labs/osmosis/x/ibc-hooks/client/cli"
+	"github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"

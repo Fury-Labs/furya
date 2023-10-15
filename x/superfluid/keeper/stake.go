@@ -6,8 +6,8 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 	"github.com/fury-labs/furya/v20/x/superfluid/types"

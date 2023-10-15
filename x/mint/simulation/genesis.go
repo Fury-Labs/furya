@@ -5,7 +5,7 @@ package simulation
 import (
 	"math/rand"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/mint/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"

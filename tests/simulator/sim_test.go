@@ -12,7 +12,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/simapp/helpers"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	osmosim "github.com/fury-labs/furya/v20/simulation/executor"
 	"github.com/fury-labs/furya/v20/simulation/simtypes/simlogger"
 	txfeetypes "github.com/fury-labs/furya/v20/x/txfees/types"

@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 

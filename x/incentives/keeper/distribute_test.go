@@ -9,8 +9,8 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/coinutil"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/coinutil"
 	appParams "github.com/fury-labs/furya/v20/app/params"
 	"github.com/fury-labs/furya/v20/x/incentives/types"
 	incentivetypes "github.com/fury-labs/furya/v20/x/incentives/types"

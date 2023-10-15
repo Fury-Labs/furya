@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	furyaapp "github.com/fury-labs/furya/v20/app"
 
 	"github.com/fury-labs/furya/v20/app/apptesting"

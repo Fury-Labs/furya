@@ -11,12 +11,12 @@ import (
 
 	"github.com/CosmWasm/wasmd/x/wasm/types"
 
-	ibchookskeeper "github.com/fury-labs/furya/x/ibc-hooks/keeper"
+	ibchookskeeper "github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
@@ -33,7 +33,7 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v4/modules/core/04-channel/types"
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 
-	"github.com/fury-labs/furya/v20/tests/furyaibctesting"
+	"github.com/osmosis-labs/osmosis/v20/tests/osmosisibctesting"
 
 	"github.com/fury-labs/furya/v20/tests/ibc-hooks/testutils"
 )

@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"

@@ -5,7 +5,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	"github.com/fury-labs/furya/v20/x/gamm/types"
 	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"

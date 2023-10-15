@@ -3,10 +3,10 @@ package twap
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	concentratedliquiditytypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
-	epochtypes "github.com/fury-labs/furya/x/epochs/types"
+	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 var (

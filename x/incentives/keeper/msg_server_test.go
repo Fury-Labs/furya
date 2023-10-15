@@ -8,7 +8,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/incentives/keeper"
 	"github.com/fury-labs/furya/v20/x/incentives/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"

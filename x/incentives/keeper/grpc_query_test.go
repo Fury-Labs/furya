@@ -8,7 +8,7 @@ import (
 
 	query "github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/x/incentives/types"
 	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 	pooltypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"

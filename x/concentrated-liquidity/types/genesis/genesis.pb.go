@@ -10,7 +10,7 @@ import (
 	_ "github.com/cosmos/cosmos-sdk/types"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
-	accum "github.com/fury-labs/furya/osmoutils/accum"
+	accum "github.com/osmosis-labs/osmosis/osmoutils/accum"
 	model "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
 	types1 "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	io "io"

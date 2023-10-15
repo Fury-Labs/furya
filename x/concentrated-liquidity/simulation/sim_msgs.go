@@ -8,7 +8,7 @@ import (
 	legacysimulationtype "github.com/cosmos/cosmos-sdk/types/simulation"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	appParams "github.com/fury-labs/furya/v20/app/params"
 	osmosimtypes "github.com/fury-labs/furya/v20/simulation/simtypes"
 	sdkrand "github.com/fury-labs/furya/v20/simulation/simtypes/random"

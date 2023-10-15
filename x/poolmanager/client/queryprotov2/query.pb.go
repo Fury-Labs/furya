@@ -12,7 +12,7 @@ import (
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
 	_ "github.com/gogo/protobuf/types"
-	github_com_furya_labs_furya_osmomath "github.com/fury-labs/furya/osmomath"
+	github_com_furya_labs_furya_osmomath "github.com/osmosis-labs/osmosis/osmomath"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
@@ -99,7 +99,7 @@ func (m *SpotPriceRequest) GetQuoteAssetDenom() string {
 // query.
 type SpotPriceResponse struct {
 	// String of the BigDec. Ex) 10.203uatom
-	SpotPrice github_com_furya_labs_furya_osmomath.BigDec `protobuf:"bytes,1,opt,name=spot_price,json=spotPrice,proto3,customtype=github.com/fury-labs/furya/osmomath.BigDec" json:"spot_price" yaml:"spot_price"`
+	SpotPrice github_com_furya_labs_furya_osmomath.BigDec `protobuf:"bytes,1,opt,name=spot_price,json=spotPrice,proto3,customtype=github.com/osmosis-labs/osmosis/osmomath.BigDec" json:"spot_price" yaml:"spot_price"`
 }
 
 func (m *SpotPriceResponse) Reset()         { *m = SpotPriceResponse{} }

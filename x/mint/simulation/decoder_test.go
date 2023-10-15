@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	simapp "github.com/fury-labs/furya/v20/app"
 	"github.com/fury-labs/furya/v20/x/mint/simulation"
 	"github.com/fury-labs/furya/v20/x/mint/types"

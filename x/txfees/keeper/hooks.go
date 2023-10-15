@@ -3,10 +3,10 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 func (k Keeper) BeforeEpochStart(ctx sdk.Context, epochIdentifier string, epochNumber int64) error {

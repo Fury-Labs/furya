@@ -11,10 +11,10 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 	"github.com/tidwall/gjson"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/app"
-	"github.com/fury-labs/furya/x/ibc-hooks/types"
+	"github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 )
 
 func (suite *HooksTestSuite) forceContractToEmitAckForPacket(furyaApp *app.FuryaApp, ctx sdk.Context, contractAddr sdk.AccAddress, packet channeltypes.Packet, success bool) ([]byte, error) {

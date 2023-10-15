@@ -5,7 +5,7 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"

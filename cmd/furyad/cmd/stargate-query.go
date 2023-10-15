@@ -12,8 +12,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils"
 	"github.com/fury-labs/furya/v20/wasmbinding"
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -34,7 +34,7 @@ import (
 	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 	twapquerytypes "github.com/fury-labs/furya/v20/x/twap/client/queryproto"
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
-	epochtypes "github.com/fury-labs/furya/x/epochs/types"
+	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // convert requested proto struct into proto marshalled bytes

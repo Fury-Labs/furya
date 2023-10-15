@@ -25,13 +25,13 @@ import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	appParams "github.com/fury-labs/furya/v20/app/params"
 
 	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
 	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
 	poolincentivestypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // PrepareGenesisCmd returns prepare-genesis cobra Command.

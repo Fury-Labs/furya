@@ -19,7 +19,7 @@ import (
 	"github.com/stretchr/testify/require"
 	tmabcitypes "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/tests/e2e/util"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
@@ -30,7 +30,7 @@ import (
 	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/types"
 	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 	twapqueryproto "github.com/fury-labs/furya/v20/x/twap/client/queryproto"
-	epochstypes "github.com/fury-labs/furya/x/epochs/types"
+	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
 )
 
 // PropTallyResult is the result of a proposal tally.

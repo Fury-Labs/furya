@@ -11,7 +11,7 @@ import (
 	types0 "github.com/cosmos/cosmos-sdk/x/auth/types"
 	types1 "github.com/cosmos/cosmos-sdk/x/bank/types"
 	gomock "github.com/golang/mock/gomock"
-	osmomath "github.com/fury-labs/furya/osmomath"
+	osmomath "github.com/osmosis-labs/osmosis/osmomath"
 	types2 "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 

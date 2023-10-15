@@ -30,7 +30,7 @@ import (
 	"github.com/tendermint/tendermint/privval"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	furyaApp "github.com/fury-labs/furya/v20/app"
 	"github.com/fury-labs/furya/v20/tests/e2e/util"
 )

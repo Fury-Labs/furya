@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/fury-labs/furya/osmomath"
-	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
 	osmoapp "github.com/fury-labs/furya/v20/app"
 	"github.com/fury-labs/furya/v20/x/mint/keeper"
 	"github.com/fury-labs/furya/v20/x/mint/types"

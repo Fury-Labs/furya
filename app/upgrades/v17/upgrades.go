@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/fury-labs/furya/osmomath"
-	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
+	"github.com/osmosis-labs/osmosis/osmomath"
+	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
 
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"

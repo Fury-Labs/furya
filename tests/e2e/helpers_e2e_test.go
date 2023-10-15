@@ -10,7 +10,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/fury-labs/furya/osmomath"
+	"github.com/osmosis-labs/osmosis/osmomath"
 	"github.com/fury-labs/furya/v20/tests/e2e/configurer/chain"
 	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
 	"github.com/fury-labs/furya/v20/tests/e2e/util"

@@ -5,10 +5,10 @@ go 1.20
 require (
 	github.com/cosmos/cosmos-sdk v0.47.5
 	github.com/ignite/cli v0.23.0
-	github.com/fury-labs/furya/osmomath v0.0.7-0.20231011004221-fd24b80f8366
-	github.com/fury-labs/furya/osmoutils v0.0.7-0.20231011004221-fd24b80f8366
-	github.com/fury-labs/furya/v19 v19.1.0
-	github.com/fury-labs/furya/x/epochs v0.0.3-0.20231011004221-fd24b80f8366
+	github.com/osmosis-labs/osmosis/osmomath v0.0.7-0.20231011004221-fd24b80f8366
+	github.com/osmosis-labs/osmosis/osmoutils v0.0.7-0.20231011004221-fd24b80f8366
+	github.com/osmosis-labs/osmosis/v19 v19.1.0
+	github.com/osmosis-labs/osmosis/x/epochs v0.0.3-0.20231011004221-fd24b80f8366
 
 )
 
@@ -147,9 +147,9 @@ require (
 replace (
 	// furya-patched wasmd
 	// ToDo: replace the commit hash with v0.31.0-fury-v15 once the version is tagged
-	github.com/CosmWasm/wasmd => github.com/fury-labs/wasmd v0.31.0-fury-v16
-	// Our cosmos-sdk branch is:  https://github.com/fury-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/fury-labs/cosmos-sdk/commit/05346fa12992
-	github.com/cosmos/cosmos-sdk => github.com/fury-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
+	github.com/CosmWasm/wasmd => github.com/osmosis-labs/wasmd v0.31.0-osmo-v16
+	// Our cosmos-sdk branch is:  https://github.com/osmosis-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/osmosis-labs/cosmos-sdk/commit/05346fa12992
+	github.com/cosmos/cosmos-sdk => github.com/osmosis-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
 	// use cosmos-compatible protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
