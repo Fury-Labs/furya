@@ -168,7 +168,7 @@ You will then go through the genesis initialization process. This will take ~15 
 You will then hit the first block (not block 1, but the block number after your snapshot was taken), and then you will just see a bunch of p2p error logs with some KV store logs.
 **This will happen for about 1 hour**, and then you will finally hit blocks at a normal pace.
 
-9. On your host machine, add this specific wallet which holds a large amount of osmo funds
+9. On your host machine, add this specific wallet which holds a large amount of fury funds
 
 ```sh
 MNEMONIC="bottom loan skill merry east cradle onion journey palm apology verb edit desert impose absurd oil bubble sweet glove shallow size build burst effort"
@@ -186,7 +186,7 @@ furyad status
 11. Here is an example command to ensure complete understanding:
 
 ```sh
-furyad tx bank send wallet osmo1nyphwl8p5yx6fxzevjwqunsfqpcxukmtk8t60m 10000000uosmo --chain-id testing1 --keyring-backend test
+furyad tx bank send wallet osmo1nyphwl8p5yx6fxzevjwqunsfqpcxukmtk8t60m 10000000ufury --chain-id testing1 --keyring-backend test
 ```
 
 12. You can stop chain, keeping the state with
@@ -208,11 +208,11 @@ If you are only running the validator for a short time (< 24 hours) you will not
 
 ## LocalFurya Accounts
 
-LocalFurya is pre-configured with one validator and 9 accounts with ION and OSMO balances.
+LocalFurya is pre-configured with one validator and 9 accounts with ION and FURY balances.
 
 | Account   | Address                                                                                                | Mnemonic                                                                                                                                                                   |
 |-----------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lo-val    | `osmo1phaxpevm5wecex2jyaqty2a4v02qj7qmlmzk5a`<br/>`osmovaloper1phaxpevm5wecex2jyaqty2a4v02qj7qm9v24r6` | `satisfy adjust timber high purchase tuition stool faith fine install that you unaware feed domain license impose boss human eager hat rent enjoy dawn`                    |
+| lo-val    | `osmo1phaxpevm5wecex2jyaqty2a4v02qj7qmlmzk5a`<br/>`furyvaloper1phaxpevm5wecex2jyaqty2a4v02qj7qm9v24r6` | `satisfy adjust timber high purchase tuition stool faith fine install that you unaware feed domain license impose boss human eager hat rent enjoy dawn`                    |
 | lo-test1  | `osmo1cyyzpxplxdzkeea7kwsydadg87357qnahakaks`                                                          | `notice oak worry limit wrap speak medal online prefer cluster roof addict wrist behave treat actual wasp year salad speed social layer crew genius`                       |
 | lo-test2  | `osmo18s5lynnmx37hq4wlrw9gdn68sg2uxp5rgk26vv`                                                          | `quality vacuum heart guard buzz spike sight swarm shove special gym robust assume sudden deposit grid alcohol choice devote leader tilt noodle tide penalty`              |
 | lo-test3  | `osmo1qwexv7c6sm95lwhzn9027vyu2ccneaqad4w8ka`                                                          | `symbol force gallery make bulk round subway violin worry mixture penalty kingdom boring survey tool fringe patrol sausage hard admit remember broken alien absorb`        |

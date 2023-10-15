@@ -17,12 +17,12 @@ echo "increase bread alpha rigid glide amused approve oblige print asset idea en
 
 VALIDATOR=$(furyad keys show validator -a)
 
-args="--keyring-backend test --gas auto --gas-prices 0.1uosmo --gas-adjustment 1.3 --broadcast-mode block --yes"
+args="--keyring-backend test --gas auto --gas-prices 0.1ufury --gas-adjustment 1.3 --broadcast-mode block --yes"
 TX_FLAGS=($args)
 
 # send money to the validator on both chains
-chainA tx bank send faucet "$VALIDATOR" 1000000000uosmo "${TX_FLAGS[@]}"
-chainB tx bank send faucet "$VALIDATOR" 1000000000uosmo "${TX_FLAGS[@]}"
+chainA tx bank send faucet "$VALIDATOR" 1000000000ufury "${TX_FLAGS[@]}"
+chainB tx bank send faucet "$VALIDATOR" 1000000000ufury "${TX_FLAGS[@]}"
 
 # store and instantiate the contract
 chainA tx wasm store ./bytecode/counter.wasm --from validator  "${TX_FLAGS[@]}"
@@ -37,7 +37,7 @@ balance=$(chainA query bank balances "$CONTRACT_ADDRESS" -o json | jq -r '.balan
 
 # send ibc transaction to execite the contract
 MEMO=$(jenv -c '{"wasm":{"contract":$CONTRACT_ADDRESS,"msg": {"increment": {}} }}' )
-chainB tx ibc-transfer transfer transfer channel-0 $CONTRACT_ADDRESS 10uosmo \
+chainB tx ibc-transfer transfer transfer channel-0 $CONTRACT_ADDRESS 10ufury \
        --from validator -y  \
        --memo "$MEMO"
 

@@ -1,0 +1,1006 @@
+{
+  "genesis_time": "2023-10-15T19:18:37.684531Z",
+  "chain_id": "chain-WUUeBr",
+  "initial_height": "1",
+  "consensus_params": {
+    "block": {
+      "max_bytes": "22020096",
+      "max_gas": "-1",
+      "time_iota_ms": "1000"
+    },
+    "evidence": {
+      "max_age_num_blocks": "100000",
+      "max_age_duration": "172800000000000",
+      "max_bytes": "1048576"
+    },
+    "validator": {
+      "pub_key_types": [
+        "ed25519"
+      ]
+    },
+    "version": {}
+  },
+  "app_hash": "",
+  "app_state": {
+    "auth": {
+      "params": {
+        "max_memo_characters": "256",
+        "tx_sig_limit": "7",
+        "tx_size_cost_per_byte": "10",
+        "sig_verify_cost_ed25519": "590",
+        "sig_verify_cost_secp256k1": "1000"
+      },
+      "accounts": [
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "osmo1ulspsaxq3pvxl0tcvh4w7fhlayjy6vqfjv26kp",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "osmo1465ke9c86xexwwyh9zgpvhkd4yd7ga3xv9wkxx",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "osmo13qvs4wyyu9z3cjhf79ruyz52ahcyatmrrghhce",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "osmo19sf3h060xrel2yr273za0qd77tufgl6wy3xxp8",
+          "pub_key": null,
+          "account_number": "0",
+          "sequence": "0"
+        }
+      ]
+    },
+    "authz": {
+      "authorization": []
+    },
+    "bank": {
+      "params": {
+        "send_enabled": [],
+        "default_send_enabled": true
+      },
+      "balances": [
+        {
+          "address": "osmo1ulspsaxq3pvxl0tcvh4w7fhlayjy6vqfjv26kp",
+          "coins": [
+            {
+              "denom": "node0token",
+              "amount": "1000"
+            },
+            {
+              "denom": "uosmo",
+              "amount": "500"
+            }
+          ]
+        },
+        {
+          "address": "osmo1465ke9c86xexwwyh9zgpvhkd4yd7ga3xv9wkxx",
+          "coins": [
+            {
+              "denom": "node1token",
+              "amount": "1000"
+            },
+            {
+              "denom": "uosmo",
+              "amount": "500"
+            }
+          ]
+        },
+        {
+          "address": "osmo13qvs4wyyu9z3cjhf79ruyz52ahcyatmrrghhce",
+          "coins": [
+            {
+              "denom": "node2token",
+              "amount": "1000"
+            },
+            {
+              "denom": "uosmo",
+              "amount": "500"
+            }
+          ]
+        },
+        {
+          "address": "osmo19sf3h060xrel2yr273za0qd77tufgl6wy3xxp8",
+          "coins": [
+            {
+              "denom": "node3token",
+              "amount": "1000"
+            },
+            {
+              "denom": "uosmo",
+              "amount": "500"
+            }
+          ]
+        }
+      ],
+      "supply": [],
+      "denom_metadata": [],
+      "supply_offsets": []
+    },
+    "capability": {
+      "index": "1",
+      "owners": []
+    },
+    "concentratedliquidity": {
+      "params": {
+        "authorized_tick_spacing": [
+          "1",
+          "10",
+          "100",
+          "1000"
+        ],
+        "authorized_spread_factors": [
+          "0.000000000000000000",
+          "0.000100000000000000",
+          "0.000500000000000000",
+          "0.001000000000000000",
+          "0.002000000000000000",
+          "0.003000000000000000",
+          "0.005000000000000000"
+        ],
+        "balancer_shares_reward_discount": "0.050000000000000000",
+        "authorized_quote_denoms": [
+          "uosmo",
+          "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+          "ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7",
+          "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
+        ],
+        "authorized_uptimes": [
+          "0.000000001s"
+        ],
+        "is_permissionless_pool_creation_enabled": false,
+        "unrestricted_pool_creator_whitelist": []
+      },
+      "pool_data": [],
+      "position_data": [],
+      "next_position_id": "1",
+      "next_incentive_record_id": "1"
+    },
+    "cosmwasmpool": {
+      "params": {
+        "code_id_whitelist": [],
+        "pool_migration_limit": "20"
+      },
+      "pools": []
+    },
+    "crisis": {
+      "constant_fee": {
+        "denom": "uosmo",
+        "amount": "500000000000"
+      }
+    },
+    "distribution": {
+      "params": {
+        "community_tax": "0.000000000000000000",
+        "base_proposer_reward": "0.010000000000000000",
+        "bonus_proposer_reward": "0.040000000000000000",
+        "withdraw_addr_enabled": true
+      },
+      "fee_pool": {
+        "community_pool": []
+      },
+      "delegator_withdraw_infos": [],
+      "previous_proposer": "",
+      "outstanding_rewards": [],
+      "validator_accumulated_commissions": [],
+      "validator_historical_rewards": [],
+      "validator_current_rewards": [],
+      "delegator_starting_infos": [],
+      "validator_slash_events": []
+    },
+    "downtimedetector": {
+      "downtimes": [
+        {
+          "duration": "DURATION_30S",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_1M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_2M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_3M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_4M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_5M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_10M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_20M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_30M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_40M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_50M",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_1H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_1_5H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_2H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_2_5H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_3H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_4H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_5H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_6H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_9H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_12H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_18H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_24H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_36H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        },
+        {
+          "duration": "DURATION_48H",
+          "last_downtime": "1970-01-01T00:00:00Z"
+        }
+      ],
+      "last_block_time": "1970-01-01T00:00:00Z"
+    },
+    "epochs": {
+      "epochs": [
+        {
+          "identifier": "day",
+          "start_time": "0001-01-01T00:00:00Z",
+          "duration": "86400s",
+          "current_epoch": "0",
+          "current_epoch_start_time": "0001-01-01T00:00:00Z",
+          "epoch_counting_started": false,
+          "current_epoch_start_height": "0"
+        },
+        {
+          "identifier": "hour",
+          "start_time": "0001-01-01T00:00:00Z",
+          "duration": "3600s",
+          "current_epoch": "0",
+          "current_epoch_start_time": "0001-01-01T00:00:00Z",
+          "epoch_counting_started": false,
+          "current_epoch_start_height": "0"
+        },
+        {
+          "identifier": "week",
+          "start_time": "0001-01-01T00:00:00Z",
+          "duration": "604800s",
+          "current_epoch": "0",
+          "current_epoch_start_time": "0001-01-01T00:00:00Z",
+          "epoch_counting_started": false,
+          "current_epoch_start_height": "0"
+        },
+        {
+          "identifier": "15min",
+          "start_time": "0001-01-01T00:00:00Z",
+          "duration": "900s",
+          "current_epoch": "0",
+          "current_epoch_start_time": "0001-01-01T00:00:00Z",
+          "epoch_counting_started": false,
+          "current_epoch_start_height": "0"
+        }
+      ]
+    },
+    "evidence": {
+      "evidence": []
+    },
+    "gamm": {
+      "pools": [],
+      "next_pool_number": "1",
+      "params": {
+        "pool_creation_fee": [
+          {
+            "denom": "uosmo",
+            "amount": "1000000000"
+          }
+        ]
+      },
+      "migration_records": {
+        "balancer_to_concentrated_pool_links": []
+      }
+    },
+    "genutil": {
+      "gen_txs": [
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "node0",
+                  "identity": "",
+                  "website": "",
+                  "security_contact": "",
+                  "details": ""
+                },
+                "commission": {
+                  "rate": "1.000000000000000000",
+                  "max_rate": "1.000000000000000000",
+                  "max_change_rate": "1.000000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "osmo1ulspsaxq3pvxl0tcvh4w7fhlayjy6vqfjv26kp",
+                "validator_address": "osmovaloper1ulspsaxq3pvxl0tcvh4w7fhlayjy6vqfgmzepx",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "b0K03QFChmMxpYoAE4xC7xxh9OkwPSYMhumnALMLmZg="
+                },
+                "value": {
+                  "denom": "uosmo",
+                  "amount": "100"
+                }
+              }
+            ],
+            "memo": "1ef61163cbcb113861e1a78b71aeabbacdd3131a@192.168.0.1:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "AnVU89QlPQMi7z6JFdV+cXm8g0EYJLJ9BzuxWUyF84RX"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas_limit": "0",
+              "payer": "",
+              "granter": ""
+            }
+          },
+          "signatures": [
+            "M2mPOZIm6rRDw8rgzr9HvJ+4W2XW/CYnK0K08PKbzz8fUqQ6PvH4GbMm/8ydVRs+RY3ft6M9K2FZgV2ptatI8w=="
+          ]
+        },
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "node1",
+                  "identity": "",
+                  "website": "",
+                  "security_contact": "",
+                  "details": ""
+                },
+                "commission": {
+                  "rate": "1.000000000000000000",
+                  "max_rate": "1.000000000000000000",
+                  "max_change_rate": "1.000000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "osmo1465ke9c86xexwwyh9zgpvhkd4yd7ga3xv9wkxx",
+                "validator_address": "osmovaloper1465ke9c86xexwwyh9zgpvhkd4yd7ga3xkjx43p",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "9I47M+J6mKG30nDD54rI4rHBFASjU/2VLdG4CI59kvQ="
+                },
+                "value": {
+                  "denom": "uosmo",
+                  "amount": "100"
+                }
+              }
+            ],
+            "memo": "c99cea0944034498ebc38e1c50f52cd5e154c534@192.168.0.2:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "A7xuLLhYYUFQPdGPSyYqTz/aAL3Q0F3TXM/it0AqZ7iw"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas_limit": "0",
+              "payer": "",
+              "granter": ""
+            }
+          },
+          "signatures": [
+            "y46JCEBRbpoiyl24/csvCKaJIx7yEbggl3QJJMRCxm1PaebTgr6tdw+lFzx881AnzrWBM2rPVatpq0fT1Hc81A=="
+          ]
+        },
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "node2",
+                  "identity": "",
+                  "website": "",
+                  "security_contact": "",
+                  "details": ""
+                },
+                "commission": {
+                  "rate": "1.000000000000000000",
+                  "max_rate": "1.000000000000000000",
+                  "max_change_rate": "1.000000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "osmo13qvs4wyyu9z3cjhf79ruyz52ahcyatmrrghhce",
+                "validator_address": "osmovaloper13qvs4wyyu9z3cjhf79ruyz52ahcyatmrell507",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "DTDQZRkgWk5bZOBFqh/+2uzJZPHSXnbfhnqbZL+I7Rk="
+                },
+                "value": {
+                  "denom": "uosmo",
+                  "amount": "100"
+                }
+              }
+            ],
+            "memo": "45817d51ee21aa5e28546919ca776a3269c19ec5@192.168.0.3:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "A+66f/1e4gRC7Z5Q3TP6CScgKv6xPWZN2TYIz9ZuqFLS"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas_limit": "0",
+              "payer": "",
+              "granter": ""
+            }
+          },
+          "signatures": [
+            "CyURr59C3cFyrpPEqMpnX2CkWLd4KJtrLUXRIpujtNAb9mJZ2/TSMUfEcBMbqcq1/OMGkt7DC+c02pJNRfBt2Q=="
+          ]
+        },
+        {
+          "body": {
+            "messages": [
+              {
+                "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
+                "description": {
+                  "moniker": "node3",
+                  "identity": "",
+                  "website": "",
+                  "security_contact": "",
+                  "details": ""
+                },
+                "commission": {
+                  "rate": "1.000000000000000000",
+                  "max_rate": "1.000000000000000000",
+                  "max_change_rate": "1.000000000000000000"
+                },
+                "min_self_delegation": "1",
+                "delegator_address": "osmo19sf3h060xrel2yr273za0qd77tufgl6wy3xxp8",
+                "validator_address": "osmovaloper19sf3h060xrel2yr273za0qd77tufgl6w7xw9kq",
+                "pubkey": {
+                  "@type": "/cosmos.crypto.ed25519.PubKey",
+                  "key": "/JQbKAGu6YZ5RSIgNN9JHGWhw5hToo9sOsmSaqScyOc="
+                },
+                "value": {
+                  "denom": "uosmo",
+                  "amount": "100"
+                }
+              }
+            ],
+            "memo": "d9b674fca0dc08a72b0be179f2da9e18371086a6@192.168.0.4:26656",
+            "timeout_height": "0",
+            "extension_options": [],
+            "non_critical_extension_options": []
+          },
+          "auth_info": {
+            "signer_infos": [
+              {
+                "public_key": {
+                  "@type": "/cosmos.crypto.secp256k1.PubKey",
+                  "key": "AjKbOvBBn8+8Ws7P7Iv2HnCTBFFsLD+XZo3XxjI87Ikj"
+                },
+                "mode_info": {
+                  "single": {
+                    "mode": "SIGN_MODE_DIRECT"
+                  }
+                },
+                "sequence": "0"
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas_limit": "0",
+              "payer": "",
+              "granter": ""
+            }
+          },
+          "signatures": [
+            "O9EFdihcyEAgbLOkhuGZaip8sPXE+icfWzJCpaxdOe4xuh19W0W8BIsSEKDPaN3R32QWRChVSr6oYPAlhisLWQ=="
+          ]
+        }
+      ]
+    },
+    "gov": {
+      "starting_proposal_id": "1",
+      "deposits": [],
+      "votes": [],
+      "proposals": [],
+      "deposit_params": {
+        "min_deposit": [
+          {
+            "denom": "uosmo",
+            "amount": "1000000"
+          }
+        ],
+        "max_deposit_period": "1209600s",
+        "min_expedited_deposit": [
+          {
+            "denom": "stake",
+            "amount": "50000000"
+          }
+        ],
+        "min_initial_deposit_ratio": "0.000000000000000000"
+      },
+      "voting_params": {
+        "voting_period": "300s",
+        "proposal_voting_periods": [],
+        "expedited_voting_period": "86400s"
+      },
+      "tally_params": {
+        "quorum": "0.000000000100000000",
+        "threshold": "0.500000000000000000",
+        "veto_threshold": "0.334000000000000000",
+        "expedited_threshold": "0.667000000000000000",
+        "expedited_quorum": "0.667000000000000000"
+      }
+    },
+    "ibc": {
+      "client_genesis": {
+        "clients": [],
+        "clients_consensus": [],
+        "clients_metadata": [],
+        "params": {
+          "allowed_clients": [
+            "06-solomachine",
+            "07-tendermint"
+          ]
+        },
+        "create_localhost": false,
+        "next_client_sequence": "0"
+      },
+      "connection_genesis": {
+        "connections": [],
+        "client_connection_paths": [],
+        "next_connection_sequence": "0",
+        "params": {
+          "max_expected_time_per_block": "30000000000"
+        }
+      },
+      "channel_genesis": {
+        "channels": [],
+        "acknowledgements": [],
+        "commitments": [],
+        "receipts": [],
+        "send_sequences": [],
+        "recv_sequences": [],
+        "ack_sequences": [],
+        "next_channel_sequence": "0"
+      }
+    },
+    "ibchooks": {
+      "params": {
+        "allowed_async_ack_contracts": []
+      }
+    },
+    "incentives": {
+      "params": {
+        "distr_epoch_identifier": "15min",
+        "group_creation_fee": [
+          {
+            "denom": "uosmo",
+            "amount": "100000000"
+          }
+        ],
+        "unrestricted_creator_whitelist": []
+      },
+      "gauges": [],
+      "lockable_durations": [
+        "1800s",
+        "3600s",
+        "7200s"
+      ],
+      "last_gauge_id": "0",
+      "group_gauges": [],
+      "groups": []
+    },
+    "interchainaccounts": {
+      "controller_genesis_state": {
+        "active_channels": [],
+        "interchain_accounts": [],
+        "ports": [],
+        "params": {
+          "controller_enabled": true
+        }
+      },
+      "host_genesis_state": {
+        "active_channels": [],
+        "interchain_accounts": [],
+        "port": "icahost",
+        "params": {
+          "host_enabled": true,
+          "allow_messages": []
+        }
+      }
+    },
+    "interchainquery": {
+      "host_port": "icqhost",
+      "params": {
+        "host_enabled": true,
+        "allow_queries": []
+      }
+    },
+    "lockup": {
+      "last_lock_id": "0",
+      "locks": [],
+      "synthetic_locks": []
+    },
+    "mint": {
+      "minter": {
+        "epoch_provisions": "0.000000000000000000"
+      },
+      "params": {
+        "mint_denom": "uosmo",
+        "genesis_epoch_provisions": "821917808219.178082191780821917",
+        "epoch_identifier": "15min",
+        "reduction_period_in_epochs": "192",
+        "reduction_factor": "0.666666666666666666",
+        "distribution_proportions": {
+          "staking": "0.250000000000000000",
+          "pool_incentives": "0.450000000000000000",
+          "developer_rewards": "0.250000000000000000",
+          "community_pool": "0.050000000000000000"
+        },
+        "weighted_developer_rewards_receivers": [
+          {
+            "address": "osmo14kjcwdwcqsujkdt8n5qwpd8x8ty2rys5rjrdjj",
+            "weight": "0.288700000000000000"
+          },
+          {
+            "address": "osmo1gw445ta0aqn26suz2rg3tkqfpxnq2hs224d7gq",
+            "weight": "0.229000000000000000"
+          },
+          {
+            "address": "osmo13lt0hzc6u3htsk7z5rs6vuurmgg4hh2ecgxqkf",
+            "weight": "0.162500000000000000"
+          },
+          {
+            "address": "osmo1kvc3he93ygc0us3ycslwlv2gdqry4ta73vk9hu",
+            "weight": "0.109000000000000000"
+          },
+          {
+            "address": "osmo19qgldlsk7hdv3ddtwwpvzff30pxqe9phq9evxf",
+            "weight": "0.099500000000000000"
+          },
+          {
+            "address": "osmo19fs55cx4594een7qr8tglrjtt5h9jrxg458htd",
+            "weight": "0.060000000000000000"
+          },
+          {
+            "address": "osmo1ssp6px3fs3kwreles3ft6c07mfvj89a544yj9k",
+            "weight": "0.015000000000000000"
+          },
+          {
+            "address": "osmo1c5yu8498yzqte9cmfv5zcgtl07lhpjrj0skqdx",
+            "weight": "0.010000000000000000"
+          },
+          {
+            "address": "osmo1yhj3r9t9vw7qgeg22cehfzj7enwgklw5k5v7lj",
+            "weight": "0.007500000000000000"
+          },
+          {
+            "address": "osmo18nzmtyn5vy5y45dmcdnta8askldyvehx66lqgm",
+            "weight": "0.007000000000000000"
+          },
+          {
+            "address": "osmo1z2x9z58cg96ujvhvu6ga07yv9edq2mvkxpgwmc",
+            "weight": "0.005000000000000000"
+          },
+          {
+            "address": "osmo1tvf3373skua8e6480eyy38avv8mw3hnt8jcxg9",
+            "weight": "0.002500000000000000"
+          },
+          {
+            "address": "osmo1zs0txy03pv5crj2rvty8wemd3zhrka2ne8u05n",
+            "weight": "0.002500000000000000"
+          },
+          {
+            "address": "osmo1djgf9p53n7m5a55hcn6gg0cm5mue4r5g3fadee",
+            "weight": "0.001000000000000000"
+          },
+          {
+            "address": "osmo1488zldkrn8xcjh3z40v2mexq7d088qkna8ceze",
+            "weight": "0.000800000000000000"
+          }
+        ],
+        "minting_rewards_distribution_start_epoch": "1"
+      },
+      "reduction_started_epoch": "0"
+    },
+    "packetfowardmiddleware": {
+      "params": {
+        "fee_percentage": "0.000000000000000000"
+      },
+      "in_flight_packets": {}
+    },
+    "params": null,
+    "poolincentives": {
+      "params": {
+        "minted_denom": "uosmo"
+      },
+      "lockable_durations": [
+        "1800s",
+        "3600s",
+        "7200s"
+      ],
+      "distr_info": {
+        "total_weight": "1000",
+        "records": [
+          {
+            "gauge_id": "0",
+            "weight": "1000"
+          }
+        ]
+      },
+      "any_pool_to_internal_gauges": null,
+      "concentrated_pool_to_no_lock_gauges": null
+    },
+    "poolmanager": {
+      "next_pool_id": "1",
+      "params": {
+        "pool_creation_fee": [
+          {
+            "denom": "uosmo",
+            "amount": "1000000000"
+          }
+        ],
+        "taker_fee_params": {
+          "default_taker_fee": "0.000000000000000000",
+          "osmo_taker_fee_distribution": {
+            "staking_rewards": "1.000000000000000000",
+            "community_pool": "0.000000000000000000"
+          },
+          "non_osmo_taker_fee_distribution": {
+            "staking_rewards": "0.670000000000000000",
+            "community_pool": "0.330000000000000000"
+          },
+          "admin_addresses": [],
+          "community_pool_denom_to_swap_non_whitelisted_assets_to": "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858",
+          "reduced_fee_whitelist": []
+        },
+        "authorized_quote_denoms": [
+          "uosmo",
+          "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+          "ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7",
+          "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
+        ]
+      },
+      "pool_routes": []
+    },
+    "protorev": {
+      "params": {
+        "enabled": true,
+        "admin": "osmo17nv67dvc7f8yr00rhgxd688gcn9t9wvhn783z4"
+      },
+      "token_pair_arb_routes": [],
+      "base_denoms": [
+        {
+          "denom": "uosmo",
+          "step_size": "1000000"
+        }
+      ],
+      "pool_weights": {
+        "stable_weight": "0",
+        "balancer_weight": "0",
+        "concentrated_weight": "0",
+        "cosmwasm_weight": "0"
+      },
+      "days_since_module_genesis": "0",
+      "developer_fees": [],
+      "latest_block_height": "0",
+      "developer_address": "",
+      "max_pool_points_per_block": "100",
+      "max_pool_points_per_tx": "18",
+      "point_count_for_block": "0",
+      "profits": [],
+      "info_by_pool_type": {
+        "stable": {
+          "weight": "5"
+        },
+        "balancer": {
+          "weight": "2"
+        },
+        "concentrated": {
+          "weight": "7",
+          "max_ticks_crossed": "5"
+        },
+        "cosmwasm": {
+          "weight_maps": []
+        }
+      }
+    },
+    "rate-limited-ibc": {
+      "params": {
+        "contract_address": ""
+      }
+    },
+    "slashing": {
+      "params": {
+        "signed_blocks_window": "30000",
+        "min_signed_per_window": "0.050000000000000000",
+        "downtime_jail_duration": "60s",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.000000000000000000"
+      },
+      "signing_infos": [],
+      "missed_blocks": []
+    },
+    "staking": {
+      "params": {
+        "unbonding_time": "1209600s",
+        "max_validators": 100,
+        "max_entries": 7,
+        "historical_entries": 10000,
+        "bond_denom": "uosmo",
+        "min_commission_rate": "0.050000000000000000",
+        "min_self_delegation": "0"
+      },
+      "last_total_power": "0",
+      "last_validator_powers": [],
+      "validators": [],
+      "delegations": [],
+      "unbonding_delegations": [],
+      "redelegations": [],
+      "exported": false
+    },
+    "superfluid": {
+      "params": {
+        "minimum_risk_factor": "0.500000000000000000"
+      },
+      "superfluid_assets": [],
+      "osmo_equivalent_multipliers": [],
+      "intermediary_accounts": [],
+      "intemediary_account_connections": []
+    },
+    "tokenfactory": {
+      "params": {
+        "denom_creation_fee": [],
+        "denom_creation_gas_consume": "1000000"
+      },
+      "factory_denoms": []
+    },
+    "transfer": {
+      "port_id": "transfer",
+      "denom_traces": [],
+      "params": {
+        "send_enabled": true,
+        "receive_enabled": true
+      }
+    },
+    "twap": {
+      "twaps": [],
+      "params": {
+        "prune_epoch_identifier": "day",
+        "record_history_keep_period": "172800s"
+      }
+    },
+    "txfees": {
+      "basedenom": "stake",
+      "feetokens": []
+    },
+    "upgrade": {},
+    "valsetpref": null,
+    "vesting": {},
+    "wasm": {
+      "params": {
+        "code_upload_access": {
+          "permission": "Everybody",
+          "address": "",
+          "addresses": []
+        },
+        "instantiate_default_permission": "Everybody"
+      },
+      "codes": [],
+      "contracts": [],
+      "sequences": []
+    }
+  }
+}

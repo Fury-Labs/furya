@@ -182,7 +182,7 @@ Pools have the following parameters:
     This allows pool governance to smoothly change the weights of the assets it holds in the pool. So it can slowly move from a 2:1 ratio, to a 1:1 ratio.
     Currently, smooth weight changes are implemented as a linear change in weight ratios over a given duration of time. So weights changed from 4:1 to 2:2 over 2 days, then at day 1 of the change, the weights would be 3:1.5, and at day 2 its 2:2, and will remain at these weight ratios.
 
-The GAMM module also has a **PoolCreationFee** parameter, which currently is set to `100000000 uosmo` or `100 OSMO`.
+The GAMM module also has a **PoolCreationFee** parameter, which currently is set to `100000000 ufury` or `100 FURY`.
 
 [comment]: <> (TODO Add better description of how the weights affect things)
 
@@ -262,7 +262,7 @@ The JSON [config-file] must specify the following parameters:
 }
 ```
 
-Create a new 50/50 AKT-OSMO liquidity pool with a swap and exit fee of 1%.
+Create a new 50/50 AKT-FURY liquidity pool with a swap and exit fee of 1%.
 
 ```sh
 furyad tx gamm create-pool --pool-file [config-file] --from WALLET_NAME --chain-id furya-1
@@ -272,8 +272,8 @@ The configuration json file contains the following parameters:
 
 ```json
 {
- "weights": "5ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4,5uosmo",
- "initial-deposit": "499404ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4,500000uosmo",
+ "weights": "5ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4,5ufury",
+ "initial-deposit": "499404ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4,500000ufury",
  "swap-fee": "0.003",
  "exit-fee": "0.00",
  "future-governor": ""
@@ -283,7 +283,7 @@ The configuration json file contains the following parameters:
 :::
 
 ::: warning
-There is now a 100 OSMO fee for creating pools.
+There is now a 100 FURY fee for creating pools.
 :::
 
 ### Join pool
@@ -296,7 +296,7 @@ furyad tx gamm join-pool --pool-id --max-amounts-in --share-amount-out --from --
 
 ::: details Example
 
-Join `pool 3` with a **maximum** of `.037753 AKT` and the corresponding amount of `OSMO` to get an **exact** share amount of `1.227549469722224220 gamm/pool/3` using `WALLET_NAME` on the furya mainnet:
+Join `pool 3` with a **maximum** of `.037753 AKT` and the corresponding amount of `FURY` to get an **exact** share amount of `1.227549469722224220 gamm/pool/3` using `WALLET_NAME` on the furya mainnet:
 
 ```sh
 furyad tx gamm join-pool --pool-id 3 --max-amounts-in 37753ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 --share-amount-out 1227549469722224220 --from WALLET_NAME --chain-id furya-1
@@ -314,7 +314,7 @@ furyad tx gamm exit-pool --pool-id --min-amounts-out --share-amount-in --from --
 
 ::: details Example
 
-Exit `pool 3` with for **exactly** `1.136326462628731195 gamm/pool/3` in order to receive a **minimum** of `.033358 AKT` and the corresponding amount of `OSMO` using `WALLET_NAME` on the furya mainnet:
+Exit `pool 3` with for **exactly** `1.136326462628731195 gamm/pool/3` in order to receive a **minimum** of `.033358 AKT` and the corresponding amount of `FURY` using `WALLET_NAME` on the furya mainnet:
 
 ```sh
 furyad tx gamm exit-pool --pool-id 3 --min-amounts-out 33358ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 --share-amount-in 1136326462628731195 --from WALLET_NAME --chain-id furya-1
@@ -324,7 +324,7 @@ furyad tx gamm exit-pool --pool-id 3 --min-amounts-out 33358ibc/1480B8FD20AD5FCA
 
 ### Join-swap-extern-amount-in
 
-Add liquidity to a specified pool with only one of the required assets (i.e. Join pool 1 (50/50 ATOM-OSMO) with just ATOM).
+Add liquidity to a specified pool with only one of the required assets (i.e. Join pool 1 (50/50 ATOM-FURY) with just ATOM).
 
 This command essentially swaps an **exact** amount of an asset for the required pairing and then converts the pair to a **minimum** of the requested LP shares in a single step (i.e. combines the `swap-exact-amount-in` and `join-pool` commands)
 
@@ -334,7 +334,7 @@ furyad tx gamm join-swap-extern-amount-in [token-in] [share-out-min-amount] --fr
 
 ::: details Example
 
-Join `pool 3` with **exactly** `.200000 AKT` (and `0 OSMO`) to get a **minimum** of `3.234812471272883046 gamm/pool/3` using `WALLET_NAME` on the furya mainnet:
+Join `pool 3` with **exactly** `.200000 AKT` (and `0 FURY`) to get a **minimum** of `3.234812471272883046 gamm/pool/3` using `WALLET_NAME` on the furya mainnet:
 
 ```sh
 furyad tx gamm join-swap-extern-amount-in 200000ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 3234812471272883046 --pool-id 3 --from WALLET_NAME --chain-id furya-1
@@ -344,7 +344,7 @@ furyad tx gamm join-swap-extern-amount-in 200000ibc/1480B8FD20AD5FCAE81EA87584D2
 
 ### Exit-swap-extern-amount-out
 
-Remove liquidity from a specified pool with a **maximum** amount of LP shares and swap to an **exact** amount of one of the token pairs (i.e. Leave pool 1 (50/50 ATOM-OSMO) and receive 100% ATOM instead of 50% OSMO and 50% ATOM).
+Remove liquidity from a specified pool with a **maximum** amount of LP shares and swap to an **exact** amount of one of the token pairs (i.e. Leave pool 1 (50/50 ATOM-FURY) and receive 100% ATOM instead of 50% FURY and 50% ATOM).
 
 This command essentially converts an LP share into the corresponding share of tokens and then swaps to the specified `token-out` in a single step (i.e. combines the `swap-exact-amount-out` and `exit-pool` commands)
 
@@ -354,7 +354,7 @@ furyad tx gamm exit-swap-extern-amount-out [token-out] [share-in-max-amount] --p
 
 ::: details Example
 
-Exit `pool 3` by removing a **maximum** of `3.408979387886193586 gamm/pool/3` and swap the `OSMO` portion of the LP share to receive 100% AKT in the **exact** amount of `0.199430 AKT`:
+Exit `pool 3` by removing a **maximum** of `3.408979387886193586 gamm/pool/3` and swap the `FURY` portion of the LP share to receive 100% AKT in the **exact** amount of `0.199430 AKT`:
 
 ```sh
 furyad tx gamm exit-swap-extern-amount-out 199430ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 3408979387886193586 --pool-id 3 --from WALLET_NAME --chain-id furya-1
@@ -372,10 +372,10 @@ furyad tx gamm join-swap-share-amount-out [token-in-denom] [share-out-amount] [t
 
 ::: details Example
 
-Swap a **maximum** of `0.312466 OSMO` for the corresponding amount of `AKT`, then join `pool 3` and receive **exactly** `1.4481270389710236872 gamm/pool/3`:
+Swap a **maximum** of `0.312466 FURY` for the corresponding amount of `AKT`, then join `pool 3` and receive **exactly** `1.4481270389710236872 gamm/pool/3`:
 
 ```sh
-furyad tx gamm join-swap-share-amount-out uosmo 14481270389710236872 312466 --pool-id 3 --from WALLET_NAME --chain-id furya-1
+furyad tx gamm join-swap-share-amount-out ufury 14481270389710236872 312466 --pool-id 3 --from WALLET_NAME --chain-id furya-1
 ```
 
 :::
@@ -390,10 +390,10 @@ furyad tx gamm exit-swap-share-amount-in [token-out-denom] [share-in-amount] [to
 
 ::: details Example
 
-Exit `pool 3` by removing **exactly** `14.563185400026723131 gamm/pool/3` and swap the `AKT` portion of the LP share to receive 100% OSMO in the **minimum** amount of `.298548 OSMO`:
+Exit `pool 3` by removing **exactly** `14.563185400026723131 gamm/pool/3` and swap the `AKT` portion of the LP share to receive 100% FURY in the **minimum** amount of `.298548 FURY`:
 
 ```sh
-furyad tx gamm exit-swap-share-amount-in uosmo 14563185400026723131 298548 --pool-id 3 --from WALLET_NAME --chain-id furya-1
+furyad tx gamm exit-swap-share-amount-in ufury 14563185400026723131 298548 --pool-id 3 --from WALLET_NAME --chain-id furya-1
 ```
 
 :::
@@ -408,10 +408,10 @@ furyad tx gamm swap-exact-amount-in [token-in] [token-out-min-amount] --pool-id 
 
 ::: details Example
 
-Swap **exactly** `.407239 AKT` through `pool 3` into a **minimum** of `.140530 OSMO` using `WALLET_NAME` on the furya mainnet:
+Swap **exactly** `.407239 AKT` through `pool 3` into a **minimum** of `.140530 FURY` using `WALLET_NAME` on the furya mainnet:
 
 ```sh
-furyad tx gamm swap-exact-amount-in 407239ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 140530 --swap-route-pool-ids 3 --swap-route-denoms uosmo --from WALLET_NAME --chain-id furya-1
+furyad tx gamm swap-exact-amount-in 407239ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 140530 --swap-route-pool-ids 3 --swap-route-denoms ufury --from WALLET_NAME --chain-id furya-1
 ```
 
 :::
@@ -426,10 +426,10 @@ furyad tx gamm swap-exact-amount-out [token-out] [token-out-max-amount] --swap-r
 
 ::: details Example
 
-Swap a **maximum** of `.407239 AKT` through `pool 3` into **exactly** `.140530 OSMO` using `WALLET_NAME` on the furya mainnet:
+Swap a **maximum** of `.407239 AKT` through `pool 3` into **exactly** `.140530 FURY` using `WALLET_NAME` on the furya mainnet:
 
 ```sh
-furyad tx gamm swap-exact-amount-out 140530uosmo 407239 --swap-route-pool-ids 3 --swap-route-denoms ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 --from WALLET_NAME --chain-id furya-1
+furyad tx gamm swap-exact-amount-out 140530ufury 407239 --swap-route-pool-ids 3 --swap-route-denoms ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4 --from WALLET_NAME --chain-id furya-1
 ```
 
 [comment]: <> (Other resources Creating a liquidity bootstrapping pool and Creating a pool with a pool file)
@@ -449,7 +449,7 @@ furyad tx gamm migrate-position [unlocked-shares] [flags]
 Migrate 10000000000000000000 unlocked gamm shares from pool 2 to the canonical CL pool:
 
 ```sh
- furyad tx gamm migrate-position 10000000000000000000gamm/pool/2 --min-amounts-out=100uosmo,100uusdc --from pool -b block --keyring-backend test --chain-id localfurya --fees 1000000uosmo --gas 700000
+ furyad tx gamm migrate-position 10000000000000000000gamm/pool/2 --min-amounts-out=100ufury,100uusdc --from pool -b block --keyring-backend test --chain-id localfurya --fees 1000000ufury --gas 700000
 ```
 :::
 ## Queries
@@ -481,10 +481,10 @@ furyad query gamm estimate-swap-exact-amount-in <poolID> <sender> <tokenIn> [fla
 
 #### Example
 
-Query the amount of ATOM the sender would receive for swapping 1 OSMO in pool 1.
+Query the amount of ATOM the sender would receive for swapping 1 FURY in pool 1.
 
 ```sh
-furyad query gamm estimate-swap-exact-amount-in 1 osmo123nfq6m8f88m4g3sky570unsnk4zng4uqv7cm8 1000000uosmo --swap-route-pool-ids 1 --swap-route-denoms ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2 
+furyad query gamm estimate-swap-exact-amount-in 1 osmo123nfq6m8f88m4g3sky570unsnk4zng4uqv7cm8 1000000ufury --swap-route-pool-ids 1 --swap-route-denoms ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2 
 ```
 
 ### Estimate Swap Exact Amount Out
@@ -499,10 +499,10 @@ furyad query gamm estimate-swap-exact-amount-out <poolID> <sender> <tokenOut> [f
 
 #### Example
 
-Query the amount of OSMO the sender would require to swap 1 ATOM out of pool 1.
+Query the amount of FURY the sender would require to swap 1 ATOM out of pool 1.
 
 ```sh
-furyad query gamm estimate-swap-exact-amount-out 1 osmo123nfq6m8f88m4g3sky570unsnk4zng4uqv7cm8 1000000ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2 --swap-route-pool-ids 1 --swap-route-denoms uosmo
+furyad query gamm estimate-swap-exact-amount-out 1 osmo123nfq6m8f88m4g3sky570unsnk4zng4uqv7cm8 1000000ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2 --swap-route-pool-ids 1 --swap-route-denoms ufury
 ```
 
 ### Num Pools
@@ -575,10 +575,10 @@ Query parameters and assets of all active pools.
 
 #### Usage
 
-Query the price of OSMO based on the price of ATOM in pool 1.
+Query the price of FURY based on the price of ATOM in pool 1.
 
 ```sh
-furyad query gamm spot-price 1 uosmo ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2
+furyad query gamm spot-price 1 ufury ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2
 ```
 
 ### Total Liquidity

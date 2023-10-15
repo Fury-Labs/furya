@@ -16,16 +16,16 @@ is_updated() {
 commit_before=$1
 commit_after=$2
 
-changed_osmoutils=$(git diff --name-only $commit_before $commit_after | grep osmoutils)
-changed_osmomath=$(git diff --name-only $commit_before $commit_after | grep osmomath)
+changed_furyutils=$(git diff --name-only $commit_before $commit_after | grep osmoutils)
+changed_furymath=$(git diff --name-only $commit_before $commit_after | grep osmomath)
 changed_ibc_hooks=$(git diff --name-only $commit_before $commit_after | grep x/ibc-hooks)
 changed_epochs=$(git diff --name-only $commit_before $commit_after | grep x/epochs)
 
-is_updated $changed_osmoutils
-update_osmoutils=$?
+is_updated $changed_furyutils
+update_furyutils=$?
 
-is_updated $changed_osmomath
-update_osmomath=$?
+is_updated $changed_furymath
+update_furymath=$?
 
 is_updated $changed_ibc_hooks
 update_ibc_hooks=$?
@@ -33,7 +33,7 @@ update_ibc_hooks=$?
 is_updated $changed_epochs
 update_epochs=$?
 
-if [ $update_osmoutils -eq 1 ]
+if [ $update_furyutils -eq 1 ]
 then 
 	go get github.com/osmosis-labs/osmosis/osmoutils@$commit_after
 
@@ -51,7 +51,7 @@ then
     cd ../..
 fi
 
-if [ $update_osmomath -eq 1 ]
+if [ $update_furymath -eq 1 ]
 then 
 	go get github.com/osmosis-labs/osmosis/osmomath@$commit_after
 fi

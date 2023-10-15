@@ -71,7 +71,7 @@ ENV = "testnet"
 match ENV:
     case "testnet":
         BASE_API = "https://api.testnet.furya.zone"
-        furyad = Command(node="https://rpc.testnet.furya.zone:443", keyring_backend="test", chain_id="osmo-test-5")
+        furyad = Command(node="https://rpc.testnet.furya.zone:443", keyring_backend="test", chain_id="fury-test-5")
         CHANNEL_PREFIX_MAP = []
         CHAIN_REGISTRY_PATH = "~/devel/chain-registry/testnets"
         # SWAPROUTER_CODE_ID = 6477
@@ -90,7 +90,7 @@ match ENV:
         raise ValueError("Invalid environment")
 
 POOL_API_ENDPOINT = BASE_API + "/stream/pool/v1/all?min_liquidity=0&order_key=liquidity&order_by=desc&offset=0&limit=20"
-GAS_ADJUSTMENT = "--gas auto --gas-prices 0.1uosmo --gas-adjustment 1.5 -y"
+GAS_ADJUSTMENT = "--gas auto --gas-prices 0.1ufury --gas-adjustment 1.5 -y"
 CHAIN_REGISTRY_PATH = os.path.expanduser(CHAIN_REGISTRY_PATH)
 
 

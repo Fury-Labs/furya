@@ -132,7 +132,7 @@ pub fn calculate_min_output_from_twap(
     let mut twap_price: Decimal = Decimal::one();
 
     // When swapping from input to output, we need to quote the price in the input token
-    // For example when seling osmo to buy atom:
+    // For example when seling fury to buy atom:
     //  price of <out> is X<in> (i.e.: price of atom is Xosmo)
     let mut sell_denom = input_token.denom;
 

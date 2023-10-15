@@ -31,7 +31,7 @@ const (
 )
 
 var (
-	// We set consensus min fee = .0025 uosmo / gas * 400000 gas = 1000
+	// We set consensus min fee = .0025 ufury / gas * 400000 gas = 1000
 	Fees = txfeestypes.ConsensusMinFee.Mul(osmomath.NewDec(GasLimit)).Ceil().TruncateInt64()
 
 	defaultErrRegex = regexp.MustCompile(`(E|e)rror`)

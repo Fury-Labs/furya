@@ -258,7 +258,7 @@ mod test {
         // Store three chain<>channel mappings
         let mut deps = setup().unwrap();
 
-        // Retrieve osmo<>juno link and check the channel is what we expect
+        // Retrieve fury<>juno link and check the channel is what we expect
         let channel_binary = query(
             deps.as_ref(),
             mock_env(),
@@ -284,7 +284,7 @@ mod test {
         let destination_chain: String = from_binary(&destination_chain).unwrap();
         assert_eq!("juno", destination_chain);
 
-        // Retrieve osmo<>stars link and check the channel is what we expect
+        // Retrieve fury<>stars link and check the channel is what we expect
         let channel_binary = query(
             deps.as_ref(),
             mock_env(),
@@ -323,7 +323,7 @@ mod test {
         let channel: String = from_binary(&channel_binary).unwrap();
         assert_eq!("channel-0", channel);
 
-        // Check that stars' channel-0 is connected to osmo
+        // Check that stars' channel-0 is connected to fury
         let destination_chain = query(
             deps.as_ref(),
             mock_env(),
@@ -347,7 +347,7 @@ mod test {
         );
         assert!(channel_binary.is_err());
 
-        // Disable the osmo<>juno link with the global admin
+        // Disable the fury<>juno link with the global admin
         let msg = ExecuteMsg::ModifyChainChannelLinks {
             operations: vec![ConnectionInput {
                 operation: execute::FullOperation::Disable,
@@ -363,7 +363,7 @@ mod test {
         let result = execute(deps.as_mut(), mock_env(), info_creator.clone(), msg);
         assert!(result.is_ok());
 
-        // Retrieve osmo<>juno link again, but this time it should be disabled
+        // Retrieve fury<>juno link again, but this time it should be disabled
         let res = query(
             deps.as_ref(),
             mock_env(),
@@ -374,7 +374,7 @@ mod test {
         );
         assert!(res.is_err());
 
-        // Enable the osmo<>juno link with the global admin
+        // Enable the fury<>juno link with the global admin
         let msg = ExecuteMsg::ModifyChainChannelLinks {
             operations: vec![ConnectionInput {
                 operation: execute::FullOperation::Enable,
@@ -389,7 +389,7 @@ mod test {
         let result = execute(deps.as_mut(), mock_env(), info_creator, msg);
         assert!(result.is_ok());
 
-        // Retrieve osmo<>juno link again, but this time it should be enabled
+        // Retrieve fury<>juno link again, but this time it should be enabled
         let channel_binary = query(
             deps.as_ref(),
             mock_env(),

@@ -70,7 +70,7 @@ then
     VALIDATOR_HEX_ADDRESS=$(furyad debug pubkey $VALIDATOR_PUBKEY_JSON 2>&1 --home $FURYA_HOME | grep Address | cut -d " " -f 2)
     VALIDATOR_ACCOUNT_ADDRESS=$(furyad debug addr $VALIDATOR_HEX_ADDRESS 2>&1  --home $FURYA_HOME | grep Acc | cut -d " " -f 3)
     VALIDATOR_OPERATOR_ADDRESS=$(furyad debug addr $VALIDATOR_HEX_ADDRESS 2>&1  --home $FURYA_HOME | grep Val | cut -d " " -f 3)
-    VALIDATOR_CONSENSUS_ADDRESS=$(furyad debug bech32-convert $VALIDATOR_OPERATOR_ADDRESS -p osmovalcons  --home $FURYA_HOME 2>&1)
+    VALIDATOR_CONSENSUS_ADDRESS=$(furyad debug bech32-convert $VALIDATOR_OPERATOR_ADDRESS -p furyvalcons  --home $FURYA_HOME 2>&1)
 
     python3 -u testnetify.py \
     -i /furya/state_export.json \

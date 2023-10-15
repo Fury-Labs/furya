@@ -185,8 +185,8 @@ def main():
         moniker = "Sentinel dVPN",
         pubkey = "b77zCh/VsRgVvfGXuW4dB+Dhg4PrMWWBC5G2K/qFgiU=",
         hex_address = "16A169951A878247DBE258FDDC71638F6606D156",
-        operator_address = "osmovaloper1cyw4vw20el8e7ez8080md0r8psg25n0cq98a9n",
-        consensus_address = "osmovalcons1z6skn9g6s7py0klztr7acutr3anqd52k9x5p70"
+        operator_address = "furyvaloper1cyw4vw20el8e7ez8080md0r8psg25n0cq98a9n",
+        consensus_address = "furyvalcons1z6skn9g6s7py0klztr7acutr3anqd52k9x5p70"
     )
 
     new_account = Account(
@@ -330,42 +330,42 @@ def main():
     for balance in genesis['app_state']['bank']['balances']:
         if balance['address'] == new_account.address:
             for coin in balance['coins']:
-                if coin['denom'] == "uosmo":
+                if coin['denom'] == "ufury":
                     coin["amount"] = str(int(coin["amount"]) + 1000000000000000)
                     if not args.quiet:
-                        print("\tUpdate {} uosmo balance to {}".format(new_account.address, coin["amount"]))
+                        print("\tUpdate {} ufury balance to {}".format(new_account.address, coin["amount"]))
                     break
             break
     
-    # Add 1 BN uosmo to bonded_tokens_pool module address
+    # Add 1 BN ufury to bonded_tokens_pool module address
     for balance in genesis['app_state']['bank']['balances']:
         if balance['address'] == BONDED_TOKENS_POOL_MODULE_ADDRESS:
-            # Find uosmo
+            # Find ufury
             for coin in balance['coins']:
-                if coin['denom'] == "uosmo":
+                if coin['denom'] == "ufury":
                     coin["amount"] = str(int(coin["amount"]) + 1000000000000000)
                     if not args.quiet:
-                        print("\tUpdate {} (bonded_tokens_pool_module) uosmo balance to {}".format(BONDED_TOKENS_POOL_MODULE_ADDRESS, coin["amount"]))
+                        print("\tUpdate {} (bonded_tokens_pool_module) ufury balance to {}".format(BONDED_TOKENS_POOL_MODULE_ADDRESS, coin["amount"]))
                     break
             break
     
     # Distribution module fix
     for balance in genesis['app_state']['bank']['balances']:
         if balance['address'] == DISTRIBUTION_MODULE_ADDRESS:
-            # Find uosmo
+            # Find ufury
             for coin in balance['coins']:
-                if coin['denom'] == "uosmo":
+                if coin['denom'] == "ufury":
                     coin["amount"] = str(int(coin["amount"]) - DISTRIBUTION_MODULE_OFFSET)
                     if not args.quiet:
-                        print("\tUpdate {} (distribution_module) uosmo balance to {}".format(DISTRIBUTION_MODULE_ADDRESS, coin["amount"]))
+                        print("\tUpdate {} (distribution_module) ufury balance to {}".format(DISTRIBUTION_MODULE_ADDRESS, coin["amount"]))
                     break
             break
 
     # Update bank balance 
     for supply in genesis['app_state']['bank']['supply']:
-        if supply["denom"] == "uosmo":
+        if supply["denom"] == "ufury":
             if not args.quiet:
-                print("\tUpdate total uosmo supply from {} to {}".format(supply["amount"], str(int(supply["amount"]) + 2000000000000000 - DISTRIBUTION_MODULE_OFFSET)))
+                print("\tUpdate total ufury supply from {} to {}".format(supply["amount"], str(int(supply["amount"]) + 2000000000000000 - DISTRIBUTION_MODULE_OFFSET)))
             supply["amount"] = str(int(supply["amount"]) + 2000000000000000 - DISTRIBUTION_MODULE_OFFSET)
             break
     

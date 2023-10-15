@@ -26,15 +26,15 @@ edit_genesis () {
     GENESIS=$CONFIG_FOLDER/genesis.json
 
     # Update staking module
-    dasel put string -f $GENESIS '.app_state.staking.params.bond_denom' 'uosmo'
+    dasel put string -f $GENESIS '.app_state.staking.params.bond_denom' 'ufury'
     dasel put string -f $GENESIS '.app_state.staking.params.unbonding_time' '240s'
 
     # Update crisis module
-    dasel put string -f $GENESIS '.app_state.crisis.constant_fee.denom' 'uosmo'
+    dasel put string -f $GENESIS '.app_state.crisis.constant_fee.denom' 'ufury'
 
     # Udpate gov module
     dasel put string -f $GENESIS '.app_state.gov.voting_params.voting_period' '60s'
-    dasel put string -f $GENESIS '.app_state.gov.deposit_params.min_deposit.[0].denom' 'uosmo'
+    dasel put string -f $GENESIS '.app_state.gov.deposit_params.min_deposit.[0].denom' 'ufury'
 
     # Update epochs module
     dasel put string -f $GENESIS '.app_state.epochs.epochs.[1].duration' "60s"
@@ -43,7 +43,7 @@ edit_genesis () {
     dasel put string -f $GENESIS '.app_state.poolincentives.lockable_durations.[0]' "120s"
     dasel put string -f $GENESIS '.app_state.poolincentives.lockable_durations.[1]' "180s"
     dasel put string -f $GENESIS '.app_state.poolincentives.lockable_durations.[2]' "240s"
-    dasel put string -f $GENESIS '.app_state.poolincentives.params.minted_denom' "uosmo"
+    dasel put string -f $GENESIS '.app_state.poolincentives.params.minted_denom' "ufury"
 
     # Update incentives module
     dasel put string -f $GENESIS '.app_state.incentives.lockable_durations.[0]' "1s"
@@ -53,14 +53,14 @@ edit_genesis () {
     dasel put string -f $GENESIS '.app_state.incentives.params.distr_epoch_identifier' "day"
 
     # Update mint module
-    dasel put string -f $GENESIS '.app_state.mint.params.mint_denom' "uosmo"
+    dasel put string -f $GENESIS '.app_state.mint.params.mint_denom' "ufury"
     dasel put string -f $GENESIS '.app_state.mint.params.epoch_identifier' "day"
 
     # Update gamm module
-    dasel put string -f $GENESIS '.app_state.gamm.params.pool_creation_fee.[0].denom' "uosmo"
+    dasel put string -f $GENESIS '.app_state.gamm.params.pool_creation_fee.[0].denom' "ufury"
 
     # Update txfee basedenom
-    dasel put string -f $GENESIS '.app_state.txfees.basedenom' "uosmo"
+    dasel put string -f $GENESIS '.app_state.txfees.basedenom' "ufury"
 
     # Update wasm permission (Nobody or Everybody)
     dasel put string -f $GENESIS '.app_state.wasm.params.code_upload_access.permission' "Everybody"
@@ -72,21 +72,21 @@ add_genesis_accounts () {
     echo "⚖️ Add validator account"
     echo $VALIDATOR_MNEMONIC | furyad keys add $VALIDATOR_MONIKER --recover --keyring-backend=test --home $FURYA_HOME
     VALIDATOR_ACCOUNT=$(furyad keys show -a $VALIDATOR_MONIKER --keyring-backend test --home $FURYA_HOME)
-    furyad add-genesis-account $VALIDATOR_ACCOUNT 100000000000uosmo,100000000000uion,100000000000stake --home $FURYA_HOME
+    furyad add-genesis-account $VALIDATOR_ACCOUNT 100000000000ufury,100000000000uion,100000000000stake --home $FURYA_HOME
     
     # Faucet
     echo "🚰 Add faucet account"
     echo $FAUCET_MNEMONIC | furyad keys add faucet --recover --keyring-backend=test --home $FURYA_HOME
     FAUCET_ACCOUNT=$(furyad keys show -a faucet --keyring-backend test --home $FURYA_HOME)
-    furyad add-genesis-account $FAUCET_ACCOUNT 100000000000uosmo,100000000000uion,100000000000stake --home $FURYA_HOME
+    furyad add-genesis-account $FAUCET_ACCOUNT 100000000000ufury,100000000000uion,100000000000stake --home $FURYA_HOME
 
     # Relayer
     echo "🔗 Add relayer account"
     echo $RELAYER_MNEMONIC | furyad keys add relayer --recover --keyring-backend=test --home $FURYA_HOME
     RELAYER_ACCOUNT=$(furyad keys show -a relayer --keyring-backend test --home $FURYA_HOME)
-    furyad add-genesis-account $RELAYER_ACCOUNT 1000000000uosmo,1000000000uion,1000000000stake --home $FURYA_HOME
+    furyad add-genesis-account $RELAYER_ACCOUNT 1000000000ufury,1000000000uion,1000000000stake --home $FURYA_HOME
     
-    furyad gentx $VALIDATOR_MONIKER 500000000uosmo --keyring-backend=test --chain-id=$CHAIN_ID --home $FURYA_HOME
+    furyad gentx $VALIDATOR_MONIKER 500000000ufury --keyring-backend=test --chain-id=$CHAIN_ID --home $FURYA_HOME
     furyad collect-gentxs --home $FURYA_HOME
 }
 

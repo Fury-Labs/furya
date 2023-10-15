@@ -92,7 +92,7 @@ The minting module contains the following parameters:
 
 | Key                                        | Type         | Example                                |
 | ------------------------------------------ | ------------ | -------------------------------------- |
-| mint_denom                                 | string       | "uosmo"                                |
+| mint_denom                                 | string       | "ufury"                                |
 | genesis_epoch_provisions                   | string (dec) | "500000000"                            |
 | epoch_identifier                           | string       | "weekly"                               |
 | reduction_period_in_epochs                 | int64        | 156                                    |
@@ -112,7 +112,7 @@ Below are all the network parameters for the `mint` module:
 - **`reduction_period_in_epochs`** - How many epochs must occur before implementing the reduction factor
 - **`reduction_factor`** - What the total token issuance factor will reduce by after the reduction period passes (if set to 66.66%, token issuance will reduce by 1/3)
 - **`distribution_proportions`** - Categories in which the specified proportion of newly released tokens are distributed to
-  - **`staking`** - Proportion of minted funds to incentivize staking OSMO
+  - **`staking`** - Proportion of minted funds to incentivize staking FURY
   - **`pool_incentives`** - Proportion of minted funds to incentivize pools on Furya
   - **`developer_rewards`** - Proportion of minted funds to pay developers for their past and future work
   - **`community_pool`** - Proportion of minted funds to be set aside for the community pool
@@ -121,7 +121,7 @@ Below are all the network parameters for the `mint` module:
 
 ### Notes
 
-1. `mint_denom` defines denom for minting token - uosmo
+1. `mint_denom` defines denom for minting token - ufury
 2. `genesis_epoch_provisions` provides minting tokens per epoch at genesis.
 3. `epoch_identifier` defines the epoch identifier to be used for the mint module e.g. "weekly"
 4. `reduction_period_in_epochs` defines the number of epochs to pass to reduce the mint amount
@@ -170,7 +170,7 @@ An example of the output:
 
 ```json
 {
-  "mint_denom": "uosmo",
+  "mint_denom": "ufury",
   "genesis_epoch_provisions": "821917808219.178082191780821917",
   "epoch_identifier": "day",
   "reduction_period_in_epochs": "365",
@@ -265,7 +265,7 @@ List the current epoch provisions:
 furyad query mint epoch-provisions
 ```
 
-As of this writing, this number will be equal to the `genesis-epoch-provisions`. Once the `reduction_period_in_epochs` is reached, the `reduction_factor` will be initiated and reduce the amount of OSMO minted per epoch.
+As of this writing, this number will be equal to the `genesis-epoch-provisions`. Once the `reduction_period_in_epochs` is reached, the `reduction_factor` will be initiated and reduce the amount of FURY minted per epoch.
 :::
 
 ## Appendix
@@ -297,8 +297,8 @@ The following tables show overall effects on different configurations of the `mi
 <td>Value has to be a positive integer</td> 
 <td>String must be <code>day</code>, <code>week</code>, <code>month</code>, or <code>year</code></td></tr> 
 <tr><td>Current configuration</td> 
-<td><code>uosmo</code></td> 
-<td><code>821917808219.178</code> (821,9178 OSMO)</td> 
+<td><code>ufury</code></td> 
+<td><code>821917808219.178</code> (821,9178 FURY)</td> 
 <td><code>day</code></td></tr>
 </tbody></table>
 

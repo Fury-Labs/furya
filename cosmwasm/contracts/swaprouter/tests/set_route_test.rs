@@ -11,7 +11,7 @@ test_set_route!(
 
     sender = NonOwner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uion".to_string(),
         pool_route: vec![SwapAmountInRoute {
             pool_id: 1,
@@ -26,7 +26,7 @@ test_set_route!(
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uion".to_string(),
         pool_route: vec![SwapAmountInRoute {
             pool_id: 1,
@@ -41,11 +41,11 @@ test_set_route!(
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uion".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
-                pool_id: 2, // uatom/uosmo
+                pool_id: 2, // uatom/ufury
                 token_out_denom: "uatom".to_string(),
             },
             SwapAmountInRoute {
@@ -60,16 +60,16 @@ test_set_route!(
     output_denom_that_does_not_ending_pool_route
     should failed_with
     r#"Invalid Pool Route: "last denom doesn't match": execute wasm contract failed"#,
-    // r#"Invalid Pool Route: "denom uosmo is not in pool id 1": execute wasm contract failed"#,
+    // r#"Invalid Pool Route: "denom ufury is not in pool id 1": execute wasm contract failed"#,
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uion".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
-                pool_id: 1, // uosmo/uion
-                token_out_denom: "uosmo".to_string(),
+                pool_id: 1, // ufury/uion
+                token_out_denom: "ufury".to_string(),
             },
         ],
     }
@@ -86,7 +86,7 @@ test_set_route!(
         output_denom: "uion".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
-                pool_id: 1, // uosmo/uion
+                pool_id: 1, // ufury/uion
                 token_out_denom: "uion".to_string(),
             },
         ],
@@ -100,11 +100,11 @@ test_set_route!(
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uatom".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
-                pool_id: 1, // uosmo/uion
+                pool_id: 1, // ufury/uion
                 token_out_denom: "uatom".to_string(),
             },
         ],
@@ -118,15 +118,15 @@ test_set_route!(
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uatom".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
-                pool_id: 1, // uosmo/uion
+                pool_id: 1, // ufury/uion
                 token_out_denom: "foocoin".to_string(),
             },
             SwapAmountInRoute {
-                pool_id: 2, // uatom/uosmo
+                pool_id: 2, // uatom/ufury
                 token_out_denom: "uatom".to_string(),
             },
         ],
@@ -140,15 +140,15 @@ test_set_route!(
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uatom".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
-                pool_id: 1, // uosmo/uion
+                pool_id: 1, // ufury/uion
                 token_out_denom: "uion".to_string(),
             },
             SwapAmountInRoute {
-                pool_id: 2, // uatom/uosmo
+                pool_id: 2, // uatom/ufury
                 token_out_denom: "uatom".to_string(),
             },
         ],
@@ -158,11 +158,11 @@ test_set_route!(
 test_set_route!(
     non_existant_pool
     should failed_with
-    r#"Invalid Pool Route: "denom uosmo is not in pool id 3": execute wasm contract failed"#,
+    r#"Invalid Pool Route: "denom ufury is not in pool id 3": execute wasm contract failed"#,
 
     sender = Owner,
     msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uatom".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
@@ -243,7 +243,7 @@ fn test_set_route_failed_case(sender: Sender, msg: ExecuteMsg, expected_error: &
         Sender::Owner => owner,
         Sender::NonOwner => {
             let initial_balance = [
-                Coin::new(1_000_000_000_000, "uosmo"),
+                Coin::new(1_000_000_000_000, "ufury"),
                 Coin::new(1_000_000_000_000, "uion"),
                 Coin::new(1_000_000_000_000, "uatom"),
             ];

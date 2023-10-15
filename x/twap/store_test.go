@@ -534,7 +534,7 @@ func (s *TestSuite) TestAccumulatorOverflow() {
 	tests := map[string]struct {
 		// timeDelta is duration in nano seconds.
 		// we use osmomath.Dec here because time.Duration would automatically cap to
-		// time.duosmomath.DecmaxDuration without erroring.
+		// time.dufurymath.DecmaxDuration without erroring.
 		timeDelta osmomath.Dec
 		panics    bool
 	}{

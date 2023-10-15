@@ -13,8 +13,8 @@ UPGRADE_VERSION=${1:-"v15"}
 
 # Paramters
 KEY=val
-PROPOSAL_DEPOSIT=1600000000uosmo
-TX_FEES=1000uosmo
+PROPOSAL_DEPOSIT=1600000000ufury
+TX_FEES=1000ufury
 
 # Define ANSI escape sequences for colors
 YELLOW='\033[1;33m'

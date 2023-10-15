@@ -28,7 +28,7 @@ pub fn instantiate(
             contract: msg.crosschain_swaps_contract,
         })
     };
-    if prefix != "osmo" {
+    if prefix != "fury" {
         return Err(ContractError::InvalidCrosschainSwapsContract {
             contract: format!("invalid prefix: {}", msg.crosschain_swaps_contract),
         });

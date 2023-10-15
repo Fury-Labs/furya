@@ -13,7 +13,7 @@ rm -rf $HOME/.furyad/
 
 furyad init --chain-id=testing testing --home=$HOME/.furyad
 furyad keys add validator --keyring-backend=test --home=$HOME/.furyad
-furyad add-genesis-account $(furyad keys show validator -a --keyring-backend=test) 100000000000stake,100000000000uosmo,100000000000uion --home=$HOME/.furyad
+furyad add-genesis-account $(furyad keys show validator -a --keyring-backend=test) 100000000000stake,100000000000ufury,100000000000uion --home=$HOME/.furyad
 furyad gentx validator 500000000stake --keyring-backend=test --home=$HOME/.furyad --chain-id=testing
 furyad collect-gentxs --home=$HOME/.furyad
 
@@ -56,11 +56,11 @@ tmux new -s validator -d furyad start --home=$HOME/.furyad
 
 sleep 7
 # create pool
-furyad tx gamm create-pool --pool-file=./stake-uosmo.json --from=validator --keyring-backend=test --chain-id=testing --yes --fees=1000000stake
+furyad tx gamm create-pool --pool-file=./stake-ufury.json --from=validator --keyring-backend=test --chain-id=testing --yes --fees=1000000stake
 sleep 7
 
 # do a swap in the pool created
-furyad tx gamm swap-exact-amount-in 100000uosmo 50000 --swap-route-pool-ids=1 --swap-route-denoms=stake --from=validator --keyring-backend=test --chain-id=testing --yes --fees=10000stake
+furyad tx gamm swap-exact-amount-in 100000ufury 50000 --swap-route-pool-ids=1 --swap-route-denoms=stake --from=validator --keyring-backend=test --chain-id=testing --yes --fees=10000stake
 sleep 7
 
 # create a lock up with lock duration 360h

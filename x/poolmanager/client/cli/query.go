@@ -101,7 +101,7 @@ func GetCmdSpotPrice() (*osmocli.QueryDescriptor, *queryproto.SpotPriceRequest) 
 		Use:   "spot-price",
 		Short: "Query spot-price",
 		Long: `Query spot-price
-{{.CommandPrefix}} spot-price 1 uosmo ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2
+{{.CommandPrefix}} spot-price 1 ufury ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2
 `,
 	}, &queryproto.SpotPriceRequest{}
 }
@@ -148,7 +148,7 @@ func GetCmdEstimateSinglePoolSwapExactAmountIn() (*osmocli.QueryDescriptor, *que
 		Use:   "estimate-single-pool-swap-exact-amount-in",
 		Short: "Query estimate-single-pool-swap-exact-amount-in",
 		Long: `Query estimate-single-pool-swap-exact-amount-in.{{.ExampleHeader}}
-{{.CommandPrefix}} estimate-single-pool-swap-exact-amount-in 1 1000stake uosmo`,
+{{.CommandPrefix}} estimate-single-pool-swap-exact-amount-in 1 1000stake ufury`,
 		QueryFnName: "EstimateSinglePoolSwapExactAmountIn",
 	}, &queryproto.EstimateSinglePoolSwapExactAmountInRequest{}
 }
@@ -159,7 +159,7 @@ func GetCmdEstimateSinglePoolSwapExactAmountOut() (*osmocli.QueryDescriptor, *qu
 		Use:   "estimate-single-pool-swap-exact-amount-out",
 		Short: "Query estimate-single-pool-swap-exact-amount-out",
 		Long: `Query estimate-single-pool-swap-exact-amount-out.{{.ExampleHeader}}
-{{.CommandPrefix}} estimate-single-pool-swap-exact-amount-out 1 uosmo 1000stake`,
+{{.CommandPrefix}} estimate-single-pool-swap-exact-amount-out 1 ufury 1000stake`,
 		QueryFnName: "EstimateSinglePoolSwapExactAmountOut",
 	}, &queryproto.EstimateSinglePoolSwapExactAmountOutRequest{}
 }
@@ -187,7 +187,7 @@ func GetCmdTradingPairTakerFee() (*osmocli.QueryDescriptor, *queryproto.TradingP
 		Use:   "trading-pair-taker-fee",
 		Short: "Query trading pair taker fee",
 		Long: `{{.Short}}
-		{{.CommandPrefix}} trading-pair-taker-fee uosmo uatom`,
+		{{.CommandPrefix}} trading-pair-taker-fee ufury uatom`,
 	}, &queryproto.TradingPairTakerFeeRequest{}
 }
 
@@ -198,7 +198,7 @@ func GetCmdEstimateTradeBasedOnPriceImpact() (
 		Use:   "estimate-trade-based-on-price-impact  <fromCoin> <toCoinDenom> <poolId> <maxPriceImpact> <externalPrice>",
 		Short: "Query estimate-trade-based-on-price-impact",
 		Long: `{{.Short}}
-		{{.CommandPrefix}} estimate-trade-based-on-price-impact 100uosmo stosmo  833 0.001 1.00`,
+		{{.CommandPrefix}} estimate-trade-based-on-price-impact 100ufury stosmo  833 0.001 1.00`,
 		QueryFnName: "EstimateTradeBasedOnPriceImpact",
 	}, &queryproto.EstimateTradeBasedOnPriceImpactRequest{}
 }

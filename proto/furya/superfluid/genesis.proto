@@ -14,9 +14,9 @@ message GenesisState {
   // registered via governance.
   repeated SuperfluidAsset superfluid_assets = 2
       [ (gogoproto.nullable) = false ];
-  // osmo_equivalent_multipliers is the records of osmo equivalent amount of
+  // fury_equivalent_multipliers is the records of fury equivalent amount of
   // each superfluid registered pool, updated every epoch.
-  repeated OsmoEquivalentMultiplierRecord osmo_equivalent_multipliers = 3
+  repeated FuryEquivalentMultiplierRecord fury_equivalent_multipliers = 3
       [ (gogoproto.nullable) = false ];
   // intermediary_accounts is a secondary account for superfluid staking that
   // plays an intermediary role between validators and the delegators.

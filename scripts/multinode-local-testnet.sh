@@ -24,24 +24,24 @@ update_genesis () {
     cat $HOME/.furyad/validator1/config/genesis.json | jq "$1" > $HOME/.furyad/validator1/config/tmp_genesis.json && mv $HOME/.furyad/validator1/config/tmp_genesis.json $HOME/.furyad/validator1/config/genesis.json
 }
 
-# change staking denom to uosmo
-update_genesis '.app_state["staking"]["params"]["bond_denom"]="uosmo"'
+# change staking denom to ufury
+update_genesis '.app_state["staking"]["params"]["bond_denom"]="ufury"'
 
 # create validator node with tokens to transfer to the three other nodes
-furyad add-genesis-account $(furyad keys show validator1 -a --keyring-backend=test --home=$HOME/.furyad/validator1) 100000000000uosmo,100000000000stake --home=$HOME/.furyad/validator1
-furyad gentx validator1 500000000uosmo --keyring-backend=test --home=$HOME/.furyad/validator1 --chain-id=testing
+furyad add-genesis-account $(furyad keys show validator1 -a --keyring-backend=test --home=$HOME/.furyad/validator1) 100000000000ufury,100000000000stake --home=$HOME/.furyad/validator1
+furyad gentx validator1 500000000ufury --keyring-backend=test --home=$HOME/.furyad/validator1 --chain-id=testing
 furyad collect-gentxs --home=$HOME/.furyad/validator1
 
 
 # update staking genesis
 update_genesis '.app_state["staking"]["params"]["unbonding_time"]="240s"'
 
-# update crisis variable to uosmo
-update_genesis '.app_state["crisis"]["constant_fee"]["denom"]="uosmo"'
+# update crisis variable to ufury
+update_genesis '.app_state["crisis"]["constant_fee"]["denom"]="ufury"'
 
 # udpate gov genesis
 update_genesis '.app_state["gov"]["voting_params"]["voting_period"]="60s"'
-update_genesis '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="uosmo"'
+update_genesis '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="ufury"'
 
 # update epochs genesis
 update_genesis '.app_state["epochs"]["epochs"][1]["duration"]="60s"'
@@ -50,7 +50,7 @@ update_genesis '.app_state["epochs"]["epochs"][1]["duration"]="60s"'
 update_genesis '.app_state["poolincentives"]["lockable_durations"][0]="120s"'
 update_genesis '.app_state["poolincentives"]["lockable_durations"][1]="180s"'
 update_genesis '.app_state["poolincentives"]["lockable_durations"][2]="240s"'
-update_genesis '.app_state["poolincentives"]["params"]["minted_denom"]="uosmo"'
+update_genesis '.app_state["poolincentives"]["params"]["minted_denom"]="ufury"'
 
 # update incentives genesis
 update_genesis '.app_state["incentives"]["lockable_durations"][0]="1s"'
@@ -60,11 +60,11 @@ update_genesis '.app_state["incentives"]["lockable_durations"][3]="240s"'
 update_genesis '.app_state["incentives"]["params"]["distr_epoch_identifier"]="day"'
 
 # update mint genesis
-update_genesis '.app_state["mint"]["params"]["mint_denom"]="uosmo"'
+update_genesis '.app_state["mint"]["params"]["mint_denom"]="ufury"'
 update_genesis '.app_state["mint"]["params"]["epoch_identifier"]="day"'
 
 # update gamm genesis
-update_genesis '.app_state["gamm"]["params"]["pool_creation_fee"][0]["denom"]="uosmo"'
+update_genesis '.app_state["gamm"]["params"]["pool_creation_fee"][0]["denom"]="ufury"'
 
 
 # port key (validator1 uses default ports)
@@ -125,14 +125,14 @@ tmux new -s validator2 -d furyad start --home=$HOME/.furyad/validator2
 tmux new -s validator3 -d furyad start --home=$HOME/.furyad/validator3
 
 
-# send uosmo from first validator to second validator
+# send ufury from first validator to second validator
 echo "Waiting 7 seconds to send funds to validators 2 and 3..."
 sleep 7
-furyad tx bank send validator1 $(furyad keys show validator2 -a --keyring-backend=test --home=$HOME/.furyad/validator2) 500000000uosmo --keyring-backend=test --home=$HOME/.furyad/validator1 --chain-id=testing --broadcast-mode block --node http://localhost:26657 --yes
-furyad tx bank send validator1 $(furyad keys show validator3 -a --keyring-backend=test --home=$HOME/.furyad/validator3) 400000000uosmo --keyring-backend=test --home=$HOME/.furyad/validator1 --chain-id=testing --broadcast-mode block --node http://localhost:26657 --yes
+furyad tx bank send validator1 $(furyad keys show validator2 -a --keyring-backend=test --home=$HOME/.furyad/validator2) 500000000ufury --keyring-backend=test --home=$HOME/.furyad/validator1 --chain-id=testing --broadcast-mode block --node http://localhost:26657 --yes
+furyad tx bank send validator1 $(furyad keys show validator3 -a --keyring-backend=test --home=$HOME/.furyad/validator3) 400000000ufury --keyring-backend=test --home=$HOME/.furyad/validator1 --chain-id=testing --broadcast-mode block --node http://localhost:26657 --yes
 
 # create second & third validator
-furyad tx staking create-validator --amount=500000000uosmo --from=validator2 --pubkey=$(furyad tendermint show-validator --home=$HOME/.furyad/validator2) --moniker="validator2" --chain-id="testing" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.furyad/validator2 --broadcast-mode block --node http://localhost:26657 --yes
-furyad tx staking create-validator --amount=400000000uosmo --from=validator3 --pubkey=$(furyad tendermint show-validator --home=$HOME/.furyad/validator3) --moniker="validator3" --chain-id="testing" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.furyad/validator3 --broadcast-mode block --node http://localhost:26657 --yes
+furyad tx staking create-validator --amount=500000000ufury --from=validator2 --pubkey=$(furyad tendermint show-validator --home=$HOME/.furyad/validator2) --moniker="validator2" --chain-id="testing" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="500000000" --keyring-backend=test --home=$HOME/.furyad/validator2 --broadcast-mode block --node http://localhost:26657 --yes
+furyad tx staking create-validator --amount=400000000ufury --from=validator3 --pubkey=$(furyad tendermint show-validator --home=$HOME/.furyad/validator3) --moniker="validator3" --chain-id="testing" --commission-rate="0.1" --commission-max-rate="0.2" --commission-max-change-rate="0.05" --min-self-delegation="400000000" --keyring-backend=test --home=$HOME/.furyad/validator3 --broadcast-mode block --node http://localhost:26657 --yes
 
 echo "All 3 Validators are up and running!"

@@ -15,14 +15,14 @@ func TestFormatDenomTradePairKey(t *testing.T) {
 		expectedKey string
 	}{
 		"happy path": {
-			denom0:      "uosmo",
+			denom0:      "ufury",
 			denom1:      "uion",
-			expectedKey: "\x04|uion|uosmo",
+			expectedKey: "\x04|uion|ufury",
 		},
 		"reversed denoms get reordered": {
 			denom0:      "uion",
-			denom1:      "uosmo",
-			expectedKey: "\x04|uion|uosmo",
+			denom1:      "ufury",
+			expectedKey: "\x04|uion|ufury",
 		},
 	}
 

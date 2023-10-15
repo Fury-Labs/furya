@@ -42,10 +42,10 @@ func (s *KeeperTestSuite) TestSuperfluidAssetSetGetDeleteFlow() {
 	s.Require().Len(assets, 0)
 }
 
-func (s *KeeperTestSuite) TestGetRiskAdjustedOsmoValue() {
+func (s *KeeperTestSuite) TestGetRiskAdjustedFuryValue() {
 	s.SetupTest()
 
-	adjustedValue := s.App.SuperfluidKeeper.GetRiskAdjustedOsmoValue(
+	adjustedValue := s.App.SuperfluidKeeper.GetRiskAdjustedFuryValue(
 		s.Ctx,
 		osmomath.NewInt(100),
 	)

@@ -18,13 +18,13 @@ const (
 	// Current Git branch furya repo/version. It is meant to be built locally.
 	// It is used when skipping upgrade by setting FURYA_E2E_SKIP_UPGRADE to true).
 	// This image should be pre-built with `make docker-build-debug` either in CI or locally.
-	CurrentBranchOsmoRepository = "furya"
-	CurrentBranchOsmoTag        = "debug"
+	CurrentBranchFuryRepository = "furya"
+	CurrentBranchFuryTag        = "debug"
 	// Pre-upgrade furya repo/tag to pull.
 	// It should be uploaded to Docker Hub. FURYA_E2E_SKIP_UPGRADE should be unset
 	// for this functionality to be used.
-	previousVersionOsmoRepository = "osmolabs/furya"
-	previousVersionOsmoTag        = "19.0.0-alpine"
+	previousVersionFuryRepository = "osmolabs/furya"
+	previousVersionFuryTag        = "19.0.0-alpine"
 	// Pre-upgrade repo/tag for furya initialization (this should be one version below upgradeVersion)
 	previousVersionInitRepository = "osmolabs/furya-e2e-init-chain"
 	previousVersionInitTag        = "19.0.0"
@@ -46,8 +46,8 @@ func NewImageConfig(isUpgrade, isFork bool) ImageConfig {
 		// If upgrade is not tested, we do not need InitRepository and InitTag
 		// because we directly call the initialization logic without
 		// the need for Docker.
-		config.FuryaRepository = CurrentBranchOsmoRepository
-		config.FuryaTag = CurrentBranchOsmoTag
+		config.FuryaRepository = CurrentBranchFuryRepository
+		config.FuryaTag = CurrentBranchFuryTag
 		return config
 	}
 
@@ -61,16 +61,16 @@ func NewImageConfig(isUpgrade, isFork bool) ImageConfig {
 		// Normally, validators switch the binaries pre-fork height
 		// Then, once the fork height is reached, the state breaking-logic
 		// is run.
-		config.FuryaRepository = CurrentBranchOsmoRepository
-		config.FuryaTag = CurrentBranchOsmoTag
+		config.FuryaRepository = CurrentBranchFuryRepository
+		config.FuryaTag = CurrentBranchFuryTag
 	} else {
 		// Upgrades are run at the time when upgrade height is reached
 		// and are submitted via a governance proposal. Thefore, we
 		// must start running the previous Furya version. Then, the node
 		// should auto-upgrade, at which point we can restart the updated
 		// Furya validator container.
-		config.FuryaRepository = previousVersionOsmoRepository
-		config.FuryaTag = previousVersionOsmoTag
+		config.FuryaRepository = previousVersionFuryRepository
+		config.FuryaTag = previousVersionFuryTag
 	}
 
 	return config

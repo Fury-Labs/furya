@@ -91,9 +91,9 @@ initResource, err := m.pool.RunWithOptions(
 Assumming that the container was correctly mounted on a volume,
 it produces the following:
 
-- `osmo-test-< chain id >-encode` file
+- `fury-test-< chain id >-encode` file
   - This is encoded metadata about the newly created chain with its nodes
-- `osmo-test-< chain id >` folder
+- `fury-test-< chain id >` folder
   - For every `NodeCondig` provided to the container, it will produce a folder
     with the respective node configs
 
@@ -101,24 +101,24 @@ Example:
 
 ```sh
 $:/tmp/furya-e2e-testnet-1167397304 $ ls
-osmo-test-a  osmo-test-a-encode
+fury-test-a  fury-test-a-encode
 
-$:/tmp/furya-e2e-testnet-1167397304/osmo-test-a $ cd  osmo-test-a
+$:/tmp/furya-e2e-testnet-1167397304/fury-test-a $ cd  fury-test-a
 
-$:/tmp/furya-e2e-testnet-1167397304/osmo-test-a $ ls
-osmo-test-a-furya-00  osmo-test-a-furya-11  osmo-test-a-furya-22  osmo-test-a-furya-33
+$:/tmp/furya-e2e-testnet-1167397304/fury-test-a $ ls
+fury-test-a-furya-00  fury-test-a-furya-11  fury-test-a-furya-22  fury-test-a-furya-33
 
-$:/tmp/furya-e2e-testnet-1167397304/osmo-test-a $ cd  osmo-test-a-furya-00
+$:/tmp/furya-e2e-testnet-1167397304/fury-test-a $ cd  fury-test-a-furya-00
 
-$:/tmp/furya-e2e-testnet-1167397304/osmo-test-a/osmo-test-a-furya-00 $ ls
+$:/tmp/furya-e2e-testnet-1167397304/fury-test-a/fury-test-a-furya-00 $ ls
 config  data  keyring-test  wasm
 ```
 
 - Here we mounted the container on
-`/tmp/furya-e2e-testnet-1167397304/osmo-test`as a volume
+`/tmp/furya-e2e-testnet-1167397304/fury-test`as a volume
 - < chain id > = "a"
 - 4 `NodeConfig`s were provided via the `--config` flag
-- `osmo-test-a-encode` output file corresponds to the serialized `internalChain` struct
+- `fury-test-a-encode` output file corresponds to the serialized `internalChain` struct
 defined in `tests/e2e/initialization/chain.go`
 
 ### Initializing a Node (`node`)

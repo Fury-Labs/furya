@@ -22,9 +22,9 @@ The txfees module includes hooks that trigger actions at the end of each epoch.
 
 The `AfterEpochEnd` hook performs several actions:
 
-1. It swaps all non-OSMO denominated fees in the non-native fee collector for staking rewards module account into OSMO. This is done by checking the balance of the non-native fee collector for staking rewards module account, and swapping each non-OSMO denominated fee into OSMO. If a pool does not exist for a particular denomination pair, the swap is silently skipped. See the `swapNonNativeFeeToDenom` function description below for more details.
+1. It swaps all non-FURY denominated fees in the non-native fee collector for staking rewards module account into FURY. This is done by checking the balance of the non-native fee collector for staking rewards module account, and swapping each non-FURY denominated fee into FURY. If a pool does not exist for a particular denomination pair, the swap is silently skipped. See the `swapNonNativeFeeToDenom` function description below for more details.
 
-2. After the swap, it transfers all OSMO from the non-native fee collector for staking rewards to the primary txfees fee collector module account. This indirectly distributes the fees to stakers.
+2. After the swap, it transfers all FURY from the non-native fee collector for staking rewards to the primary txfees fee collector module account. This indirectly distributes the fees to stakers.
 
 3. It also swaps non-whitelisted assets in the non-native community pool collector into the denomination specified in the pool manager parameters (currently USDC).
 
@@ -35,8 +35,8 @@ The `swapNonNativeFeeToDenom` function is used to perform the swaps. It iterates
 ## Local Mempool Filters Added
 
 * If you specify a min-tx-fee in the $BASEDENOM then
-  * Your node will allow any tx w/ tx fee in the whitelist of fees, and a sufficient osmo-equivalent price to enter your mempool
-  * The osmo-equivalent price for determining sufficiency is rechecked after every block. (During the mempools RecheckTx)
+  * Your node will allow any tx w/ tx fee in the whitelist of fees, and a sufficient fury-equivalent price to enter your mempool
+  * The fury-equivalent price for determining sufficiency is rechecked after every block. (During the mempools RecheckTx)
     * TODO: further consider if we want to take this tradeoff. Allows someone who manipulates price for one block to flush txs using that asset as fee from most of the networks' mempools.
     * The simple alternative is only check fee equivalency at a txs entry into the mempool, which allows someone to manipulate price down to have many txs enter the chain at low cost.
     * Another alternative is to use TWAP instead of Spot Price once it is available on-chain

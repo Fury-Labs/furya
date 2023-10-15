@@ -170,7 +170,7 @@ func (n *NodeConfig) extractOperatorAddressIfValidator() error {
 	if err != nil {
 		return err
 	}
-	re := regexp.MustCompile("osmovaloper(.{39})")
+	re := regexp.MustCompile("furyvaloper(.{39})")
 	operAddr := fmt.Sprintf("%s\n", re.FindString(errBuf.String()))
 	n.OperatorAddress = strings.TrimSuffix(operAddr, "\n")
 	return nil

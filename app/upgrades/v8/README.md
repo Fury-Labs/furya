@@ -23,7 +23,7 @@ Let's review the states a position in a pool may be to be able to understand the
 ```sh
   ┌─────────────────────────┐   ┌─────────────────────────┐
   │  sdk.Coin               │   │  sdk.Coin               │
-  │  Denom:  UST            │   │  Denom:  uOSMO          │
+  │  Denom:  UST            │   │  Denom:  uFURY          │
   │  Amount: 5.647          │   │  Amount: 1              │
   └───────────┬─────────────┘   └───────────┬─────────────┘
               │                             │

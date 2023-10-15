@@ -131,7 +131,7 @@ func (s *KeeperTestSuite) TestUpdateHighestLiquidityPools() {
 		expectedBaseDenomPools map[string]map[string]keeper.LiquidityPoolStruct
 	}{
 		{
-			// There are 2 pools with epochOne and uosmo as denoms, both in the GAMM module.
+			// There are 2 pools with epochOne and ufury as denoms, both in the GAMM module.
 			// pool with ID 46 has a liquidity value of 1,000,000
 			// pool with ID 47 has a liquidity value of 2,000,000
 			// pool with ID 47 should be returned as the highest liquidity pool
@@ -143,12 +143,12 @@ func (s *KeeperTestSuite) TestUpdateHighestLiquidityPools() {
 			},
 			expectedBaseDenomPools: map[string]map[string]keeper.LiquidityPoolStruct{
 				"epochOne": {
-					"uosmo": {Liquidity: osmomath.NewInt(2000000), PoolId: 47},
+					"ufury": {Liquidity: osmomath.NewInt(2000000), PoolId: 47},
 				},
 			},
 		},
 		{
-			// There are 2 pools with epochTwo and uosmo as denoms,
+			// There are 2 pools with epochTwo and ufury as denoms,
 			// One in the GAMM module and one in the Concentrated Liquidity module.
 			// pool with ID 48 has a liquidity value of 1,000,000
 			// pool with ID 50 has a liquidity value of 2,000,000
@@ -161,7 +161,7 @@ func (s *KeeperTestSuite) TestUpdateHighestLiquidityPools() {
 			},
 			expectedBaseDenomPools: map[string]map[string]keeper.LiquidityPoolStruct{
 				"epochTwo": {
-					"uosmo": {Liquidity: osmomath.Int(osmomath.NewUintFromString("999999000000000001000000000000000000")), PoolId: 50},
+					"ufury": {Liquidity: osmomath.Int(osmomath.NewUintFromString("999999000000000001000000000000000000")), PoolId: 50},
 				},
 			},
 		},

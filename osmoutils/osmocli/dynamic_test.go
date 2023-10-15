@@ -88,7 +88,7 @@ func TestAttachFieldsToUse(t *testing.T) {
 				&TxCliDesc{
 					Use:     "add-to-position",
 					Short:   "add to an existing concentrated liquidity position",
-					Example: "furyad tx concentratedliquidity add-to-position 10 1000000000uosmo 10000000uion --from val --chain-id localfurya -b block --keyring-backend test --fees 1000000uosmo",
+					Example: "furyad tx concentratedliquidity add-to-position 10 1000000000ufury 10000000uion --from val --chain-id localfurya -b block --keyring-backend test --fees 1000000ufury",
 				},
 			},
 			attachFunc:  attachFieldsToUse[*cltypes.MsgAddToPosition],

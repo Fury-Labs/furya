@@ -14,7 +14,7 @@ set -ux
 
 
 # MAKE HOME FOLDER AND GET GENESIS
-furyad init test --chain-id osmo-test-4 
+furyad init test --chain-id fury-test-4 
 # wget -O ~/.furyad/config/genesis.json https://cloudflare-ipfs.com/ipfs/QmXRvBT3hgoXwwPqbK6a2sXUuArGM8wPyo1ybskyyUwUxs
 
 INTERVAL=1500

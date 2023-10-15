@@ -243,7 +243,7 @@ This section contains common "gotchas" that is sometimes very good to know when 
 3. Transaction fees.
 
     Consensus min fee is set to "0.0025". This is how much is charged for 1 unit of gas. By default, we specify the gas limit
-    of `40000`. Therefore, each transaction should take `fee = 0.0025 uosmo / gas * 400000 gas = 1000 fee token.
+    of `40000`. Therefore, each transaction should take `fee = 0.0025 ufury / gas * 400000 gas = 1000 fee token.
     The fee denom is set in `tests/e2e/initialization/config.go` by the value of `E2EFeeToken`.
     See "Hermes Relayer - Consensus Min Fee" section for the relevant relayer configuration.
 
@@ -261,7 +261,7 @@ We set the following parameters Hermes configs to enable the consensus min fee i
     the denomination of the fee. The specified gas price should always be greater or equal to the `min-gas-price`
     configured on the chain. This is to ensure that at least some minimal price is 
     paid for each unit of gas per transaction.
-    In Furya, we set consensus min fee = .0025 uosmo / gas * 400000 gas = 1000
+    In Furya, we set consensus min fee = .0025 ufury / gas * 400000 gas = 1000
     See ConsensusMinFee in x/txfees/types/constants.go
 
     - `default_gas` - the gas amount to use when simulation fails.
@@ -280,7 +280,7 @@ This section contains information about debugging furya's `e2e` tests.
     ```
 
     This will execute the specified command and print the response to standard output. 
-    Example: `docker exec osmo-test-a-node-prune-nothing-snapshot furyad status` will print a node status of `osmo-test-a-node-prune-nothing-snapshot` container. 
+    Example: `docker exec fury-test-a-node-prune-nothing-snapshot furyad status` will print a node status of `fury-test-a-node-prune-nothing-snapshot` container. 
 
 2. Viewing docker container logs
 
@@ -290,7 +290,7 @@ This section contains information about debugging furya's `e2e` tests.
         docker logs < container name/id >
     ```
 
-    Example: `docker logs osmo-test-a-node-prune-nothing-snapshot` will print logs emitted by container `osmo-test-a-node-prune-nothing-snapshot` to your standard output.
+    Example: `docker logs fury-test-a-node-prune-nothing-snapshot` will print logs emitted by container `fury-test-a-node-prune-nothing-snapshot` to your standard output.
 
 3. Viewing docker container logs when run furya's `e2e` tests in CI
 

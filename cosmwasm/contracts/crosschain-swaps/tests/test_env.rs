@@ -22,7 +22,7 @@ impl TestEnv {
 
         // setup owner account
         let initial_balance = [
-            Coin::new(1_000_000_000_000, "uosmo"),
+            Coin::new(1_000_000_000_000, "ufury"),
             Coin::new(1_000_000_000_000, "uion"),
             Coin::new(1_000_000_000_000, "uatom"),
         ];
@@ -32,7 +32,7 @@ impl TestEnv {
         gamm.create_basic_pool(
             &[
                 Coin::new(100_000_000, "uion"),
-                Coin::new(100_000_000, "uosmo"),
+                Coin::new(100_000_000, "ufury"),
             ],
             &owner,
         )
@@ -40,7 +40,7 @@ impl TestEnv {
         gamm.create_basic_pool(
             &[
                 Coin::new(100_000_000, "uatom"),
-                Coin::new(100_000_000, "uosmo"),
+                Coin::new(100_000_000, "ufury"),
             ],
             &owner,
         )

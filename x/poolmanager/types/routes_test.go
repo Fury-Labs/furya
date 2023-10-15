@@ -12,7 +12,7 @@ const (
 	foo   = "foo"
 	bar   = "bar"
 	baz   = "baz"
-	uosmo = "uosmo"
+	ufury = "ufury"
 )
 
 var (
@@ -65,7 +65,7 @@ var (
 			},
 			{
 				PoolId:        barUosmoPoolId,
-				TokenOutDenom: uosmo,
+				TokenOutDenom: ufury,
 			},
 			{
 				PoolId:        bazUosmoPoolId,
@@ -117,7 +117,7 @@ var (
 			},
 			{
 				PoolId:       bazUosmoPoolId,
-				TokenInDenom: uosmo,
+				TokenInDenom: ufury,
 			},
 		},
 		TokenOutAmount: osmomath.NewInt(twentyFiveBaseUnitsAmount.Int64() * 3),
@@ -320,7 +320,7 @@ func TestIntermediateDenoms(t *testing.T) {
 				},
 				{
 					PoolId:        5,
-					TokenOutDenom: uosmo,
+					TokenOutDenom: ufury,
 				},
 				{
 					PoolId:        3,
@@ -328,7 +328,7 @@ func TestIntermediateDenoms(t *testing.T) {
 				},
 			}),
 
-			expectedDenoms: []string{bar, baz, uosmo},
+			expectedDenoms: []string{bar, baz, ufury},
 		},
 		"no intermediate denoms (single pool)": {
 			route: SwapAmountInRoutes([]SwapAmountInRoute{

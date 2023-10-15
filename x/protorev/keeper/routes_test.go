@@ -75,7 +75,7 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 			},
 		},
 		{
-			description:    "No route exists for swap in osmo and swap out Atom",
+			description:    "No route exists for swap in fury and swap out Atom",
 			inputDenom:     types.FuryaDenomination,
 			outputDenom:    "Atom",
 			poolID:         25,
@@ -95,7 +95,7 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 			},
 		},
 		{
-			description: "Two Pool Route exists for (osmo, atom)",
+			description: "Two Pool Route exists for (fury, atom)",
 			inputDenom:  "Atom",
 			outputDenom: types.FuryaDenomination,
 			poolID:      51,
@@ -178,7 +178,7 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 			expectedRoutePointPoints: 0,
 		},
 		{
-			description: "Route exists for swap in Osmo and swap out Akash",
+			description: "Route exists for swap in Fury and swap out Akash",
 			swapDenom:   "Atom",
 			swapIn:      types.FuryaDenomination,
 			swapOut:     "akash",
@@ -192,7 +192,7 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 			expectedRoutePointPoints: 6,
 		},
 		{
-			description: "Route exists for swap in Akash and swap out Osmo",
+			description: "Route exists for swap in Akash and swap out Fury",
 			swapDenom:   "Atom",
 			swapIn:      "akash",
 			swapOut:     types.FuryaDenomination,
@@ -206,7 +206,7 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 			expectedRoutePointPoints: 6,
 		},
 		{
-			description:              "Route does not exist for swap in Terra and swap out Osmo because the pool does not exist",
+			description:              "Route does not exist for swap in Terra and swap out Fury because the pool does not exist",
 			swapDenom:                "Atom",
 			swapIn:                   "terra",
 			swapOut:                  types.FuryaDenomination,
