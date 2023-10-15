@@ -50,9 +50,9 @@ ifeq ($(LEDGER_ENABLED),true)
   endif
 endif
 
-ifeq (cleveldb,$(findstring cleveldb,$(OSMOSIS_BUILD_OPTIONS)))
+ifeq (cleveldb,$(findstring cleveldb,$(FURYA_BUILD_OPTIONS)))
   build_tags += gcc
-else ifeq (rocksdb,$(findstring rocksdb,$(OSMOSIS_BUILD_OPTIONS)))
+else ifeq (rocksdb,$(findstring rocksdb,$(FURYA_BUILD_OPTIONS)))
   build_tags += gcc
 endif
 build_tags += $(BUILD_TAGS)
@@ -65,18 +65,18 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=osmosis \
-		  -X github.com/cosmos/cosmos-sdk/version.AppName=osmosisd \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=furya \
+		  -X github.com/cosmos/cosmos-sdk/version.AppName=furyad \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 
-ifeq (cleveldb,$(findstring cleveldb,$(OSMOSIS_BUILD_OPTIONS)))
+ifeq (cleveldb,$(findstring cleveldb,$(FURYA_BUILD_OPTIONS)))
   ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=cleveldb
-else ifeq (rocksdb,$(findstring rocksdb,$(OSMOSIS_BUILD_OPTIONS)))
+else ifeq (rocksdb,$(findstring rocksdb,$(FURYA_BUILD_OPTIONS)))
   ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=rocksdb
 endif
-ifeq (,$(findstring nostrip,$(OSMOSIS_BUILD_OPTIONS)))
+ifeq (,$(findstring nostrip,$(FURYA_BUILD_OPTIONS)))
   ldflags += -w -s
 endif
 ifeq ($(LINK_STATICALLY),true)
@@ -87,7 +87,7 @@ ldflags := $(strip $(ldflags))
 
 BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
 # check for nostrip option
-ifeq (,$(findstring nostrip,$(OSMOSIS_BUILD_OPTIONS)))
+ifeq (,$(findstring nostrip,$(FURYA_BUILD_OPTIONS)))
   BUILD_FLAGS += -trimpath
 endif
 
@@ -125,14 +125,14 @@ all: install lint test
 
 build: check_version go.sum
 	mkdir -p $(BUILDDIR)/
-	GOWORK=off go build -mod=readonly  $(BUILD_FLAGS) -o $(BUILDDIR)/ $(GO_MODULE)/cmd/osmosisd
+	GOWORK=off go build -mod=readonly  $(BUILD_FLAGS) -o $(BUILDDIR)/ $(GO_MODULE)/cmd/furyad
 
 build-all: check_version go.sum
 	mkdir -p $(BUILDDIR)/
 	GOWORK=off go build -mod=readonly $(BUILD_FLAGS) -o $(BUILDDIR)/ ./...
 
 install: check_version go.sum
-	GOWORK=off go install -mod=readonly $(BUILD_FLAGS) $(GO_MODULE)/cmd/osmosisd
+	GOWORK=off go install -mod=readonly $(BUILD_FLAGS) $(GO_MODULE)/cmd/furyad
 
 # disables optimization, inlining and symbol removal
 GC_FLAGS := -gcflags="all=-N -l"
@@ -141,18 +141,18 @@ DEBUG_BUILD_FLAGS:= $(subst $(REMOVE_STRING),,$(BUILD_FLAGS))
 DEBUG_LDFLAGS = $(subst $(REMOVE_STRING),,$(ldflags))
 
 dev-install: go.sum
-	GOWORK=off go install $(DEBUG_BUILD_FLAGS) $(GC_FLAGS) $(GO_MODULE)/cmd/osmosisd
+	GOWORK=off go install $(DEBUG_BUILD_FLAGS) $(GC_FLAGS) $(GO_MODULE)/cmd/furyad
 
 dev-build:
 	mkdir -p $(BUILDDIR)/
 	GOWORK=off go build $(GC_FLAGS) -mod=readonly -ldflags '$(DEBUG_LDFLAGS)' -trimpath -o $(BUILDDIR) ./...;
 
 install-with-autocomplete: check_version go.sum
-	GOWORK=off go install -mod=readonly $(BUILD_FLAGS) $(GO_MODULE)/cmd/osmosisd
+	GOWORK=off go install -mod=readonly $(BUILD_FLAGS) $(GO_MODULE)/cmd/furyad
 	@PARENT_SHELL=$$(ps -o ppid= -p $$PPID | xargs ps -o comm= -p); \
 	if echo "$$PARENT_SHELL" | grep -q "zsh"; then \
-		if ! grep -q ". <(osmosisd enable-cli-autocomplete zsh)" ~/.zshrc; then \
-			echo ". <(osmosisd enable-cli-autocomplete zsh)" >> ~/.zshrc; \
+		if ! grep -q ". <(furyad enable-cli-autocomplete zsh)" ~/.zshrc; then \
+			echo ". <(furyad enable-cli-autocomplete zsh)" >> ~/.zshrc; \
 			echo; \
 			echo "Autocomplete enabled. Run 'source ~/.zshrc' to complete installation."; \
 		else \
@@ -160,10 +160,10 @@ install-with-autocomplete: check_version go.sum
 			echo "Autocomplete already enabled in ~/.zshrc"; \
 		fi \
 	elif echo "$$PARENT_SHELL" | grep -q "bash" && [ "$$(uname)" = "Darwin" ]; then \
-		if ! grep -q -e "\. <(osmosisd enable-cli-autocomplete bash)" -e '\[\[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" \]\] && \. "/opt/homebrew/etc/profile.d/bash_completion.sh"' ~/.bash_profile; then \
+		if ! grep -q -e "\. <(furyad enable-cli-autocomplete bash)" -e '\[\[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" \]\] && \. "/opt/homebrew/etc/profile.d/bash_completion.sh"' ~/.bash_profile; then \
 			brew install bash-completion; \
 			echo '[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"' >> ~/.bash_profile; \
-			echo ". <(osmosisd enable-cli-autocomplete bash)" >> ~/.bash_profile; \
+			echo ". <(furyad enable-cli-autocomplete bash)" >> ~/.bash_profile; \
 			echo; \
 			echo; \
 			echo "Autocomplete enabled. Run 'source ~/.bash_profile' to complete installation."; \
@@ -171,10 +171,10 @@ install-with-autocomplete: check_version go.sum
 			echo "Autocomplete already enabled in ~/.bash_profile"; \
 		fi \
 	elif echo "$$PARENT_SHELL" | grep -q "bash" && [ "$$(uname)" = "Linux" ]; then \
-		if ! grep -q ". <(osmosisd enable-cli-autocomplete bash)" ~/.bash_profile; then \
+		if ! grep -q ". <(furyad enable-cli-autocomplete bash)" ~/.bash_profile; then \
 			sudo apt-get install -y bash-completion; \
 			echo '[ -r "/etc/bash_completion" ] && . "/etc/bash_completion"' >> ~/.bash_profile; \
-			echo ". <(osmosisd enable-cli-autocomplete bash)" >> ~/.bash_profile; \
+			echo ". <(furyad enable-cli-autocomplete bash)" >> ~/.bash_profile; \
 			echo; \
 			echo "Autocomplete enabled. Run 'source ~/.bash_profile' to complete installation."; \
 		else \
@@ -202,12 +202,12 @@ build-reproducible-amd64: go.sum
 		--build-arg GIT_COMMIT=$(COMMIT) \
 		--build-arg RUNNER_IMAGE=alpine:3.17 \
 		--platform linux/amd64 \
-		-t osmosis:local-amd64 \
+		-t furya:local-amd64 \
 		--load \
 		-f Dockerfile .
 	$(DOCKER) rm -f osmobinary || true
-	$(DOCKER) create -ti --name osmobinary osmosis:local-amd64
-	$(DOCKER) cp osmobinary:/bin/osmosisd $(BUILDDIR)/osmosisd-linux-amd64
+	$(DOCKER) create -ti --name osmobinary furya:local-amd64
+	$(DOCKER) cp osmobinary:/bin/furyad $(BUILDDIR)/furyad-linux-amd64
 	$(DOCKER) rm -f osmobinary
 
 build-reproducible-arm64: go.sum
@@ -220,12 +220,12 @@ build-reproducible-arm64: go.sum
 		--build-arg GIT_COMMIT=$(COMMIT) \
 		--build-arg RUNNER_IMAGE=alpine:3.17 \
 		--platform linux/arm64 \
-		-t osmosis:local-arm64 \
+		-t furya:local-arm64 \
 		--load \
 		-f Dockerfile .
 	$(DOCKER) rm -f osmobinary || true
-	$(DOCKER) create -ti --name osmobinary osmosis:local-arm64
-	$(DOCKER) cp osmobinary:/bin/osmosisd $(BUILDDIR)/osmosisd-linux-arm64
+	$(DOCKER) create -ti --name osmobinary furya:local-arm64
+	$(DOCKER) cp osmobinary:/bin/furyad $(BUILDDIR)/furyad-linux-arm64
 	$(DOCKER) rm -f osmobinary
 
 build-linux: go.sum
@@ -246,7 +246,7 @@ go.sum: go.mod
 draw-deps:
 	@# requires brew install graphviz or apt-get install graphviz
 	go get github.com/RobotsAndPencils/goviz
-	@goviz -i ./cmd/osmosisd -d 2 | dot -Tpng -o dependency-graph.png
+	@goviz -i ./cmd/furyad -d 2 | dot -Tpng -o dependency-graph.png
 
 clean:
 	rm -rf $(CURDIR)/artifacts/
@@ -271,7 +271,7 @@ update-sdk-version:
 	@echo "Updating version to $(VERSION)"
 	@for modfile in $(MODFILES); do \
 		if [ -e "$$modfile" ]; then \
-			sed -i '' 's|github.com/osmosis-labs/cosmos-sdk v[0-9a-z.\-]*|github.com/osmosis-labs/cosmos-sdk $(VERSION)|g' $$modfile; \
+			sed -i '' 's|github.com/fury-labs/cosmos-sdk v[0-9a-z.\-]*|github.com/fury-labs/cosmos-sdk $(VERSION)|g' $$modfile; \
 			cd `dirname $$modfile`; \
 			go mod tidy; \
 			cd - > /dev/null; \
@@ -392,23 +392,23 @@ test-e2e: e2e-setup test-e2e-ci e2e-remove-resources
 # does not do any validation about the state of the Docker environment
 # As a result, avoid using this locally.
 test-e2e-ci:
-	@VERSION=$(VERSION) OSMOSIS_E2E=True OSMOSIS_E2E_DEBUG_LOG=False OSMOSIS_E2E_UPGRADE_VERSION=$(E2E_UPGRADE_VERSION) go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -p 4
+	@VERSION=$(VERSION) FURYA_E2E=True FURYA_E2E_DEBUG_LOG=False FURYA_E2E_UPGRADE_VERSION=$(E2E_UPGRADE_VERSION) go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -p 4
 
 # test-e2e-ci-scheduled runs every e2e test available, and is only run on a scheduled basis
 test-e2e-ci-scheduled:
-	@VERSION=$(VERSION) OSMOSIS_E2E_SCHEDULED=True OSMOSIS_E2E=True OSMOSIS_E2E_DEBUG_LOG=False OSMOSIS_E2E_UPGRADE_VERSION=$(E2E_UPGRADE_VERSION) go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -p 4
+	@VERSION=$(VERSION) FURYA_E2E_SCHEDULED=True FURYA_E2E=True FURYA_E2E_DEBUG_LOG=False FURYA_E2E_UPGRADE_VERSION=$(E2E_UPGRADE_VERSION) go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -p 4
 
 # test-e2e-debug runs a full e2e test suite but does
 # not attempt to delete Docker resources at the end.
 test-e2e-debug: e2e-setup
-	@VERSION=$(VERSION) OSMOSIS_E2E=True OSMOSIS_E2E_DEBUG_LOG=True OSMOSIS_E2E_UPGRADE_VERSION=$(E2E_UPGRADE_VERSION) OSMOSIS_E2E_SKIP_CLEANUP=True go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -count=1
+	@VERSION=$(VERSION) FURYA_E2E=True FURYA_E2E_DEBUG_LOG=True FURYA_E2E_UPGRADE_VERSION=$(E2E_UPGRADE_VERSION) FURYA_E2E_SKIP_CLEANUP=True go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -count=1
 
 # test-e2e-short runs the e2e test with only short tests.
 # Does not delete any of the containers after running.
 # Deletes any existing containers before running.
 # Does not use Go cache.
 test-e2e-short: e2e-setup
-	@VERSION=$(VERSION) OSMOSIS_E2E=True OSMOSIS_E2E_DEBUG_LOG=True OSMOSIS_E2E_SKIP_UPGRADE=True OSMOSIS_E2E_SKIP_IBC=True OSMOSIS_E2E_SKIP_STATE_SYNC=True OSMOSIS_E2E_SKIP_CLEANUP=True go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -count=1
+	@VERSION=$(VERSION) FURYA_E2E=True FURYA_E2E_DEBUG_LOG=True FURYA_E2E_SKIP_UPGRADE=True FURYA_E2E_SKIP_IBC=True FURYA_E2E_SKIP_STATE_SYNC=True FURYA_E2E_SKIP_CLEANUP=True go test -mod=readonly -timeout=25m -v $(PACKAGES_E2E) -count=1
 
 test-mutation:
 	@bash scripts/mutation-test.sh $(MODULES)
@@ -421,14 +421,14 @@ build-e2e-script:
 	go build -mod=readonly $(BUILD_FLAGS) -o $(BUILDDIR)/ ./tests/e2e/initialization/$(E2E_SCRIPT_NAME)
 
 docker-build-debug:
-	@DOCKER_BUILDKIT=1 docker build -t osmosis:${COMMIT} --build-arg BASE_IMG_TAG=debug --build-arg RUNNER_IMAGE=$(RUNNER_BASE_IMAGE_ALPINE) -f Dockerfile .
-	@DOCKER_BUILDKIT=1 docker tag osmosis:${COMMIT} osmosis:debug
+	@DOCKER_BUILDKIT=1 docker build -t furya:${COMMIT} --build-arg BASE_IMG_TAG=debug --build-arg RUNNER_IMAGE=$(RUNNER_BASE_IMAGE_ALPINE) -f Dockerfile .
+	@DOCKER_BUILDKIT=1 docker tag furya:${COMMIT} furya:debug
 
 docker-build-e2e-init-chain:
-	@DOCKER_BUILDKIT=1 docker build -t osmolabs/osmosis-e2e-init-chain:debug --build-arg E2E_SCRIPT_NAME=chain --platform=linux/x86_64 -f tests/e2e/initialization/init.Dockerfile .
+	@DOCKER_BUILDKIT=1 docker build -t osmolabs/furya-e2e-init-chain:debug --build-arg E2E_SCRIPT_NAME=chain --platform=linux/x86_64 -f tests/e2e/initialization/init.Dockerfile .
 
 docker-build-e2e-init-node:
-	@DOCKER_BUILDKIT=1 docker build -t osmosis-e2e-init-node:debug --build-arg E2E_SCRIPT_NAME=node --platform=linux/x86_64 -f tests/e2e/initialization/init.Dockerfile .
+	@DOCKER_BUILDKIT=1 docker build -t furya-e2e-init-node:debug --build-arg E2E_SCRIPT_NAME=node --platform=linux/x86_64 -f tests/e2e/initialization/init.Dockerfile .
 
 e2e-setup: e2e-check-image-sha e2e-remove-resources
 	@echo Finished e2e environment setup, ready to start the test
@@ -451,8 +451,8 @@ RUNNER_BASE_IMAGE_NONROOT := gcr.io/distroless/static-debian11:nonroot
 
 docker-build:
 	@DOCKER_BUILDKIT=1 docker build \
-		-t osmosis:local \
-		-t osmosis:local-distroless \
+		-t furya:local \
+		-t furya:local-distroless \
 		--build-arg GO_VERSION=$(GO_VERSION) \
 		--build-arg RUNNER_IMAGE=$(RUNNER_BASE_IMAGE_DISTROLESS) \
 		--build-arg GIT_VERSION=$(VERSION) \
@@ -463,7 +463,7 @@ docker-build-distroless: docker-build
 
 docker-build-alpine:
 	@DOCKER_BUILDKIT=1 docker build \
-		-t osmosis:local-alpine \
+		-t furya:local-alpine \
 		--build-arg GO_VERSION=$(GO_VERSION) \
 		--build-arg RUNNER_IMAGE=$(RUNNER_BASE_IMAGE_ALPINE) \
 		--build-arg GIT_VERSION=$(VERSION) \
@@ -472,7 +472,7 @@ docker-build-alpine:
 
 docker-build-nonroot:
 	@DOCKER_BUILDKIT=1 docker build \
-		-t osmosis:local-nonroot \
+		-t furya:local-nonroot \
 		--build-arg GO_VERSION=$(GO_VERSION) \
 		--build-arg RUNNER_IMAGE=$(RUNNER_BASE_IMAGE_NONROOT) \
 		--build-arg GIT_VERSION=$(VERSION) \
@@ -504,61 +504,61 @@ markdown:
 ###                                Localnet                                 ###
 ###############################################################################
 #
-# Please refer to https://github.com/osmosis-labs/osmosis/blob/main/tests/localosmosis/README.md for detailed 
+# Please refer to https://github.com/fury-labs/furya/blob/main/tests/localfurya/README.md for detailed 
 # usage of localnet.
 
 localnet-keys:
-	. tests/localosmosis/scripts/add_keys.sh
+	. tests/localfurya/scripts/add_keys.sh
 
 localnet-init: localnet-clean localnet-build
 
 localnet-build:
-	@DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker-compose -f tests/localosmosis/docker-compose.yml build
+	@DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker-compose -f tests/localfurya/docker-compose.yml build
 
 localnet-start:
-	@STATE="" docker-compose -f tests/localosmosis/docker-compose.yml up
+	@STATE="" docker-compose -f tests/localfurya/docker-compose.yml up
 
 localnet-start-with-state:
-	@STATE=-s docker-compose -f tests/localosmosis/docker-compose.yml up
+	@STATE=-s docker-compose -f tests/localfurya/docker-compose.yml up
 
 localnet-startd:
-	@STATE="" docker-compose -f tests/localosmosis/docker-compose.yml up -d
+	@STATE="" docker-compose -f tests/localfurya/docker-compose.yml up -d
 
 localnet-startd-with-state:
-	@STATE=-s docker-compose -f tests/localosmosis/docker-compose.yml up -d
+	@STATE=-s docker-compose -f tests/localfurya/docker-compose.yml up -d
 
 localnet-stop:
-	@STATE="" docker-compose -f tests/localosmosis/docker-compose.yml down
+	@STATE="" docker-compose -f tests/localfurya/docker-compose.yml down
 
 localnet-clean:
-	@rm -rfI $(HOME)/.osmosisd-local/
+	@rm -rfI $(HOME)/.furyad-local/
 
 localnet-state-export-init: localnet-state-export-clean localnet-state-export-build 
 
 localnet-state-export-build:
-	@DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker-compose -f tests/localosmosis/state_export/docker-compose.yml build
+	@DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker-compose -f tests/localfurya/state_export/docker-compose.yml build
 
 localnet-state-export-start:
-	@docker-compose -f tests/localosmosis/state_export/docker-compose.yml up
+	@docker-compose -f tests/localfurya/state_export/docker-compose.yml up
 
 localnet-state-export-startd:
-	@docker-compose -f tests/localosmosis/state_export/docker-compose.yml up -d
+	@docker-compose -f tests/localfurya/state_export/docker-compose.yml up -d
 
 localnet-state-export-stop:
-	@docker-compose -f tests/localosmosis/docker-compose.yml down
+	@docker-compose -f tests/localfurya/docker-compose.yml down
 
 localnet-state-export-clean: localnet-clean
 
-# create 100 concentrated-liquidity positions in localosmosis at pool id 1
+# create 100 concentrated-liquidity positions in localfurya at pool id 1
 localnet-cl-create-positions:
 	go run tests/cl-go-client/main.go --operation 0
 
-# does 100 small randomized swaps in localosmosis at pool id 1
+# does 100 small randomized swaps in localfurya at pool id 1
 localnet-cl-small-swap:
 	go run tests/cl-go-client/main.go --operation 1
 
 # does 100 large swaps where the output of the previous swap is swapped back at the
-# next swap. localosmosis at pool id 1
+# next swap. localfurya at pool id 1
 localnet-cl-large-swap:
 	go run tests/cl-go-client/main.go --operation 2
 
@@ -600,7 +600,7 @@ localnet-cl-positions-large-swaps: localnet-cl-create-positions localnet-cl-larg
 # This script retrieves Uniswap v3 Ethereum position data
 # from subgraph. It uses WETH / USDC pool. This is helpful
 # for setting up somewhat realistic positions for testing
-# in localosmosis. It writes the file under
+# in localfurya. It writes the file under
 # tests/cl-genesis-positions/subgraph_positions.json
 cl-refresh-subgraph-positions:
 	go run ./tests/cl-genesis-positions --operation 0
@@ -642,8 +642,8 @@ release:
 		-e GITHUB_TOKEN=$(GITHUB_TOKEN) \
 		-e COSMWASM_VERSION=$(COSMWASM_VERSION) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v `pwd`:/go/src/osmosisd \
-		-w /go/src/osmosisd \
+		-v `pwd`:/go/src/furyad \
+		-w /go/src/furyad \
 		$(GORELEASER_IMAGE) \
 		release \
 		--clean
@@ -657,8 +657,8 @@ release-dry-run:
 		--rm \
 		-e COSMWASM_VERSION=$(COSMWASM_VERSION) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v `pwd`:/go/src/osmosisd \
-		-w /go/src/osmosisd \
+		-v `pwd`:/go/src/furyad \
+		-w /go/src/furyad \
 		$(GORELEASER_IMAGE) \
 		release \
 		--clean \
@@ -669,8 +669,8 @@ release-snapshot:
 		--rm \
 		-e COSMWASM_VERSION=$(COSMWASM_VERSION) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v `pwd`:/go/src/osmosisd \
-		-w /go/src/osmosisd \
+		-v `pwd`:/go/src/furyad \
+		-w /go/src/furyad \
 		$(GORELEASER_IMAGE) \
 		release \
 		--clean \
