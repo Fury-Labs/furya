@@ -7,14 +7,14 @@ import (
 	"github.com/gogo/protobuf/proto"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/app"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/cli"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/queryproto"
-	poolmanagertestutil "github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/testutil"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/app"
+	"github.com/furya-labs/furya/v20/x/poolmanager/client/cli"
+	"github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
+	poolmanagertestutil "github.com/furya-labs/furya/v20/x/poolmanager/client/testutil"
+	"github.com/furya-labs/furya/v20/x/poolmanager/types"
 
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
@@ -95,7 +95,7 @@ func TestNewSwapExactAmountOutCmd(t *testing.T) {
 // 		expectErr bool
 // 	}{
 // 		{
-// 			"query pool estimate swap exact amount in", // osmosisd query poolmanager estimate-swap-exact-amount-in 1 cosmos1n8skk06h3kyh550ad9qketlfhc2l5dsdevd3hq 10.0stake --swap-route-pool-ids=1 --swap-route-denoms=node0token
+// 			"query pool estimate swap exact amount in", // furyad query poolmanager estimate-swap-exact-amount-in 1 cosmos1n8skk06h3kyh550ad9qketlfhc2l5dsdevd3hq 10.0stake --swap-route-pool-ids=1 --swap-route-denoms=node0token
 // 			[]string{
 // 				"1",
 // 				"cosmos1n8skk06h3kyh550ad9qketlfhc2l5dsdevd3hq",
@@ -136,7 +136,7 @@ func TestNewSwapExactAmountOutCmd(t *testing.T) {
 // 		expectErr bool
 // 	}{
 // 		{
-// 			"query pool estimate swap exact amount in", // osmosisd query poolmanager estimate-swap-exact-amount-in 1 cosmos1n8skk06h3kyh550ad9qketlfhc2l5dsdevd3hq 10.0stake --swap-route-pool-ids=1 --swap-route-denoms=node0token
+// 			"query pool estimate swap exact amount in", // furyad query poolmanager estimate-swap-exact-amount-in 1 cosmos1n8skk06h3kyh550ad9qketlfhc2l5dsdevd3hq 10.0stake --swap-route-pool-ids=1 --swap-route-denoms=node0token
 // 			[]string{
 // 				"1",
 // 				val.Address.String(),

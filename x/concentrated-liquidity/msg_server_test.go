@@ -6,12 +6,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	clmodel "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 // TestCreateConcentratedPool_Events tests that events are correctly emitted

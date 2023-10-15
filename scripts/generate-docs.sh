@@ -50,8 +50,8 @@ if [ -d "./client/docs" ]; then
     wget https://github.com/mikefarah/yq/releases/download/v4.6.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
   fi
 
-  #Add public servers to spec file for Osmosis testnet and mainnet
-  yq -i '."servers"+=[{"url":"https://lcd.osmosis.zone","description":"Osmosis mainnet node"},{"url":"https://lcd-test.osmosis.zone","description":"Osmosis testnet node"}]' static/openapi/openapi.yaml
+  #Add public servers to spec file for Furya testnet and mainnet
+  yq -i '."servers"+=[{"url":"https://lcd.furya.zone","description":"Furya mainnet node"},{"url":"https://lcd-test.furya.zone","description":"Furya testnet node"}]' static/openapi/openapi.yaml
 
   cd ../../
 fi

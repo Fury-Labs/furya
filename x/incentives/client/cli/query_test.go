@@ -7,9 +7,9 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -40,55 +40,55 @@ func (s *QueryTestSuite) TestQueriesNeverAlterState() {
 	}{
 		{
 			"Query active gauges",
-			"/osmosis.incentives.Query/ActiveGauges",
+			"/furya.incentives.Query/ActiveGauges",
 			&types.ActiveGaugesRequest{},
 			&types.ActiveGaugesResponse{},
 		},
 		{
 			"Query active gauges per denom",
-			"/osmosis.incentives.Query/ActiveGaugesPerDenom",
+			"/furya.incentives.Query/ActiveGaugesPerDenom",
 			&types.ActiveGaugesPerDenomRequest{Denom: "stake"},
 			&types.ActiveGaugesPerDenomResponse{},
 		},
 		{
 			"Query gauge by id",
-			"/osmosis.incentives.Query/GaugeByID",
+			"/furya.incentives.Query/GaugeByID",
 			&types.GaugeByIDRequest{Id: 1},
 			&types.GaugeByIDResponse{},
 		},
 		{
 			"Query all gauges",
-			"/osmosis.incentives.Query/Gauges",
+			"/furya.incentives.Query/Gauges",
 			&types.GaugesRequest{},
 			&types.GaugesResponse{},
 		},
 		{
 			"Query lockable durations",
-			"/osmosis.incentives.Query/LockableDurations",
+			"/furya.incentives.Query/LockableDurations",
 			&types.QueryLockableDurationsRequest{},
 			&types.QueryLockableDurationsResponse{},
 		},
 		{
 			"Query module to distibute coins",
-			"/osmosis.incentives.Query/ModuleToDistributeCoins",
+			"/furya.incentives.Query/ModuleToDistributeCoins",
 			&types.ModuleToDistributeCoinsRequest{},
 			&types.ModuleToDistributeCoinsResponse{},
 		},
 		{
 			"Query reward estimate",
-			"/osmosis.incentives.Query/RewardsEst",
+			"/furya.incentives.Query/RewardsEst",
 			&types.RewardsEstRequest{Owner: s.TestAccs[0].String()},
 			&types.RewardsEstResponse{},
 		},
 		{
 			"Query upcoming gauges",
-			"/osmosis.incentives.Query/UpcomingGauges",
+			"/furya.incentives.Query/UpcomingGauges",
 			&types.UpcomingGaugesRequest{},
 			&types.UpcomingGaugesResponse{},
 		},
 		{
 			"Query upcoming gauges",
-			"/osmosis.incentives.Query/UpcomingGaugesPerDenom",
+			"/furya.incentives.Query/UpcomingGaugesPerDenom",
 			&types.UpcomingGaugesPerDenomRequest{Denom: "stake"},
 			&types.UpcomingGaugesPerDenomResponse{},
 		},

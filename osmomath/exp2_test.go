@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
 )
 
 var (

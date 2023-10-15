@@ -7,11 +7,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	valPref "github.com/osmosis-labs/osmosis/v20/x/valset-pref"
-	"github.com/osmosis-labs/osmosis/v20/x/valset-pref/client/queryproto"
-	"github.com/osmosis-labs/osmosis/v20/x/valset-pref/types"
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	valPref "github.com/furya-labs/furya/v20/x/valset-pref"
+	"github.com/furya-labs/furya/v20/x/valset-pref/client/queryproto"
+	"github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/furya-labs/furya/osmomath"
 )
 
 type QueryTestSuite struct {
@@ -62,7 +62,7 @@ func (s *QueryTestSuite) TestQueriesNeverAlterState() {
 	}{
 		{
 			"Query delegators validator set",
-			"/osmosis.valsetpref.v1beta1.Query/UserValidatorPreferences",
+			"/furya.valsetpref.v1beta1.Query/UserValidatorPreferences",
 			&queryproto.UserValidatorPreferencesRequest{Address: sdk.AccAddress([]byte("addr1---------------")).String()},
 			&queryproto.UserValidatorPreferencesResponse{},
 		},

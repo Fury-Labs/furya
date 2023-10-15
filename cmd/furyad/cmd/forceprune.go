@@ -30,14 +30,14 @@ const (
 	defaultMinHeight  = "1000"
 )
 
-// forceprune gets cmd to convert any bech32 address to an osmo prefix.
+// forceprune gets cmd to convert any bech32 address to an fury prefix.
 func forceprune() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "forceprune",
 		Short: "Forceprune option prunes and compacts blockstore.db and state.db.",
 		Long: `Forceprune option prunes and compacts blockstore.db and state.db. One needs to shut down chain before running forceprune. By default it keeps last 188000 blocks (approximately 2 weeks of data) blockstore and state db (validator and consensus information) and 1000 blocks of abci responses from state.db. Everything beyond these heights in blockstore and state.db is pruned. ABCI Responses are stored in index db and so redundant especially if one is running pruned nodes. As a result we are removing ABCI data from state.db aggressively by default. One can override height for blockstore.db and state.db by using -f option and for abci response by using -m option. 
 Example:
-	osmosisd forceprune -f 188000 -m 1000,
+	furyad forceprune -f 188000 -m 1000,
 which would keep blockchain and state data of last 188000 blocks (approximately 2 weeks) and ABCI responses of last 1000 blocks.`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fullHeightFlag, err := cmd.Flags().GetString(fullHeight)
@@ -54,7 +54,7 @@ which would keep blockchain and state data of last 188000 blocks (approximately 
 			conf := config.DefaultConfig()
 			dbPath := clientCtx.HomeDir + "/" + conf.DBPath
 
-			cmdr := exec.Command("osmosisd", "status")
+			cmdr := exec.Command("furyad", "status")
 			err = cmdr.Run()
 
 			if err == nil {

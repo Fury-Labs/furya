@@ -220,7 +220,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 		return "", err
 // 	}
 
-// 	convertedAddr, err := bech32.ConvertAndEncode("osmo", bz)
+// 	convertedAddr, err := bech32.ConvertAndEncode("fury", bz)
 // 	if err != nil {
 // 		panic(err)
 // 	}
@@ -233,10 +233,10 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 		Use:   "get-airdrop-accounts [input-snapshot-file] [input-ions-file] [output-file]",
 // 		Short: "Get list of all accounts that are being airdropped to at genesis",
 // 		Long: `Get list of all accounts that are being airdropped to at genesis
-// Both OSMO and ION recipients. If erroring, ensure to 'git lfs pull'
+// Both FURY and ION recipients. If erroring, ensure to 'git lfs pull'
 
 // Example:
-// 	osmosisd import-genesis-accounts-from-snapshot networks/cosmoshub-3/snapshot.json networks/osmosis-1/ions.json output_address.json
+// 	furyad import-genesis-accounts-from-snapshot networks/cosmoshub-3/snapshot.json networks/furya-1/ions.json output_address.json
 // `,
 // 		Args: cobra.ExactArgs(3),
 // 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -298,9 +298,9 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 
 // Must also pass in an ions.json file to airdrop genesis ions
 // Example:
-// 	osmosisd import-genesis-accounts-from-snapshot ../snapshot.json ../ions.json
+// 	furyad import-genesis-accounts-from-snapshot ../snapshot.json ../ions.json
 // 	- Check input genesis:
-// 		file is at ~/.osmosisd/config/genesis.json
+// 		file is at ~/.furyad/config/genesis.json
 // `,
 // 		Args: cobra.ExactArgs(2),
 // 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -380,7 +380,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 
 // 			// for each account in the snapshot
 // 			for _, acc := range snapshot.Accounts {
-// 				// convert cosmos address to osmo address
+// 				// convert cosmos address to fury address
 // 				address, err := CosmosToOsmoAddress(acc.AtomAddress)
 // 				if err != nil {
 // 					return err
@@ -391,11 +391,11 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 					continue
 // 				}
 
-// 				// get normalized osmo balance for account
+// 				// get normalized fury balance for account
 // 				normalizedOsmoBalance := acc.OsmoBalance.ToLegacyDec().Mul(normalizationFactor)
 
 // 				// initial liquid amounts
-// 				// We consistently round down to the nearest uosmo
+// 				// We consistently round down to the nearest ufury
 // 				liquidAmount := normalizedOsmoBalance.Mul(osmomath.MustNewDecFromStr("0.2")).TruncateInt() // 20% of airdrop amount
 // 				liquidCoins := sdk.NewCoins(sdk.NewCoin(genesisParams.NativeCoinMetadatas[0].Base, liquidAmount))
 
@@ -486,9 +486,9 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			appState[claimtypes.ModuleName] = claimGenStateBz
 
 // 			// TODO: add remaining extra to community pool
-// 			// The total airdrop osmo is a smidge short (~1 osmo) short of the stated 50M supply.
+// 			// The total airdrop fury is a smidge short (~1 fury) short of the stated 50M supply.
 // 			// This is due to consistently rounding down.
-// 			// We place this remaining 1 osmo into the community pool at genesis
+// 			// We place this remaining 1 fury into the community pool at genesis
 
 // 			// sumAirdrop := sdk.Coins{}
 // 			// for _, balance := range bankGenState.Balances {

@@ -5,11 +5,11 @@ mod test_env;
 use std::str::FromStr;
 
 use cosmwasm_std::{Addr, Coin, Decimal};
-use osmosis_std::types::osmosis::poolmanager::v1beta1::SwapAmountInRoute;
-use osmosis_test_tube::osmosis_std::types::cosmos::bank::v1beta1::QueryAllBalancesRequest;
+use furya_std::types::furya::poolmanager::v1beta1::SwapAmountInRoute;
+use furya_test_tube::furya_std::types::cosmos::bank::v1beta1::QueryAllBalancesRequest;
 
 use crosschain_swaps::msg::{ExecuteMsg as CrossChainExecute, FailedDeliveryAction};
-use osmosis_test_tube::{Account, Bank, Module, Wasm};
+use furya_test_tube::{Account, Bank, Module, Wasm};
 use swaprouter::msg::{ExecuteMsg as SwapRouterExecute, Slippage};
 use test_env::*;
 
@@ -26,7 +26,7 @@ fn crosschain_swap() {
     let wasm = Wasm::new(&app);
 
     let initial_balance = [
-        Coin::new(INITIAL_AMOUNT, "uosmo"),
+        Coin::new(INITIAL_AMOUNT, "ufury"),
         Coin::new(INITIAL_AMOUNT, "uion"),
         Coin::new(INITIAL_AMOUNT, "uatom"),
     ];
@@ -34,9 +34,9 @@ fn crosschain_swap() {
     let sender = app.init_account(&initial_balance).unwrap();
 
     // setup route
-    // uosmo/uion = pool(2): uosmo/uatom -> pool(3): uatom/uion
+    // ufury/uion = pool(2): ufury/uatom -> pool(3): uatom/uion
     let set_route_msg = SwapRouterExecute::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uion".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
@@ -58,7 +58,7 @@ fn crosschain_swap() {
 
     // execute swap
     let output_denom = "uion".to_string();
-    let msg = CrossChainExecute::OsmosisSwap {
+    let msg = CrossChainExecute::FuryaSwap {
         output_denom,
         slippage: Slippage::Twap {
             window_seconds: Some(1),
@@ -69,12 +69,12 @@ fn crosschain_swap() {
         next_memo: None,
         route: None,
     };
-    let funds: &[Coin] = &[Coin::new(10000, "uosmo")];
+    let funds: &[Coin] = &[Coin::new(10000, "ufury")];
     println!("{}", serde_json_wasm::to_string(&msg).unwrap());
     let _res = wasm.execute(&crosschain_address, &msg, funds, &sender);
     //dbg!(&res);
 
-    // This test cannot be completed until we have ibc tests on osmosis testing.
+    // This test cannot be completed until we have ibc tests on furya testing.
 
     // let bank = Bank::new(&app);
     // let balances = bank
@@ -98,7 +98,7 @@ fn crosschain_swap() {
 }
 
 fn get_amount(
-    balances: &Vec<osmosis_test_tube::osmosis_std::types::cosmos::base::v1beta1::Coin>,
+    balances: &Vec<furya_test_tube::furya_std::types::cosmos::base::v1beta1::Coin>,
     denom: &str,
 ) -> u128 {
     balances

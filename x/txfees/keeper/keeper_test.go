@@ -8,12 +8,12 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	osmosisapp "github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/osmomath"
+	furyaapp "github.com/furya-labs/furya/v20/app"
 
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	protorevtypes "github.com/osmosis-labs/osmosis/v20/x/protorev/types"
-	"github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/furya-labs/furya/v20/x/txfees/types"
 )
 
 type KeeperTestSuite struct {
@@ -31,7 +31,7 @@ func (s *KeeperTestSuite) SetupTest(isCheckTx bool) {
 	s.Setup()
 	s.queryClient = types.NewQueryClient(s.QueryHelper)
 
-	encodingConfig := osmosisapp.MakeEncodingConfig()
+	encodingConfig := furyaapp.MakeEncodingConfig()
 	s.clientCtx = client.Context{}.
 		WithInterfaceRegistry(encodingConfig.InterfaceRegistry).
 		WithTxConfig(encodingConfig.TxConfig).
@@ -39,7 +39,7 @@ func (s *KeeperTestSuite) SetupTest(isCheckTx bool) {
 		WithCodec(encodingConfig.Marshaler)
 
 	// We set the base denom here in order for highest liquidity routes to get generated.
-	// This is used in the tx fees epoch hook to swap the non OSMO to other tokens.
+	// This is used in the tx fees epoch hook to swap the non FURY to other tokens.
 	baseDenom, err := s.App.TxFeesKeeper.GetBaseDenom(s.Ctx)
 	s.Require().NoError(err)
 
@@ -58,7 +58,7 @@ func (s *KeeperTestSuite) SetupTest(isCheckTx bool) {
 		s.FundAcc(acc,
 			sdk.NewCoins(
 				sdk.NewCoin(sdk.DefaultBondDenom, osmomath.NewInt(10000000000)),
-				sdk.NewCoin("uosmo", osmomath.NewInt(100000000000000000)), // Needed for pool creation fee
+				sdk.NewCoin("ufury", osmomath.NewInt(100000000000000000)), // Needed for pool creation fee
 				sdk.NewCoin("uion", osmomath.NewInt(10000000)),
 				sdk.NewCoin("atom", osmomath.NewInt(10000000)),
 				sdk.NewCoin("ust", osmomath.NewInt(10000000)),

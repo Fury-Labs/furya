@@ -27,7 +27,7 @@ const (
 	broadcastMode  = "sync"
 )
 
-type OsmosisCustomClient struct {
+type FuryaCustomClient struct {
 	ChainID                   string `mapstructure:"chain-id" json:"chain-id"`
 	KeyringBackend            string `mapstructure:"keyring-backend" json:"keyring-backend"`
 	Output                    string `mapstructure:"output" json:"output"`
@@ -42,27 +42,27 @@ type OsmosisCustomClient struct {
 }
 
 // defaultClientConfig returns the reference to ClientConfig with default values.
-func defaultClientConfig() *OsmosisCustomClient {
-	return &OsmosisCustomClient{ChainID: chainID, KeyringBackend: keyringBackend, Output: output, Node: node, BroadcastMode: broadcastMode}
+func defaultClientConfig() *FuryaCustomClient {
+	return &FuryaCustomClient{ChainID: chainID, KeyringBackend: keyringBackend, Output: output, Node: node, BroadcastMode: broadcastMode}
 }
 
-func (c *OsmosisCustomClient) SetChainID(chainID string) {
+func (c *FuryaCustomClient) SetChainID(chainID string) {
 	c.ChainID = chainID
 }
 
-func (c *OsmosisCustomClient) SetKeyringBackend(keyringBackend string) {
+func (c *FuryaCustomClient) SetKeyringBackend(keyringBackend string) {
 	c.KeyringBackend = keyringBackend
 }
 
-func (c *OsmosisCustomClient) SetOutput(output string) {
+func (c *FuryaCustomClient) SetOutput(output string) {
 	c.Output = output
 }
 
-func (c *OsmosisCustomClient) SetNode(node string) {
+func (c *FuryaCustomClient) SetNode(node string) {
 	c.Node = node
 }
 
-func (c *OsmosisCustomClient) SetBroadcastMode(broadcastMode string) {
+func (c *FuryaCustomClient) SetBroadcastMode(broadcastMode string) {
 	c.BroadcastMode = broadcastMode
 }
 
@@ -201,11 +201,11 @@ human-readable-denoms-output = {{ .HumanReadableDenomsOutput }}
 
 
 ###############################################################################
-###                          Osmosis Tx Configuration                       ###
+###                          Furya Tx Configuration                       ###
 ###############################################################################
 # Amount of gas per transaction
 gas = "{{ .Gas }}"
-# Price per unit of gas (ex: 0.005uosmo)
+# Price per unit of gas (ex: 0.005ufury)
 gas-prices = "{{ .GasPrices }}"
 gas-adjustment = "{{ .GasAdjustment }}"
 fees = "{{ .Fees }}"
@@ -213,9 +213,9 @@ fees = "{{ .Fees }}"
 
 // writeConfigToFile parses defaultConfigTemplate, renders config using the template and writes it to
 // configFilePath. If nil is provided as config, the default config is used.
-func writeConfigToFile(configFilePath string, config *OsmosisCustomClient) error {
+func writeConfigToFile(configFilePath string, config *FuryaCustomClient) error {
 	var buffer bytes.Buffer
-	defaultOsmosisCustomClient := defaultClientConfig()
+	defaultFuryaCustomClient := defaultClientConfig()
 
 	tmpl := template.New("clientConfigFileTemplate")
 	configTemplate, err := tmpl.Parse(defaultConfigTemplate)
@@ -226,7 +226,7 @@ func writeConfigToFile(configFilePath string, config *OsmosisCustomClient) error
 	// Loop through the fields of the provided config and replace values in the default client
 	if config != nil {
 		configValue := reflect.ValueOf(config).Elem()
-		defaultValue := reflect.ValueOf(defaultOsmosisCustomClient).Elem()
+		defaultValue := reflect.ValueOf(defaultFuryaCustomClient).Elem()
 
 		for i := 0; i < configValue.NumField(); i++ {
 			configField := configValue.Field(i)
@@ -247,7 +247,7 @@ func writeConfigToFile(configFilePath string, config *OsmosisCustomClient) error
 		}
 	}
 
-	if err := configTemplate.Execute(&buffer, defaultOsmosisCustomClient); err != nil {
+	if err := configTemplate.Execute(&buffer, defaultFuryaCustomClient); err != nil {
 		return err
 	}
 
@@ -255,7 +255,7 @@ func writeConfigToFile(configFilePath string, config *OsmosisCustomClient) error
 }
 
 // getClientConfig reads values from client.toml file and unmarshalls them into ClientConfig
-func getClientConfig(configPath string, v *viper.Viper) (*OsmosisCustomClient, error) {
+func getClientConfig(configPath string, v *viper.Viper) (*FuryaCustomClient, error) {
 	v.AddConfigPath(configPath)
 	v.SetConfigName("client")
 	v.SetConfigType("toml")
@@ -264,7 +264,7 @@ func getClientConfig(configPath string, v *viper.Viper) (*OsmosisCustomClient, e
 		return nil, err
 	}
 
-	conf := new(OsmosisCustomClient)
+	conf := new(FuryaCustomClient)
 	if err := v.Unmarshal(conf); err != nil {
 		return nil, err
 	}
@@ -304,14 +304,14 @@ func SetCustomEnvVariablesFromClientToml(ctx client.Context) {
 
 	// Bound custom flags to environment variable
 	// gas
-	setEnvFromConfig("gas", "OSMOSISD_GAS")
-	setEnvFromConfig("gas-prices", "OSMOSISD_GAS_PRICES")
-	setEnvFromConfig("gas-adjustment", "OSMOSISD_GAS_ADJUSTMENT")
+	setEnvFromConfig("gas", "FURYAD_GAS")
+	setEnvFromConfig("gas-prices", "FURYAD_GAS_PRICES")
+	setEnvFromConfig("gas-adjustment", "FURYAD_GAS_ADJUSTMENT")
 	// fees
-	setEnvFromConfig("fees", "OSMOSISD_FEES")
+	setEnvFromConfig("fees", "FURYAD_FEES")
 	// human readable denoms
-	setEnvFromConfig("human-readable-denoms-input", "OSMOSISD_HUMAN_READABLE_DENOMS_INPUT")
-	setEnvFromConfig("human-readable-denoms-output", "OSMOSISD_HUMAN_READABLE_DENOMS_OUTPUT")
+	setEnvFromConfig("human-readable-denoms-input", "FURYAD_HUMAN_READABLE_DENOMS_INPUT")
+	setEnvFromConfig("human-readable-denoms-output", "FURYAD_HUMAN_READABLE_DENOMS_OUTPUT")
 }
 
 func errUnknownConfigKey(key string) error {
@@ -319,12 +319,12 @@ func errUnknownConfigKey(key string) error {
 }
 
 func GetHumanReadableDenomEnvVariables() (bool, bool) {
-	humanReadableDenomsInputStr := os.Getenv("OSMOSISD_HUMAN_READABLE_DENOMS_INPUT")
+	humanReadableDenomsInputStr := os.Getenv("FURYAD_HUMAN_READABLE_DENOMS_INPUT")
 	humanReadableDenomsInput, err := strconv.ParseBool(humanReadableDenomsInputStr)
 	if err != nil {
 		return false, false
 	}
-	humanReadableDenomsOutputStr := os.Getenv("OSMOSISD_HUMAN_READABLE_DENOMS_OUTPUT")
+	humanReadableDenomsOutputStr := os.Getenv("FURYAD_HUMAN_READABLE_DENOMS_OUTPUT")
 	humanReadableDenomsOutput, err := strconv.ParseBool(humanReadableDenomsOutputStr)
 	if err != nil {
 		return false, false

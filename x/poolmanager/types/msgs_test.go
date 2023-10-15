@@ -7,10 +7,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	appParams "github.com/osmosis-labs/osmosis/v20/app/params"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	appParams "github.com/furya-labs/furya/v20/app/params"
+	"github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 var (
@@ -25,7 +25,7 @@ var (
 
 	validSwapExactAmountInRoutes = []types.SwapAmountInRoute{{
 		PoolId:        1,
-		TokenOutDenom: "uosmo",
+		TokenOutDenom: "ufury",
 	}, {
 		PoolId:        2,
 		TokenOutDenom: "uatom",
@@ -41,7 +41,7 @@ var (
 		TokenInDenom: "uatom",
 	}, {
 		PoolId:       2,
-		TokenInDenom: "uosmo",
+		TokenInDenom: "ufury",
 	}}
 )
 
@@ -575,12 +575,12 @@ func TestMsgSetDenomPairTakerFee(t *testing.T) {
 			Sender: addr1,
 			DenomPairTakerFee: []types.DenomPairTakerFee{
 				{
-					Denom0:   "uosmo",
+					Denom0:   "ufury",
 					Denom1:   "uatom",
 					TakerFee: osmomath.MustNewDecFromStr("0.003"),
 				},
 				{
-					Denom0:   "uosmo",
+					Denom0:   "ufury",
 					Denom1:   "uion",
 					TakerFee: osmomath.MustNewDecFromStr("0.006"),
 				},

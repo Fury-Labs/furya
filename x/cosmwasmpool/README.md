@@ -3,14 +3,14 @@
 
 ## Overview
 
-The CosmWasm Pool Module is an extension for the Osmosis pools, aiming to create a custom module that allows users to create and manage liquidity pools backed by CosmWasm smart contracts. The feature enables developers to build and deploy custom smart contracts that can be integrated with the rest of the pool types on the Osmosis chain.
+The CosmWasm Pool Module is an extension for the Furya pools, aiming to create a custom module that allows users to create and manage liquidity pools backed by CosmWasm smart contracts. The feature enables developers to build and deploy custom smart contracts that can be integrated with the rest of the pool types on the Furya chain.
 
 The module is built on top of the CosmWasm smart contracting platform, which provides a secure and efficient way to develop and execute WebAssembly (Wasm) smart contracts on the Cosmos SDK.
 
 Having pools in CosmWasm provides several benefits, one of which is avoiding the need for chain upgrades when introducing new functionalities or modifying existing ones related to liquidity pools. This advantage is particularly important in the context of speed of development and iteration.
 
 An example of a CosmWasm pool type:
-- [transmuter](https://github.com/osmosis-labs/transmuter)
+- [transmuter](https://github.com/furya-labs/transmuter)
 
 ## Key Components
 
@@ -378,11 +378,11 @@ pub struct Coin {
 
 ### Governance and Code Id Management
 
-Despite code upload being permissioned by governance on Osmosis, it is allowed to be done by a certain
+Despite code upload being permissioned by governance on Furya, it is allowed to be done by a certain
 set of addresses:
 
 ```bash
-osmosisd q wasm params
+furyad q wasm params
 code_upload_access:
   address: ""
   addresses:

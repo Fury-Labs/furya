@@ -15,9 +15,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/version"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/lockup/types"
 )
 
 // GetQueryCmd returns the cli query commands for this module.
@@ -269,7 +269,7 @@ func GetCmdTotalLockedByDenom() (*osmocli.QueryDescriptor, *types.LockedDenomReq
 		Use:   "total-locked-of-denom",
 		Short: "Query locked amount for a specific denom bigger then duration provided",
 		Long: osmocli.FormatLongDescDirect(`{{.Short}}{{.ExampleHeader}}
-{{.CommandPrefix}} total-locked-of-denom uosmo --min-duration=0s`, types.ModuleName),
+{{.CommandPrefix}} total-locked-of-denom ufury --min-duration=0s`, types.ModuleName),
 		CustomFlagOverrides: map[string]string{
 			"duration": FlagMinDuration,
 		},

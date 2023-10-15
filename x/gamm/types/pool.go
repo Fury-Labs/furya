@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 // CFMMPoolI defines an interface for pools representing constant function

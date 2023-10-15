@@ -5,14 +5,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	"github.com/furya-labs/furya/osmomath"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/keepers"
-	"github.com/osmosis-labs/osmosis/v20/app/upgrades"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/app/keepers"
+	"github.com/furya-labs/furya/v20/app/upgrades"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 
-	v18 "github.com/osmosis-labs/osmosis/v20/app/upgrades/v18"
+	v18 "github.com/furya-labs/furya/v20/app/upgrades/v18"
 )
 
 const lastPoolToCorrect = v18.FirstCLPoolId - 1
@@ -37,7 +37,7 @@ func CreateUpgradeHandler(
 
 		// Move the current authorized quote denoms from the concentrated liquidity params to the pool manager params.
 		// This needs to be moved because the pool manager requires access to these denoms to determine if the taker fee should
-		// be swapped into OSMO or not. The concentrated liquidity module already requires access to the pool manager keeper,
+		// be swapped into FURY or not. The concentrated liquidity module already requires access to the pool manager keeper,
 		// so the right move in this case is to move this parameter upwards in order to prevent circular dependencies.
 		// TODO: In v20 upgrade handler, delete this param from the concentrated liquidity params.
 		currentConcentratedLiquidityParams := keepers.ConcentratedLiquidityKeeper.GetParams(ctx)

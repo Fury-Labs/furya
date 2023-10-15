@@ -5,11 +5,11 @@ import (
 
 	legacysimulationtype "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/furya-labs/furya/v20/x/tokenfactory/keeper"
+	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

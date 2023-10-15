@@ -1,14 +1,14 @@
 syntax = "proto3";
-package osmosis.incentives;
+package furya.incentives;
 
 import "gogoproto/gogo.proto";
 import "amino/amino.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/incentives/gauge.proto";
-import "osmosis/lockup/lock.proto";
+import "furya/incentives/gauge.proto";
+import "furya/lockup/lock.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/incentives/types";
+option go_package = "github.com/furya-labs/furya/v20/x/incentives/types";
 
 service Msg {
   rpc CreateGauge(MsgCreateGauge) returns (MsgCreateGaugeResponse);
@@ -18,7 +18,7 @@ service Msg {
 
 // MsgCreateGauge creates a gague to distribute rewards to users
 message MsgCreateGauge {
-  option (amino.name) = "osmosis/incentives/create-gauge";
+  option (amino.name) = "furya/incentives/create-gauge";
 
   // is_perpetual shows if it's a perpetual or non-perpetual gauge
   // Non-perpetual gauges distribute their tokens equally per epoch while the
@@ -30,7 +30,7 @@ message MsgCreateGauge {
   string owner = 2 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
   // distribute_to show which lock the gauge should distribute to by time
   // duration or by timestamp
-  osmosis.lockup.QueryCondition distribute_to = 3
+  furya.lockup.QueryCondition distribute_to = 3
       [ (gogoproto.nullable) = false ];
   // coins are coin(s) to be distributed by the gauge
   repeated cosmos.base.v1beta1.Coin coins = 4 [
@@ -60,7 +60,7 @@ message MsgCreateGaugeResponse {}
 
 // MsgAddToGauge adds coins to a previously created gauge
 message MsgAddToGauge {
-  option (amino.name) = "osmosis/incentives/add-to-gauge";
+  option (amino.name) = "furya/incentives/add-to-gauge";
 
   // owner is the gauge owner's address
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
@@ -76,7 +76,7 @@ message MsgAddToGaugeResponse {}
 
 // MsgCreateGroup creates a group to distribute rewards to a group of pools
 message MsgCreateGroup {
-  option (amino.name) = "osmosis/incentives/create-group";
+  option (amino.name) = "furya/incentives/create-group";
 
   // coins are the provided coins that the group will distribute
   repeated cosmos.base.v1beta1.Coin coins = 1 [

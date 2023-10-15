@@ -320,7 +320,7 @@ docs:
 .PHONY: docs
 
 protoVer=v0.9
-protoImageName=osmolabs/osmo-proto-gen:$(protoVer)
+protoImageName=osmolabs/fury-proto-gen:$(protoVer)
 containerProtoGen=cosmos-sdk-proto-gen-$(protoVer)
 containerProtoFmt=cosmos-sdk-proto-fmt-$(protoVer)
 
@@ -382,7 +382,7 @@ test-sim-bench:
 	@VERSION=$(VERSION) go test -benchmem -run ^BenchmarkFullAppSimulation -bench ^BenchmarkFullAppSimulation -cpuprofile cpu.out $(PACKAGES_SIM)
 
 # test-e2e runs a full e2e test suite
-# deletes any pre-existing Osmosis containers before running.
+# deletes any pre-existing Furya containers before running.
 #
 # Deletes Docker resources at the end.
 # Utilizes Go cache.
@@ -606,7 +606,7 @@ cl-refresh-subgraph-positions:
 	go run ./tests/cl-genesis-positions --operation 0
 
 # This script converts the positions data created by the
-# cl-refresh-subgraph-positions makefile step into an Osmosis
+# cl-refresh-subgraph-positions makefile step into an Furya
 # genesis. It writes the file under tests/cl-genesis-positions/genesis.json
 cl-refresh-subgraph-genesis:
 	go run ./tests/cl-genesis-positions --operation 1

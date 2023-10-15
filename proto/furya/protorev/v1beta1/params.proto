@@ -1,10 +1,10 @@
 syntax = "proto3";
-package osmosis.protorev.v1beta1;
+package furya.protorev.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "cosmos_proto/cosmos.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/protorev/types";
+option go_package = "github.com/furya-labs/furya/v20/x/protorev/types";
 
 // Params defines the parameters for the module.
 message Params {

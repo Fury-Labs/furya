@@ -16,7 +16,7 @@ import (
 	"github.com/ory/dockertest/v3/docker"
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
 	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
 )

@@ -3,15 +3,15 @@ package keeper
 import (
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-// This function calculates the osmo equivalent worth of an LP share.
+// This function calculates the fury equivalent worth of an LP share.
 // It is intended to eventually use the TWAP of the worth of an LP share
 // once that is exposed from the gamm module.
 func (k Keeper) calculateOsmoBackingPerShare(pool gammtypes.CFMMPoolI, osmoInPool osmomath.Int) osmomath.Dec {

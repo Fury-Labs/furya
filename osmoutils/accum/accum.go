@@ -8,8 +8,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/store"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
 )
 
 // We keep this object as a way to interface with the methods, even though

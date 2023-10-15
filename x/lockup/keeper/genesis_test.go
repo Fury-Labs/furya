@@ -8,10 +8,10 @@ import (
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	osmoapp "github.com/osmosis-labs/osmosis/v20/app"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	osmoapp "github.com/furya-labs/furya/v20/app"
+	"github.com/furya-labs/furya/v20/x/lockup"
+	"github.com/furya-labs/furya/v20/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"

@@ -2,7 +2,7 @@
 package grpc
 
 // THIS FILE IS GENERATED CODE, DO NOT EDIT
-// SOURCE AT `proto/osmosis/twap/v1beta1/query.yml`
+// SOURCE AT `proto/furya/twap/v1beta1/query.yml`
 
 import (
 	context "context"
@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/osmosis-labs/osmosis/v20/x/twap/client"
-	"github.com/osmosis-labs/osmosis/v20/x/twap/client/queryproto"
+	"github.com/furya-labs/furya/v20/x/twap/client"
+	"github.com/furya-labs/furya/v20/x/twap/client/queryproto"
 )
 
 type Querier struct {

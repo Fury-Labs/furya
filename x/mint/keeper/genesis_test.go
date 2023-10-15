@@ -4,16 +4,16 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/x/mint/keeper"
+	"github.com/furya-labs/furya/v20/x/mint/types"
 )
 
 var customGenesis = types.NewGenesisState(
 	types.NewMinter(osmomath.ZeroDec()),
 	types.NewParams(
-		"uosmo",                       // denom
+		"ufury",                       // denom
 		osmomath.NewDec(200),          // epoch provisions
 		"year",                        // epoch identifier
 		osmomath.NewDecWithPrec(5, 1), // reduction factor
@@ -76,7 +76,7 @@ func (s *KeeperTestSuite) TestMintInitGenesis() {
 		},
 		"custom genesis": {
 			mintGenesis: customGenesis,
-			mintDenom:   "uosmo",
+			mintDenom:   "ufury",
 
 			expectedEpochProvisions:             osmomath.NewDec(200),
 			expectedSupplyOffsetDelta:           osmomath.NewInt(keeper.DeveloperVestingAmount).Neg(),

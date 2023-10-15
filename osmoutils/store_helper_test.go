@@ -16,10 +16,10 @@ import (
 	paramskeeper "github.com/cosmos/cosmos-sdk/x/params/keeper"
 	paramstypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/noapptest"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/noapptest"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
 )
 
 // We need to setup a test suite with account keeper

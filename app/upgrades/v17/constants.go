@@ -6,20 +6,20 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/upgrades"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolManagerTypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/upgrades"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	poolManagerTypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/keepers"
+	"github.com/furya-labs/furya/v20/app/keepers"
 )
 
-// UpgradeName defines the on-chain upgrade name for the Osmosis v17 upgrade.
+// UpgradeName defines the on-chain upgrade name for the Furya v17 upgrade.
 const UpgradeName = "v17"
 
 var Upgrade = upgrades.Upgrade{
@@ -32,7 +32,7 @@ var Upgrade = upgrades.Upgrade{
 }
 
 const (
-	OSMO        = "uosmo"
+	FURY        = "ufury"
 	TickSpacing = 100
 )
 
@@ -52,7 +52,7 @@ var AssetPairs = []AssetPair{
 	},
 	{
 		LinkedClassicPool: 712,
-		QuoteAsset:        WBTCIBCDenom, // WBTC supersedes OSMO in quote asset status
+		QuoteAsset:        WBTCIBCDenom, // WBTC supersedes FURY in quote asset status
 	},
 	{LinkedClassicPool: 773},
 	{LinkedClassicPool: 9},
@@ -79,7 +79,7 @@ var AssetPairs = []AssetPair{
 	{LinkedClassicPool: 625},
 }
 
-// AssetPairs contract: all AssetPairs being initialized in this upgrade handler all have the same quote asset (OSMO).
+// AssetPairs contract: all AssetPairs being initialized in this upgrade handler all have the same quote asset (FURY).
 func InitializeAssetPairs(ctx sdk.Context, keepers *keepers.AppKeepers) ([]AssetPair, error) {
 	gammKeeper := keepers.GAMMKeeper
 	superfluidKeeper := keepers.SuperfluidKeeper
@@ -89,10 +89,10 @@ func InitializeAssetPairs(ctx sdk.Context, keepers *keepers.AppKeepers) ([]Asset
 			return nil, err
 		}
 
-		// Unless the quote asset is manually set above, set the quote asset to OSMO.
+		// Unless the quote asset is manually set above, set the quote asset to FURY.
 		if assetPair.QuoteAsset == "" {
-			assetPair.QuoteAsset = OSMO
-			AssetPairs[i].QuoteAsset = OSMO
+			assetPair.QuoteAsset = FURY
+			AssetPairs[i].QuoteAsset = FURY
 		}
 
 		// Set the base asset for the asset pair.
@@ -164,14 +164,14 @@ var (
 
 var AssetPairsForTestsOnly = []AssetPair{
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         ISTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 837,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         CMSTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.0005"), // Normally 0.0002, but is not authorized
 		LinkedClassicPool: 857,
@@ -179,167 +179,167 @@ var AssetPairsForTestsOnly = []AssetPair{
 	},
 	{
 		QuoteAsset:        WBTCIBCDenom,
-		BaseAsset:         OSMO,
+		BaseAsset:         FURY,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 712,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         DOTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 773,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         CROIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 9,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         AKTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 3,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         AXLIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 812,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         SCRTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 584,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         STARSIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.003"),
 		LinkedClassicPool: 604,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         JUNOIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.003"),
 		LinkedClassicPool: 497,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         STRDIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 806,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         MARSIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 907,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         ION,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.005"),
 		LinkedClassicPool: 1013,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         XPRTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 15,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         MEDIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 586,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         SOMMIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 627,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         BLDIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 795,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         KAVAIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 730,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         IRISIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 7,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         stIBCXDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.003"),
 		LinkedClassicPool: 1039,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         DVPNIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 5,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         BTSGIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 573,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         UMEEIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 641,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         HUAHUAIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 605,
 		Superfluid:        true,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         NCTIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 971,
 		Superfluid:        false,
 	},
 	{
-		QuoteAsset:        OSMO,
+		QuoteAsset:        FURY,
 		BaseAsset:         GRAVIBCDenom,
 		SpreadFactor:      osmomath.MustNewDecFromStr("0.002"),
 		LinkedClassicPool: 625,
@@ -347,7 +347,7 @@ var AssetPairsForTestsOnly = []AssetPair{
 	},
 }
 
-// InitializeAssetPairsTestnet initializes the asset pairs for the testnet, which is every osmo paired gamm pool with exactly 2 tokens.
+// InitializeAssetPairsTestnet initializes the asset pairs for the testnet, which is every fury paired gamm pool with exactly 2 tokens.
 func InitializeAssetPairsTestnet(ctx sdk.Context, keepers *keepers.AppKeepers) ([]AssetPair, error) {
 	superfluidKeeper := keepers.SuperfluidKeeper
 	testnetAssetPairs := []AssetPair{}
@@ -384,10 +384,10 @@ func InitializeAssetPairsTestnet(ctx sdk.Context, keepers *keepers.AppKeepers) (
 			continue
 		}
 
-		// Skip pools that aren't paired with OSMO. OSMO will be the quote asset.
+		// Skip pools that aren't paired with FURY. FURY will be the quote asset.
 		quoteAsset, baseAsset := "", ""
 		for _, coin := range totalPoolLiquidity {
-			if coin.Denom == OSMO {
+			if coin.Denom == FURY {
 				quoteAsset = coin.Denom
 			} else {
 				baseAsset = coin.Denom
@@ -438,18 +438,18 @@ func InitializeAssetPairsTestnet(ctx sdk.Context, keepers *keepers.AppKeepers) (
 	return testnetAssetPairs, nil
 }
 
-// validateSpotPriceFallsInBounds ensures that after swapping in the OSMO for the baseAsset, the resulting spot price is within the
+// validateSpotPriceFallsInBounds ensures that after swapping in the FURY for the baseAsset, the resulting spot price is within the
 // min and max spot price bounds of the concentrated liquidity module.
 func validateSpotPriceFallsInBounds(ctx sdk.Context, cfmmPool gammtypes.CFMMPoolI, keepers *keepers.AppKeepers, baseAsset, quoteAsset string, spreadFactor osmomath.Dec) error {
-	// Check if swapping 0.1 OSMO results in a spot price less than the min or greater than the max
+	// Check if swapping 0.1 FURY results in a spot price less than the min or greater than the max
 	var respectiveBaseAsset sdk.Coin
 	var err error
-	if baseAsset == OSMO {
+	if baseAsset == FURY {
 		respectiveBaseAsset, err = keepers.GAMMKeeper.CalcOutAmtGivenIn(ctx, cfmmPool, sdk.NewCoin(baseAsset, osmomath.NewInt(100000)), quoteAsset, spreadFactor)
-	} else if quoteAsset == OSMO {
+	} else if quoteAsset == FURY {
 		respectiveBaseAsset, err = keepers.GAMMKeeper.CalcOutAmtGivenIn(ctx, cfmmPool, sdk.NewCoin(quoteAsset, osmomath.NewInt(100000)), baseAsset, spreadFactor)
 	} else {
-		return fmt.Errorf("expected one of the pool's assets to be OSMO, got %s and %s", baseAsset, quoteAsset)
+		return fmt.Errorf("expected one of the pool's assets to be FURY, got %s and %s", baseAsset, quoteAsset)
 	}
 	if err != nil {
 		return err

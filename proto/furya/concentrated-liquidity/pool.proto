@@ -3,13 +3,13 @@ syntax = "proto3";
 // in order to use the correct package. Decision made to use legacy package path
 // until clear steps for migration logic and the unknowns for state breaking are
 // investigated for changing proto package.
-package osmosis.concentratedliquidity.v1beta1;
+package furya.concentratedliquidity.v1beta1;
 
 import "cosmos_proto/cosmos.proto";
 import "gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model";
+option go_package = "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model";
 
 message Pool {
   option (gogoproto.goproto_getters) = false;
@@ -41,7 +41,7 @@ message Pool {
   string token1 = 7;
 
   string current_sqrt_price = 8 [
-    (gogoproto.customtype) = "github.com/osmosis-labs/osmosis/osmomath.BigDec",
+    (gogoproto.customtype) = "github.com/furya-labs/furya/osmomath.BigDec",
     (gogoproto.moretags) = "yaml:\"spot_price\"",
     (gogoproto.nullable) = false
   ];

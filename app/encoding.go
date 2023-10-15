@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/osmosis-labs/osmosis/v20/app/params"
+	"github.com/furya-labs/furya/v20/app/params"
 
 	"github.com/cosmos/cosmos-sdk/std"
 )

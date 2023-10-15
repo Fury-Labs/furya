@@ -1,35 +1,35 @@
 {
-    "chain_name": "osmosis",
+    "chain_name": "furya",
     "assets": [
       {
-        "description": "The native token of Osmosis",
+        "description": "The native token of Furya",
         "denom_units": [
           {
-            "denom": "uosmo",
+            "denom": "ufury",
             "exponent": 0
           },
           {
-            "denom": "osmo",
+            "denom": "fury",
             "exponent": 6
           }
         ],
-        "base": "uosmo",
-        "name": "Osmosis",
-        "display": "osmo",
-        "symbol": "OSMO",
+        "base": "ufury",
+        "name": "Furya",
+        "display": "fury",
+        "symbol": "FURY",
         "traces": [],
         "logo_URIs": {
-          "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/osmo.png",
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/osmo.svg"
+          "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/fury.png",
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/fury.svg"
         },
-        "coingecko_id": "osmosis",
+        "coingecko_id": "furya",
         "keywords": [
           "dex",
           "staking",
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:678"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:678"
         ]
       },
       {
@@ -49,16 +49,16 @@
         "symbol": "ION",
         "traces": [],
         "logo_URIs": {
-          "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/ion.png",
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/ion.svg"
+          "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/ion.png",
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/ion.svg"
         },
         "coingecko_id": "ion",
         "keywords": [
           "memecoin",
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1013"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1013"
         ]
       },
       {
@@ -117,9 +117,9 @@
         },
         "coingecko_id": "axlusdc",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info"
+          "furya-main",
+          "furya-frontier",
+          "furya-info"
         ]
       },
       {
@@ -176,10 +176,10 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/eth-white.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:704"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:704"
         ]
       },
       {
@@ -236,10 +236,10 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/axelar/images/wbtc.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:712"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:712"
         ]
       },
       {
@@ -297,10 +297,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/axelar/images/usdt.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:831"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:831"
         ]
       },
       {
@@ -358,10 +358,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/axelar/images/dai.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:674"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:674"
         ]
       },
       {
@@ -410,9 +410,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/busd.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:877"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:877"
         ]
       },
       {
@@ -455,10 +455,10 @@
         },
         "coingecko_id": "cosmos",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1"
         ]
       },
       {
@@ -501,10 +501,10 @@
         },
         "coingecko_id": "crypto-com-chain",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:9"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:9"
         ]
       },
       {
@@ -565,10 +565,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/binancesmartchain/images/wbnb.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:840"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:840"
         ]
       },
       {
@@ -625,10 +625,10 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/polygon/images/matic-purple.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:789"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:789"
         ]
       },
       {
@@ -685,10 +685,10 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/avalanche/images/avax.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:899"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:899"
         ]
       },
       {
@@ -742,9 +742,9 @@
         },
         "coingecko_id": "terra-luna",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:800"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:800"
         ]
       },
       {
@@ -787,10 +787,10 @@
         },
         "coingecko_id": "juno-network",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:497"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:497"
         ]
       },
       {
@@ -848,10 +848,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/polkadot/images/dot.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:773"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:773"
         ]
       },
       {
@@ -894,10 +894,10 @@
         },
         "coingecko_id": "evmos",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:722"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:722"
         ]
       },
       {
@@ -940,10 +940,10 @@
         },
         "coingecko_id": "kava",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:730"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:730"
         ]
       },
       {
@@ -986,10 +986,10 @@
         },
         "coingecko_id": "secret",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:584"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:584"
         ]
       },
       {
@@ -1043,9 +1043,9 @@
         },
         "coingecko_id": "terrausd",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:560"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:560"
         ]
       },
       {
@@ -1088,10 +1088,10 @@
         },
         "coingecko_id": "stargaze",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:604"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:604"
         ]
       },
       {
@@ -1134,10 +1134,10 @@
         },
         "coingecko_id": "chihuahua-token",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:605"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:605"
         ]
       },
       {
@@ -1180,10 +1180,10 @@
         },
         "coingecko_id": "persistence",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:15"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:15"
         ]
       },
       {
@@ -1248,10 +1248,10 @@
         },
         "keywords": [
           "canon",
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:648"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:648"
         ]
       },
       {
@@ -1294,10 +1294,10 @@
         },
         "coingecko_id": "akash-network",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:3"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:3"
         ]
       },
       {
@@ -1340,10 +1340,10 @@
         },
         "coingecko_id": "regen",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:42"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:42"
         ]
       },
       {
@@ -1386,10 +1386,10 @@
         },
         "coingecko_id": "sentinel",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:6"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:6"
         ]
       },
       {
@@ -1432,10 +1432,10 @@
         },
         "coingecko_id": "iris-network",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:7"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:7"
         ]
       },
       {
@@ -1478,10 +1478,10 @@
         },
         "coingecko_id": "starname",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:197"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:197"
         ]
       },
       {
@@ -1524,10 +1524,10 @@
         },
         "coingecko_id": "e-money",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:463"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:463"
         ]
       },
       {
@@ -1570,9 +1570,9 @@
         },
         "coingecko_id": "e-money-eur",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:481"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:481"
         ]
       },
       {
@@ -1615,10 +1615,10 @@
         },
         "coingecko_id": "likecoin",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:553"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:553"
         ]
       },
       {
@@ -1661,10 +1661,10 @@
         },
         "coingecko_id": "ixo",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:558"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:558"
         ]
       },
       {
@@ -1707,10 +1707,10 @@
         },
         "coingecko_id": "bitcanna",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:572"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:572"
         ]
       },
       {
@@ -1753,10 +1753,10 @@
         },
         "coingecko_id": "bitsong",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:573"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:573"
         ]
       },
       {
@@ -1799,10 +1799,10 @@
         },
         "coingecko_id": "ki",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:577"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:577"
         ]
       },
       {
@@ -1845,10 +1845,10 @@
         },
         "coingecko_id": "medibloc",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:587"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:587"
         ]
       },
       {
@@ -1887,9 +1887,9 @@
         },
         "coingecko_id": "bostrom",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5:912"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5:912"
         ]
       },
       {
@@ -1932,10 +1932,10 @@
         },
         "coingecko_id": "comdex",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:600"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:600"
         ]
       },
       {
@@ -1978,10 +1978,10 @@
         },
         "coingecko_id": "cheqd-network",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:602"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:602"
         ]
       },
       {
@@ -2024,10 +2024,10 @@
         },
         "coingecko_id": "lum-network",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:608"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:608"
         ]
       },
       {
@@ -2070,10 +2070,10 @@
         },
         "coingecko_id": "vidulum",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:613"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:613"
         ]
       },
       {
@@ -2116,10 +2116,10 @@
         },
         "coingecko_id": "desmos",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:619"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:619"
         ]
       },
       {
@@ -2161,10 +2161,10 @@
         },
         "coingecko_id": "dig-chain",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:621"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:621"
         ]
       },
       {
@@ -2215,10 +2215,10 @@
         },
         "coingecko_id": "sommelier",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:627"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:627"
         ]
       },
       {
@@ -2261,10 +2261,10 @@
         },
         "coingecko_id": "band-protocol",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:626"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:626"
         ]
       },
       {
@@ -2307,9 +2307,9 @@
         },
         "coingecko_id": "darcmatter-coin",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:637"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:637"
         ]
       },
       {
@@ -2352,10 +2352,10 @@
         },
         "coingecko_id": "umee",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:641"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:641"
         ]
       },
       {
@@ -2398,10 +2398,10 @@
         },
         "coingecko_id": "graviton",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:625"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:625"
         ]
       },
       {
@@ -2444,10 +2444,10 @@
         },
         "coingecko_id": "decentr",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:644"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:644"
         ]
       },
       {
@@ -2493,9 +2493,9 @@
         },
         "coingecko_id": "marble",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:649"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:649"
         ]
       },
       {
@@ -2541,10 +2541,10 @@
         },
         "coingecko_id": "switcheo",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:651"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:651"
         ]
       },
       {
@@ -2587,9 +2587,9 @@
         },
         "coingecko_id": "cerberus-2",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:662"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:662"
         ]
       },
       {
@@ -2632,10 +2632,10 @@
         },
         "coingecko_id": "fetch-ai",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:681"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:681"
         ]
       },
       {
@@ -2678,10 +2678,10 @@
         },
         "coingecko_id": "assetmantle",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:686"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:686"
         ]
       },
       {
@@ -2727,9 +2727,9 @@
         },
         "coingecko_id": "neta",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:631"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:631"
         ]
       },
       {
@@ -2772,10 +2772,10 @@
         },
         "coingecko_id": "injective-protocol",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:725"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:725"
         ]
       },
       {
@@ -2829,7 +2829,7 @@
         },
         "coingecko_id": "terrakrw",
         "keywords": [
-          "osmosis-price:ibc/BE1BB42D4BE3C30D50B68D7C41DB4DFCE9678E8EF8C539F6E6A9345048894FCC:581"
+          "furya-price:ibc/BE1BB42D4BE3C30D50B68D7C41DB4DFCE9678E8EF8C539F6E6A9345048894FCC:581"
         ]
       },
       {
@@ -2871,9 +2871,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/microtick/images/tick.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:547"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:547"
         ]
       },
       {
@@ -2916,9 +2916,9 @@
         },
         "coingecko_id": "sifchain",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:629"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:629"
         ]
       },
       {
@@ -2961,9 +2961,9 @@
         },
         "coingecko_id": "certik",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1020"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1020"
         ]
       },
       {
@@ -3009,8 +3009,8 @@
         },
         "coingecko_id": "hope-galaxy",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:653"
+          "furya-frontier",
+          "furya-price:ufury:653"
         ]
       },
       {
@@ -3056,8 +3056,8 @@
         },
         "coingecko_id": "racoon",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:669"
+          "furya-frontier",
+          "furya-price:ufury:669"
         ]
       },
       {
@@ -3114,8 +3114,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/frax.svg"
         },
         "keywords": [
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:679"
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:679"
         ]
       },
       {
@@ -3169,10 +3169,10 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/wbtc.grv.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/wbtc.grv.svg"
         },
         "keywords": [
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:694"
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:694"
         ]
       },
       {
@@ -3226,12 +3226,12 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/weth.grv.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/weth.grv.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:634"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:634"
         ]
       },
       {
@@ -3285,12 +3285,12 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/usdc.grv.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/usdc.grv.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:872"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:872"
         ]
       },
       {
@@ -3344,10 +3344,10 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/dai.grv.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/dai.grv.svg"
         },
         "keywords": [
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:702"
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:702"
         ]
       },
       {
@@ -3401,12 +3401,12 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/usdt.grv.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/usdt.grv.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/8242AD24008032E457D2E12D46588FD39FB54FB29680C6C7663D296B383C37C4:873"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/8242AD24008032E457D2E12D46588FD39FB54FB29680C6C7663D296B383C37C4:873"
         ]
       },
       {
@@ -3451,8 +3451,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/block.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:691"
+          "furya-frontier",
+          "furya-price:ufury:691"
         ]
       },
       {
@@ -3495,9 +3495,9 @@
         },
         "coingecko_id": "provenance-blockchain",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:693"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:693"
         ]
       },
       {
@@ -3539,8 +3539,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/galaxy/images/glx.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:697"
+          "furya-frontier",
+          "furya-price:ufury:697"
         ]
       },
       {
@@ -3582,9 +3582,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/dhk.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:695"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:695"
         ]
       },
       {
@@ -3630,8 +3630,8 @@
         },
         "coingecko_id": "junoswap-raw-dao",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:700"
+          "furya-frontier",
+          "furya-price:ufury:700"
         ]
       },
       {
@@ -3674,9 +3674,9 @@
         },
         "coingecko_id": "meme-network",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:701"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:701"
         ]
       },
       {
@@ -3720,7 +3720,7 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/asvt.png"
         },
         "keywords": [
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:771"
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:771"
         ]
       },
       {
@@ -3764,9 +3764,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/joe.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:718"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:718"
         ]
       },
       {
@@ -3809,9 +3809,9 @@
         },
         "coingecko_id": "terra-luna-2",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:726"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:726"
         ]
       },
       {
@@ -3854,7 +3854,7 @@
         },
         "coingecko_id": "rizon",
         "keywords": [
-          "osmosis-price:uosmo:729"
+          "furya-price:ufury:729"
         ]
       },
       {
@@ -3984,10 +3984,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/link.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:731"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:731"
         ]
       },
       {
@@ -4029,9 +4029,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/genesisl1/images/l1.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:732"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:732"
         ]
       },
       {
@@ -4218,10 +4218,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/mkr.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:733"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:733"
         ]
       },
       {
@@ -4324,8 +4324,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/shib.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:880"
+          "furya-frontier",
+          "furya-price:ufury:880"
         ]
       },
       {
@@ -4460,10 +4460,10 @@
         },
         "coingecko_id": "kujira",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:744"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:744"
         ]
       },
       {
@@ -4506,10 +4506,10 @@
         },
         "coingecko_id": "tgrade",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:769"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:769"
         ]
       },
       {
@@ -4551,8 +4551,8 @@
         },
         "coingecko_id": "echelon",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:848"
+          "furya-frontier",
+          "furya-price:ufury:848"
         ]
       },
       {
@@ -4595,9 +4595,9 @@
         },
         "coingecko_id": "odin-protocol",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:777"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:777"
         ]
       },
       {
@@ -4639,9 +4639,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/odin/images/geo.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:787"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:787"
         ]
       },
       {
@@ -4683,8 +4683,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/odin/images/o9w.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:805"
+          "furya-frontier",
+          "furya-price:ufury:805"
         ]
       },
       {
@@ -4729,9 +4729,9 @@
         },
         "coingecko_id": "lvn",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/B547DC9B897E7C3AA5B824696110B8E3D2C31E3ED3F02FF363DCBAD82457E07E:772"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/B547DC9B897E7C3AA5B824696110B8E3D2C31E3ED3F02FF363DCBAD82457E07E:772"
         ]
       },
       {
@@ -4789,7 +4789,7 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/moonbeam/images/glmr.svg"
         },
         "keywords": [
-          "osmosis-price:uosmo:825"
+          "furya-price:ufury:825"
         ]
       },
       {
@@ -4834,9 +4834,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/glto.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:778"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:778"
         ]
       },
       {
@@ -4881,9 +4881,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/gkey.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:790"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:790"
         ]
       },
       {
@@ -4926,9 +4926,9 @@
         },
         "coingecko_id": "crescent-network",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:786"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:786"
         ]
       },
       {
@@ -4970,8 +4970,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/lumenx/images/lumen.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:788"
+          "furya-frontier",
+          "furya-price:ufury:788"
         ]
       },
       {
@@ -5014,9 +5014,9 @@
         },
         "coingecko_id": "oraichain-token",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:799"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:799"
         ]
       },
       {
@@ -5060,9 +5060,9 @@
         },
         "coingecko_id": "cudos",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:796"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:796"
         ]
       },
       {
@@ -5105,7 +5105,7 @@
         },
         "coingecko_id": "usdx",
         "keywords": [
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:792"
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:792"
         ]
       },
       {
@@ -5148,10 +5148,10 @@
         },
         "coingecko_id": "agoric",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:795"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:795"
         ]
       },
       {
@@ -5193,10 +5193,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/agoric/images/ist.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:837"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:837"
         ]
       },
       {
@@ -5242,8 +5242,8 @@
         },
         "coingecko_id": "stakeeasy-juno-derivative",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED:807"
+          "furya-frontier",
+          "furya-price:ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED:807"
         ]
       },
       {
@@ -5329,10 +5329,10 @@
         },
         "coingecko_id": "stride",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:806"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:806"
         ]
       },
       {
@@ -5383,10 +5383,10 @@
         },
         "coingecko_id": "stride-staked-atom",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:803"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:803"
         ]
       },
       {
@@ -5436,10 +5436,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/ststars.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4:810"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4:810"
         ]
       },
       {
@@ -5484,9 +5484,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/solar.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:941"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:941"
         ]
       },
       {
@@ -5532,8 +5532,8 @@
         },
         "coingecko_id": "seasy",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:808"
+          "furya-frontier",
+          "furya-price:ufury:808"
         ]
       },
       {
@@ -5576,10 +5576,10 @@
         },
         "coingecko_id": "axelar",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:812"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:812"
         ]
       },
       {
@@ -5622,9 +5622,9 @@
         },
         "coingecko_id": "rebus",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:813"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:813"
         ]
       },
       {
@@ -5667,9 +5667,9 @@
         },
         "coingecko_id": "teritori",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:816"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:816"
         ]
       },
       {
@@ -5719,20 +5719,20 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stjuno.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED:817"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/46B44899322F3CD854D2D46DEEF881958467CDD4B3B10086DA49296BBED94BED:817"
         ]
       },
       {
-        "description": "The native token of Osmosis",
+        "description": "The native token of Furya",
         "denom_units": [
           {
             "denom": "ibc/D176154B0C63D1F9C6DCFB4F70349EBF2E2B5A87A05902F57A6AE92B863E9AEC",
             "exponent": 0,
             "aliases": [
-              "stuosmo"
+              "stufury"
             ]
           },
           {
@@ -5749,8 +5749,8 @@
           {
             "type": "liquid-stake",
             "counterparty": {
-              "chain_name": "osmosis",
-              "base_denom": "uosmo"
+              "chain_name": "furya",
+              "base_denom": "ufury"
             },
             "provider": "Stride"
           },
@@ -5758,12 +5758,12 @@
             "type": "ibc",
             "counterparty": {
               "chain_name": "stride",
-              "base_denom": "stuosmo",
+              "base_denom": "stufury",
               "channel_id": "channel-5"
             },
             "chain": {
               "channel_id": "channel-326",
-              "path": "transfer/channel-326/stuosmo"
+              "path": "transfer/channel-326/stufury"
             }
           }
         ],
@@ -5772,10 +5772,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stosmo.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:833"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:833"
         ]
       },
       {
@@ -5859,9 +5859,9 @@
         },
         "coingecko_id": "lambda",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:826"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:826"
         ]
       },
       {
@@ -5904,8 +5904,8 @@
         },
         "coingecko_id": "usk",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:827"
+          "furya-frontier",
+          "furya-price:ufury:827"
         ]
       },
       {
@@ -5948,8 +5948,8 @@
         },
         "coingecko_id": "unification",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:830"
+          "furya-frontier",
+          "furya-price:ufury:830"
         ]
       },
       {
@@ -5992,10 +5992,10 @@
         },
         "coingecko_id": "jackal-protocol",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:832"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:832"
         ]
       },
       {
@@ -6040,8 +6040,8 @@
         },
         "coingecko_id": "alter",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:845"
+          "furya-frontier",
+          "furya-price:ufury:845"
         ]
       },
       {
@@ -6087,7 +6087,7 @@
         },
         "coingecko_id": "buttcoin-2",
         "keywords": [
-          "osmosis-price:uosmo:985"
+          "furya-price:ufury:985"
         ]
       },
       {
@@ -6131,8 +6131,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/secretnetwork/images/shdold.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:846"
+          "furya-frontier",
+          "furya-price:ufury:846"
         ]
       },
       {
@@ -6178,8 +6178,8 @@
         },
         "coingecko_id": "sienna",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:853"
+          "furya-frontier",
+          "furya-price:ufury:853"
         ]
       },
       {
@@ -6225,8 +6225,8 @@
         },
         "coingecko_id": "stkd-scrt",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:ibc/0954E1C28EB7AF5B72D24F3BC2B47BBB2FDF91BDDFD57B74B99E133AED40972A:854"
+          "furya-frontier",
+          "furya-price:ibc/0954E1C28EB7AF5B72D24F3BC2B47BBB2FDF91BDDFD57B74B99E133AED40972A:854"
         ]
       },
       {
@@ -6269,9 +6269,9 @@
         },
         "coingecko_id": "bzedge",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:856"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:856"
         ]
       },
       {
@@ -6356,9 +6356,9 @@
         },
         "coingecko_id": "arable-protocol",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:858"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:858"
         ]
       },
       {
@@ -6401,10 +6401,10 @@
         },
         "coingecko_id": "composite",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7:908"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7:908"
         ]
       },
       {
@@ -6447,8 +6447,8 @@
         },
         "coingecko_id": "imv",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:866"
+          "furya-frontier",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:866"
         ]
       },
       {
@@ -6491,9 +6491,9 @@
         },
         "keywords": [
           "medas",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:859"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:859"
         ]
       },
       {
@@ -6539,9 +6539,9 @@
         },
         "coingecko_id": "posthuman",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:867"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:867"
         ]
       },
       {
@@ -6586,7 +6586,7 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/secretnetwork/images/amber.svg"
         },
         "keywords": [
-          "osmosis-price:uosmo:984"
+          "furya-price:ufury:984"
         ]
       },
       {
@@ -6633,10 +6633,10 @@
           "stablecoin",
           "bridge",
           "staking",
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:882"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:882"
         ]
       },
       {
@@ -6682,10 +6682,10 @@
         },
         "coingecko_id": "stkatom",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:886"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:886"
         ]
       },
       {
@@ -6723,9 +6723,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/dyson/images/dys.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D1542AA8762DB13087D8364F3EA6509FD6F009A34F00426AF9E4F9FA85CBBF1F:950"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D1542AA8762DB13087D8364F3EA6509FD6F009A34F00426AF9E4F9FA85CBBF1F:950"
         ]
       },
       {
@@ -6771,9 +6771,9 @@
         },
         "coingecko_id": "hopers-io ",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:894"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:894"
         ]
       },
       {
@@ -6816,9 +6816,9 @@
         },
         "coingecko_id": "arable-usd",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:895"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:895"
         ]
       },
       {
@@ -6861,9 +6861,9 @@
         },
         "coingecko_id": "planq",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:898"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:898"
         ]
       },
       {
@@ -6923,9 +6923,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/fantom/images/ftm.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:900"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:900"
         ]
       },
       {
@@ -6968,8 +6968,8 @@
         },
         "coingecko_id": "canto",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:901"
+          "furya-frontier",
+          "furya-price:ufury:901"
         ]
       },
       {
@@ -7020,10 +7020,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/quicksilver/images/qstars.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4:903"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/987C17B11ABC2B20019178ACE62929FE9840202CE79498E29FE8E5CB02B7C0A4:903"
         ]
       },
       {
@@ -7068,10 +7068,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/wynd.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:902"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:902"
         ]
       },
       {
@@ -7125,12 +7125,12 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/polygon.usdc.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/polygon.usdc.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:938"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:938"
         ]
       },
       {
@@ -7184,12 +7184,12 @@
           }
         ],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/avalanche.usdc.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/avalanche.usdc.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:938"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:938"
         ]
       },
       {
@@ -7232,10 +7232,10 @@
         },
         "coingecko_id": "mars-protocol-a7fcbcfb-fd61-4017-92f0-7ee9f9cc6da3",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:907"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:907"
         ]
       },
       {
@@ -7277,9 +7277,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/acrechain/images/cnto.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:909"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:909"
         ]
       },
       {
@@ -7329,9 +7329,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stluna.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:ibc/785AFEC6B3741100D15E7AF01374E3C4C36F24888E96479B1C33F5C71F364EF9:913"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ibc/785AFEC6B3741100D15E7AF01374E3C4C36F24888E96479B1C33F5C71F364EF9:913"
         ]
       },
       {
@@ -7380,10 +7380,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stevmos.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/6AE98883D4D5D5FF9E50D7130F1305DA2FFA0C652D1DD9C123657C6B4EB2DF8A:922"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/6AE98883D4D5D5FF9E50D7130F1305DA2FFA0C652D1DD9C123657C6B4EB2DF8A:922"
         ]
       },
       {
@@ -7428,9 +7428,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/nride.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:924"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:924"
         ]
       },
       {
@@ -7472,9 +7472,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/8ball/images/8ball.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:935"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:935"
         ]
       },
       {
@@ -7525,10 +7525,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/quicksilver/images/qatom.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:944"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:944"
         ]
       },
       {
@@ -7570,8 +7570,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/comdex/images/harbor.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:951"
+          "furya-frontier",
+          "furya-price:ufury:951"
         ]
       },
       {
@@ -7622,10 +7622,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/quicksilver/images/qregen.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076:948"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076:948"
         ]
       },
       {
@@ -7669,9 +7669,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/fox.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:949"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:949"
         ]
       },
       {
@@ -7714,10 +7714,10 @@
         },
         "coingecko_id": "quicksilver",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:952"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:952"
         ]
       },
       {
@@ -7759,12 +7759,12 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/arkh/images/arkh.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:954"
+          "furya-frontier",
+          "furya-price:ufury:954"
         ]
       },
       {
-        "description": "Quicksilver Liquid Staked OSMO",
+        "description": "Quicksilver Liquid Staked FURY",
         "denom_units": [
           {
             "denom": "ibc/42D24879D4569CE6477B7E88206ADBFE47C222C6CAD51A54083E4A72594269FC",
@@ -7781,15 +7781,15 @@
         ],
         "type_asset": "ics20",
         "base": "ibc/42D24879D4569CE6477B7E88206ADBFE47C222C6CAD51A54083E4A72594269FC",
-        "name": "Quicksilver Liquid Staked OSMO",
+        "name": "Quicksilver Liquid Staked FURY",
         "display": "qosmo",
         "symbol": "qOSMO",
         "traces": [
           {
             "type": "liquid-stake",
             "counterparty": {
-              "chain_name": "osmosis",
-              "base_denom": "uosmo"
+              "chain_name": "furya",
+              "base_denom": "ufury"
             },
             "provider": "Quicksilver"
           },
@@ -7811,10 +7811,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/quicksilver/images/qosmo.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:956"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:956"
         ]
       },
       {
@@ -7857,9 +7857,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/noble/images/frnz.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:1012"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2:1012"
         ]
       },
       {
@@ -7902,10 +7902,10 @@
         },
         "coingecko_id": "white-whale",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:960"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:960"
         ]
       },
       {
@@ -7949,8 +7949,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/guardian.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:966"
+          "furya-frontier",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:966"
         ]
       },
       {
@@ -7995,8 +7995,8 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/mnpu.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:961"
+          "furya-frontier",
+          "furya-price:ufury:961"
         ]
       },
       {
@@ -8040,8 +8040,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/shibacosmos.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:962"
+          "furya-frontier",
+          "furya-price:ufury:962"
         ]
       },
       {
@@ -8086,9 +8086,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/sikoba.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:964"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:964"
         ]
       },
       {
@@ -8131,10 +8131,10 @@
         },
         "coingecko_id": "toucan-protocol-nature-carbon-tonne",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076:972"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/1DCC8A6CB5689018431323953344A9F6CC4D0BFB261E88C9F7777372C10CD076:972"
         ]
       },
       {
@@ -8178,12 +8178,12 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/celestims.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:980"
+          "furya-frontier",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:980"
         ]
       },
       {
-        "description": "The First Doge on Osmosis",
+        "description": "The First Doge on Furya",
         "denom_units": [
           {
             "denom": "ibc/8AEEA9B9304392070F72611076C0E328CE3F2DECA1E18557E36F9DB4F09C0156",
@@ -8200,7 +8200,7 @@
         "type_asset": "ics20",
         "address": "juno1ytymtllllsp3hfmndvcp802p2xmy5s8m59ufel8xv9ahyxyfs4hs4kd4je",
         "base": "ibc/8AEEA9B9304392070F72611076C0E328CE3F2DECA1E18557E36F9DB4F09C0156",
-        "name": "Osmosis Doge",
+        "name": "Furya Doge",
         "display": "osdoge",
         "symbol": "OSDOGE",
         "traces": [
@@ -8223,8 +8223,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/osdoge.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:975"
+          "furya-frontier",
+          "furya-price:ufury:975"
         ]
       },
       {
@@ -8268,8 +8268,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/apemos.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:977"
+          "furya-frontier",
+          "furya-price:ufury:977"
         ]
       },
       {
@@ -8313,8 +8313,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/invdrs.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:969"
+          "furya-frontier",
+          "furya-price:ufury:969"
         ]
       },
       {
@@ -8358,13 +8358,13 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/doga.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:978"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:978"
         ]
       },
       {
-        "description": "Osmo Pepe",
+        "description": "Fury Pepe",
         "denom_units": [
           {
             "denom": "ibc/00BC6883C29D45EAA021A55CFDD5884CA8EFF9D39F698A9FEF79E13819FF94F8",
@@ -8381,7 +8381,7 @@
         "type_asset": "ics20",
         "address": "juno1zqrj3ta4u7ylv0wqzd8t8q3jrr9rdmn43zuzp9zemeunecnhy8fss778g7",
         "base": "ibc/00BC6883C29D45EAA021A55CFDD5884CA8EFF9D39F698A9FEF79E13819FF94F8",
-        "name": "Osmo Pepe",
+        "name": "Fury Pepe",
         "display": "pepe",
         "symbol": "PEPE",
         "traces": [
@@ -8404,7 +8404,7 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/pepe.png"
         },
         "keywords": [
-          "osmosis-price:uosmo:979"
+          "furya-price:ufury:979"
         ]
       },
       {
@@ -8448,8 +8448,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/catmos.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:981"
+          "furya-frontier",
+          "furya-price:ufury:981"
         ]
       },
       {
@@ -8493,8 +8493,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/summit.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:982"
+          "furya-frontier",
+          "furya-price:ufury:982"
         ]
       },
       {
@@ -8538,8 +8538,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/summit.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:982"
+          "furya-frontier",
+          "furya-price:ufury:982"
         ]
       },
       {
@@ -8582,10 +8582,10 @@
         },
         "coingecko_id": "omniflix-network",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:992"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:992"
         ]
       },
       {
@@ -8629,8 +8629,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/spacer.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:993"
+          "furya-frontier",
+          "furya-price:ufury:993"
         ]
       },
       {
@@ -8674,8 +8674,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/light.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:ibc/FFA652599C77E853F017193E36B5AB2D4D9AFC4B54721A74904F80C9236BF3B7:995"
+          "furya-frontier",
+          "furya-price:ibc/FFA652599C77E853F017193E36B5AB2D4D9AFC4B54721A74904F80C9236BF3B7:995"
         ]
       },
       {
@@ -8720,12 +8720,12 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/secretnetwork/images/silk.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:1005"
+          "furya-frontier",
+          "furya-price:ufury:1005"
         ]
       },
       {
-        "description": "Mille: the 1000th token on osmosis",
+        "description": "Mille: the 1000th token on furya",
         "denom_units": [
           {
             "denom": "ibc/912275A63A565BFD80734AEDFFB540132C51E446EAC41483B26EDE8A557C71CF",
@@ -8765,8 +8765,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/mille.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:1000"
+          "furya-frontier",
+          "furya-price:ufury:1000"
         ]
       },
       {
@@ -8810,8 +8810,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/manna.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:997"
+          "furya-frontier",
+          "furya-price:ufury:997"
         ]
       },
       {
@@ -8869,9 +8869,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/filecoin/images/wfil.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:uosmo:1006"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ufury:1006"
         ]
       },
       {
@@ -8915,8 +8915,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/void.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:1003"
+          "furya-frontier",
+          "furya-price:ufury:1003"
         ]
       },
       {
@@ -8962,9 +8962,9 @@
         },
         "coingecko_id": "shade-protocol",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1004"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1004"
         ]
       },
       {
@@ -9012,9 +9012,9 @@
         "keywords": [
           "bluzelle",
           "game",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:1007"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:1007"
         ]
       },
       {
@@ -9064,10 +9064,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/arbitrum/images/arb.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1011"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1011"
         ]
       },
       {
@@ -9111,9 +9111,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/silica.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D1542AA8762DB13087D8364F3EA6509FD6F009A34F00426AF9E4F9FA85CBBF1F:1023"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D1542AA8762DB13087D8364F3EA6509FD6F009A34F00426AF9E4F9FA85CBBF1F:1023"
         ]
       },
       {
@@ -9157,8 +9157,8 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/pepec.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-price:uosmo:1016"
+          "furya-frontier",
+          "furya-price:ufury:1016"
         ]
       },
       {
@@ -9208,9 +9208,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/pepe.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:uosmo:1018"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ufury:1018"
         ]
       },
       {
@@ -9231,13 +9231,13 @@
         "symbol": "IBCX",
         "traces": [],
         "logo_URIs": {
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/ibcx.svg"
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/ibcx.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D3B574938631B0A1BA704879020C696E514CFADAA7643CDE4BD5EB010BDE327B:1042"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D3B574938631B0A1BA704879020C696E514CFADAA7643CDE4BD5EB010BDE327B:1042"
         ]
       },
       {
@@ -9295,9 +9295,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/cbeth.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:ibc/B2BD584CD2A0A9CE53D4449667E26160C7D44A9C41AF50F602C201E5B3CCA46C:1030"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ibc/B2BD584CD2A0A9CE53D4449667E26160C7D44A9C41AF50F602C201E5B3CCA46C:1030"
         ]
       },
       {
@@ -9355,9 +9355,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/reth.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:ibc/B2BD584CD2A0A9CE53D4449667E26160C7D44A9C41AF50F602C201E5B3CCA46C:1030"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ibc/B2BD584CD2A0A9CE53D4449667E26160C7D44A9C41AF50F602C201E5B3CCA46C:1030"
         ]
       },
       {
@@ -9423,9 +9423,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/sfrxeth.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:ibc/B2BD584CD2A0A9CE53D4449667E26160C7D44A9C41AF50F602C201E5B3CCA46C:1030"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ibc/B2BD584CD2A0A9CE53D4449667E26160C7D44A9C41AF50F602C201E5B3CCA46C:1030"
         ]
       },
       {
@@ -9491,9 +9491,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/ethereum/images/wsteth.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-price:ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5:1024"
+          "furya-main",
+          "furya-frontier",
+          "furya-price:ibc/EA1D43981D5C9A1C4AAEA9C23BB1D4FA126BA9BC7020A25E0AE4AA841EA25DC5:1024"
         ]
       },
       {
@@ -9536,10 +9536,10 @@
         },
         "coingecko_id": "gitopia",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1036"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1036"
         ]
       },
       {
@@ -9583,10 +9583,10 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/roar.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1043"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1043"
         ]
       },
       {
@@ -9636,10 +9636,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/stride/images/stumee.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/67795E528DF67C5606FC20F824EA39A6EF55BA133F4DC79C90A8C47A0901E17C:1035"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/67795E528DF67C5606FC20F824EA39A6EF55BA133F4DC79C90A8C47A0901E17C:1035"
         ]
       },
       {
@@ -9660,14 +9660,14 @@
         "symbol": "stIBCX",
         "traces": [],
         "logo_URIs": {
-          "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/stibcx.png",
-          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/osmosis/images/stibcx.svg"
+          "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/stibcx.png",
+          "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/furya/images/stibcx.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1039"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1039"
         ]
       },
       {
@@ -9710,10 +9710,10 @@
         },
         "coingecko_id": "nolus",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:1041"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858:1041"
         ]
       },
       {
@@ -9757,7 +9757,7 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/cub.png"
         },
         "keywords": [
-          "osmosis-frontier"
+          "furya-frontier"
         ]
       },
       {
@@ -9801,7 +9801,7 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/terra2/images/blue.png"
         },
         "keywords": [
-          "osmosis-frontier"
+          "furya-frontier"
         ]
       },
       {
@@ -9844,9 +9844,9 @@
         },
         "coingecko_id": "neutron",
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1046"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1046"
         ]
       },
       {
@@ -9890,9 +9890,9 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/casa.png"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1028"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1028"
         ]
       },
       {
@@ -9933,10 +9933,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/composable/images/pica.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1057"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1057"
         ]
       },
       {
@@ -9998,9 +9998,9 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/_non-cosmos/kusama/images/ksm.svg"
         },
         "keywords": [
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1058"
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1058"
         ]
       },
       {
@@ -10081,10 +10081,10 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/quasar/images/quasar.png"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1060"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1060"
         ]
       },
       {
@@ -10131,10 +10131,10 @@
         },
         "coingecko_id": "archway",
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1061"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1061"
         ]
       },
       {
@@ -10175,10 +10175,10 @@
           "svg": "https://raw.githubusercontent.com/cosmos/chain-registry/master/empowerchain/images/mpwr.svg"
         },
         "keywords": [
-          "osmosis-main",
-          "osmosis-frontier",
-          "osmosis-info",
-          "osmosis-price:uosmo:1065"
+          "furya-main",
+          "furya-frontier",
+          "furya-info",
+          "furya-price:ufury:1065"
         ]
       },
       {
@@ -10222,7 +10222,7 @@
           "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/watr.png"
         },
         "keywords": [
-          "osmosis-frontier"
+          "furya-frontier"
         ]
       }
     ]

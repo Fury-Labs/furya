@@ -5,14 +5,14 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	clmath "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/math"
-	clmodel "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	clmath "github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
+	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (
@@ -428,8 +428,8 @@ func (s *KeeperTestSuite) TestGetSpreadRewardGrowthOutside() {
 }
 
 func (s *KeeperTestSuite) TestCalculateSpreadRewardGrowth() {
-	defaultGeeFrowthGlobal := sdk.NewDecCoins(sdk.NewDecCoin("uosmo", osmomath.NewInt(10)))
-	defaultGeeFrowthOutside := sdk.NewDecCoins(sdk.NewDecCoin("uosmo", osmomath.NewInt(3)))
+	defaultGeeFrowthGlobal := sdk.NewDecCoins(sdk.NewDecCoin("ufury", osmomath.NewInt(10)))
+	defaultGeeFrowthOutside := sdk.NewDecCoins(sdk.NewDecCoin("ufury", osmomath.NewInt(3)))
 
 	defaultSmallerTargetTick := int64(1)
 	defaultCurrentTick := int64(2)

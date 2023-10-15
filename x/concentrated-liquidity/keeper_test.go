@@ -10,24 +10,24 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	concentrated_liquidity "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/clmocks"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/math"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	concentrated_liquidity "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/clmocks"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
 
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/app/apptesting"
 )
 
 const (
-	OSMO                              = "uosmo"
+	FURY                              = "ufury"
 	migrationTestTimeBetweenSwapsSecs = 10
 )
 
@@ -35,7 +35,7 @@ var (
 	// TODO: switch:
 	// DefaultMinTick to tyoes.MinInitializedTickV2 and
 	// DefaultMinCurrentTick to types.MinCurrentTickV2 upon
-	// completion of https://github.com/osmosis-labs/osmosis/issues/5726
+	// completion of https://github.com/furya-labs/furya/issues/5726
 	DefaultMinTick, DefaultMaxTick       = types.MinInitializedTick, types.MaxTick
 	DefaultMinCurrentTick                = types.MinCurrentTick
 	DefaultLowerPrice                    = osmomath.NewDec(4545)

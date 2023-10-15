@@ -8,7 +8,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 )
 
 // ConditionalPanic checks if expectPanic is true, asserts that sut (system under test)

@@ -11,7 +11,7 @@ import (
 )
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&MsgEmitIBCAck{}, "osmosis/ibc-hooks/emit-ibc-ack", nil)
+	cdc.RegisterConcrete(&MsgEmitIBCAck{}, "furya/ibc-hooks/emit-ibc-ack", nil)
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {

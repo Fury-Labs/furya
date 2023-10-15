@@ -12,11 +12,11 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	appparams "github.com/osmosis-labs/osmosis/v20/app/params"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	appparams "github.com/furya-labs/furya/v20/app/params"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/server"
@@ -154,7 +154,7 @@ func ExportDeriveBalancesCmd() *cobra.Command {
 		Short: "Export a derive balances from a provided genesis export",
 		Long: `Export a derive balances from a provided genesis export
 Example:
-	osmosisd export-derive-balances ../genesis.json ../snapshot.json
+	furyad export-derive-balances ../genesis.json ../snapshot.json
 `,
 		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -324,7 +324,7 @@ func StakedToCSVCmd() *cobra.Command {
 		Short: "Export a airdrop csv from a provided balances export",
 		Long: `Export a airdrop csv from a provided balances export (from export-derive-balances)
 Example:
-	osmosisd staked-to-csv ../balances.json ../airdrop.csv
+	furyad staked-to-csv ../balances.json ../airdrop.csv
 `,
 		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {

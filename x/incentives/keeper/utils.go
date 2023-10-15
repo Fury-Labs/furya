@@ -3,7 +3,7 @@ package keeper
 import (
 	"time"
 
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

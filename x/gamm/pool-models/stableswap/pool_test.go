@@ -9,11 +9,11 @@ import (
 
 	"github.com/tendermint/tendermint/crypto/ed25519"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/internal/cfmm_common"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/internal/cfmm_common"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 var (

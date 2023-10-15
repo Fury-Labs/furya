@@ -9,8 +9,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/wasmbinding"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/wasmbinding"
 )
 
 func TestFullDenom(t *testing.T) {
@@ -94,7 +94,7 @@ func TestDenomAdmin(t *testing.T) {
 		},
 		{
 			name:        "invalid token factory denom",
-			denom:       "uosmo",
+			denom:       "ufury",
 			expectErr:   false,
 			expectAdmin: "",
 		},

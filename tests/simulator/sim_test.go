@@ -12,14 +12,14 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/simapp/helpers"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	osmosim "github.com/osmosis-labs/osmosis/v20/simulation/executor"
-	"github.com/osmosis-labs/osmosis/v20/simulation/simtypes/simlogger"
-	txfeetypes "github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/osmomath"
+	osmosim "github.com/furya-labs/furya/v20/simulation/executor"
+	"github.com/furya-labs/furya/v20/simulation/simtypes/simlogger"
+	txfeetypes "github.com/furya-labs/furya/v20/x/txfees/types"
 )
 
 // Profile with:
-// /usr/local/go/bin/go test -benchmem -run=^$ github.com/osmosis-labs/osmosis/simapp -bench ^BenchmarkFullAppSimulation$ -Commit=true -cpuprofile cpu.out
+// /usr/local/go/bin/go test -benchmem -run=^$ github.com/furya-labs/furya/simapp -bench ^BenchmarkFullAppSimulation$ -Commit=true -cpuprofile cpu.out
 func BenchmarkFullAppSimulation(b *testing.B) {
 	// -Enabled=true -NumBlocks=1000 -BlockSize=200 \
 	// -Period=1 -Commit=true -Seed=57 -v -timeout 24h
@@ -64,8 +64,8 @@ func fullAppSimulation(tb testing.TB, is_testing bool) {
 	_, _, simErr := osmosim.SimulateFromSeed(
 		tb,
 		os.Stdout,
-		OsmosisAppCreator(logger, db),
-		OsmosisInitFns,
+		FuryaAppCreator(logger, db),
+		FuryaInitFns,
 		config,
 	)
 
@@ -119,8 +119,8 @@ func TestAppStateDeterminism(t *testing.T) {
 			lastCommitId, _, simErr := osmosim.SimulateFromSeed(
 				t,
 				os.Stdout,
-				OsmosisAppCreator(logger, db),
-				OsmosisInitFns,
+				FuryaAppCreator(logger, db),
+				FuryaInitFns,
 				config,
 			)
 

@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 // TestReverseRelationTickIndexToBytes tests if TickIndexToBytes and TickIndexFromBytes

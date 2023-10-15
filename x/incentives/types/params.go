@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	"github.com/furya-labs/furya/osmoutils"
+	epochtypes "github.com/furya-labs/furya/x/epochs/types"
 
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 )
@@ -17,8 +17,8 @@ var (
 	KeyGroupCreationFee     = []byte("GroupCreationFee")
 	KeyCreatorWhitelist     = []byte("CreatorWhitelist")
 
-	// 100 OSMO
-	DefaultGroupCreationFee = sdk.NewCoins(sdk.NewCoin("uosmo", sdk.NewInt(100_000_000)))
+	// 100 FURY
+	DefaultGroupCreationFee = sdk.NewCoins(sdk.NewCoin("ufury", sdk.NewInt(100_000_000)))
 )
 
 // ParamKeyTable returns the key table for the incentive module's parameters.

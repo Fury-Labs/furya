@@ -7,14 +7,14 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	clmodel "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	sftypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	sftypes "github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 func (s *KeeperTestSuite) TestInitializePool() {
@@ -306,14 +306,14 @@ func (s *KeeperTestSuite) TestCalculateSpotPrice() {
 	// ETH is token0 so its price will be the DefaultCurrSqrtPrice squared
 	spotPriceBaseETH, err := s.App.ConcentratedLiquidityKeeper.CalculateSpotPrice(s.Ctx, poolId, USDC, ETH)
 	s.Require().NoError(err)
-	// TODO: remove Dec truncation before https://github.com/osmosis-labs/osmosis/issues/5726 is complete
+	// TODO: remove Dec truncation before https://github.com/furya-labs/furya/issues/5726 is complete
 	// Currently exists for state-compatibility with v19.x
 	s.Require().Equal(spotPriceBaseETH.Dec(), DefaultCurrSqrtPrice.PowerInteger(2).Dec())
 
 	// test that we have correct values for reversed quote asset and base asset
 	spotPriceBaseUSDC, err := s.App.ConcentratedLiquidityKeeper.CalculateSpotPrice(s.Ctx, poolId, ETH, USDC)
 	s.Require().NoError(err)
-	// TODO: remove Dec truncation before https://github.com/osmosis-labs/osmosis/issues/5726 is complete
+	// TODO: remove Dec truncation before https://github.com/furya-labs/furya/issues/5726 is complete
 	// Currently exists for state-compatibility with v19.x
 	s.Require().Equal(spotPriceBaseUSDC.Dec(), osmomath.OneBigDec().Quo(DefaultCurrSqrtPrice.PowerInteger(2)).Dec())
 
@@ -523,7 +523,7 @@ func (s *KeeperTestSuite) TestDecreaseConcentratedPoolTickSpacing() {
 			s.SetupTest()
 			owner := s.TestAccs[0]
 
-			// Create OSMO <> USDC pool with tick spacing of 100
+			// Create FURY <> USDC pool with tick spacing of 100
 			concentratedPool := s.PrepareConcentratedPoolWithCoinsAndFullRangePosition(ETH, USDC)
 
 			// Create a position in the pool that is divisible by the tick spacing
@@ -559,7 +559,7 @@ func (s *KeeperTestSuite) TestGetTotalPoolLiquidity() {
 	var (
 		defaultPoolCoinOne = sdk.NewCoin(USDC, osmomath.OneInt())
 		defaultPoolCoinTwo = sdk.NewCoin(ETH, osmomath.NewInt(2))
-		nonPoolCool        = sdk.NewCoin("uosmo", osmomath.NewInt(3))
+		nonPoolCool        = sdk.NewCoin("ufury", osmomath.NewInt(3))
 
 		defaultCoins = sdk.NewCoins(defaultPoolCoinOne, defaultPoolCoinTwo)
 	)

@@ -1,13 +1,13 @@
 syntax = "proto3";
-package osmosis.valsetpref.v1beta1;
+package furya.valsetpref.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "amino/amino.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/valset-pref/v1beta1/state.proto";
+import "furya/valset-pref/v1beta1/state.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/valset-pref/types";
+option go_package = "github.com/furya-labs/furya/v20/x/valset-pref/types";
 
 // Msg defines the valset-pref modules's gRPC message service.
 service Msg {
@@ -45,14 +45,14 @@ service Msg {
       returns (MsgWithdrawDelegationRewardsResponse);
 
   // DelegateBondedTokens allows users to break the lockup bond and delegate
-  // osmo tokens to a predefined validator-set.
+  // fury tokens to a predefined validator-set.
   rpc DelegateBondedTokens(MsgDelegateBondedTokens)
       returns (MsgDelegateBondedTokensResponse);
 }
 
 // MsgCreateValidatorSetPreference is a list that holds validator-set.
 message MsgSetValidatorSetPreference {
-  option (amino.name) = "osmosis/MsgSetValidatorSetPreference";
+  option (amino.name) = "furya/MsgSetValidatorSetPreference";
 
   // delegator is the user who is trying to create a validator-set.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
@@ -69,7 +69,7 @@ message MsgSetValidatorSetPreferenceResponse {}
 // MsgDelegateToValidatorSet allows users to delegate to an existing
 // validator-set
 message MsgDelegateToValidatorSet {
-  option (amino.name) = "osmosis/MsgDelegateToValidatorSet";
+  option (amino.name) = "furya/MsgDelegateToValidatorSet";
 
   // delegator is the user who is trying to delegate.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
@@ -87,7 +87,7 @@ message MsgDelegateToValidatorSet {
 message MsgDelegateToValidatorSetResponse {}
 
 message MsgUndelegateFromValidatorSet {
-  option (amino.name) = "osmosis/MsgUndelegateFromValidatorSet";
+  option (amino.name) = "furya/MsgUndelegateFromValidatorSet";
 
   // delegator is the user who is trying to undelegate.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
@@ -106,17 +106,17 @@ message MsgUndelegateFromValidatorSet {
 message MsgUndelegateFromValidatorSetResponse {}
 
 message MsgUndelegateFromRebalancedValidatorSet {
-  option (amino.name) = "osmosis/MsgUndelegateFromRebalancedValidatorSet";
+  option (amino.name) = "furya/MsgUndelegateFromRebalancedValidatorSet";
 
   // delegator is the user who is trying to undelegate.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
 
   // the amount the user wants to undelegate
-  // For ex: Undelegate 50 osmo with validator-set {ValA -> 0.5, ValB -> 0.5}
+  // For ex: Undelegate 50 fury with validator-set {ValA -> 0.5, ValB -> 0.5}
   // Our undelegate logic would first check the current delegation balance.
-  // If the user has 90 osmo delegated to ValA and 10 osmo delegated to ValB,
+  // If the user has 90 fury delegated to ValA and 10 fury delegated to ValB,
   // the rebalanced validator set would be {ValA -> 0.9, ValB -> 0.1}
-  // So now the 45 osmo would be undelegated from ValA and 5 osmo would be
+  // So now the 45 fury would be undelegated from ValA and 5 fury would be
   // undelegated from ValB.
   cosmos.base.v1beta1.Coin coin = 2 [
     (gogoproto.nullable) = false,
@@ -127,7 +127,7 @@ message MsgUndelegateFromRebalancedValidatorSet {
 message MsgUndelegateFromRebalancedValidatorSetResponse {}
 
 message MsgRedelegateValidatorSet {
-  option (amino.name) = "osmosis/MsgRedelegateValidatorSet";
+  option (amino.name) = "furya/MsgRedelegateValidatorSet";
 
   // delegator is the user who is trying to create a validator-set.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
@@ -144,7 +144,7 @@ message MsgRedelegateValidatorSetResponse {}
 // MsgWithdrawDelegationRewards allows user to claim staking rewards from the
 // validator set.
 message MsgWithdrawDelegationRewards {
-  option (amino.name) = "osmosis/MsgWithdrawDelegationRewards";
+  option (amino.name) = "furya/MsgWithdrawDelegationRewards";
 
   // delegator is the user who is trying to claim staking rewards.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
@@ -152,13 +152,13 @@ message MsgWithdrawDelegationRewards {
 
 message MsgWithdrawDelegationRewardsResponse {}
 
-// MsgDelegateBondedTokens breaks bonded lockup (by ID) of osmo, of
-// length <= 2 weeks and takes all that osmo and delegates according to
+// MsgDelegateBondedTokens breaks bonded lockup (by ID) of fury, of
+// length <= 2 weeks and takes all that fury and delegates according to
 // delegator's current validator set preference.
 message MsgDelegateBondedTokens {
-  // delegator is the user who is trying to force unbond osmo and delegate.
+  // delegator is the user who is trying to force unbond fury and delegate.
   string delegator = 1 [ (gogoproto.moretags) = "yaml:\"delegator\"" ];
-  // lockup id of osmo in the pool
+  // lockup id of fury in the pool
   uint64 lockID = 2;
 }
 

@@ -16,16 +16,16 @@ var (
 
 const (
 	// msgs
-	setHotRoutes             = "osmosis/MsgSetHotRoutes"
-	setDeveloperAccount      = "osmosis/MsgSetDeveloperAccount"
-	setMaxPoolPointsPerTx    = "osmosis/MsgSetMaxPoolPointsPerTx"
-	setMaxPoolPointsPerBlock = "osmosis/MsgSetMaxPoolPointsPerBlock"
-	setInfoByPoolType        = "osmosis/MsgSetInfoByPoolType"
-	setBaseDenoms            = "osmosis/MsgSetBaseDenoms"
+	setHotRoutes             = "furya/MsgSetHotRoutes"
+	setDeveloperAccount      = "furya/MsgSetDeveloperAccount"
+	setMaxPoolPointsPerTx    = "furya/MsgSetMaxPoolPointsPerTx"
+	setMaxPoolPointsPerBlock = "furya/MsgSetMaxPoolPointsPerBlock"
+	setInfoByPoolType        = "furya/MsgSetInfoByPoolType"
+	setBaseDenoms            = "furya/MsgSetBaseDenoms"
 
 	// proposals
-	setProtoRevEnabledProposal      = "osmosis/SetProtoRevEnabledProposal"
-	setProtoRevAdminAccountProposal = "osmosis/SetProtoRevAdminAccountProposal"
+	setProtoRevEnabledProposal      = "furya/SetProtoRevEnabledProposal"
+	setProtoRevAdminAccountProposal = "furya/SetProtoRevAdminAccountProposal"
 )
 
 func init() {

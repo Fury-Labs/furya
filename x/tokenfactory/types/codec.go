@@ -11,12 +11,12 @@ import (
 )
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&MsgCreateDenom{}, "osmosis/tokenfactory/create-denom", nil)
-	cdc.RegisterConcrete(&MsgMint{}, "osmosis/tokenfactory/mint", nil)
-	cdc.RegisterConcrete(&MsgBurn{}, "osmosis/tokenfactory/burn", nil)
-	cdc.RegisterConcrete(&MsgForceTransfer{}, "osmosis/tokenfactory/force-transfer", nil)
-	cdc.RegisterConcrete(&MsgChangeAdmin{}, "osmosis/tokenfactory/change-admin", nil)
-	cdc.RegisterConcrete(&MsgSetBeforeSendHook{}, "osmosis/tokenfactory/set-beforesend-hook", nil)
+	cdc.RegisterConcrete(&MsgCreateDenom{}, "furya/tokenfactory/create-denom", nil)
+	cdc.RegisterConcrete(&MsgMint{}, "furya/tokenfactory/mint", nil)
+	cdc.RegisterConcrete(&MsgBurn{}, "furya/tokenfactory/burn", nil)
+	cdc.RegisterConcrete(&MsgForceTransfer{}, "furya/tokenfactory/force-transfer", nil)
+	cdc.RegisterConcrete(&MsgChangeAdmin{}, "furya/tokenfactory/change-admin", nil)
+	cdc.RegisterConcrete(&MsgSetBeforeSendHook{}, "furya/tokenfactory/set-beforesend-hook", nil)
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {

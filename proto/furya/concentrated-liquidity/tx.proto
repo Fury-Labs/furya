@@ -1,5 +1,5 @@
 syntax = "proto3";
-package osmosis.concentratedliquidity.v1beta1;
+package furya.concentratedliquidity.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "amino/amino.proto";
@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types";
+option go_package = "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types";
 
 service Msg {
   rpc CreatePosition(MsgCreatePosition) returns (MsgCreatePositionResponse);
@@ -31,7 +31,7 @@ service Msg {
 
 // ===================== MsgCreatePosition
 message MsgCreatePosition {
-  option (amino.name) = "osmosis/cl-create-position";
+  option (amino.name) = "furya/cl-create-position";
 
   uint64 pool_id = 1 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
   string sender = 2 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
@@ -89,7 +89,7 @@ message MsgCreatePositionResponse {
 
 // ===================== MsgAddToPosition
 message MsgAddToPosition {
-  option (amino.name) = "osmosis/cl-add-to-position";
+  option (amino.name) = "furya/cl-add-to-position";
 
   uint64 position_id = 1 [ (gogoproto.moretags) = "yaml:\"position_id\"" ];
   string sender = 2 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
@@ -147,7 +147,7 @@ message MsgAddToPositionResponse {
 
 // ===================== MsgWithdrawPosition
 message MsgWithdrawPosition {
-  option (amino.name) = "osmosis/cl-withdraw-position";
+  option (amino.name) = "furya/cl-withdraw-position";
 
   uint64 position_id = 1 [ (gogoproto.moretags) = "yaml:\"position_id\"" ];
   string sender = 2 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
@@ -176,7 +176,7 @@ message MsgWithdrawPositionResponse {
 
 // ===================== MsgCollectSpreadRewards
 message MsgCollectSpreadRewards {
-  option (amino.name) = "osmosis/cl-col-sp-rewards";
+  option (amino.name) = "furya/cl-col-sp-rewards";
 
   repeated uint64 position_ids = 1
       [ (gogoproto.moretags) = "yaml:\"position_ids\"" ];
@@ -193,7 +193,7 @@ message MsgCollectSpreadRewardsResponse {
 
 // ===================== MsgCollectIncentives
 message MsgCollectIncentives {
-  option (amino.name) = "osmosis/cl-collect-incentives";
+  option (amino.name) = "furya/cl-collect-incentives";
 
   repeated uint64 position_ids = 1
       [ (gogoproto.moretags) = "yaml:\"position_ids\"" ];
@@ -215,7 +215,7 @@ message MsgCollectIncentivesResponse {
 
 // ===================== MsgFungifyChargedPositions
 message MsgFungifyChargedPositions {
-  option (amino.name) = "osmosis/cl-fungify-charged-positions";
+  option (amino.name) = "furya/cl-fungify-charged-positions";
 
   repeated uint64 position_ids = 1
       [ (gogoproto.moretags) = "yaml:\"position_ids\"" ];
@@ -229,7 +229,7 @@ message MsgFungifyChargedPositionsResponse {
 
 // ===================== MsgTransferPositions
 message MsgTransferPositions {
-  option (amino.name) = "osmosis/cl-transfer-positions";
+  option (amino.name) = "furya/cl-transfer-positions";
 
   repeated uint64 position_ids = 1
       [ (gogoproto.moretags) = "yaml:\"position_ids\"" ];

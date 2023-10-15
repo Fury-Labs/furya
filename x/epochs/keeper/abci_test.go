@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/exp/maps"
 
-	"github.com/osmosis-labs/osmosis/osmoutils"
+	"github.com/furya-labs/furya/osmoutils"
 )
 
 // This test is responsible for testing how epochs increment based off

@@ -1,9 +1,9 @@
 package keeper
 
 import (
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -15,7 +15,7 @@ import (
 //
 // It should eventually begin unwinding all of the synthetic lockups for that asset
 // and queue them for deletion.
-// See https://github.com/osmosis-labs/osmosis/issues/864
+// See https://github.com/furya-labs/furya/issues/864
 func (k Keeper) BeginUnwindSuperfluidAsset(ctx sdk.Context, epochNum int64, asset types.SuperfluidAsset) {
 	// Right now set the TWAP to 0, and delete the asset.
 	k.SetOsmoEquivalentMultiplier(ctx, epochNum, asset.Denom, osmomath.ZeroDec())
@@ -40,7 +40,7 @@ func (k Keeper) UnriskAdjustOsmoValue(ctx sdk.Context, amount osmomath.Dec) osmo
 }
 
 func (k Keeper) AddNewSuperfluidAsset(ctx sdk.Context, asset types.SuperfluidAsset) error {
-	// initialize osmo equivalent multipliers
+	// initialize fury equivalent multipliers
 	epochIdentifier := k.GetEpochIdentifier(ctx)
 	currentEpoch := k.ek.GetEpochInfo(ctx, epochIdentifier).CurrentEpoch
 	return osmoutils.ApplyFuncIfNoError(ctx, func(ctx sdk.Context) error {

@@ -28,13 +28,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/client/cli"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/client/rest"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/keeper"
+	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/furya-labs/furya/v20/x/lockup/client/cli"
+	"github.com/furya-labs/furya/v20/x/lockup/client/rest"
+	"github.com/furya-labs/furya/v20/x/lockup/keeper"
 
-	simulation "github.com/osmosis-labs/osmosis/v20/x/lockup/simulation"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	simulation "github.com/furya-labs/furya/v20/x/lockup/simulation"
+	"github.com/furya-labs/furya/v20/x/lockup/types"
 )
 
 var (

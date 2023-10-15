@@ -7,10 +7,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 )
 
-// This sets up PFM on chainB and tests that it works as expected. We assume ChainA is osmosis
+// This sets up PFM on chainB and tests that it works as expected. We assume ChainA is furya
 func (suite *HooksTestSuite) SetupAndTestPFM(chainBId Chain, chainBName string, registryAddr sdk.AccAddress) {
 	targetChain := suite.GetChain(chainBId)
 	sendFrom := targetChain.SenderAccount.GetAddress()
@@ -18,8 +18,8 @@ func (suite *HooksTestSuite) SetupAndTestPFM(chainBId Chain, chainBName string, 
 	reverseDirection := suite.GetDirection(chainBId, ChainA)
 	sender, receiver := suite.GetEndpoints(suite.GetDirection(ChainA, chainBId))
 
-	osmosisApp := suite.chainA.GetOsmosisApp()
-	contractKeeper := wasmkeeper.NewDefaultPermissionKeeper(osmosisApp.WasmKeeper)
+	furyaApp := suite.chainA.GetFuryaApp()
+	contractKeeper := wasmkeeper.NewDefaultPermissionKeeper(furyaApp.WasmKeeper)
 
 	pfm_msg := fmt.Sprintf(`{"has_packet_forwarding": {"chain": "%s"}}`, chainBName)
 	forwarding := suite.chainA.QueryContractJson(&suite.Suite, registryAddr, []byte(pfm_msg))
@@ -28,7 +28,7 @@ func (suite *HooksTestSuite) SetupAndTestPFM(chainBId Chain, chainBName string, 
 	transferMsg := NewMsgTransfer(sdk.NewCoin("token0", osmomath.NewInt(2000)), targetChain.SenderAccount.GetAddress().String(), sendFrom.String(), suite.GetSenderChannel(chainBId, ChainA), "")
 	suite.FullSend(transferMsg, reverseDirection)
 	tokenBA := suite.GetIBCDenom(chainBId, ChainA, "token0")
-	balance := osmosisApp.BankKeeper.GetBalance(suite.chainA.GetContext(), sendFrom, tokenBA)
+	balance := furyaApp.BankKeeper.GetBalance(suite.chainA.GetContext(), sendFrom, tokenBA)
 
 	ctx := suite.chainA.GetContext()
 
@@ -37,7 +37,7 @@ func (suite *HooksTestSuite) SetupAndTestPFM(chainBId Chain, chainBName string, 
 	suite.Require().NoError(err)
 
 	// Check that the funds were sent to the contract
-	intermediateBalance := osmosisApp.BankKeeper.GetBalance(suite.chainA.GetContext(), sendFrom, tokenBA)
+	intermediateBalance := furyaApp.BankKeeper.GetBalance(suite.chainA.GetContext(), sendFrom, tokenBA)
 	suite.Require().Equal(balance.Amount, intermediateBalance.Amount.Add(osmomath.NewInt(1)))
 
 	forwarding = suite.chainA.QueryContractJson(&suite.Suite, registryAddr, []byte(pfm_msg))
@@ -83,7 +83,7 @@ func (suite *HooksTestSuite) SetupAndTestPFM(chainBId Chain, chainBName string, 
 	forwarding = suite.chainA.QueryContractJson(&suite.Suite, registryAddr, []byte(pfm_msg))
 	suite.Require().True(forwarding.Bool())
 
-	newBalance := osmosisApp.BankKeeper.GetBalance(suite.chainA.GetContext(), sendFrom, tokenBA)
+	newBalance := furyaApp.BankKeeper.GetBalance(suite.chainA.GetContext(), sendFrom, tokenBA)
 	// Ensure that the funds have been returned to the user
 	suite.Require().Equal(balance, newBalance)
 }
@@ -93,16 +93,16 @@ func (suite *HooksTestSuite) TestPathValidation() {
 	registryAddr, _, _, _ := suite.SetupCrosschainRegistry(ChainA)
 	suite.setChainChannelLinks(registryAddr, ChainA)
 
-	osmosisApp := suite.chainA.GetOsmosisApp()
-	contractKeeper := wasmkeeper.NewDefaultPermissionKeeper(osmosisApp.WasmKeeper)
+	furyaApp := suite.chainA.GetFuryaApp()
+	contractKeeper := wasmkeeper.NewDefaultPermissionKeeper(furyaApp.WasmKeeper)
 
 	msg := fmt.Sprintf(`{
 		"modify_bech32_prefixes": {
 		  "operations": [
-			{"operation": "set", "chain_name": "osmosis", "prefix": "osmo"},
-			{"operation": "set", "chain_name": "chainA", "prefix": "osmo"},
-			{"operation": "set", "chain_name": "chainB", "prefix": "osmo"},
-			{"operation": "set", "chain_name": "chainC", "prefix": "osmo"}
+			{"operation": "set", "chain_name": "furya", "prefix": "fury"},
+			{"operation": "set", "chain_name": "chainA", "prefix": "fury"},
+			{"operation": "set", "chain_name": "chainB", "prefix": "fury"},
+			{"operation": "set", "chain_name": "chainC", "prefix": "fury"}
 		  ]
 		}
 	  }

@@ -5,10 +5,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	types "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	types "github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 var (

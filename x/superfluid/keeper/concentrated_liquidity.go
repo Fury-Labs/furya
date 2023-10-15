@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 // addToConcentratedLiquiditySuperfluidPosition adds the specified amounts of tokens to an existing superfluid staked
@@ -76,7 +76,7 @@ func (k Keeper) addToConcentratedLiquiditySuperfluidPosition(ctx sdk.Context, se
 	}
 
 	// Superfluid undelegate the superfluid delegated position.
-	// This deletes the connection between the lock and the intermediate account, deletes the synthetic lock, and burns the synthetic osmo.
+	// This deletes the connection between the lock and the intermediate account, deletes the synthetic lock, and burns the synthetic fury.
 	intermediateAccount, err := k.SuperfluidUndelegateToConcentratedPosition(ctx, sender.String(), lockId)
 	if err != nil {
 		return cltypes.CreateFullRangePositionData{}, 0, err

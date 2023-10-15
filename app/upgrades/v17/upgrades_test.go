@@ -13,15 +13,15 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/app/keepers"
-	v17 "github.com/osmosis-labs/osmosis/v20/app/upgrades/v17"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
-	"github.com/osmosis-labs/osmosis/v20/x/twap/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/app/keepers"
+	v17 "github.com/furya-labs/furya/v20/app/upgrades/v17"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/v20/x/twap/types"
 )
 
 type UpgradeTestSuite struct {
@@ -123,10 +123,10 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 					poolCoins := sdk.NewCoins(sdk.NewCoin(assetPair.BaseAsset, osmomath.NewInt(10000000000)), sdk.NewCoin(assetPair.QuoteAsset, osmomath.NewInt(10000000000)))
 					s.PrepareBalancerPoolWithCoins(poolCoins...)
 
-					// 0.1 OSMO used to get the respective base asset amount, 0.1 OSMO used to create the position
-					osmoIn := sdk.NewCoin(v17.OSMO, osmomath.NewInt(100000).MulRaw(2))
+					// 0.1 FURY used to get the respective base asset amount, 0.1 FURY used to create the position
+					osmoIn := sdk.NewCoin(v17.FURY, osmomath.NewInt(100000).MulRaw(2))
 
-					// Add the amount of osmo that will be used to the expectedCoinsUsedInUpgradeHandler.
+					// Add the amount of fury that will be used to the expectedCoinsUsedInUpgradeHandler.
 					expectedCoinsUsedInUpgradeHandler = expectedCoinsUsedInUpgradeHandler.Add(osmoIn)
 
 					// Enable the GAMM pool for superfluid if the record says so.
@@ -143,42 +143,42 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 					lastPoolID = poolID
 				}
 
-				existingPool := s.PrepareConcentratedPoolWithCoins("ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "uosmo")
-				existingPool2 := s.PrepareConcentratedPoolWithCoins("akash", "uosmo")
-				existingBalancerPoolId := s.PrepareBalancerPoolWithCoins(sdk.NewCoin("atom", osmomath.NewInt(10000000000)), sdk.NewCoin("uosmo", osmomath.NewInt(10000000000)))
+				existingPool := s.PrepareConcentratedPoolWithCoins("ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "ufury")
+				existingPool2 := s.PrepareConcentratedPoolWithCoins("akash", "ufury")
+				existingBalancerPoolId := s.PrepareBalancerPoolWithCoins(sdk.NewCoin("atom", osmomath.NewInt(10000000000)), sdk.NewCoin("ufury", osmomath.NewInt(10000000000)))
 
 				// create few TWAP records for the pools
-				t1 := dummyTwapRecord(existingPool.GetId(), time.Now().Add(-time.Hour*24), "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "uosmo", osmomath.NewDec(10),
+				t1 := dummyTwapRecord(existingPool.GetId(), time.Now().Add(-time.Hour*24), "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "ufury", osmomath.NewDec(10),
 					osmomath.OneDec().MulInt64(10*10),
 					osmomath.OneDec().MulInt64(3),
 					osmomath.ZeroDec())
 
-				t2 := dummyTwapRecord(existingPool.GetId(), time.Now().Add(-time.Hour*10), "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "uosmo", osmomath.NewDec(30),
+				t2 := dummyTwapRecord(existingPool.GetId(), time.Now().Add(-time.Hour*10), "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "ufury", osmomath.NewDec(30),
 					osmomath.OneDec().MulInt64(10*10+10),
 					osmomath.OneDec().MulInt64(5),
 					osmomath.ZeroDec())
 
-				t3 := dummyTwapRecord(existingPool.GetId(), time.Now().Add(-time.Hour), "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "uosmo", osmomath.NewDec(20),
+				t3 := dummyTwapRecord(existingPool.GetId(), time.Now().Add(-time.Hour), "ibc/1480B8FD20AD5FCAE81EA87584D269547DD4D436843C1D20F15E00EB64743EF4", "ufury", osmomath.NewDec(20),
 					osmomath.OneDec().MulInt64(10*10+10*5),
 					osmomath.OneDec().MulInt64(10),
 					osmomath.ZeroDec())
 
-				t4 := dummyTwapRecord(existingPool2.GetId(), time.Now().Add(-time.Hour*24), "akash", "uosmo", osmomath.NewDec(10),
+				t4 := dummyTwapRecord(existingPool2.GetId(), time.Now().Add(-time.Hour*24), "akash", "ufury", osmomath.NewDec(10),
 					osmomath.OneDec().MulInt64(10*10*10),
 					osmomath.OneDec().MulInt64(5),
 					osmomath.ZeroDec())
 
-				t5 := dummyTwapRecord(existingPool2.GetId(), time.Now().Add(-time.Hour), "akash", "uosmo", osmomath.NewDec(20),
+				t5 := dummyTwapRecord(existingPool2.GetId(), time.Now().Add(-time.Hour), "akash", "ufury", osmomath.NewDec(20),
 					osmomath.OneDec().MulInt64(10),
 					osmomath.OneDec().MulInt64(2),
 					osmomath.ZeroDec())
 
-				t6 := dummyTwapRecord(existingBalancerPoolId, time.Now().Add(-time.Hour), "atom", "uosmo", osmomath.NewDec(10),
+				t6 := dummyTwapRecord(existingBalancerPoolId, time.Now().Add(-time.Hour), "atom", "ufury", osmomath.NewDec(10),
 					osmomath.OneDec().MulInt64(10),
 					osmomath.OneDec().MulInt64(10),
 					osmomath.ZeroDec())
 
-				t7 := dummyTwapRecord(existingBalancerPoolId, time.Now().Add(-time.Minute*20), "atom", "uosmo", osmomath.NewDec(50),
+				t7 := dummyTwapRecord(existingBalancerPoolId, time.Now().Add(-time.Minute*20), "atom", "ufury", osmomath.NewDec(50),
 					osmomath.OneDec().MulInt64(10*5),
 					osmomath.OneDec().MulInt64(5),
 					osmomath.ZeroDec())
@@ -198,7 +198,7 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 				lastPoolIdMinusOne := lastPoolID - 1
 				lastPoolIdMinusTwo := lastPoolID - 2
 				stakingParams := s.App.StakingKeeper.GetParams(s.Ctx)
-				stakingParams.BondDenom = "uosmo"
+				stakingParams.BondDenom = "ufury"
 				s.App.StakingKeeper.SetParams(s.Ctx, stakingParams)
 
 				// Retrieve the community pool balance before the upgrade
@@ -316,10 +316,10 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 					lastPoolID++
 				}
 
-				// Validate that the community pool balance has been reduced by the amount of osmo that was used to create the pool.
+				// Validate that the community pool balance has been reduced by the amount of fury that was used to create the pool.
 				s.Require().Equal(communityPoolBalancePre.Sub(expectedCoinsUsedInUpgradeHandler).String(), communityPoolBalancePost.String())
 
-				// Validate that the fee pool community pool balance has been decreased by the amount of osmo that was used to create the pool.
+				// Validate that the fee pool community pool balance has been decreased by the amount of fury that was used to create the pool.
 				s.Require().Equal(sdk.NewDecCoinsFromCoins(communityPoolBalancePost...).String(), feePoolCommunityPoolPost.String())
 
 				numPoolPostUpgrade := s.App.PoolManagerKeeper.GetNextPoolId(s.Ctx) - 1
@@ -336,7 +336,7 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 		{
 			"Test that the upgrade succeeds: testnet",
 			func(keepers *keepers.AppKeepers) (sdk.Coins, uint64) {
-				s.Ctx = s.Ctx.WithChainID("osmo-test-5")
+				s.Ctx = s.Ctx.WithChainID("fury-test-5")
 
 				var lastPoolID uint64 // To keep track of the last assigned pool ID
 
@@ -355,10 +355,10 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 						poolCoins := sdk.NewCoins(sdk.NewCoin(assetPair.BaseAsset, osmomath.NewInt(10000000000)), sdk.NewCoin(assetPair.QuoteAsset, osmomath.NewInt(10000000000)))
 						s.PrepareBalancerPoolWithCoins(poolCoins...)
 
-						// 0.1 OSMO used to get the respective base asset amount, 0.1 OSMO used to create the position
-						osmoIn := sdk.NewCoin(v17.OSMO, osmomath.NewInt(100000).MulRaw(2))
+						// 0.1 FURY used to get the respective base asset amount, 0.1 FURY used to create the position
+						osmoIn := sdk.NewCoin(v17.FURY, osmomath.NewInt(100000).MulRaw(2))
 
-						// Add the amount of osmo that will be used to the expectedCoinsUsedInUpgradeHandler.
+						// Add the amount of fury that will be used to the expectedCoinsUsedInUpgradeHandler.
 						expectedCoinsUsedInUpgradeHandler = expectedCoinsUsedInUpgradeHandler.Add(osmoIn)
 
 						lastPoolID++
@@ -390,9 +390,9 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 				return expectedCoinsUsedInUpgradeHandler, lastPoolID
 			},
 			func(keepers *keepers.AppKeepers, expectedCoinsUsedInUpgradeHandler sdk.Coins, lastPoolID uint64) {
-				// Set the bond denom to uosmo
+				// Set the bond denom to ufury
 				stakingParams := s.App.StakingKeeper.GetParams(s.Ctx)
-				stakingParams.BondDenom = "uosmo"
+				stakingParams.BondDenom = "ufury"
 				s.App.StakingKeeper.SetParams(s.Ctx, stakingParams)
 
 				// Retrieve the community pool balance before the upgrade
@@ -434,7 +434,7 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 					// Retrieve quoteAsset and baseAsset from the poolCoins
 					quoteAsset, baseAsset := "", ""
 					for _, coin := range poolCoins {
-						if coin.Denom == v17.OSMO {
+						if coin.Denom == v17.FURY {
 							quoteAsset = coin.Denom
 						} else {
 							baseAsset = coin.Denom
@@ -489,10 +489,10 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 					lastPoolID++
 				}
 
-				// Validate that the community pool balance has been reduced by the amount of osmo that was used to create the pool.
+				// Validate that the community pool balance has been reduced by the amount of fury that was used to create the pool.
 				s.Require().Equal(communityPoolBalancePre.Sub(expectedCoinsUsedInUpgradeHandler).String(), communityPoolBalancePost.String())
 
-				// Validate that the fee pool community pool balance has been decreased by the amount of osmo that was used to create the pool.
+				// Validate that the fee pool community pool balance has been decreased by the amount of fury that was used to create the pool.
 				s.Require().Equal(sdk.NewDecCoinsFromCoins(communityPoolBalancePost...).String(), feePoolCommunityPoolPost.String())
 
 				numPoolPostUpgrade := s.App.PoolManagerKeeper.GetNextPoolId(s.Ctx) - 1

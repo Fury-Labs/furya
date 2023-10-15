@@ -1,8 +1,8 @@
 package swapstrategy_test
 
 import (
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/swapstrategy"
 )
 

@@ -1,9 +1,9 @@
 syntax = "proto3";
-package osmosis.cosmwasmpool.v1beta1;
+package furya.cosmwasmpool.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/cosmwasmpool/v1beta1/params.proto";
-import "osmosis/cosmwasmpool/v1beta1/tx.proto";
+import "furya/cosmwasmpool/v1beta1/params.proto";
+import "furya/cosmwasmpool/v1beta1/tx.proto";
 
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
@@ -12,23 +12,23 @@ import "google/protobuf/any.proto";
 import "cosmos_proto/cosmos.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/client/queryproto";
+option go_package = "github.com/furya-labs/furya/v20/x/cosmwasmpool/client/queryproto";
 
 service Query {
   // Pools returns all cosmwasm pools
   rpc Pools(PoolsRequest) returns (PoolsResponse) {
-    option (google.api.http).get = "/osmosis/cosmwasmpool/v1beta1/pools";
+    option (google.api.http).get = "/furya/cosmwasmpool/v1beta1/pools";
   }
 
   // Params returns the parameters of the x/cosmwasmpool module.
   rpc Params(ParamsRequest) returns (ParamsResponse) {
-    option (google.api.http).get = "/osmosis/cosmwasmpool/v1beta1/params";
+    option (google.api.http).get = "/furya/cosmwasmpool/v1beta1/params";
   }
 
   rpc ContractInfoByPoolId(ContractInfoByPoolIdRequest)
       returns (ContractInfoByPoolIdResponse) {
     option (google.api.http).get =
-        "/osmosis/cosmwasmpool/v1beta1/contract_info";
+        "/furya/cosmwasmpool/v1beta1/contract_info";
   }
 }
 

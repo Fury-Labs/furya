@@ -3,9 +3,9 @@ package types
 import (
 	"fmt"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	appparams "github.com/osmosis-labs/osmosis/v20/app/params"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	appparams "github.com/furya-labs/furya/v20/app/params"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
@@ -49,7 +49,7 @@ func NewParams(poolCreationFee sdk.Coins,
 // DefaultParams are the default poolmanager module parameters.
 func DefaultParams() Params {
 	return Params{
-		PoolCreationFee: sdk.Coins{sdk.NewInt64Coin(appparams.BaseCoinUnit, 1000_000_000)}, // 1000 OSMO
+		PoolCreationFee: sdk.Coins{sdk.NewInt64Coin(appparams.BaseCoinUnit, 1000_000_000)}, // 1000 FURY
 		TakerFeeParams: TakerFeeParams{
 			DefaultTakerFee: osmomath.ZeroDec(), // 0%
 			OsmoTakerFeeDistribution: TakerFeeDistributionPercentage{
@@ -65,7 +65,7 @@ func DefaultParams() Params {
 			ReducedFeeWhitelist:                            []string{},
 		},
 		AuthorizedQuoteDenoms: []string{
-			"uosmo",
+			"ufury",
 			"ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2", // ATOM
 			"ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7", // DAI
 			"ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858", // USDC

@@ -5,13 +5,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/keepers"
-	"github.com/osmosis-labs/osmosis/v20/app/upgrades"
+	"github.com/furya-labs/furya/v20/app/keepers"
+	"github.com/furya-labs/furya/v20/app/upgrades"
 )
 
-// OSMO / DAI CL pool ID
+// FURY / DAI CL pool ID
 const FirstCLPoolId = 1066
 
 func CreateUpgradeHandler(

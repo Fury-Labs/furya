@@ -9,12 +9,12 @@ import (
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	osmoapp "github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/osmomath"
+	osmoapp "github.com/furya-labs/furya/v20/app"
 
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 )
 
 var (
@@ -95,7 +95,7 @@ func TestIncentivesExportGenesis(t *testing.T) {
 
 	// create an address and fund with coins
 	addr := sdk.AccAddress([]byte("addr1---------------"))
-	coins := sdk.Coins{sdk.NewInt64Coin("stake", 20000), sdk.NewInt64Coin("uosmo", 10000000000)}
+	coins := sdk.Coins{sdk.NewInt64Coin("stake", 20000), sdk.NewInt64Coin("ufury", 10000000000)}
 	err := simapp.FundAccount(app.BankKeeper, ctx, addr, coins)
 	require.NoError(t, err)
 
@@ -108,7 +108,7 @@ func TestIncentivesExportGenesis(t *testing.T) {
 	msgCreatePool := model.MsgCreateConcentratedPool{
 		Sender:       addr.String(),
 		Denom0:       "uion",
-		Denom1:       "uosmo",
+		Denom1:       "ufury",
 		TickSpacing:  100,
 		SpreadFactor: osmomath.MustNewDecFromStr("0.0005"),
 	}
@@ -226,7 +226,7 @@ func TestIncentivesInitGenesis(t *testing.T) {
 	require.Equal(t, expectedGroups, groups)
 }
 
-func createAllGaugeTypes(t *testing.T, app *osmoapp.OsmosisApp, ctx sdk.Context, addr sdk.AccAddress, coins sdk.Coins, startTime time.Time) {
+func createAllGaugeTypes(t *testing.T, app *osmoapp.FuryaApp, ctx sdk.Context, addr sdk.AccAddress, coins sdk.Coins, startTime time.Time) {
 	// create a byDuration gauge
 	_, err := app.IncentivesKeeper.CreateGauge(ctx, true, addr, coins, distrToByDuration, startTime, 1, 0)
 	require.NoError(t, err)

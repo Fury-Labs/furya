@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -177,7 +177,7 @@ func (m MsgCreateGroup) ValidateBasic() error {
 	}
 
 	// Temporarily disable non perpetual group creation
-	// https://github.com/osmosis-labs/osmosis/issues/6540
+	// https://github.com/furya-labs/furya/issues/6540
 	if m.NumEpochsPaidOver != PerpetualNumEpochsPaidOver {
 		return errors.New("non-perpetual group creation is disabled")
 	}

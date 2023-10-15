@@ -16,20 +16,20 @@ import (
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	osmosisApp "github.com/osmosis-labs/osmosis/v19/app"
-	"github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/model"
+	furyaApp "github.com/furya-labs/furya/v19/app"
+	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/model"
 
-	cltypes "github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/types"
-	clgenesis "github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/types/genesis"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v19/x/poolmanager/types"
+	cltypes "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types"
+	clgenesis "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types/genesis"
+	poolmanagertypes "github.com/furya-labs/furya/v19/x/poolmanager/types"
 )
 
-func EditLocalOsmosisGenesis(updatedCLGenesis *clgenesis.GenesisState, updatedBankGenesis *banktypes.GenesisState) {
+func EditLocalFuryaGenesis(updatedCLGenesis *clgenesis.GenesisState, updatedBankGenesis *banktypes.GenesisState) {
 	serverCtx := server.NewDefaultContext()
 	config := serverCtx.Config
 
-	config.SetRoot(localOsmosisHomePath)
-	config.Moniker = "localosmosis"
+	config.SetRoot(localFuryaHomePath)
+	config.Moniker = "localfurya"
 
 	genFile := config.GenesisFile()
 	appState, genDoc, err := genutiltypes.GenesisStateFromGenFile(genFile)
@@ -37,33 +37,33 @@ func EditLocalOsmosisGenesis(updatedCLGenesis *clgenesis.GenesisState, updatedBa
 		panic(err)
 	}
 
-	encodingConfig := osmosisApp.MakeEncodingConfig()
+	encodingConfig := furyaApp.MakeEncodingConfig()
 	cdc := encodingConfig.Marshaler
 
 	// Concentrated liquidity genesis.
-	var localOsmosisCLGenesis clgenesis.GenesisState
-	cdc.MustUnmarshalJSON(appState[cltypes.ModuleName], &localOsmosisCLGenesis)
+	var localFuryaCLGenesis clgenesis.GenesisState
+	cdc.MustUnmarshalJSON(appState[cltypes.ModuleName], &localFuryaCLGenesis)
 
 	// Pool manager genesis.
-	var localOsmosisPoolManagerGenesis poolmanagertypes.GenesisState
-	cdc.MustUnmarshalJSON(appState[poolmanagertypes.ModuleName], &localOsmosisPoolManagerGenesis)
+	var localFuryaPoolManagerGenesis poolmanagertypes.GenesisState
+	cdc.MustUnmarshalJSON(appState[poolmanagertypes.ModuleName], &localFuryaPoolManagerGenesis)
 
-	var localOsmosisBankGenesis banktypes.GenesisState
-	cdc.MustUnmarshalJSON(appState[banktypes.ModuleName], &localOsmosisBankGenesis)
+	var localFuryaBankGenesis banktypes.GenesisState
+	cdc.MustUnmarshalJSON(appState[banktypes.ModuleName], &localFuryaBankGenesis)
 
-	nextPoolId := localOsmosisPoolManagerGenesis.NextPoolId
-	localOsmosisPoolManagerGenesis.NextPoolId = nextPoolId + 1
-	localOsmosisPoolManagerGenesis.PoolRoutes = append(localOsmosisPoolManagerGenesis.PoolRoutes, poolmanagertypes.ModuleRoute{
+	nextPoolId := localFuryaPoolManagerGenesis.NextPoolId
+	localFuryaPoolManagerGenesis.NextPoolId = nextPoolId + 1
+	localFuryaPoolManagerGenesis.PoolRoutes = append(localFuryaPoolManagerGenesis.PoolRoutes, poolmanagertypes.ModuleRoute{
 		PoolType: poolmanagertypes.Concentrated,
 		PoolId:   nextPoolId,
 	})
-	appState[poolmanagertypes.ModuleName] = cdc.MustMarshalJSON(&localOsmosisPoolManagerGenesis)
+	appState[poolmanagertypes.ModuleName] = cdc.MustMarshalJSON(&localFuryaPoolManagerGenesis)
 
 	// Copy positions
 	largestPositionId := uint64(0)
 	for _, positionData := range updatedCLGenesis.PositionData {
 		positionData.Position.PoolId = nextPoolId
-		localOsmosisCLGenesis.PositionData = append(localOsmosisCLGenesis.PositionData, positionData)
+		localFuryaCLGenesis.PositionData = append(localFuryaCLGenesis.PositionData, positionData)
 		if positionData.Position.PositionId > largestPositionId {
 			largestPositionId = positionData.Position.PositionId
 		}
@@ -125,17 +125,17 @@ func EditLocalOsmosisGenesis(updatedCLGenesis *clgenesis.GenesisState, updatedBa
 
 		// Update bank genesis with balances
 		poolBalances := balancesMap[clPool.GetAddress().String()]
-		localOsmosisBankGenesis.Balances = append(localOsmosisBankGenesis.Balances, poolBalances...)
+		localFuryaBankGenesis.Balances = append(localFuryaBankGenesis.Balances, poolBalances...)
 
-		localOsmosisCLGenesis.PoolData = append(localOsmosisCLGenesis.PoolData, updatedPoolData)
+		localFuryaCLGenesis.PoolData = append(localFuryaCLGenesis.PoolData, updatedPoolData)
 	}
 
-	localOsmosisCLGenesis.NextPositionId = largestPositionId + 1
+	localFuryaCLGenesis.NextPositionId = largestPositionId + 1
 
-	appState[cltypes.ModuleName] = cdc.MustMarshalJSON(&localOsmosisCLGenesis)
+	appState[cltypes.ModuleName] = cdc.MustMarshalJSON(&localFuryaCLGenesis)
 
 	// Persist updated bank genesis
-	appState[banktypes.ModuleName] = cdc.MustMarshalJSON(&localOsmosisBankGenesis)
+	appState[banktypes.ModuleName] = cdc.MustMarshalJSON(&localFuryaBankGenesis)
 
 	appStateJSON, err := json.Marshal(appState)
 	if err != nil {
@@ -149,10 +149,10 @@ func EditLocalOsmosisGenesis(updatedCLGenesis *clgenesis.GenesisState, updatedBa
 		panic(err)
 	}
 
-	fmt.Printf("Writing genesis file to %s", localOsmosisHomePath)
+	fmt.Printf("Writing genesis file to %s", localFuryaHomePath)
 	start := time.Now()
 	for time.Since(start) < 30*time.Second {
-		if err := WriteFile(filepath.Join(localOsmosisHomePath, "config", "genesis.json"), genesisJson); err == nil {
+		if err := WriteFile(filepath.Join(localFuryaHomePath, "config", "genesis.json"), genesisJson); err == nil {
 			fmt.Println("Genesis file written successfully")
 			return
 		} else {

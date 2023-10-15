@@ -1,9 +1,9 @@
 package keeper_test
 
 import (
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -91,7 +91,7 @@ func (s *KeeperTestSuite) TestGetSuperfluidOSMOTokens() {
 	// Reset multiplier
 	s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, epoch, gammShareDenom, multiplier)
 
-	// Get superfluid OSMO tokens
+	// Get superfluid FURY tokens
 	osmoTokens, err = s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, gammShareDenom, testAmount)
 	s.Require().NoError(err)
 
@@ -112,7 +112,7 @@ func (s *KeeperTestSuite) TestGetSuperfluidOSMOTokens() {
 	// Reset multiplier
 	s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, epoch, clShareDenom, multiplier)
 
-	// Get superfluid OSMO tokens
+	// Get superfluid FURY tokens
 	osmoTokens, err = s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, clShareDenom, testAmount)
 	s.Require().NoError(err)
 

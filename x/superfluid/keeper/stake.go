@@ -6,12 +6,12 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
-	valsettypes "github.com/osmosis-labs/osmosis/v20/x/valset-pref/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	valsettypes "github.com/furya-labs/furya/v20/x/valset-pref/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
@@ -26,15 +26,15 @@ func (k Keeper) GetTotalSyntheticAssetsLocked(ctx sdk.Context, denom string) osm
 	})
 }
 
-// GetExpectedDelegationAmount returns the total number of osmo the intermediary account
-// has delegated using the most recent osmo equivalent multiplier.
+// GetExpectedDelegationAmount returns the total number of fury the intermediary account
+// has delegated using the most recent fury equivalent multiplier.
 // This is labeled as expected because the way it calculates the amount can
 // lead rounding errors from the true delegated amount.
 func (k Keeper) GetExpectedDelegationAmount(ctx sdk.Context, acc types.SuperfluidIntermediaryAccount) (osmomath.Int, error) {
 	// (1) Find how many tokens total T are locked for (denom, validator) pair
 	totalSuperfluidDelegation := k.GetTotalSyntheticAssetsLocked(ctx, stakingSyntheticDenom(acc.Denom, acc.ValAddr))
-	// (2) Multiply the T tokens, by the number of superfluid osmo per token, to get the total amount
-	// of osmo we expect.
+	// (2) Multiply the T tokens, by the number of superfluid fury per token, to get the total amount
+	// of fury we expect.
 	refreshedAmount, err := k.GetSuperfluidOSMOTokens(ctx, acc.Denom, totalSuperfluidDelegation)
 	if err != nil {
 		return osmomath.Int{}, err
@@ -43,7 +43,7 @@ func (k Keeper) GetExpectedDelegationAmount(ctx sdk.Context, acc types.Superflui
 }
 
 // RefreshIntermediaryDelegationAmounts refreshes the amount of delegation for all intermediary accounts.
-// This method includes minting new osmo if the refreshed delegation amount has increased, and
+// This method includes minting new fury if the refreshed delegation amount has increased, and
 // instantly undelegating and burning if the refreshed delgation has decreased.
 func (k Keeper) RefreshIntermediaryDelegationAmounts(ctx sdk.Context) {
 	// iterate over all intermedairy accounts - every (denom, validator) pair
@@ -112,7 +112,7 @@ func (k Keeper) IncreaseSuperfluidDelegation(ctx sdk.Context, lockID uint64, amo
 		return nil
 	}
 
-	// mint OSMO token based on the most recent osmo equivalent multiplier
+	// mint FURY token based on the most recent fury equivalent multiplier
 	// of locked denom to denom module account
 	osmoAmt, err := k.GetSuperfluidOSMOTokens(ctx, acc.Denom, amount.AmountOf(acc.Denom))
 	if err != nil {
@@ -196,13 +196,13 @@ func (k Keeper) validateValAddrForDelegate(ctx sdk.Context, valAddr string) (sta
 	return validator, nil
 }
 
-// SuperfluidDelegate superfluid delegates osmo equivalent amount the given lock holds.
+// SuperfluidDelegate superfluid delegates fury equivalent amount the given lock holds.
 // The actual delegation is done by using/creating an intermediary account for the (denom, validator) pair
 // and having the intermediary account delegate to the designated validator, not by the sender themselves.
 // A state entry of IntermediaryAccountConnection is stored to store the connection between the lock ID
 // and the intermediary account, as an intermediary account does not serve for delegations from a single delegator.
-// The actual amount of delegation is not equal to the equivalent amount of osmo the lock has. That is,
-// the actual amount of delegation is amount * osmo equivalent multiplier * (1 - k.RiskFactor(asset)).
+// The actual amount of delegation is not equal to the equivalent amount of fury the lock has. That is,
+// the actual amount of delegation is amount * fury equivalent multiplier * (1 - k.RiskFactor(asset)).
 func (k Keeper) SuperfluidDelegate(ctx sdk.Context, sender string, lockID uint64, valAddr string) error {
 	lock, err := k.lk.GetLockByID(ctx, lockID)
 	if err != nil {
@@ -219,7 +219,7 @@ func (k Keeper) SuperfluidDelegate(ctx sdk.Context, sender string, lockID uint64
 	lockedCoin := lock.Coins[0]
 
 	// get the intermediate account for this (denom, validator) pair.
-	// This account tracks the amount of osmo being considered as staked.
+	// This account tracks the amount of fury being considered as staked.
 	// If an intermediary account doesn't exist, then create it + a perpetual gauge.
 	acc, err := k.GetOrCreateIntermediaryAccount(ctx, lockedCoin.Denom, valAddr)
 	if err != nil {
@@ -234,7 +234,7 @@ func (k Keeper) SuperfluidDelegate(ctx sdk.Context, sender string, lockID uint64
 		return err
 	}
 
-	// Find how many new osmo tokens this delegation is worth at superfluids current risk adjustment
+	// Find how many new fury tokens this delegation is worth at superfluids current risk adjustment
 	// and twap of the denom.
 	amount, err := k.GetSuperfluidOSMOTokens(ctx, acc.Denom, lockedCoin.Amount)
 	if err != nil {
@@ -253,7 +253,7 @@ func (k Keeper) SuperfluidDelegate(ctx sdk.Context, sender string, lockID uint64
 // - gets the intermediary account associated with the lock id
 // - deletes the connection between the lock id and the intermediary account
 // - deletes the synthetic lockup associated with the lock id
-// - undelegates the superfluid staking position associated with the lock id and burns the underlying osmo tokens
+// - undelegates the superfluid staking position associated with the lock id and burns the underlying fury tokens
 // - returns the intermediary account
 func (k Keeper) undelegateCommon(ctx sdk.Context, sender string, lockID uint64) (types.SuperfluidIntermediaryAccount, error) {
 	lock, err := k.lk.GetLockByID(ctx, lockID)
@@ -280,7 +280,7 @@ func (k Keeper) undelegateCommon(ctx sdk.Context, sender string, lockID uint64) 
 		return types.SuperfluidIntermediaryAccount{}, err
 	}
 
-	// undelegate this lock's delegation amount, and burn the minted osmo.
+	// undelegate this lock's delegation amount, and burn the minted fury.
 	amount, err := k.GetSuperfluidOSMOTokens(ctx, intermediaryAcc.Denom, lockedCoin.Amount)
 	if err != nil {
 		return types.SuperfluidIntermediaryAccount{}, err
@@ -446,7 +446,7 @@ func (k Keeper) alreadySuperfluidStaking(ctx sdk.Context, lockID uint64) bool {
 	return synthLock != (lockuptypes.SyntheticLock{})
 }
 
-// mintOsmoTokensAndDelegate mints osmoAmount of OSMO tokens, and immediately delegate them to validator on behalf of intermediary account.
+// mintOsmoTokensAndDelegate mints osmoAmount of FURY tokens, and immediately delegate them to validator on behalf of intermediary account.
 func (k Keeper) mintOsmoTokensAndDelegate(ctx sdk.Context, osmoAmount osmomath.Int, intermediaryAccount types.SuperfluidIntermediaryAccount) error {
 	validator, err := k.validateValAddrForDelegate(ctx, intermediaryAccount.ValAddr)
 	if err != nil {
@@ -568,10 +568,10 @@ func (k Keeper) IterateDelegations(ctx sdk.Context, delegator sdk.AccAddress, fn
 			continue
 		}
 
-		// get osmo-equivalent token amount
+		// get fury-equivalent token amount
 		amount, err := k.GetSuperfluidOSMOTokens(ctx, interim.Denom, coin.Amount)
 		if err != nil {
-			ctx.Logger().Error("failed to get osmo equivalent of token", "Denom", interim.Denom, "Amount", coin.Amount, "Error", err)
+			ctx.Logger().Error("failed to get fury equivalent of token", "Denom", interim.Denom, "Amount", coin.Amount, "Error", err)
 			continue
 		}
 
@@ -606,7 +606,7 @@ func (k Keeper) IterateDelegations(ctx sdk.Context, delegator sdk.AccAddress, fn
 	}
 }
 
-// UnbondConvertAndStake converts given lock to osmo and stakes it to given validator.
+// UnbondConvertAndStake converts given lock to fury and stakes it to given validator.
 // Supports conversion of 1)superfluid bonded 2)superfluid undelegating 3)vanilla unlocking.
 // Liquid gamm shares will not be supported for conversion.
 // Delegation is done in the following logic:
@@ -627,7 +627,7 @@ func (k Keeper) UnbondConvertAndStake(ctx sdk.Context, lockID uint64, sender, va
 		return osmomath.Int{}, err
 	}
 
-	// if superfluid bonded, first change it into superfluid undelegate to burn minted osmo and instantly undelegate.
+	// if superfluid bonded, first change it into superfluid undelegate to burn minted fury and instantly undelegate.
 	if migrationType == SuperfluidBonded {
 		_, err = k.undelegateCommon(ctx, sender, lockID)
 		if err != nil {
@@ -730,7 +730,7 @@ func (k Keeper) convertUnlockedToStake(ctx sdk.Context, sender sdk.AccAddress, v
 	return totalAmtConverted, nil
 }
 
-// convertGammSharesToOsmoAndStake converts given gamm shares to osmo by swapping in the given pool
+// convertGammSharesToOsmoAndStake converts given gamm shares to fury by swapping in the given pool
 // then stakes it to the designated validator.
 // minAmtToStake works as slippage bound, and would error if total amount being staked is less than min amount to stake.
 // Depending on user inputs, valAddr and originalSuperfluidValAddr could be an empty string,
@@ -745,14 +745,14 @@ func (k Keeper) convertGammSharesToOsmoAndStake(
 
 	// from the exit coins, separate non-bond denom and bond denom.
 	for _, exitCoin := range exitCoins {
-		// if coin is not uosmo, add it to non-osmo Coins
+		// if coin is not ufury, add it to non-fury Coins
 		if exitCoin.Denom != bondDenom {
 			nonOsmoCoins = append(nonOsmoCoins, exitCoin)
 		}
 	}
 	originalBondDenomAmt := exitCoins.AmountOf(bondDenom)
 
-	// track how much non-uosmo tokens we have converted to uosmo
+	// track how much non-ufury tokens we have converted to ufury
 	totalAmtCoverted = osmomath.ZeroInt()
 
 	// iterate over non-bond denom coins and swap them into bond denom
@@ -765,7 +765,7 @@ func (k Keeper) convertGammSharesToOsmoAndStake(
 		totalAmtCoverted = totalAmtCoverted.Add(tokenOutAmt)
 	}
 
-	// add the converted amount with the amount of osmo from exit coin to get total amount we would be staking
+	// add the converted amount with the amount of fury from exit coin to get total amount we would be staking
 	totalAmtToStake := originalBondDenomAmt.Add(totalAmtCoverted)
 
 	// check if the total amount to stake after all conversion is greater than provided min amount to stake

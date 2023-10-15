@@ -1,9 +1,9 @@
 syntax = "proto3";
-package osmosis.downtimedetector.v1beta1;
+package furya.downtimedetector.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/downtime-detector/v1beta1/genesis.proto";
-import "osmosis/downtime-detector/v1beta1/downtime_duration.proto";
+import "furya/downtime-detector/v1beta1/genesis.proto";
+import "furya/downtime-detector/v1beta1/downtime_duration.proto";
 
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
@@ -13,13 +13,13 @@ import "cosmos_proto/cosmos.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/downtime-detector/client/queryproto";
+option go_package = "github.com/furya-labs/furya/v20/x/downtime-detector/client/queryproto";
 
 service Query {
   rpc RecoveredSinceDowntimeOfLength(RecoveredSinceDowntimeOfLengthRequest)
       returns (RecoveredSinceDowntimeOfLengthResponse) {
     option (google.api.http).get =
-        "/osmosis/downtime-detector/v1beta1/RecoveredSinceDowntimeOfLength";
+        "/furya/downtime-detector/v1beta1/RecoveredSinceDowntimeOfLength";
   }
 }
 

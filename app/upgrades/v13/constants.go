@@ -3,10 +3,10 @@ package v13
 import (
 	store "github.com/cosmos/cosmos-sdk/store/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/upgrades"
+	"github.com/furya-labs/furya/v20/app/upgrades"
 )
 
-// UpgradeName defines the on-chain upgrade name for the Osmosis v13 upgrade.
+// UpgradeName defines the on-chain upgrade name for the Furya v13 upgrade.
 const UpgradeName = "v13"
 
 var Upgrade = upgrades.Upgrade{

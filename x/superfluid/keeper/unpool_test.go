@@ -9,12 +9,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 var (
@@ -32,7 +32,7 @@ var (
 	defaultPoolAssets []balancer.PoolAsset = []balancer.PoolAsset{defaultFooAsset, defaultBondDenomAsset}
 	defaultAcctFunds  sdk.Coins            = sdk.NewCoins(
 		sdk.NewCoin(sdk.DefaultBondDenom, osmomath.NewInt(10000000000)),
-		sdk.NewCoin("uosmo", osmomath.NewInt(10000000000)),
+		sdk.NewCoin("ufury", osmomath.NewInt(10000000000)),
 		sdk.NewCoin("foo", osmomath.NewInt(10000000)),
 		sdk.NewCoin("bar", osmomath.NewInt(10000000)),
 		sdk.NewCoin("baz", osmomath.NewInt(10000000)),

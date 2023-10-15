@@ -3,10 +3,10 @@ package keeper_test
 import (
 	"time"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/lockup/keeper"
+	"github.com/furya-labs/furya/v20/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"

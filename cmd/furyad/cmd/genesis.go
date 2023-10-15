@@ -25,13 +25,13 @@ import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	appParams "github.com/osmosis-labs/osmosis/v20/app/params"
+	"github.com/furya-labs/furya/osmomath"
+	appParams "github.com/furya-labs/furya/v20/app/params"
 
-	incentivestypes "github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	minttypes "github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolincentivestypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
-	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
+	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
+	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	epochstypes "github.com/furya-labs/furya/x/epochs/types"
 )
 
 // PrepareGenesisCmd returns prepare-genesis cobra Command.
@@ -46,9 +46,9 @@ Examples include:
 	- Setting module initial params
 	- Setting denom metadata
 Example:
-	osmosisd prepare-genesis mainnet osmosis-1
+	furyad prepare-genesis mainnet furya-1
 	- Check input genesis:
-		file is at ~/.osmosisd/config/genesis.json
+		file is at ~/.furyad/config/genesis.json
 `,
 		Args: cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -239,12 +239,12 @@ type GenesisParams struct {
 func MainnetGenesisParams() GenesisParams {
 	genParams := GenesisParams{}
 
-	genParams.AirdropSupply = osmomath.NewIntWithDecimal(5, 13)           // 5*10^13 uosmo, 5*10^7 (50 million) osmo
+	genParams.AirdropSupply = osmomath.NewIntWithDecimal(5, 13)           // 5*10^13 ufury, 5*10^7 (50 million) fury
 	genParams.GenesisTime = time.Date(2021, 6, 18, 17, 0, 0, 0, time.UTC) // Jun 18, 2021 - 17:00 UTC
 
 	genParams.NativeCoinMetadatas = []banktypes.Metadata{
 		{
-			Description: "The native token of Osmosis",
+			Description: "The native token of Furya",
 			DenomUnits: []*banktypes.DenomUnit{
 				{
 					Denom:    appParams.BaseCoinUnit,
@@ -281,15 +281,15 @@ func MainnetGenesisParams() GenesisParams {
 	genParams.StrategicReserveAccounts = []banktypes.Balance{
 		{
 			Address: "osmo1el3aytvehpvxw2ymmya4kdyj9yndyy47fw5zh4",
-			Coins:   sdk.NewCoins(sdk.NewCoin(genParams.NativeCoinMetadatas[0].Base, osmomath.NewInt(47_874_500_000_000))), // 47.8745 million OSMO
+			Coins:   sdk.NewCoins(sdk.NewCoin(genParams.NativeCoinMetadatas[0].Base, osmomath.NewInt(47_874_500_000_000))), // 47.8745 million FURY
 		},
 		{
 			Address: "osmo1g7rp8h6wzekjjy8n6my8za3vg3338eqz3v295v",
-			Coins:   sdk.NewCoins(sdk.NewCoin(genParams.NativeCoinMetadatas[0].Base, osmomath.NewInt(500_000_000_000))), // 500 thousand OSMO
+			Coins:   sdk.NewCoins(sdk.NewCoin(genParams.NativeCoinMetadatas[0].Base, osmomath.NewInt(500_000_000_000))), // 500 thousand FURY
 		},
 		{
 			Address: "osmo1z7ql0vcjlznrruw3hwgm043w8yhzqmtpu5rlp9",
-			Coins:   sdk.NewCoins(sdk.NewCoin(genParams.NativeCoinMetadatas[0].Base, osmomath.NewInt(1_000_000_000_000))), // 1 million OSMO
+			Coins:   sdk.NewCoins(sdk.NewCoin(genParams.NativeCoinMetadatas[0].Base, osmomath.NewInt(1_000_000_000_000))), // 1 million FURY
 		},
 		{
 			Address: "osmo1grgelyng2v6v3t8z87wu3sxgt9m5s03xytvfcl",
@@ -539,7 +539,7 @@ func TestnetGenesisParams() GenesisParams {
 
 	genParams.GovParams.DepositParams.MinDeposit = sdk.NewCoins(sdk.NewCoin(
 		genParams.NativeCoinMetadatas[0].Base,
-		osmomath.NewInt(1000000), // 1 OSMO
+		osmomath.NewInt(1000000), // 1 FURY
 	))
 	genParams.GovParams.TallyParams.Quorum = osmomath.MustNewDecFromStr("0.0000000001") // 0.00000001%
 	genParams.GovParams.VotingParams.VotingPeriod = time.Second * 300                   // 300 seconds

@@ -1,12 +1,12 @@
 # Usage: update_chain_registry.py [OPTIONS]
 
 # Description:
-# This script fetches the current chain-registry entry for Osmosis and returns an updated registry 
+# This script fetches the current chain-registry entry for Furya and returns an updated registry 
 # with the new version and height information.
 #
 # The script fetches 
-# - the checksums from the osmosis release page
-# - package informations from the `go.mod` in osmosis repository 
+# - the checksums from the furya release page
+# - package informations from the `go.mod` in furya repository 
 
 # Options:
 #   --upgrade_version VERSION  Required. The version tag for the upgrade (e.g., v19.0.0).
@@ -24,7 +24,7 @@ import sys
 from utils.versions import compare_versions, same_major, validate_tag
 from utils.go_mod import fetch_go_mod_from_tag, get_package_version
 
-chain_json_url = "https://raw.githubusercontent.com/osmosis-labs/osmosis/main/chain.schema.json"
+chain_json_url = "https://raw.githubusercontent.com/furya-labs/furya/main/chain.schema.json"
 DEBUG = False
 
 def fetch_data(url, url_type):
@@ -59,18 +59,18 @@ def checksums_to_binaries_json(checksums):
     for line in checksums.splitlines():
         checksum, filename = line.split('  ')
 
-        if not filename.endswith('.tar.gz') and filename.startswith('osmosisd'):
+        if not filename.endswith('.tar.gz') and filename.startswith('furyad'):
             try:
                 _, tag, platform, arch = filename.split('-')
             except ValueError:
-                print(f"Error: Expected binary name in the form: osmosisd-X.Y.Z-platform-architecture, but got {filename}")
+                print(f"Error: Expected binary name in the form: furyad-X.Y.Z-platform-architecture, but got {filename}")
                 sys.exit(1)
             _, tag, platform, arch,  = filename.split('-')
             # exclude universal binaries and windows binaries
             if arch == 'all' or platform == 'windows':
                 continue
 
-            binaries[f"{platform}/{arch}"] = f"https://github.com/osmosis-labs/osmosis/releases/download/v{tag}/{filename}?checksum=sha256:{checksum}"
+            binaries[f"{platform}/{arch}"] = f"https://github.com/furya-labs/furya/releases/download/v{tag}/{filename}?checksum=sha256:{checksum}"
 
     return {
         "binaries": binaries
@@ -114,7 +114,7 @@ def create_version_info(version, height):
         ],
     }
     # Read binaries from the release sha256sum.txt
-    checksums_url = f"https://github.com/osmosis-labs/osmosis/releases/download/{version}/sha256sum.txt"
+    checksums_url = f"https://github.com/furya-labs/furya/releases/download/{version}/sha256sum.txt"
     checksums = fetch_data(checksums_url, 'text')
 
     binaries_json = checksums_to_binaries_json(checksums)

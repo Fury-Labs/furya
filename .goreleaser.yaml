@@ -1,12 +1,12 @@
-project_name: osmosisd
+project_name: furyad
 
 env:
   - CGO_ENABLED=1
 
 builds:
-  - id: osmosisd-darwin-amd64
-    main: ./cmd/osmosisd/main.go
-    binary: osmosisd
+  - id: furyad-darwin-amd64
+    main: ./cmd/furyad/main.go
+    binary: furyad
     hooks:
       pre:
         - wget https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvmstatic_darwin.a -O /lib/libwasmvmstatic_darwin.a
@@ -21,8 +21,8 @@ builds:
       - -mod=readonly
       - -trimpath
     ldflags:
-      - -X github.com/cosmos/cosmos-sdk/version.Name=osmosis
-      - -X github.com/cosmos/cosmos-sdk/version.AppName=osmosisd
+      - -X github.com/cosmos/cosmos-sdk/version.Name=furya
+      - -X github.com/cosmos/cosmos-sdk/version.AppName=furyad
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
       - -X github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger,static_wasm
@@ -33,9 +33,9 @@ builds:
       - ledger
       - static_wasm
 
-  - id: osmosisd-darwin-arm64
-    main: ./cmd/osmosisd/main.go
-    binary: osmosisd
+  - id: furyad-darwin-arm64
+    main: ./cmd/furyad/main.go
+    binary: furyad
     hooks:
       pre:
         - wget https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvmstatic_darwin.a -O /lib/libwasmvmstatic_darwin.a
@@ -50,8 +50,8 @@ builds:
       - -mod=readonly
       - -trimpath
     ldflags:
-      - -X github.com/cosmos/cosmos-sdk/version.Name=osmosis
-      - -X github.com/cosmos/cosmos-sdk/version.AppName=osmosisd
+      - -X github.com/cosmos/cosmos-sdk/version.Name=furya
+      - -X github.com/cosmos/cosmos-sdk/version.AppName=furyad
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
       - -X github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger,static_wasm
@@ -62,9 +62,9 @@ builds:
       - ledger
       - static_wasm
 
-  - id: osmosisd-linux-amd64
-    main: ./cmd/osmosisd
-    binary: osmosisd
+  - id: furyad-linux-amd64
+    main: ./cmd/furyad
+    binary: furyad
     hooks:
       pre:
         - wget https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvm_muslc.x86_64.a -O /usr/lib/x86_64-linux-gnu/libwasmvm_muslc.a
@@ -78,8 +78,8 @@ builds:
       - -mod=readonly
       - -trimpath
     ldflags:
-      - -X github.com/cosmos/cosmos-sdk/version.Name=osmosis
-      - -X github.com/cosmos/cosmos-sdk/version.AppName=osmosisd
+      - -X github.com/cosmos/cosmos-sdk/version.Name=furya
+      - -X github.com/cosmos/cosmos-sdk/version.AppName=furyad
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
       - -X github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger,muslc,osusergo
@@ -92,9 +92,9 @@ builds:
       - muslc
       - osusergo
 
-  - id: osmosisd-linux-arm64
-    main: ./cmd/osmosisd
-    binary: osmosisd
+  - id: furyad-linux-arm64
+    main: ./cmd/furyad
+    binary: furyad
     hooks:
       pre:
         - wget https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvm_muslc.aarch64.a -O /usr/lib/aarch64-linux-gnu/libwasmvm_muslc.a
@@ -108,8 +108,8 @@ builds:
       - -mod=readonly
       - -trimpath
     ldflags:
-      - -X github.com/cosmos/cosmos-sdk/version.Name=osmosis 
-      - -X github.com/cosmos/cosmos-sdk/version.AppName=osmosisd 
+      - -X github.com/cosmos/cosmos-sdk/version.Name=furya 
+      - -X github.com/cosmos/cosmos-sdk/version.AppName=furyad 
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }} 
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
       - -X github.com/cosmos/cosmos-sdk/version.BuildTags=netgo,ledger,muslc,osusergo
@@ -123,31 +123,31 @@ builds:
       - osusergo
 
 universal_binaries:
-  - id: osmosisd-darwin-universal
+  - id: furyad-darwin-universal
     ids:
-      - osmosisd-darwin-amd64
-      - osmosisd-darwin-arm64
+      - furyad-darwin-amd64
+      - furyad-darwin-arm64
     replace: false
 
 archives:
   - id: zipped
     builds:
-      # - osmosisd-darwin-universal
-      - osmosisd-linux-amd64
-      - osmosisd-linux-arm64
-      # - osmosisd-darwin-amd64
-      # - osmosisd-darwin-arm64
+      # - furyad-darwin-universal
+      - furyad-linux-amd64
+      - furyad-linux-arm64
+      # - furyad-darwin-amd64
+      # - furyad-darwin-arm64
     name_template: "{{.ProjectName}}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
     format: tar.gz
     files:
       - none*
   - id: binaries
     builds:
-      # - osmosisd-darwin-universal
-      - osmosisd-linux-amd64
-      - osmosisd-linux-arm64
-      # - osmosisd-darwin-amd64
-      # - osmosisd-darwin-arm64
+      # - furyad-darwin-universal
+      - furyad-linux-amd64
+      - furyad-linux-arm64
+      # - furyad-darwin-amd64
+      # - furyad-darwin-arm64
     name_template: "{{.ProjectName}}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
     format: binary
     files:
@@ -164,15 +164,15 @@ changelog:
 # Docs: https://goreleaser.com/customization/release/
 release:
   github:
-    owner: osmosis-labs
-    name: osmosis
+    owner: furya-labs
+    name: furya
   replace_existing_draft: true
   header: |
     < DESCRIPTION OF RELEASE >
 
     ## Changelog
 
-    See the full changelog [here](https://github.com/osmosis-labs/osmosis/blob/v{{ .Version }}/CHANGELOG.md)
+    See the full changelog [here](https://github.com/furya-labs/furya/blob/v{{ .Version }}/CHANGELOG.md)
 
     ## ⚡️ Binaries
 
@@ -183,33 +183,33 @@ release:
     If you prefer to build from source, you can use the following commands:
 
     ````bash
-    git clone https://github.com/osmosis-labs/osmosis
-    cd osmosis && git checkout v{{ .Version }}
+    git clone https://github.com/furya-labs/furya
+    cd furya && git checkout v{{ .Version }}
     make install
     ````
 
     ## 🐳 Run with Docker
 
-    As an alternative to installing and running osmosisd on your system, you may run osmosisd in a Docker container.
+    As an alternative to installing and running furyad on your system, you may run furyad in a Docker container.
     The following Docker images are available in our registry:
 
     | Image Name                                   | Base                                 | Description                       |
     |----------------------------------------------|--------------------------------------|-----------------------------------|
-    | `osmolabs/osmosis:{{ .Version }}`            | `distroless/static-debian11`         | Default image based on Distroless |
-    | `osmolabs/osmosis:{{ .Version }}-distroless` | `distroless/static-debian11`         | Distroless image (same as above)  |
-    | `osmolabs/osmosis:{{ .Version }}-nonroot`    | `distroless/static-debian11:nonroot` | Distroless non-root image         |
-    | `osmolabs/osmosis:{{ .Version }}-alpine`     | `alpine`                             | Alpine image                      |
+    | `osmolabs/furya:{{ .Version }}`            | `distroless/static-debian11`         | Default image based on Distroless |
+    | `osmolabs/furya:{{ .Version }}-distroless` | `distroless/static-debian11`         | Distroless image (same as above)  |
+    | `osmolabs/furya:{{ .Version }}-nonroot`    | `distroless/static-debian11:nonroot` | Distroless non-root image         |
+    | `osmolabs/furya:{{ .Version }}-alpine`     | `alpine`                             | Alpine image                      |
 
     Example run:
 
     ```bash
-    docker run osmolabs/osmosis:{{ .Version }} version
+    docker run osmolabs/furya:{{ .Version }} version
     # v{{ .Version }}
     ````
 
     All the images support `arm64` and `amd64` architectures.
 
-  name_template: "Osmosis v{{.Version}} 🧪"
+  name_template: "Furya v{{.Version}} 🧪"
   mode: replace
   draft: true
 

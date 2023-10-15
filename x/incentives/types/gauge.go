@@ -3,8 +3,8 @@ package types
 import (
 	time "time"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

@@ -11,11 +11,11 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 
-	"github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/v20/app"
 )
 
 const (
-	EnvVariable = "OSMOSISD_ENVIRONMENT"
+	EnvVariable = "FURYAD_ENVIRONMENT"
 	EnvMainnet  = "mainnet"
 	EnvTestnet  = "testnet"
 	EnvLocalnet = "localnet"
@@ -28,16 +28,16 @@ func ChangeEnvironmentCmd() *cobra.Command {
 		Short: "Set home environment variables for commands",
 		Long: `Set home environment variables for commands
 Example:
-	osmosisd set-env mainnet
-	osmosisd set-env testnet
-	osmosisd set-env localnet [optional-chain-id]
-	osmosisd set-env $HOME/.custom-dir
+	furyad set-env mainnet
+	furyad set-env testnet
+	furyad set-env localnet [optional-chain-id]
+	furyad set-env $HOME/.custom-dir
 `,
 		Args: customArgs,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			// Note: If we are calling this method, the environment file has already been set in
 			// NewRootCmd() when creating the rootCmd. We do this because order of operations
-			// dictates this as a requirement. If we changed the env file here, the osmosis
+			// dictates this as a requirement. If we changed the env file here, the furya
 			// daemon would not initialize the folder we are intending to set to.
 			newEnv := args[0]
 			chainId := ""
@@ -57,12 +57,12 @@ func PrintEnvironmentCmd() *cobra.Command {
 		Short: "Prints the current environment",
 		Long: `Prints the current environment
 Example:
-	osmosisd get-env'
+	furyad get-env'
 
 	Returns one of:
-	- mainnet implying $HOME/.osmosisd
-	- testnet implying $HOME/.osmosisd-test
-	- localosmosis implying $HOME/.osmosisd-local
+	- mainnet implying $HOME/.furyad
+	- testnet implying $HOME/.furyad-test
+	- localfurya implying $HOME/.furyad-local
 	- custom path`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			environment := getHomeEnvironment()
@@ -89,9 +89,9 @@ func environmentNameToPath(environmentName string) (string, error) {
 	case EnvMainnet:
 		return app.DefaultNodeHome, nil
 	case EnvTestnet:
-		return filepath.Join(userHomeDir, ".osmosisd-test/"), nil
+		return filepath.Join(userHomeDir, ".furyad-test/"), nil
 	case EnvLocalnet:
-		return filepath.Join(userHomeDir, ".osmosisd-local/"), nil
+		return filepath.Join(userHomeDir, ".furyad-local/"), nil
 	default:
 		_, err := os.Stat(environmentName)
 		if os.IsNotExist(err) {
@@ -109,17 +109,17 @@ func environmentNameToPath(environmentName string) (string, error) {
 func clientSettingsFromEnv(cmd *cobra.Command, environmentName, chainId string) error {
 	envConfigs := map[string]map[string]string{
 		EnvMainnet: {
-			flags.FlagChainID:       "osmosis-1",
-			flags.FlagNode:          "https://rpc.osmosis.zone:443",
+			flags.FlagChainID:       "furya-1",
+			flags.FlagNode:          "https://rpc.furya.zone:443",
 			flags.FlagBroadcastMode: "block",
 		},
 		EnvTestnet: {
-			flags.FlagChainID:       "osmo-test-5",
-			flags.FlagNode:          "https://rpc.testnet.osmosis.zone:443",
+			flags.FlagChainID:       "fury-test-5",
+			flags.FlagNode:          "https://rpc.testnet.furya.zone:443",
 			flags.FlagBroadcastMode: "block",
 		},
 		EnvLocalnet: {
-			flags.FlagChainID:       "localosmosis",
+			flags.FlagChainID:       "localfurya",
 			flags.FlagBroadcastMode: "block",
 		},
 	}
@@ -166,7 +166,7 @@ func changeEnvironment(args []string) error {
 }
 
 // createHomeDirIfNotExist creates the home directory if it does not exist and writes a blank
-// .env file. This is used for the first time setup of the osmosisd home directory.
+// .env file. This is used for the first time setup of the furyad home directory.
 func createHomeDirIfNotExist(homeDir string) error {
 	if _, err := os.Stat(homeDir); os.IsNotExist(err) {
 		err := os.MkdirAll(homeDir, 0755)

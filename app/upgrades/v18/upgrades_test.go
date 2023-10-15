@@ -13,14 +13,14 @@ import (
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	v17 "github.com/osmosis-labs/osmosis/v20/app/upgrades/v17"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	v17 "github.com/furya-labs/furya/v20/app/upgrades/v17"
 
-	gammmigration "github.com/osmosis-labs/osmosis/v20/x/gamm/types/migration"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	protorevtypes "github.com/osmosis-labs/osmosis/v20/x/protorev/types"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 type UpgradeTestSuite struct {
@@ -172,13 +172,13 @@ func (s *UpgradeTestSuite) setupCorruptedState() {
 	addr, err := sdk.AccAddressFromBech32("osmo1urn0pnx8fl5kt89r5nzqd8htruq7skadc2xdk3")
 	s.Require().NoError(err)
 	keepers := &s.App.AppKeepers
-	err = keepers.BankKeeper.MintCoins(s.Ctx, protorevtypes.ModuleName, sdk.NewCoins(sdk.NewCoin(v17.OSMO, osmomath.NewInt(50000000000))))
+	err = keepers.BankKeeper.MintCoins(s.Ctx, protorevtypes.ModuleName, sdk.NewCoins(sdk.NewCoin(v17.FURY, osmomath.NewInt(50000000000))))
 	s.Require().NoError(err)
-	err = keepers.BankKeeper.SendCoinsFromModuleToAccount(s.Ctx, protorevtypes.ModuleName, addr, sdk.NewCoins(sdk.NewCoin(v17.OSMO, osmomath.NewInt(50000000000))))
+	err = keepers.BankKeeper.SendCoinsFromModuleToAccount(s.Ctx, protorevtypes.ModuleName, addr, sdk.NewCoins(sdk.NewCoin(v17.FURY, osmomath.NewInt(50000000000))))
 	s.Require().NoError(err)
 	aktGAMMPool, err := keepers.GAMMKeeper.GetPool(s.Ctx, 3)
 	s.Require().NoError(err)
-	sharesOut, err := keepers.GAMMKeeper.JoinSwapExactAmountIn(s.Ctx, addr, aktGAMMPool.GetId(), sdk.NewCoins(sdk.NewCoin(v17.OSMO, osmomath.NewInt(50000000000))), osmomath.ZeroInt())
+	sharesOut, err := keepers.GAMMKeeper.JoinSwapExactAmountIn(s.Ctx, addr, aktGAMMPool.GetId(), sdk.NewCoins(sdk.NewCoin(v17.FURY, osmomath.NewInt(50000000000))), osmomath.ZeroInt())
 	s.Require().NoError(err)
 	aktSharesDenom := fmt.Sprintf("gamm/pool/%d", aktGAMMPool.GetId())
 	shareCoins := sdk.NewCoins(sdk.NewCoin(aktSharesDenom, sharesOut))
@@ -232,7 +232,7 @@ func (s *UpgradeTestSuite) ensurePreUpgradeDistributionPanics() {
 	s.App.ConcentratedLiquidityKeeper.SetParams(s.Ctx, clParams)
 
 	// prepare CL pool with the same denom as pool 3, which is the pool we are testing with
-	clPool := s.PrepareConcentratedPoolWithCoins(v17.AKTIBCDenom, v17.OSMO)
+	clPool := s.PrepareConcentratedPoolWithCoins(v17.AKTIBCDenom, v17.FURY)
 	balancerToCLPoolLink := []gammmigration.BalancerToConcentratedPoolLink{
 		{
 			BalancerPoolId: 3,
@@ -247,7 +247,7 @@ func (s *UpgradeTestSuite) ensurePreUpgradeDistributionPanics() {
 	s.App.GAMMKeeper.SetMigrationRecords(s.Ctx, migrationInfo)
 
 	// add new coins to the CL pool gauge so that it would be distributed after epoch ends then trigger panic
-	coinsToAdd := sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(1000)))
+	coinsToAdd := sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(1000)))
 	gagueId, err := s.App.PoolIncentivesKeeper.GetPoolGaugeId(s.Ctx, clPool.GetId(), epochInfo.Duration)
 	s.Require().NoError(err)
 	gauge, err := s.App.IncentivesKeeper.GetGaugeByID(s.Ctx, gagueId)

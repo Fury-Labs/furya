@@ -18,21 +18,21 @@ import (
 	"github.com/gogo/protobuf/proto"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	incentivestypes "github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	minttypes "github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolitypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	protorevtypes "github.com/osmosis-labs/osmosis/v20/x/protorev/types"
-	twaptypes "github.com/osmosis-labs/osmosis/v20/x/twap/types"
-	txfeestypes "github.com/osmosis-labs/osmosis/v20/x/txfees/types"
-	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
+	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
+	poolitypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	twaptypes "github.com/furya-labs/furya/v20/x/twap/types"
+	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	epochtypes "github.com/furya-labs/furya/x/epochs/types"
 
 	types1 "github.com/cosmos/cosmos-sdk/codec/types"
 
-	"github.com/osmosis-labs/osmosis/v20/tests/e2e/util"
+	"github.com/furya-labs/furya/v20/tests/e2e/util"
 )
 
 // NodeConfig is a confiuration for the node supplied from the test runner
@@ -51,7 +51,7 @@ type NodeConfig struct {
 
 const (
 	// common
-	OsmoDenom           = "uosmo"
+	OsmoDenom           = "ufury"
 	IonDenom            = "uion"
 	StakeDenom          = "stake"
 	AtomDenom           = "uatom"
@@ -65,7 +65,7 @@ const (
 	IbcSendAmount       = 3300000000
 	ValidatorWalletName = "val"
 	// chainA
-	ChainAID      = "osmo-test-a"
+	ChainAID      = "fury-test-a"
 	OsmoBalanceA  = 20000000000000
 	IonBalanceA   = 100000000000
 	StakeBalanceA = 110000000000
@@ -74,7 +74,7 @@ const (
 	LuncBalanceA  = 500000000000000
 	DaiBalanceA   = "100000000000000000000000"
 	// chainB
-	ChainBID          = "osmo-test-b"
+	ChainBID          = "fury-test-b"
 	OsmoBalanceB      = 500000000000
 	IonBalanceB       = 100000000000
 	StakeBalanceB     = 440000000000
@@ -99,7 +99,7 @@ var (
 
 	InitBalanceStrA = fmt.Sprintf("%d%s,%d%s,%d%s,%d%s,%d%s", OsmoBalanceA, OsmoDenom, StakeBalanceA, StakeDenom, IonBalanceA, IonDenom, UstBalanceA, UstIBCDenom, LuncBalanceA, LuncIBCDenom)
 	InitBalanceStrB = fmt.Sprintf("%d%s,%d%s,%d%s", OsmoBalanceB, OsmoDenom, StakeBalanceB, StakeDenom, IonBalanceB, IonDenom)
-	OsmoToken       = sdk.NewInt64Coin(OsmoDenom, IbcSendAmount)  // 3,300uosmo
+	OsmoToken       = sdk.NewInt64Coin(OsmoDenom, IbcSendAmount)  // 3,300ufury
 	StakeToken      = sdk.NewInt64Coin(StakeDenom, IbcSendAmount) // 3,300ustake
 	tenOsmo         = sdk.Coins{sdk.NewInt64Coin(OsmoDenom, 10_000_000)}
 	fiftyOsmo       = sdk.Coins{sdk.NewInt64Coin(OsmoDenom, 50_000_000)}
@@ -404,12 +404,12 @@ func updateTxfeesGenesis(txfeesGenState *txfeestypes.GenesisState) {
 
 func updateGammGenesis(gammGenState *gammtypes.GenesisState) {
 	gammGenState.Params.PoolCreationFee = tenOsmo
-	// setup fee pool, between "e2e_default_fee_token" and "uosmo"
-	uosmoFeeTokenPool := setupPool(1, "uosmo", E2EFeeToken)
+	// setup fee pool, between "e2e_default_fee_token" and "ufury"
+	ufuryFeeTokenPool := setupPool(1, "ufury", E2EFeeToken)
 
-	gammGenState.Pools = []*types1.Any{uosmoFeeTokenPool}
+	gammGenState.Pools = []*types1.Any{ufuryFeeTokenPool}
 
-	// Notice that this is non-inclusive. The DAI/OSMO pool should be created in the
+	// Notice that this is non-inclusive. The DAI/FURY pool should be created in the
 	// pre-upgrade logic of the upgrade configurer.
 	for poolId := uint64(2); poolId < DaiOsmoPoolId; poolId++ {
 		gammGenState.Pools = append(gammGenState.Pools, setupPool(poolId, OsmoDenom, AtomDenom))

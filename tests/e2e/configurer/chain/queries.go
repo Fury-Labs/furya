@@ -19,18 +19,18 @@ import (
 	"github.com/stretchr/testify/require"
 	tmabcitypes "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/tests/e2e/util"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/client/queryproto"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolmanagerqueryproto "github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/queryproto"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	protorevtypes "github.com/osmosis-labs/osmosis/v20/x/protorev/types"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
-	twapqueryproto "github.com/osmosis-labs/osmosis/v20/x/twap/client/queryproto"
-	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/tests/e2e/util"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	poolmanagerqueryproto "github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	twapqueryproto "github.com/furya-labs/furya/v20/x/twap/client/queryproto"
+	epochstypes "github.com/furya-labs/furya/x/epochs/types"
 )
 
 // PropTallyResult is the result of a proposal tally.
@@ -43,7 +43,7 @@ type PropTallyResult struct {
 
 // QueryProtoRevNumberOfTrades gets the number of trades the protorev module has executed.
 func (n *NodeConfig) QueryProtoRevNumberOfTrades() (osmomath.Int, error) {
-	path := "/osmosis/protorev/number_of_trades"
+	path := "/furya/protorev/number_of_trades"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -59,7 +59,7 @@ func (n *NodeConfig) QueryProtoRevNumberOfTrades() (osmomath.Int, error) {
 
 // QueryProtoRevProfits gets the profits the protorev module has made.
 func (n *NodeConfig) QueryProtoRevProfits() ([]sdk.Coin, error) {
-	path := "/osmosis/protorev/all_profits"
+	path := "/furya/protorev/all_profits"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -75,7 +75,7 @@ func (n *NodeConfig) QueryProtoRevProfits() ([]sdk.Coin, error) {
 
 // QueryProtoRevAllRouteStatistics gets all of the route statistics that the module has recorded.
 func (n *NodeConfig) QueryProtoRevAllRouteStatistics() ([]protorevtypes.RouteStatistics, error) {
-	path := "/osmosis/protorev/all_route_statistics"
+	path := "/furya/protorev/all_route_statistics"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -91,7 +91,7 @@ func (n *NodeConfig) QueryProtoRevAllRouteStatistics() ([]protorevtypes.RouteSta
 
 // QueryProtoRevTokenPairArbRoutes gets all of the token pair hot routes that the module is currently using.
 func (n *NodeConfig) QueryProtoRevTokenPairArbRoutes() ([]protorevtypes.TokenPairArbRoutes, error) {
-	path := "/osmosis/protorev/token_pair_arb_routes"
+	path := "/furya/protorev/token_pair_arb_routes"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -107,7 +107,7 @@ func (n *NodeConfig) QueryProtoRevTokenPairArbRoutes() ([]protorevtypes.TokenPai
 
 // QueryProtoRevDeveloperAccount gets the developer account of the module.
 func (n *NodeConfig) QueryProtoRevDeveloperAccount() (sdk.AccAddress, error) {
-	path := "/osmosis/protorev/developer_account"
+	path := "/furya/protorev/developer_account"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -129,7 +129,7 @@ func (n *NodeConfig) QueryProtoRevDeveloperAccount() (sdk.AccAddress, error) {
 
 // QueryProtoRevInfoByPoolType gets information on how the module handles different pool types.
 func (n *NodeConfig) QueryProtoRevInfoByPoolType() (*protorevtypes.InfoByPoolType, error) {
-	path := "/osmosis/protorev/info_by_pool_type"
+	path := "/furya/protorev/info_by_pool_type"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -145,7 +145,7 @@ func (n *NodeConfig) QueryProtoRevInfoByPoolType() (*protorevtypes.InfoByPoolTyp
 
 // QueryProtoRevMaxPoolPointsPerTx gets the max pool points per tx of the module.
 func (n *NodeConfig) QueryProtoRevMaxPoolPointsPerTx() (uint64, error) {
-	path := "/osmosis/protorev/max_pool_points_per_tx"
+	path := "/furya/protorev/max_pool_points_per_tx"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -161,7 +161,7 @@ func (n *NodeConfig) QueryProtoRevMaxPoolPointsPerTx() (uint64, error) {
 
 // QueryProtoRevMaxPoolPointsPerBlock gets the max pool points per block of the module.
 func (n *NodeConfig) QueryProtoRevMaxPoolPointsPerBlock() (uint64, error) {
-	path := "/osmosis/protorev/max_pool_points_per_block"
+	path := "/furya/protorev/max_pool_points_per_block"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -177,7 +177,7 @@ func (n *NodeConfig) QueryProtoRevMaxPoolPointsPerBlock() (uint64, error) {
 
 // QueryProtoRevBaseDenoms gets the base denoms used to construct cyclic arbitrage routes.
 func (n *NodeConfig) QueryProtoRevBaseDenoms() ([]protorevtypes.BaseDenom, error) {
-	path := "/osmosis/protorev/base_denoms"
+	path := "/furya/protorev/base_denoms"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -193,7 +193,7 @@ func (n *NodeConfig) QueryProtoRevBaseDenoms() ([]protorevtypes.BaseDenom, error
 
 // QueryProtoRevEnabled queries if the protorev module is enabled.
 func (n *NodeConfig) QueryProtoRevEnabled() (bool, error) {
-	path := "/osmosis/protorev/enabled"
+	path := "/furya/protorev/enabled"
 
 	bz, err := n.QueryGRPCGateway(path)
 	if err != nil {
@@ -255,7 +255,7 @@ func (n *NodeConfig) QueryGRPCGateway(path string, parameters ...string) ([]byte
 }
 
 func (n *NodeConfig) QueryNumPools() uint64 {
-	path := "osmosis/gamm/v1beta1/num_pools"
+	path := "furya/gamm/v1beta1/num_pools"
 
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
@@ -268,7 +268,7 @@ func (n *NodeConfig) QueryNumPools() uint64 {
 }
 
 func (n *NodeConfig) QueryPoolType(poolId string) string {
-	path := fmt.Sprintf("/osmosis/gamm/v1beta1/pool_type/%s", poolId)
+	path := fmt.Sprintf("/furya/gamm/v1beta1/pool_type/%s", poolId)
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
 
@@ -280,7 +280,7 @@ func (n *NodeConfig) QueryPoolType(poolId string) string {
 }
 
 func (n *NodeConfig) QueryConcentratedPositions(address string) []model.FullPositionBreakdown {
-	path := fmt.Sprintf("/osmosis/concentratedliquidity/v1beta1/positions/%s", address)
+	path := fmt.Sprintf("/furya/concentratedliquidity/v1beta1/positions/%s", address)
 
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
@@ -292,7 +292,7 @@ func (n *NodeConfig) QueryConcentratedPositions(address string) []model.FullPosi
 }
 
 func (n *NodeConfig) QueryConcentratedPool(poolId uint64) (cltypes.ConcentratedPoolExtension, error) {
-	path := fmt.Sprintf("/osmosis/poolmanager/v1beta1/pools/%d", poolId)
+	path := fmt.Sprintf("/furya/poolmanager/v1beta1/pools/%d", poolId)
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
 
@@ -314,7 +314,7 @@ func (n *NodeConfig) QueryConcentratedPool(poolId uint64) (cltypes.ConcentratedP
 }
 
 func (n *NodeConfig) QueryCFMMPool(poolId uint64) (gammtypes.CFMMPoolI, error) {
-	path := fmt.Sprintf("/osmosis/poolmanager/v1beta1/pools/%d", poolId)
+	path := fmt.Sprintf("/furya/poolmanager/v1beta1/pools/%d", poolId)
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
 
@@ -514,7 +514,7 @@ func (n *NodeConfig) QueryIntermediaryAccount(denom string, valAddr string) (int
 }
 
 func (n *NodeConfig) QueryCurrentEpoch(identifier string) int64 {
-	path := "osmosis/epochs/v1beta1/current_epoch"
+	path := "furya/epochs/v1beta1/current_epoch"
 
 	bz, err := n.QueryGRPCGateway(path, "identifier", identifier)
 	require.NoError(n.t, err)
@@ -526,7 +526,7 @@ func (n *NodeConfig) QueryCurrentEpoch(identifier string) int64 {
 }
 
 func (n *NodeConfig) QueryConcentratedPooIdLinkFromCFMM(cfmmPoolId uint64) uint64 {
-	path := fmt.Sprintf("/osmosis/gamm/v1beta1/concentrated_pool_id_link_from_cfmm/%d", cfmmPoolId)
+	path := fmt.Sprintf("/furya/gamm/v1beta1/concentrated_pool_id_link_from_cfmm/%d", cfmmPoolId)
 
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
@@ -539,7 +539,7 @@ func (n *NodeConfig) QueryConcentratedPooIdLinkFromCFMM(cfmmPoolId uint64) uint6
 }
 
 func (n *NodeConfig) QueryArithmeticTwapToNow(poolId uint64, baseAsset, quoteAsset string, startTime time.Time) (osmomath.Dec, error) {
-	path := "osmosis/twap/v1beta1/ArithmeticTwapToNow"
+	path := "furya/twap/v1beta1/ArithmeticTwapToNow"
 
 	bz, err := n.QueryGRPCGateway(
 		path,
@@ -559,7 +559,7 @@ func (n *NodeConfig) QueryArithmeticTwapToNow(poolId uint64, baseAsset, quoteAss
 }
 
 func (n *NodeConfig) QueryArithmeticTwap(poolId uint64, baseAsset, quoteAsset string, startTime time.Time, endTime time.Time) (osmomath.Dec, error) {
-	path := "osmosis/twap/v1beta1/ArithmeticTwap"
+	path := "furya/twap/v1beta1/ArithmeticTwap"
 
 	bz, err := n.QueryGRPCGateway(
 		path,
@@ -580,7 +580,7 @@ func (n *NodeConfig) QueryArithmeticTwap(poolId uint64, baseAsset, quoteAsset st
 }
 
 func (n *NodeConfig) QueryGeometricTwapToNow(poolId uint64, baseAsset, quoteAsset string, startTime time.Time) (osmomath.Dec, error) {
-	path := "osmosis/twap/v1beta1/GeometricTwapToNow"
+	path := "furya/twap/v1beta1/GeometricTwapToNow"
 
 	bz, err := n.QueryGRPCGateway(
 		path,
@@ -600,7 +600,7 @@ func (n *NodeConfig) QueryGeometricTwapToNow(poolId uint64, baseAsset, quoteAsse
 }
 
 func (n *NodeConfig) QueryGeometricTwap(poolId uint64, baseAsset, quoteAsset string, startTime time.Time, endTime time.Time) (osmomath.Dec, error) {
-	path := "osmosis/twap/v1beta1/GeometricTwap"
+	path := "furya/twap/v1beta1/GeometricTwap"
 
 	bz, err := n.QueryGRPCGateway(
 		path,
@@ -662,7 +662,7 @@ func (n *NodeConfig) QueryListSnapshots() ([]*tmabcitypes.Snapshot, error) {
 
 // QueryAllSuperfluidAssets returns all authorized superfluid assets.
 func (n *NodeConfig) QueryAllSuperfluidAssets() []superfluidtypes.SuperfluidAsset {
-	path := "/osmosis/superfluid/v1beta1/all_assets"
+	path := "/furya/superfluid/v1beta1/all_assets"
 
 	bz, err := n.QueryGRPCGateway(path)
 	require.NoError(n.t, err)
@@ -675,7 +675,7 @@ func (n *NodeConfig) QueryAllSuperfluidAssets() []superfluidtypes.SuperfluidAsse
 }
 
 func (n *NodeConfig) QueryCommunityPoolModuleAccount() string {
-	cmd := []string{"osmosisd", "query", "auth", "module-accounts", "--output=json"}
+	cmd := []string{"furyad", "query", "auth", "module-accounts", "--output=json"}
 
 	out, _, err := n.containerManager.ExecCmd(n.t, n.Name, cmd, "")
 	require.NoError(n.t, err)

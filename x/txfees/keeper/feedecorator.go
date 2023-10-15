@@ -7,9 +7,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/txfees/keeper/txfee_filters"
-	"github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/txfees/keeper/txfee_filters"
+	"github.com/furya-labs/furya/v20/x/txfees/types"
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 )
@@ -86,7 +86,7 @@ func (mfd MempoolFeeDecorator) AnteHandle(ctx sdk.Context, tx sdk.Tx, simulate b
 		return ctx, errorsmod.Wrapf(sdkerrors.ErrInsufficientFee,
 			"Expected 1 fee denom attached, got %d", len(feeCoins))
 	}
-	// The minimum base gas price is in uosmo, convert the fee denom's worth to uosmo terms.
+	// The minimum base gas price is in ufury, convert the fee denom's worth to ufury terms.
 	// Then compare if its sufficient for paying the tx fee.
 	err = mfd.TxFeesKeeper.IsSufficientFee(ctx, minBaseGasPrice, feeTx.GetGas(), feeCoins[0])
 	if err != nil {
@@ -111,7 +111,7 @@ func (mfd MempoolFeeDecorator) getMinBaseGasPrice(ctx sdk.Context, baseDenom str
 	return minBaseGasPrice
 }
 
-// IsSufficientFee checks if the feeCoin provided (in any asset), is worth enough osmo at current spot prices
+// IsSufficientFee checks if the feeCoin provided (in any asset), is worth enough fury at current spot prices
 // to pay the gas cost of this tx.
 func (k Keeper) IsSufficientFee(ctx sdk.Context, minBaseGasPrice osmomath.Dec, gasRequested uint64, feeCoin sdk.Coin) error {
 	baseDenom, err := k.GetBaseDenom(ctx)
@@ -235,13 +235,13 @@ func DeductFees(txFeesKeeper types.TxFeesKeeper, bankKeeper types.BankKeeper, ct
 		return errorsmod.Wrapf(sdkerrors.ErrInsufficientFee, "invalid fee amount: %s", fees)
 	}
 
-	// pulls base denom from TxFeesKeeper (should be uOSMO)
+	// pulls base denom from TxFeesKeeper (should be uFURY)
 	baseDenom, err := txFeesKeeper.GetBaseDenom(ctx)
 	if err != nil {
 		return err
 	}
 
-	// checks if input fee is uOSMO (assumes only one fee token exists in the fees array (as per the check in mempoolFeeDecorator))
+	// checks if input fee is uFURY (assumes only one fee token exists in the fees array (as per the check in mempoolFeeDecorator))
 	if fees[0].Denom == baseDenom {
 		// sends to FeeCollectorName module account, which sends to staking rewards
 		err := bankKeeper.SendCoinsFromAccountToModule(ctx, acc.GetAddress(), types.FeeCollectorName, fees)

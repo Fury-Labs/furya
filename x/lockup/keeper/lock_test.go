@@ -7,11 +7,11 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/v20/x/lockup/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -818,7 +818,7 @@ func (s *KeeperTestSuite) TestHasLock() {
 			tokenLocked:     sdk.NewInt64Coin("stake", 10),
 			durationLocked:  time.Minute,
 			lockAddr:        addr1,
-			denomToQuery:    "uosmo",
+			denomToQuery:    "ufury",
 			durationToQuery: time.Minute,
 			expectedHas:     false,
 		},
@@ -827,7 +827,7 @@ func (s *KeeperTestSuite) TestHasLock() {
 			tokenLocked:     sdk.NewInt64Coin("stake", 10),
 			durationLocked:  time.Minute,
 			lockAddr:        addr2,
-			denomToQuery:    "uosmo",
+			denomToQuery:    "ufury",
 			durationToQuery: time.Minute,
 			expectedHas:     false,
 		},

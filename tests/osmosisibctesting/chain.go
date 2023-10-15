@@ -1,4 +1,4 @@
-package osmosisibctesting
+package furyaibctesting
 
 import (
 	"encoding/json"
@@ -12,7 +12,7 @@ import (
 	"github.com/cosmos/ibc-go/v4/testing/simapp/helpers"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/v20/app"
 )
 
 type TestChain struct {
@@ -20,8 +20,8 @@ type TestChain struct {
 }
 
 func SetupTestingApp() (ibctesting.TestingApp, map[string]json.RawMessage) {
-	osmosisApp := app.Setup(false)
-	return osmosisApp, app.NewDefaultGenesisState()
+	furyaApp := app.Setup(false)
+	return furyaApp, app.NewDefaultGenesisState()
 }
 
 // SendMsgsNoCheck is an alternative to ibctesting.TestChain.SendMsgs so that it doesn't check for errors. That should be handled by the caller
@@ -82,7 +82,7 @@ func SignAndDeliver(
 
 // Move epochs to the future to avoid issues with minting
 func (chain *TestChain) MoveEpochsToTheFuture() error {
-	epochsKeeper := chain.GetOsmosisApp().EpochsKeeper
+	epochsKeeper := chain.GetFuryaApp().EpochsKeeper
 	ctx := chain.GetContext()
 	for _, epoch := range epochsKeeper.AllEpochInfos(ctx) {
 		epoch.StartTime = ctx.BlockTime().Add(time.Hour * 24 * 30)
@@ -95,8 +95,8 @@ func (chain *TestChain) MoveEpochsToTheFuture() error {
 	return nil
 }
 
-// GetOsmosisApp returns the current chain's app as an OsmosisApp
-func (chain *TestChain) GetOsmosisApp() *app.OsmosisApp {
-	v, _ := chain.App.(*app.OsmosisApp)
+// GetFuryaApp returns the current chain's app as an FuryaApp
+func (chain *TestChain) GetFuryaApp() *app.FuryaApp {
+	v, _ := chain.App.(*app.FuryaApp)
 	return v
 }

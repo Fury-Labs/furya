@@ -15,11 +15,11 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/v2types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/gamm/v2types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 var _ types.QueryServer = Querier{}
@@ -58,7 +58,7 @@ func (q Querier) Pool(
 	sdkCtx := sdk.UnwrapSDKContext(ctx)
 
 	// GetPool gets pool from poolmanager that has the knowledge of all pool ids
-	// within Osmosis.
+	// within Furya.
 	pool, err := q.Keeper.poolManager.GetPool(sdkCtx, req.PoolId)
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())

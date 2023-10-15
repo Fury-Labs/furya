@@ -5,12 +5,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	appparams "github.com/osmosis-labs/osmosis/v20/app/params"
+	"github.com/furya-labs/furya/osmomath"
+	appparams "github.com/furya-labs/furya/v20/app/params"
 
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	txfeestypes "github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/v20/x/poolmanager/types"
+	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
 )
 
 // SetDenomPairTakerFee sets the taker fee for the given trading pair.
@@ -114,7 +114,7 @@ func (k Keeper) chargeTakerFee(ctx sdk.Context, tokenIn sdk.Coin, tokenOutDenom 
 	if takerFeeCoin.Denom == defaultTakerFeeDenom {
 		// Community Pool:
 		if poolManagerParams.TakerFeeParams.OsmoTakerFeeDistribution.CommunityPool.GT(osmomath.ZeroDec()) {
-			// Osmo community pool funds is a direct send
+			// Fury community pool funds is a direct send
 			osmoTakerFeeToCommunityPoolDec := takerFeeAmtRemaining.ToLegacyDec().Mul(poolManagerParams.TakerFeeParams.OsmoTakerFeeDistribution.CommunityPool)
 			osmoTakerFeeToCommunityPoolCoins := sdk.NewCoins(sdk.NewCoin(defaultTakerFeeDenom, osmoTakerFeeToCommunityPoolDec.TruncateInt()))
 			err := k.communityPoolKeeper.FundCommunityPool(ctx, osmoTakerFeeToCommunityPoolCoins, sender)
@@ -125,7 +125,7 @@ func (k Keeper) chargeTakerFee(ctx sdk.Context, tokenIn sdk.Coin, tokenOutDenom 
 		}
 		// Staking Rewards:
 		if poolManagerParams.TakerFeeParams.OsmoTakerFeeDistribution.StakingRewards.GT(osmomath.ZeroDec()) {
-			// Osmo staking rewards funds are sent to the non native fee pool module account (even though its native, we want to distribute at the same time as the non native fee tokens)
+			// Fury staking rewards funds are sent to the non native fee pool module account (even though its native, we want to distribute at the same time as the non native fee tokens)
 			// We could stream these rewards via the fee collector account, but this is decision to be made by governance.
 			osmoTakerFeeToStakingRewardsCoins := sdk.NewCoins(sdk.NewCoin(defaultTakerFeeDenom, takerFeeAmtRemaining))
 			err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, sender, feeCollectorForStakingRewardsName, osmoTakerFeeToStakingRewardsCoins)
@@ -139,7 +139,7 @@ func (k Keeper) chargeTakerFee(ctx sdk.Context, tokenIn sdk.Coin, tokenOutDenom 
 		// Community Pool:
 		if poolManagerParams.TakerFeeParams.NonOsmoTakerFeeDistribution.CommunityPool.GT(osmomath.ZeroDec()) {
 			denomIsWhitelisted := isDenomWhitelisted(takerFeeCoin.Denom, poolManagerParams.AuthorizedQuoteDenoms)
-			// If the non osmo denom is a whitelisted quote asset, we send to the community pool
+			// If the non fury denom is a whitelisted quote asset, we send to the community pool
 			if denomIsWhitelisted {
 				nonOsmoTakerFeeToCommunityPoolDec := takerFeeAmtRemaining.ToLegacyDec().Mul(poolManagerParams.TakerFeeParams.NonOsmoTakerFeeDistribution.CommunityPool)
 				nonOsmoTakerFeeToCommunityPoolCoins := sdk.NewCoins(sdk.NewCoin(tokenIn.Denom, nonOsmoTakerFeeToCommunityPoolDec.TruncateInt()))
@@ -149,7 +149,7 @@ func (k Keeper) chargeTakerFee(ctx sdk.Context, tokenIn sdk.Coin, tokenOutDenom 
 				}
 				takerFeeAmtRemaining = takerFeeAmtRemaining.Sub(nonOsmoTakerFeeToCommunityPoolCoins.AmountOf(tokenIn.Denom))
 			} else {
-				// If the non osmo denom is not a whitelisted asset, we send to the non native fee pool for community pool module account.
+				// If the non fury denom is not a whitelisted asset, we send to the non native fee pool for community pool module account.
 				// At epoch, this account swaps the non native, non whitelisted assets for XXX and sends to the community pool.
 				nonOsmoTakerFeeToCommunityPoolDec := takerFeeAmtRemaining.ToLegacyDec().Mul(poolManagerParams.TakerFeeParams.NonOsmoTakerFeeDistribution.CommunityPool)
 				nonOsmoTakerFeeToCommunityPoolCoins := sdk.NewCoins(sdk.NewCoin(tokenIn.Denom, nonOsmoTakerFeeToCommunityPoolDec.TruncateInt()))
@@ -162,7 +162,7 @@ func (k Keeper) chargeTakerFee(ctx sdk.Context, tokenIn sdk.Coin, tokenOutDenom 
 		}
 		// Staking Rewards:
 		if poolManagerParams.TakerFeeParams.NonOsmoTakerFeeDistribution.StakingRewards.GT(osmomath.ZeroDec()) {
-			// Non Osmo staking rewards are sent to the non native fee pool module account
+			// Non Fury staking rewards are sent to the non native fee pool module account
 			nonOsmoTakerFeeToStakingRewardsCoins := sdk.NewCoins(sdk.NewCoin(takerFeeCoin.Denom, takerFeeAmtRemaining))
 			err := k.bankKeeper.SendCoinsFromAccountToModule(ctx, sender, feeCollectorForStakingRewardsName, nonOsmoTakerFeeToStakingRewardsCoins)
 			if err != nil {

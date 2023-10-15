@@ -7,16 +7,16 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/math"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (
@@ -2019,7 +2019,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 		denom0           = pool.GetToken0()
 		denom1           = pool.GetToken1()
 		rewardsPerSecond = osmomath.NewDec(1000)
-		incentiveCoin    = sdk.NewCoin("uosmo", osmomath.NewInt(1_000_000))
+		incentiveCoin    = sdk.NewCoin("ufury", osmomath.NewInt(1_000_000))
 	)
 
 	s.FundAcc(s.TestAccs[0], sdk.NewCoins(incentiveCoin))
@@ -2106,7 +2106,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 	expectedTotalIncentiveRewards = expectedTotalIncentiveRewards.Add(rewardsPerSecond)
 
 	// This previously paniced due to the lack of support for negative range accumulators.
-	// See issue: https://github.com/osmosis-labs/osmosis/issues/5854
+	// See issue: https://github.com/furya-labs/furya/issues/5854
 	// We initialized the lower tick's accumulator (DefaultCurrTick - 25) to be greater than the upper tick's accumulator (DefaultCurrTick + 50)
 	// Whenever the current tick is above the position's range, we compute in range accumulator as upper tick accumulator - lower tick accumulator
 	// In this case, it ends up being negative, which is now supported.
@@ -2124,7 +2124,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 			// Additive tolerance of 1 for each position.
 			ExpectedAdditiveSpreadRewardTolerance: osmomath.OneDec().MulInt64(3),
 			TotalSpreadRewards:                    expectedTotalSpreadRewards,
-			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("uosmo", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
+			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("ufury", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
 		})
 	})
 
@@ -2153,7 +2153,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 			// Additive tolerance of 1 for each position.
 			ExpectedAdditiveSpreadRewardTolerance: osmomath.OneDec().MulInt64(3),
 			TotalSpreadRewards:                    expectedTotalSpreadRewards,
-			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("uosmo", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
+			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("ufury", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
 		})
 	})
 
@@ -2182,7 +2182,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 			// Additive tolerance of 1 for each position.
 			ExpectedAdditiveSpreadRewardTolerance: osmomath.OneDec().MulInt64(3),
 			TotalSpreadRewards:                    expectedTotalSpreadRewards,
-			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("uosmo", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
+			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("ufury", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
 		})
 	})
 
@@ -2225,7 +2225,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 			// Additive tolerance of 1 for each position.
 			ExpectedAdditiveSpreadRewardTolerance: osmomath.OneDec().MulInt64(3),
 			TotalSpreadRewards:                    expectedTotalSpreadRewards,
-			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("uosmo", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
+			TotalIncentives:                       sdk.NewCoins(sdk.NewCoin("ufury", expectedTotalIncentiveRewards.Ceil().TruncateInt())),
 		})
 	})
 

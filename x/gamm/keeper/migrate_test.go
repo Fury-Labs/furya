@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	gammmigration "github.com/osmosis-labs/osmosis/v20/x/gamm/types/migration"
-	poolincentivestypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
+	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
 )
 
 const (
@@ -25,7 +25,7 @@ var (
 
 	defaultDaiAmount, _ = osmomath.NewIntFromString("73000000000000000000000")
 	defaultDenom0mount  = osmomath.NewInt(10000000000)
-	desiredDenom0       = "uosmo"
+	desiredDenom0       = "ufury"
 	desiredDenom0Coin   = sdk.NewCoin(desiredDenom0, defaultDenom0mount)
 	daiCoin             = sdk.NewCoin(DAIIBCDenom, defaultDaiAmount)
 	usdcCoin            = sdk.NewCoin(USDCIBCDenom, defaultDaiAmount)
@@ -398,7 +398,7 @@ func (s *KeeperTestSuite) TestReplaceMigrationRecords() {
 					ClPoolId:       3,
 				},
 			},
-			overwriteBalancerDenom0: "uosmo",
+			overwriteBalancerDenom0: "ufury",
 			expectErr:               true,
 		},
 		{
@@ -409,7 +409,7 @@ func (s *KeeperTestSuite) TestReplaceMigrationRecords() {
 					ClPoolId:       3,
 				},
 			},
-			overwriteBalancerDenom1: "uosmo",
+			overwriteBalancerDenom1: "ufury",
 			expectErr:               true,
 		},
 		{
@@ -655,7 +655,7 @@ func (s *KeeperTestSuite) TestUpdateMigrationRecords() {
 					ClPoolId:       6,
 				},
 			},
-			overwriteBalancerDenom0: "osmo",
+			overwriteBalancerDenom0: "fury",
 			isPreexistingRecordsSet: false,
 			expectErr:               true,
 		},
@@ -667,7 +667,7 @@ func (s *KeeperTestSuite) TestUpdateMigrationRecords() {
 					ClPoolId:       6,
 				},
 			},
-			overwriteBalancerDenom1: "osmo",
+			overwriteBalancerDenom1: "fury",
 			isPreexistingRecordsSet: false,
 			expectErr:               true,
 		},

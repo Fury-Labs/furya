@@ -9,14 +9,14 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/coinutil"
-	appParams "github.com/osmosis-labs/osmosis/v20/app/params"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	incentivetypes "github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	poolincentivetypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/coinutil"
+	appParams "github.com/furya-labs/furya/v20/app/params"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
+	incentivetypes "github.com/furya-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	poolincentivetypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 var _ = suite.TestingSuite(nil)
@@ -59,7 +59,7 @@ var (
 	emptyCoins          = sdk.Coins{}
 	defaultVolumeAmount = osmomath.NewInt(300)
 
-	defaultCoins = sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(100_000_000)))
+	defaultCoins = sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(100_000_000)))
 
 	baseTime = time.Date(2021, 1, 1, 0, 0, 0, 0, time.UTC)
 

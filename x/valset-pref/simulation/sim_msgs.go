@@ -6,10 +6,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	osmosimtypes "github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
-	valsetkeeper "github.com/osmosis-labs/osmosis/v20/x/valset-pref"
-	"github.com/osmosis-labs/osmosis/v20/x/valset-pref/types"
+	"github.com/furya-labs/furya/osmomath"
+	osmosimtypes "github.com/furya-labs/furya/v20/simulation/simtypes"
+	valsetkeeper "github.com/furya-labs/furya/v20/x/valset-pref"
+	"github.com/furya-labs/furya/v20/x/valset-pref/types"
 )
 
 func RandomMsgSetValSetPreference(k valsetkeeper.Keeper, sim *osmosimtypes.SimCtx, ctx sdk.Context) (*types.MsgSetValidatorSetPreference, error) {

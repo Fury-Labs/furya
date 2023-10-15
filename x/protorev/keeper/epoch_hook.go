@@ -3,8 +3,8 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	"github.com/furya-labs/furya/osmomath"
+	epochstypes "github.com/furya-labs/furya/x/epochs/types"
 )
 
 type EpochHooks struct {
@@ -51,7 +51,7 @@ func (h EpochHooks) AfterEpochEnd(ctx sdk.Context, epochIdentifier string, epoch
 // UpdatePools first deletes all of the pools paired with any base denom in the store and then adds the highest liquidity pools that match to the store
 func (k Keeper) UpdatePools(ctx sdk.Context) error {
 	// baseDenomPools maps each base denom to a map of the highest liquidity pools paired with that base denom
-	// ex. {osmo -> {atom : 100, weth : 200}}
+	// ex. {fury -> {atom : 100, weth : 200}}
 	baseDenomPools := make(map[string]map[string]LiquidityPoolStruct)
 	baseDenoms, err := k.GetAllBaseDenoms(ctx)
 	if err != nil {

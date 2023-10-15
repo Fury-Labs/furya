@@ -5,8 +5,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -137,7 +137,7 @@ func GetCmdSuperfluidUndelegationsByDelegator() *cobra.Command {
 func GetCmdTotalSuperfluidDelegations() *cobra.Command {
 	return osmocli.SimpleQueryCmd[*types.TotalSuperfluidDelegationsRequest](
 		"total-superfluid-delegations",
-		"Query total amount of osmo delegated via superfluid staking", "",
+		"Query total amount of fury delegated via superfluid staking", "",
 		types.ModuleName, types.NewQueryClient,
 	)
 }

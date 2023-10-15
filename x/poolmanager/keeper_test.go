@@ -6,10 +6,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 type KeeperTestSuite struct {
@@ -31,7 +31,7 @@ var (
 	}
 	testAdminAddresses                                 = []string{"osmo106x8q2nv7xsg7qrec2zgdf3vvq0t3gn49zvaha", "osmo105l5r3rjtynn7lg362r2m9hkpfvmgmjtkglsn9"}
 	testCommunityPoolDenomToSwapNonWhitelistedAssetsTo = "uusdc"
-	testAuthorizedQuoteDenoms                          = []string{"uosmo", "uion", "uatom"}
+	testAuthorizedQuoteDenoms                          = []string{"ufury", "uion", "uatom"}
 
 	testPoolRoute = []types.ModuleRoute{
 		{
@@ -52,11 +52,11 @@ func TestKeeperTestSuite(t *testing.T) {
 func (s *KeeperTestSuite) SetupTest() {
 	s.Setup()
 
-	// Set the bond denom to be uosmo to make volume tracking tests more readable.
+	// Set the bond denom to be ufury to make volume tracking tests more readable.
 	skParams := s.App.StakingKeeper.GetParams(s.Ctx)
-	skParams.BondDenom = "uosmo"
+	skParams.BondDenom = "ufury"
 	s.App.StakingKeeper.SetParams(s.Ctx, skParams)
-	s.App.TxFeesKeeper.SetBaseDenom(s.Ctx, "uosmo")
+	s.App.TxFeesKeeper.SetBaseDenom(s.Ctx, "ufury")
 	poolManagerParams := s.App.PoolManagerKeeper.GetParams(s.Ctx)
 	poolManagerParams.TakerFeeParams.CommunityPoolDenomToSwapNonWhitelistedAssetsTo = "baz"
 	s.App.PoolManagerKeeper.SetParams(s.Ctx, poolManagerParams)

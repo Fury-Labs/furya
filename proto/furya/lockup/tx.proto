@@ -1,13 +1,13 @@
 syntax = "proto3";
-package osmosis.lockup;
+package furya.lockup;
 
 import "gogoproto/gogo.proto";
 import "amino/amino.proto";
 import "google/protobuf/duration.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/lockup/lock.proto";
+import "furya/lockup/lock.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/lockup/types";
+option go_package = "github.com/furya-labs/furya/v20/x/lockup/types";
 
 // Msg defines the Msg service.
 service Msg {
@@ -27,7 +27,7 @@ service Msg {
 }
 
 message MsgLockTokens {
-  option (amino.name) = "osmosis/lockup/lock-tokens";
+  option (amino.name) = "furya/lockup/lock-tokens";
 
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
   google.protobuf.Duration duration = 2 [
@@ -44,14 +44,14 @@ message MsgLockTokens {
 message MsgLockTokensResponse { uint64 ID = 1; }
 
 message MsgBeginUnlockingAll {
-  option (amino.name) = "osmosis/lockup/begin-unlock-tokens";
+  option (amino.name) = "furya/lockup/begin-unlock-tokens";
 
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
 }
 message MsgBeginUnlockingAllResponse { repeated PeriodLock unlocks = 1; }
 
 message MsgBeginUnlocking {
-  option (amino.name) = "osmosis/lockup/begin-unlock-period-lock";
+  option (amino.name) = "furya/lockup/begin-unlock-period-lock";
 
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
   uint64 ID = 2;
@@ -69,7 +69,7 @@ message MsgBeginUnlockingResponse {
 // MsgExtendLockup extends the existing lockup's duration.
 // The new duration is longer than the original.
 message MsgExtendLockup {
-  option (amino.name) = "osmosis/lockup/extend-lockup";
+  option (amino.name) = "furya/lockup/extend-lockup";
 
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
   uint64 ID = 2;
@@ -91,7 +91,7 @@ message MsgExtendLockupResponse { bool success = 1; }
 // MsgForceUnlock unlocks locks immediately for
 // addresses registered via governance.
 message MsgForceUnlock {
-  option (amino.name) = "osmosis/lockup/force-unlock-tokens";
+  option (amino.name) = "furya/lockup/force-unlock-tokens";
 
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
   uint64 ID = 2;
@@ -105,7 +105,7 @@ message MsgForceUnlock {
 message MsgForceUnlockResponse { bool success = 1; }
 
 message MsgSetRewardReceiverAddress {
-  option (amino.name) = "osmosis/lockup/set-reward-receiver-address";
+  option (amino.name) = "furya/lockup/set-reward-receiver-address";
 
   string owner = 1 [ (gogoproto.moretags) = "yaml:\"owner\"" ];
   uint64 lockID = 2;

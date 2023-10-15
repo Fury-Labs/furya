@@ -8,24 +8,24 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/msgservice"
 
-	"github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
-	cdc.RegisterConcrete(&CosmWasmPool{}, "osmosis/cw-pool", nil)
-	cdc.RegisterConcrete(&Pool{}, "osmosis/cw-pool-wrap", nil)
-	cdc.RegisterConcrete(&MsgCreateCosmWasmPool{}, "osmosis/cw-create-pool", nil)
+	cdc.RegisterConcrete(&CosmWasmPool{}, "furya/cw-pool", nil)
+	cdc.RegisterConcrete(&Pool{}, "furya/cw-pool-wrap", nil)
+	cdc.RegisterConcrete(&MsgCreateCosmWasmPool{}, "furya/cw-create-pool", nil)
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterInterface(
-		"osmosis.poolmanager.v1beta1.PoolI",
+		"furya.poolmanager.v1beta1.PoolI",
 		(*poolmanagertypes.PoolI)(nil),
 		&CosmWasmPool{},
 	)
 	registry.RegisterInterface(
-		"osmosis.cosmwasmpool.v1beta1.CosmWasmExtension",
+		"furya.cosmwasmpool.v1beta1.CosmWasmExtension",
 		(*types.CosmWasmExtension)(nil),
 		&CosmWasmPool{},
 	)

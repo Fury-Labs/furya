@@ -12,9 +12,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/v20/wasmbinding"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/v20/wasmbinding"
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -23,18 +23,18 @@ import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	concentratedliquidityquery "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/client/queryproto"
-	downtimequerytypes "github.com/osmosis-labs/osmosis/v20/x/downtime-detector/client/queryproto"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	incentivestypes "github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	minttypes "github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolincentivestypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
-	poolmanagerqueryproto "github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/queryproto"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
-	twapquerytypes "github.com/osmosis-labs/osmosis/v20/x/twap/client/queryproto"
-	txfeestypes "github.com/osmosis-labs/osmosis/v20/x/txfees/types"
-	epochtypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	concentratedliquidityquery "github.com/furya-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
+	downtimequerytypes "github.com/furya-labs/furya/v20/x/downtime-detector/client/queryproto"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
+	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	poolmanagerqueryproto "github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	twapquerytypes "github.com/furya-labs/furya/v20/x/twap/client/queryproto"
+	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	epochtypes "github.com/furya-labs/furya/x/epochs/types"
 )
 
 // convert requested proto struct into proto marshalled bytes
@@ -46,7 +46,7 @@ func DebugProtoMarshalledBytes() *cobra.Command {
 Especially useful when debugging proto marshalled bytes or debugging stargate queries
 
 Example:
-	osmosisd debug proto-marshalled-bytes "/cosmos.bank.v1beta1.Query/Balance" bank QueryBalanceRequest "osmo1t7egva48prqmzl59x5ngv4zx0dtrwewc9m7z44" stake
+	furyad debug proto-marshalled-bytes "/cosmos.bank.v1beta1.Query/Balance" bank QueryBalanceRequest "osmo1t7egva48prqmzl59x5ngv4zx0dtrwewc9m7z44" stake
 	`,
 		Args: cobra.MinimumNArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {

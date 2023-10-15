@@ -13,7 +13,7 @@ const (
 
 func init() {
 	govtypes.RegisterProposalType(ProposalTypeDenomPairTakerFee)
-	govtypes.RegisterProposalTypeCodec(&DenomPairTakerFeeProposal{}, "osmosis/DenomPairTakerFeeProposal")
+	govtypes.RegisterProposalTypeCodec(&DenomPairTakerFeeProposal{}, "furya/DenomPairTakerFeeProposal")
 }
 
 var (

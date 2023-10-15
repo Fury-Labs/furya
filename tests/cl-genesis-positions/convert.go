@@ -11,29 +11,29 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/v19/app"
-	"github.com/osmosis-labs/osmosis/v19/app/apptesting"
-	cl "github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity"
-	"github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/math"
-	"github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/model"
-	cltypes "github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/types"
-	clgenesis "github.com/osmosis-labs/osmosis/v19/x/concentrated-liquidity/types/genesis"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/v19/app"
+	"github.com/furya-labs/furya/v19/app/apptesting"
+	cl "github.com/furya-labs/furya/v19/x/concentrated-liquidity"
+	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/math"
+	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/model"
+	cltypes "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types"
+	clgenesis "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types/genesis"
 )
 
 type BigBangPositions struct {
 	PositionsData []clgenesis.PositionData `json:"position_data"`
 }
 
-type OsmosisApp struct {
-	App         *app.OsmosisApp
+type FuryaApp struct {
+	App         *app.FuryaApp
 	Ctx         sdk.Context
 	QueryHelper *baseapp.QueryServiceTestHelper
 	TestAccs    []sdk.AccAddress
 }
 
-var osmosisPrecision = 6
+var furyaPrecision = 6
 
 func ReadSubgraphDataFromDisk(subgraphFilePath string) []SubgraphPosition {
 	// read in the data from file
@@ -54,20 +54,20 @@ func ReadSubgraphDataFromDisk(subgraphFilePath string) []SubgraphPosition {
 	return positions
 }
 
-func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, subgraphFilePath string) (*clgenesis.GenesisState, *banktypes.GenesisState) {
+func ConvertSubgraphToFuryaGenesis(positionCreatorAddresses []sdk.AccAddress, subgraphFilePath string) (*clgenesis.GenesisState, *banktypes.GenesisState) {
 	positions := ReadSubgraphDataFromDisk(subgraphFilePath)
 
-	osmosis := apptesting.KeeperTestHelper{}
-	osmosis.Setup()
+	furya := apptesting.KeeperTestHelper{}
+	furya.Setup()
 
 	if len(positionCreatorAddresses) == 0 {
 		panic("no accounts found")
 	}
 
-	osmosis.TestAccs = make([]sdk.AccAddress, len(positionCreatorAddresses))
+	furya.TestAccs = make([]sdk.AccAddress, len(positionCreatorAddresses))
 	for i := 0; i < len(positionCreatorAddresses); i++ {
-		osmosis.TestAccs[i] = positionCreatorAddresses[i]
-		fmt.Println(osmosis.TestAccs[i].String())
+		furya.TestAccs[i] = positionCreatorAddresses[i]
+		fmt.Println(furya.TestAccs[i].String())
 	}
 
 	initAmounts := sdk.NewCoins(
@@ -76,15 +76,15 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 	)
 
 	// fund all accounts
-	for _, acc := range osmosis.TestAccs {
-		err := simapp.FundAccount(osmosis.App.BankKeeper, osmosis.Ctx, acc, initAmounts)
+	for _, acc := range furya.TestAccs {
+		err := simapp.FundAccount(furya.App.BankKeeper, furya.Ctx, acc, initAmounts)
 		if err != nil {
 			panic(err)
 		}
 	}
 
 	msgCreatePool := model.MsgCreateConcentratedPool{
-		Sender:       osmosis.TestAccs[0].String(),
+		Sender:       furya.TestAccs[0].String(),
 		Denom0:       denom0,
 		Denom1:       denom1,
 		TickSpacing:  100,
@@ -96,14 +96,14 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 		panic(err)
 	}
 
-	poolId, err := osmosis.App.PoolManagerKeeper.CreatePool(osmosis.Ctx, msgCreatePool)
+	poolId, err := furya.App.PoolManagerKeeper.CreatePool(furya.Ctx, msgCreatePool)
 	if err != nil {
 		panic(err)
 	}
 
 	fmt.Println("Created pool id of: ", poolId)
 
-	pool, err := osmosis.App.ConcentratedLiquidityKeeper.GetConcentratedPoolById(osmosis.Ctx, poolId)
+	pool, err := furya.App.ConcentratedLiquidityKeeper.GetConcentratedPoolById(furya.Ctx, poolId)
 	if err != nil {
 		panic(err)
 	}
@@ -111,12 +111,12 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 	// Initialize first position to be 1:1 price
 	// this is because the first position must have non-zero token0 and token1 to initialize the price
 	// however, our data has first position with non-zero amount.
-	_, err = osmosis.App.ConcentratedLiquidityKeeper.CreateFullRangePosition(osmosis.Ctx, pool.GetId(), osmosis.TestAccs[0], sdk.NewCoins(sdk.NewCoin(msgCreatePool.Denom0, osmomath.NewInt(100)), sdk.NewCoin(msgCreatePool.Denom1, osmomath.NewInt(100))))
+	_, err = furya.App.ConcentratedLiquidityKeeper.CreateFullRangePosition(furya.Ctx, pool.GetId(), furya.TestAccs[0], sdk.NewCoins(sdk.NewCoin(msgCreatePool.Denom0, osmomath.NewInt(100)), sdk.NewCoin(msgCreatePool.Denom1, osmomath.NewInt(100))))
 	if err != nil {
 		panic(err)
 	}
 
-	clMsgServer := cl.NewMsgServerImpl(osmosis.App.ConcentratedLiquidityKeeper)
+	clMsgServer := cl.NewMsgServerImpl(furya.App.ConcentratedLiquidityKeeper)
 
 	numberOfSuccesfulPositions := 0
 
@@ -138,7 +138,7 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 		if err != nil {
 			panic(err)
 		}
-		lowerTickOsmosis, err := math.SqrtPriceToTickRoundDownSpacing(osmomath.BigDecFromDec(sqrtPriceLower), pool.GetTickSpacing())
+		lowerTickFurya, err := math.SqrtPriceToTickRoundDownSpacing(osmomath.BigDecFromDec(sqrtPriceLower), pool.GetTickSpacing())
 		if err != nil {
 			panic(err)
 		}
@@ -147,20 +147,20 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 		if err != nil {
 			panic(err)
 		}
-		upperTickOsmosis, err := math.SqrtPriceToTickRoundDownSpacing(osmomath.BigDecFromDec(sqrtPriceUpper), pool.GetTickSpacing())
+		upperTickFurya, err := math.SqrtPriceToTickRoundDownSpacing(osmomath.BigDecFromDec(sqrtPriceUpper), pool.GetTickSpacing())
 		if err != nil {
 			panic(err)
 		}
 
-		if lowerTickOsmosis > upperTickOsmosis {
-			fmt.Printf("lowerTickOsmosis (%d) > upperTickOsmosis (%d), skipping", lowerTickOsmosis, upperTickOsmosis)
+		if lowerTickFurya > upperTickFurya {
+			fmt.Printf("lowerTickFurya (%d) > upperTickFurya (%d), skipping", lowerTickFurya, upperTickFurya)
 			continue
 		}
 
-		if lowerTickOsmosis == upperTickOsmosis {
+		if lowerTickFurya == upperTickFurya {
 			// bump up the upper tick by one. We don't care about having exactly the same tick range
 			// Just a roughly similar breakdown
-			upperTickOsmosis = upperTickOsmosis + 1
+			upperTickFurya = upperTickFurya + 1
 		}
 
 		depositedAmount0, failedParsing := parseStringToInt(uniV3Position.DepositedToken0)
@@ -177,36 +177,36 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 
 		tokensProvided := sdk.NewCoins(sdk.NewCoin(msgCreatePool.Denom0, depositedAmount0), sdk.NewCoin(msgCreatePool.Denom1, depositedAmount1))
 
-		randomCreator := osmosis.TestAccs[rand.Intn(len(osmosis.TestAccs))]
+		randomCreator := furya.TestAccs[rand.Intn(len(furya.TestAccs))]
 
-		position, err := clMsgServer.CreatePosition(sdk.WrapSDKContext(osmosis.Ctx), &cltypes.MsgCreatePosition{
+		position, err := clMsgServer.CreatePosition(sdk.WrapSDKContext(furya.Ctx), &cltypes.MsgCreatePosition{
 			PoolId:          poolId,
 			Sender:          randomCreator.String(),
-			LowerTick:       lowerTickOsmosis,
-			UpperTick:       upperTickOsmosis,
+			LowerTick:       lowerTickFurya,
+			UpperTick:       upperTickFurya,
 			TokensProvided:  tokensProvided,
 			TokenMinAmount0: osmomath.ZeroInt(),
 			TokenMinAmount1: osmomath.ZeroInt(),
 		})
 		if err != nil {
 			fmt.Printf("\n\n\nWARNING: Failed to create position: %v\n\n\n", err)
-			fmt.Printf("attempted creation between ticks (%d) and (%d), desired amount 0: (%s), desired amount 1 (%s)\n", lowerTickOsmosis, upperTickOsmosis, depositedAmount0, depositedAmount1)
+			fmt.Printf("attempted creation between ticks (%d) and (%d), desired amount 0: (%s), desired amount 1 (%s)\n", lowerTickFurya, upperTickFurya, depositedAmount0, depositedAmount1)
 			fmt.Println()
 			continue
 		}
 
-		fmt.Printf("created position with liquidity (%s) between ticks (%d) and (%d)\n", position.LiquidityCreated, lowerTickOsmosis, upperTickOsmosis)
+		fmt.Printf("created position with liquidity (%s) between ticks (%d) and (%d)\n", position.LiquidityCreated, lowerTickFurya, upperTickFurya)
 		numberOfSuccesfulPositions++
 
 		bigBangPositions = append(bigBangPositions, clgenesis.PositionData{
 			Position: &model.Position{
 				Address:    randomCreator.String(),
 				PoolId:     poolId,
-				JoinTime:   osmosis.Ctx.BlockTime(),
+				JoinTime:   furya.Ctx.BlockTime(),
 				Liquidity:  position.LiquidityCreated,
 				PositionId: position.PositionId,
-				LowerTick:  lowerTickOsmosis,
-				UpperTick:  upperTickOsmosis,
+				LowerTick:  lowerTickFurya,
+				UpperTick:  upperTickFurya,
 			},
 			SpreadRewardAccumRecord: accum.Record{
 				NumShares: position.LiquidityCreated,
@@ -221,12 +221,12 @@ func ConvertSubgraphToOsmosisGenesis(positionCreatorAddresses []sdk.AccAddress, 
 	}
 
 	if writeGenesisToDisk {
-		state := osmosis.App.ExportState(osmosis.Ctx)
+		state := furya.App.ExportState(furya.Ctx)
 		writeStateToDisk(state)
 	}
 
-	clGenesis := osmosis.App.ConcentratedLiquidityKeeper.ExportGenesis(osmosis.Ctx)
-	bankGenesis := osmosis.App.BankKeeper.ExportGenesis(osmosis.Ctx)
+	clGenesis := furya.App.ConcentratedLiquidityKeeper.ExportGenesis(furya.Ctx)
+	bankGenesis := furya.App.BankKeeper.ExportGenesis(furya.Ctx)
 	return clGenesis, bankGenesis
 }
 
@@ -262,7 +262,7 @@ func parseStringToInt(strInt string) (result osmomath.Int, failedParsing bool) {
 			failedParsing = true
 		}
 	}()
-	result = osmomath.MustNewBigDecFromStr(strInt).Dec().MulInt64(int64(osmosisPrecision)).TruncateInt()
+	result = osmomath.MustNewBigDecFromStr(strInt).Dec().MulInt64(int64(furyaPrecision)).TruncateInt()
 	return result, failedParsing
 }
 
@@ -272,7 +272,7 @@ func writeStateToDisk(state map[string]json.RawMessage) {
 		panic(err)
 	}
 
-	err = os.WriteFile(pathToFilesFromRoot+osmosisGenesisFileName, stateBz, 0o644)
+	err = os.WriteFile(pathToFilesFromRoot+furyaGenesisFileName, stateBz, 0o644)
 	if err != nil {
 		panic(err)
 	}

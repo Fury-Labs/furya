@@ -9,10 +9,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	"github.com/osmosis-labs/osmosis/v20/wasmbinding/bindings"
+	"github.com/furya-labs/furya/v20/wasmbinding/bindings"
 
-	tokenfactorykeeper "github.com/osmosis-labs/osmosis/v20/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	tokenfactorykeeper "github.com/furya-labs/furya/v20/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/furya-labs/furya/v20/x/tokenfactory/types"
 )
 
 // CustomMessageDecorator returns decorator for custom CosmWasm bindings messages
@@ -39,9 +39,9 @@ func (m *CustomMessenger) DispatchMsg(ctx sdk.Context, contractAddr sdk.AccAddre
 	if msg.Custom != nil {
 		// only handle the happy path where this is really creating / minting / swapping ...
 		// leave everything else for the wrapped version
-		var contractMsg bindings.OsmosisMsg
+		var contractMsg bindings.FuryaMsg
 		if err := json.Unmarshal(msg.Custom, &contractMsg); err != nil {
-			return nil, nil, errorsmod.Wrap(err, "osmosis msg")
+			return nil, nil, errorsmod.Wrap(err, "furya msg")
 		}
 		if contractMsg.CreateDenom != nil {
 			return m.createDenom(ctx, contractAddr, contractMsg.CreateDenom)

@@ -7,10 +7,10 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolincentivestypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/v20/x/mint/types"
+	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -201,7 +201,7 @@ func (k Keeper) distributeToModule(ctx sdk.Context, recipientModule string, mint
 // If no developer reward receivers given, funds the community pool instead.
 // Returns the total amount distributed from the developer vesting module account.
 // Updates supply offsets to reflect the amount of coins distributed. This is done so because the developer rewards distributions are
-// allocated from its own module account, not the mint module accont (TODO: next step in https://github.com/osmosis-labs/osmosis/issues/1916).
+// allocated from its own module account, not the mint module accont (TODO: next step in https://github.com/furya-labs/furya/issues/1916).
 // Returns nil on success, error otherwise.
 // With respect to input parameters, errors occur when:
 // - developerRewardsProportion is greater than 1.
@@ -224,7 +224,7 @@ func (k Keeper) distributeDeveloperRewards(ctx sdk.Context, totalMintedCoin sdk.
 	}
 
 	devRewardCoins := sdk.NewCoins(devRewardCoin)
-	// TODO: https://github.com/osmosis-labs/osmosis/issues/2025
+	// TODO: https://github.com/furya-labs/furya/issues/2025
 	// Avoid over-allocating from the mint module address and have to later burn it here:
 	if err := k.bankKeeper.BurnCoins(ctx, types.ModuleName, devRewardCoins); err != nil {
 		return osmomath.Int{}, err
@@ -281,7 +281,7 @@ func (k Keeper) distributeDeveloperRewards(ctx sdk.Context, totalMintedCoin sdk.
 // getProportions gets the balance of the `MintedDenom` from minted coins and returns coins according to the
 // allocation ratio. Returns error if ratio is greater than 1.
 // TODO: this currently rounds down and is the cause of rounding discrepancies.
-// To be fixed in: https://github.com/osmosis-losmomath.Decosis/issues/1917
+// To be fixed in: https://github.com/furya-losmomath.Decosis/issues/1917
 func getProportions(mintedCoin sdk.Coin, ratio osmomath.Dec) (sdk.Coin, error) {
 	if ratio.GT(osmomath.OneDec()) {
 		return sdk.Coin{}, invalidRatioError{ratio}

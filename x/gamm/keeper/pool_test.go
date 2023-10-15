@@ -7,13 +7,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/golang/mock/gomock"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/tests/mocks"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/stableswap"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/tests/mocks"
+	"github.com/furya-labs/furya/v20/x/gamm/keeper"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 var (
@@ -31,7 +31,7 @@ var (
 // 	"github.com/cosmos/cosmos-sdk/simapp"
 // 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-// 	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+// 	"github.com/furya-labs/furya/v20/x/gamm/types"
 // )
 
 // func (s *KeeperTestSuite) TestCleanupPool() {
@@ -42,7 +42,7 @@ var (
 // 			s.Ctx,
 // 			acc,
 // 			sdk.NewCoins(
-// 				sdk.NewCoin("uosmo", osmomath.NewInt(1000000000)),
+// 				sdk.NewCoin("ufury", osmomath.NewInt(1000000000)),
 // 				sdk.NewCoin("foo", osmomath.NewInt(1000)),
 // 				sdk.NewCoin("bar", osmomath.NewInt(1000)),
 // 				sdk.NewCoin("baz", osmomath.NewInt(1000)),
@@ -117,7 +117,7 @@ var (
 // 			coins[i] = sdk.Coin{denoms[i], amount}
 // 		}
 // 		coinOf[acc.String()] = coins
-// 		coins = append(coins, sdk.NewCoin("uosmo", osmomath.NewInt(1000000000)))
+// 		coins = append(coins, sdk.NewCoin("ufury", osmomath.NewInt(1000000000)))
 
 // 		s.FundAcc(
 // 			s.App.BankKeeper,
@@ -161,7 +161,7 @@ var (
 // 		s.Ctx,
 // 		acc1,
 // 		sdk.NewCoins(
-// 			sdk.NewCoin("uosmo", osmomath.NewInt(1000000000)),
+// 			sdk.NewCoin("ufury", osmomath.NewInt(1000000000)),
 // 			sdk.NewCoin("foo", osmomath.NewInt(1000)),
 // 			sdk.NewCoin("bar", osmomath.NewInt(1000)),
 // 			sdk.NewCoin("baz", osmomath.NewInt(1000)),
@@ -201,7 +201,7 @@ var (
 // 		s.Ctx,
 // 		acc1,
 // 		sdk.NewCoins(
-// 			sdk.NewCoin("uosmo", osmomath.NewInt(1000000000)),
+// 			sdk.NewCoin("ufury", osmomath.NewInt(1000000000)),
 // 			sdk.NewCoin("foo", osmomath.NewInt(1000)),
 // 			sdk.NewCoin("bar", osmomath.NewInt(1000)),
 // 			sdk.NewCoin("baz", osmomath.NewInt(1000)),

@@ -1,12 +1,12 @@
 syntax = "proto3";
-package osmosis.gamm.v1beta1;
+package furya.gamm.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "amino/amino.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/poolmanager/v1beta1/swap_route.proto";
+import "furya/poolmanager/v1beta1/swap_route.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/gamm/types";
+option go_package = "github.com/furya-labs/furya/v20/x/gamm/types";
 
 service Msg {
   rpc JoinPool(MsgJoinPool) returns (MsgJoinPoolResponse);
@@ -28,7 +28,7 @@ service Msg {
 // ===================== MsgJoinPool
 // This is really MsgJoinPoolNoSwap
 message MsgJoinPool {
-  option (amino.name) = "osmosis/gamm/join-pool";
+  option (amino.name) = "furya/gamm/join-pool";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
@@ -59,7 +59,7 @@ message MsgJoinPoolResponse {
 
 // ===================== MsgExitPool
 message MsgExitPool {
-  option (amino.name) = "osmosis/gamm/exit-pool";
+  option (amino.name) = "furya/gamm/exit-pool";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
@@ -85,10 +85,10 @@ message MsgExitPoolResponse {
 
 // ===================== MsgSwapExactAmountIn
 message MsgSwapExactAmountIn {
-  option (amino.name) = "osmosis/gamm/swap-exact-amount-in";
+  option (amino.name) = "furya/gamm/swap-exact-amount-in";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
-  repeated osmosis.poolmanager.v1beta1.SwapAmountInRoute routes = 2
+  repeated furya.poolmanager.v1beta1.SwapAmountInRoute routes = 2
       [ (gogoproto.nullable) = false ];
   cosmos.base.v1beta1.Coin token_in = 3 [
     (gogoproto.moretags) = "yaml:\"token_in\"",
@@ -112,10 +112,10 @@ message MsgSwapExactAmountInResponse {
 }
 
 message MsgSwapExactAmountOut {
-  option (amino.name) = "osmosis/gamm/swap-exact-amount-out";
+  option (amino.name) = "furya/gamm/swap-exact-amount-out";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
-  repeated osmosis.poolmanager.v1beta1.SwapAmountOutRoute routes = 2
+  repeated furya.poolmanager.v1beta1.SwapAmountOutRoute routes = 2
       [ (gogoproto.nullable) = false ];
   string token_in_max_amount = 3 [
 
@@ -141,7 +141,7 @@ message MsgSwapExactAmountOutResponse {
 // ===================== MsgJoinSwapExternAmountIn
 // TODO: Rename to MsgJoinSwapExactAmountIn
 message MsgJoinSwapExternAmountIn {
-  option (amino.name) = "osmosis/gamm/join-swap-extern-amount-in";
+  option (amino.name) = "furya/gamm/join-swap-extern-amount-in";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
@@ -172,7 +172,7 @@ message MsgJoinSwapExternAmountInResponse {
 
 // ===================== MsgJoinSwapShareAmountOut
 message MsgJoinSwapShareAmountOut {
-  option (amino.name) = "osmosis/gamm/join-swap-share-amount-out";
+  option (amino.name) = "furya/gamm/join-swap-share-amount-out";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
@@ -203,7 +203,7 @@ message MsgJoinSwapShareAmountOutResponse {
 
 // ===================== MsgExitSwapShareAmountIn
 message MsgExitSwapShareAmountIn {
-  option (amino.name) = "osmosis/gamm/exit-swap-share-amount-in";
+  option (amino.name) = "furya/gamm/exit-swap-share-amount-in";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
@@ -234,7 +234,7 @@ message MsgExitSwapShareAmountInResponse {
 
 // ===================== MsgExitSwapExternAmountOut
 message MsgExitSwapExternAmountOut {
-  option (amino.name) = "osmosis/gamm/exit-swap-extern-amount-out";
+  option (amino.name) = "furya/gamm/exit-swap-extern-amount-out";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];

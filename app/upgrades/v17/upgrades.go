@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
+	"github.com/furya-labs/furya/osmomath"
+	ibchookstypes "github.com/furya-labs/furya/x/ibc-hooks/types"
 
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -15,16 +15,16 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	gammmigration "github.com/osmosis-labs/osmosis/v20/x/gamm/types/migration"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/keepers"
-	"github.com/osmosis-labs/osmosis/v20/app/upgrades"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev/types"
+	"github.com/furya-labs/furya/v20/app/keepers"
+	"github.com/furya-labs/furya/v20/app/upgrades"
+	"github.com/furya-labs/furya/v20/x/protorev/types"
 
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 // clPoolCreationInfo encapsulates the returns from CL pool
@@ -36,9 +36,9 @@ type clPoolCreationInfo struct {
 }
 
 const (
-	mainnetChainID = "osmosis-1"
-	e2eChainA      = "osmo-test-a"
-	e2eChainB      = "osmo-test-b"
+	mainnetChainID = "furya-1"
+	e2eChainA      = "fury-test-a"
+	e2eChainB      = "fury-test-b"
 )
 
 var notEnoughLiquidityForSwapErr = errorsmod.Wrapf(gammtypes.ErrInvalidMathApprox, "token amount must be positive")
@@ -148,16 +148,16 @@ func CreateUpgradeHandler(
 
 // createCLPoolWithCommunityPoolPosition creates a CL pool for a given balancer pool and adds a full range position with the community pool.
 func createCLPoolWithCommunityPoolPosition(ctx sdk.Context, keepers *keepers.AppKeepers, assetPair AssetPair, communityPoolAddress sdk.AccAddress) (clPoolCreationInfo, sdk.Coins, error) {
-	// Determine if base or quote asset is OSMO and save the non-OSMO asset.
-	osmoIn := sdk.NewCoin(OSMO, osmomath.NewInt(100000))
+	// Determine if base or quote asset is FURY and save the non-FURY asset.
+	osmoIn := sdk.NewCoin(FURY, osmomath.NewInt(100000))
 	nonOsmoAsset := ""
-	if assetPair.BaseAsset != OSMO {
+	if assetPair.BaseAsset != FURY {
 		nonOsmoAsset = assetPair.BaseAsset
 	} else {
 		nonOsmoAsset = assetPair.QuoteAsset
 	}
 
-	// Check if classic pool has enough liquidity to support a 0.1 OSMO swap before creating a CL pool.
+	// Check if classic pool has enough liquidity to support a 0.1 FURY swap before creating a CL pool.
 	// If not, skip the pool.
 	linkedClassicPool, err := keepers.PoolManagerKeeper.GetPool(ctx, assetPair.LinkedClassicPool)
 	if err != nil {
@@ -188,7 +188,7 @@ func createCLPoolWithCommunityPoolPosition(ctx sdk.Context, keepers *keepers.App
 	commPoolBalanceQuoteAssetPre := keepers.BankKeeper.GetBalance(ctx, communityPoolAddress, assetPair.QuoteAsset)
 	commPoolBalancePre := sdk.NewCoins(commPoolBalanceBaseAssetPre, commPoolBalanceQuoteAssetPre)
 
-	// Swap 0.1 OSMO for nonOsmoAsset from the community pool.
+	// Swap 0.1 FURY for nonOsmoAsset from the community pool.
 	respectiveNonOsmoAssetInt, err := keepers.GAMMKeeper.SwapExactAmountIn(ctx, communityPoolAddress, linkedClassicPool, osmoIn, nonOsmoAsset, osmomath.ZeroInt(), linkedClassicPool.GetSpreadFactor(ctx))
 	if err != nil {
 		return clPoolCreationInfo{}, sdk.Coins{}, err
@@ -209,7 +209,7 @@ func createCLPoolWithCommunityPoolPosition(ctx sdk.Context, keepers *keepers.App
 	commPoolBalanceQuoteAssetPost := keepers.BankKeeper.GetBalance(ctx, communityPoolAddress, assetPair.QuoteAsset)
 	commPoolBalancePost := sdk.NewCoins(commPoolBalanceBaseAssetPost, commPoolBalanceQuoteAssetPost)
 
-	// While we can be fairly certain the diff between these two is 0.2 OSMO, if for whatever reason
+	// While we can be fairly certain the diff between these two is 0.2 FURY, if for whatever reason
 	// some baseAsset dust remains in the community pool and we don't account for it, when updating the
 	// fee pool balance later, we will be off by that amount and will cause a panic.
 	coinsUsed := commPoolBalancePre.Sub(commPoolBalancePost)

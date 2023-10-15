@@ -1,53 +1,53 @@
 syntax = "proto3";
-package osmosis.gamm.v1beta1;
+package furya.gamm.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/gamm/v1beta1/tx.proto";
-import "osmosis/poolmanager/v1beta1/swap_route.proto";
+import "furya/gamm/v1beta1/tx.proto";
+import "furya/poolmanager/v1beta1/swap_route.proto";
 
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/any.proto";
 import "cosmos_proto/cosmos.proto";
-import "osmosis/gamm/v1beta1/shared.proto";
+import "furya/gamm/v1beta1/shared.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/gamm/types";
+option go_package = "github.com/furya-labs/furya/v20/x/gamm/types";
 
 service Query {
   rpc Pools(QueryPoolsRequest) returns (QueryPoolsResponse) {
-    option (google.api.http).get = "/osmosis/gamm/v1beta1/pools";
+    option (google.api.http).get = "/furya/gamm/v1beta1/pools";
   }
 
   // Deprecated: please use the alternative in x/poolmanager
   rpc NumPools(QueryNumPoolsRequest) returns (QueryNumPoolsResponse) {
     option deprecated = true;
-    option (google.api.http).get = "/osmosis/gamm/v1beta1/num_pools";
+    option (google.api.http).get = "/furya/gamm/v1beta1/num_pools";
   }
 
   rpc TotalLiquidity(QueryTotalLiquidityRequest)
       returns (QueryTotalLiquidityResponse) {
-    option (google.api.http).get = "/osmosis/gamm/v1beta1/total_liquidity";
+    option (google.api.http).get = "/furya/gamm/v1beta1/total_liquidity";
   }
 
   // PoolsWithFilter allows you to query specific pools with requested
   // parameters
   rpc PoolsWithFilter(QueryPoolsWithFilterRequest)
       returns (QueryPoolsWithFilterResponse) {
-    option (google.api.http).get = "/osmosis/gamm/v1beta1/filtered_pools";
+    option (google.api.http).get = "/furya/gamm/v1beta1/filtered_pools";
   }
 
   // Deprecated: please use the alternative in x/poolmanager
   rpc Pool(QueryPoolRequest) returns (QueryPoolResponse) {
     option deprecated = true;
-    option (google.api.http).get = "/osmosis/gamm/v1beta1/pools/{pool_id}";
+    option (google.api.http).get = "/furya/gamm/v1beta1/pools/{pool_id}";
   }
 
   // PoolType returns the type of the pool.
   // Returns "Balancer" as a string literal when the pool is a balancer pool.
   // Errors if the pool is failed to be type caseted.
   rpc PoolType(QueryPoolTypeRequest) returns (QueryPoolTypeResponse) {
-    option (google.api.http).get = "/osmosis/gamm/v1beta1/pool_type/{pool_id}";
+    option (google.api.http).get = "/furya/gamm/v1beta1/pool_type/{pool_id}";
   }
 
   // Simulates joining pool without a swap. Returns the amount of shares you'd
@@ -58,17 +58,17 @@ service Query {
   rpc CalcJoinPoolShares(QueryCalcJoinPoolSharesRequest)
       returns (QueryCalcJoinPoolSharesResponse) {
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/pools/{pool_id}/join_swap_exact_in";
+        "/furya/gamm/v1beta1/pools/{pool_id}/join_swap_exact_in";
   }
   rpc CalcExitPoolCoinsFromShares(QueryCalcExitPoolCoinsFromSharesRequest)
       returns (QueryCalcExitPoolCoinsFromSharesResponse) {
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/pools/{pool_id}/exit_swap_share_amount_in";
+        "/furya/gamm/v1beta1/pools/{pool_id}/exit_swap_share_amount_in";
   }
 
   rpc PoolParams(QueryPoolParamsRequest) returns (QueryPoolParamsResponse) {
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/pools/{pool_id}/params";
+        "/furya/gamm/v1beta1/pools/{pool_id}/params";
   }
 
   // Deprecated: please use the alternative in x/poolmanager
@@ -76,12 +76,12 @@ service Query {
       returns (QueryTotalPoolLiquidityResponse) {
     option deprecated = true;
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/pools/{pool_id}/total_pool_liquidity";
+        "/furya/gamm/v1beta1/pools/{pool_id}/total_pool_liquidity";
   }
 
   rpc TotalShares(QueryTotalSharesRequest) returns (QueryTotalSharesResponse) {
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/pools/{pool_id}/total_shares";
+        "/furya/gamm/v1beta1/pools/{pool_id}/total_shares";
   }
 
   // SpotPrice defines a gRPC query handler that returns the spot price given
@@ -89,7 +89,7 @@ service Query {
   rpc SpotPrice(QuerySpotPriceRequest) returns (QuerySpotPriceResponse) {
     option deprecated = true;
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/pools/{pool_id}/prices";
+        "/furya/gamm/v1beta1/pools/{pool_id}/prices";
   }
 
   // Deprecated: please use the alternative in x/poolmanager
@@ -97,7 +97,7 @@ service Query {
       returns (QuerySwapExactAmountInResponse) {
     option deprecated = true;
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/{pool_id}/estimate/swap_exact_amount_in";
+        "/furya/gamm/v1beta1/{pool_id}/estimate/swap_exact_amount_in";
   }
 
   // Deprecated: please use the alternative in x/poolmanager
@@ -105,7 +105,7 @@ service Query {
       returns (QuerySwapExactAmountOutResponse) {
     option deprecated = true;
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/{pool_id}/estimate/swap_exact_amount_out";
+        "/furya/gamm/v1beta1/{pool_id}/estimate/swap_exact_amount_out";
   }
 
   // ConcentratedPoolIdLinkFromBalancer returns the pool id of the concentrated
@@ -113,7 +113,7 @@ service Query {
   rpc ConcentratedPoolIdLinkFromCFMM(QueryConcentratedPoolIdLinkFromCFMMRequest)
       returns (QueryConcentratedPoolIdLinkFromCFMMResponse) {
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/concentrated_pool_id_link_from_cfmm/"
+        "/furya/gamm/v1beta1/concentrated_pool_id_link_from_cfmm/"
         "{cfmm_pool_id}";
   }
 
@@ -122,7 +122,7 @@ service Query {
   rpc CFMMConcentratedPoolLinks(QueryCFMMConcentratedPoolLinksRequest)
       returns (QueryCFMMConcentratedPoolLinksResponse) {
     option (google.api.http).get =
-        "/osmosis/gamm/v1beta1/cfmm_concentrated_pool_links";
+        "/furya/gamm/v1beta1/cfmm_concentrated_pool_links";
   }
 }
 
@@ -273,7 +273,7 @@ message QuerySpotPriceRequest {
 
 message QueryPoolsWithFilterRequest {
   // String of the coins in single string seperated by comma. Ex)
-  // 10uatom,100uosmo
+  // 10uatom,100ufury
   string min_liquidity = 1 [ (gogoproto.moretags) = "yaml:\"min_liquidity\"" ];
   string pool_type = 2;
   cosmos.base.query.v1beta1.PageRequest pagination = 3;
@@ -300,7 +300,7 @@ message QuerySwapExactAmountInRequest {
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
   string token_in = 3 [ (gogoproto.moretags) = "yaml:\"token_in\"" ];
-  repeated osmosis.poolmanager.v1beta1.SwapAmountInRoute routes = 4 [
+  repeated furya.poolmanager.v1beta1.SwapAmountInRoute routes = 4 [
     (gogoproto.moretags) = "yaml:\"routes\"",
     (gogoproto.nullable) = false
   ];
@@ -321,7 +321,7 @@ message QuerySwapExactAmountOutRequest {
   option deprecated = true;
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
-  repeated osmosis.poolmanager.v1beta1.SwapAmountOutRoute routes = 3 [
+  repeated furya.poolmanager.v1beta1.SwapAmountOutRoute routes = 3 [
     (gogoproto.moretags) = "yaml:\"routes\"",
     (gogoproto.nullable) = false
   ];

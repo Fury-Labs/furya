@@ -6,15 +6,15 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	db "github.com/tendermint/tm-db"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	events "github.com/osmosis-labs/osmosis/v20/x/poolmanager/events"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	events "github.com/furya-labs/furya/v20/x/poolmanager/events"
 
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/math"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/swapstrategy"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/swapstrategy"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 // SwapState defines the state of a swap.

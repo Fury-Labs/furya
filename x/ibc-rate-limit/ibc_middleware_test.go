@@ -15,12 +15,12 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	txfeetypes "github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/osmomath"
+	txfeetypes "github.com/furya-labs/furya/v20/x/txfees/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/tests/osmosisibctesting"
-	"github.com/osmosis-labs/osmosis/v20/x/ibc-rate-limit/types"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/tests/furyaibctesting"
+	"github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
 )
 
 type MiddlewareTestSuite struct {
@@ -29,8 +29,8 @@ type MiddlewareTestSuite struct {
 	coordinator *ibctesting.Coordinator
 
 	// testing chains used for convenience and readability
-	chainA *osmosisibctesting.TestChain
-	chainB *osmosisibctesting.TestChain
+	chainA *furyaibctesting.TestChain
+	chainB *furyaibctesting.TestChain
 	path   *ibctesting.Path
 }
 
@@ -41,7 +41,7 @@ func TestMiddlewareTestSuite(t *testing.T) {
 	suite.Run(t, new(MiddlewareTestSuite))
 }
 
-func NewTransferPath(chainA, chainB *osmosisibctesting.TestChain) *ibctesting.Path {
+func NewTransferPath(chainA, chainB *furyaibctesting.TestChain) *ibctesting.Path {
 	path := ibctesting.NewPath(chainA.TestChain, chainB.TestChain)
 	path.EndpointA.ChannelConfig.PortID = ibctesting.TransferPort
 	path.EndpointB.ChannelConfig.PortID = ibctesting.TransferPort
@@ -55,15 +55,15 @@ func (suite *MiddlewareTestSuite) SetupTest() {
 	// TODO: This needs to get removed. Waiting on https://github.com/cosmos/ibc-go/issues/3123
 	txfeetypes.ConsensusMinFee = osmomath.ZeroDec()
 	suite.Setup()
-	ibctesting.DefaultTestingAppInit = osmosisibctesting.SetupTestingApp
+	ibctesting.DefaultTestingAppInit = furyaibctesting.SetupTestingApp
 	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 2)
-	suite.chainA = &osmosisibctesting.TestChain{
+	suite.chainA = &furyaibctesting.TestChain{
 		TestChain: suite.coordinator.GetChain(ibctesting.GetChainID(1)),
 	}
 	// Remove epochs to prevent  minting
 	err := suite.chainA.MoveEpochsToTheFuture()
 	suite.Require().NoError(err)
-	suite.chainB = &osmosisibctesting.TestChain{
+	suite.chainB = &furyaibctesting.TestChain{
 		TestChain: suite.coordinator.GetChain(ibctesting.GetChainID(2)),
 	}
 	suite.path = NewTransferPath(suite.chainA, suite.chainB)
@@ -121,7 +121,7 @@ func CalculateChannelValue(ctx sdk.Context, denom string, bankKeeper bankkeeper.
 	//  using the whole supply for efficiency until there's a solution for
 	//  https://github.com/cosmos/ibc-go/issues/2664
 
-	// For non-native (ibc) tokens, return the supply if the token in osmosis
+	// For non-native (ibc) tokens, return the supply if the token in furya
 	//if strings.HasPrefix(denom, "ibc/") {
 	//	return bankKeeper.GetSupplyWithOffset(ctx, denom).Amount
 	//}
@@ -266,8 +266,8 @@ func (suite *MiddlewareTestSuite) TestReceiveTransferNoContract() {
 }
 
 func (suite *MiddlewareTestSuite) initializeEscrow() (totalEscrow, expectedSed osmomath.Int) {
-	osmosisApp := suite.chainA.GetOsmosisApp()
-	supply := osmosisApp.BankKeeper.GetSupplyWithOffset(suite.chainA.GetContext(), sdk.DefaultBondDenom)
+	furyaApp := suite.chainA.GetFuryaApp()
+	supply := furyaApp.BankKeeper.GetSupplyWithOffset(suite.chainA.GetContext(), sdk.DefaultBondDenom)
 
 	// Move some funds from chainA to chainB so that there is something in escrow
 	// Each user has 10% of the supply, so we send most of the funds from one user to chainA
@@ -300,10 +300,10 @@ func (suite *MiddlewareTestSuite) fullSendTest(native bool) map[string]string {
 		denom = denomTrace.IBCDenom()
 	}
 
-	osmosisApp := suite.chainA.GetOsmosisApp()
+	furyaApp := suite.chainA.GetFuryaApp()
 
 	// This is the first one. Inside the tests. It works as expected.
-	channelValue := CalculateChannelValue(suite.chainA.GetContext(), denom, osmosisApp.BankKeeper)
+	channelValue := CalculateChannelValue(suite.chainA.GetContext(), denom, furyaApp.BankKeeper)
 
 	// The amount to be sent is send 2.5% (quota is 5%)
 	quota := channelValue.QuoRaw(int64(100 / quotaPercentage))
@@ -396,9 +396,9 @@ func (suite *MiddlewareTestSuite) fullRecvTest(native bool) {
 		sendDenom = denomTrace.IBCDenom()
 	}
 
-	osmosisApp := suite.chainA.GetOsmosisApp()
+	furyaApp := suite.chainA.GetFuryaApp()
 
-	channelValue := CalculateChannelValue(suite.chainA.GetContext(), localDenom, osmosisApp.BankKeeper)
+	channelValue := CalculateChannelValue(suite.chainA.GetContext(), localDenom, furyaApp.BankKeeper)
 
 	// The amount to be sent is 2% (quota is 4%)
 	quota := channelValue.QuoRaw(int64(100 / quotaPercentage))
@@ -463,11 +463,11 @@ func (suite *MiddlewareTestSuite) TestFailedSendTransfer() {
 	suite.chainA.RegisterRateLimitingContract(addr)
 
 	// Get the escrowed amount
-	osmosisApp := suite.chainA.GetOsmosisApp()
+	furyaApp := suite.chainA.GetFuryaApp()
 	// ToDo: This is what we eventually want here, but using the full supply temporarily for performance reasons. See CalculateChannelValue
 	// escrowAddress := transfertypes.GetEscrowAddress("transfer", "channel-0")
-	// escrowed := osmosisApp.BankKeeper.GetBalance(suite.chainA.GetContext(), escrowAddress, sdk.DefaultBondDenom)
-	escrowed := osmosisApp.BankKeeper.GetSupplyWithOffset(suite.chainA.GetContext(), sdk.DefaultBondDenom)
+	// escrowed := furyaApp.BankKeeper.GetBalance(suite.chainA.GetContext(), escrowAddress, sdk.DefaultBondDenom)
+	escrowed := furyaApp.BankKeeper.GetSupplyWithOffset(suite.chainA.GetContext(), sdk.DefaultBondDenom)
 	quota := escrowed.Amount.QuoRaw(100) // 1% of the escrowed amount
 
 	// Use the whole quota
@@ -533,8 +533,8 @@ func (suite *MiddlewareTestSuite) TestUnsetRateLimitingContract() {
 	// Unset the contract param
 	params, err := types.NewParams("")
 	suite.Require().NoError(err)
-	osmosisApp := suite.chainA.GetOsmosisApp()
-	paramSpace, ok := osmosisApp.AppKeepers.ParamsKeeper.GetSubspace(types.ModuleName)
+	furyaApp := suite.chainA.GetFuryaApp()
+	paramSpace, ok := furyaApp.AppKeepers.ParamsKeeper.GetSubspace(types.ModuleName)
 	suite.Require().True(ok)
 	// N.B.: this panics if validation fails.
 	paramSpace.SetParamSet(suite.chainA.GetContext(), &params)

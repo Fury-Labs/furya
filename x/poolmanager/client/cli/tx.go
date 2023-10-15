@@ -21,11 +21,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/stableswap"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 func NewTxCmd() *cobra.Command {
@@ -48,7 +48,7 @@ func NewSwapExactAmountInCmd() (*osmocli.TxCliDesc, *types.MsgSwapExactAmountIn)
 	return &osmocli.TxCliDesc{
 		Use:     "swap-exact-amount-in",
 		Short:   "swap exact amount in",
-		Example: "osmosisd tx poolmanager swap-exact-amount-in 2000000uosmo 1 --swap-route-pool-ids 5 --swap-route-denoms uion --from val --keyring-backend test -b=block --chain-id=localosmosis --fees 10000uosmo",
+		Example: "furyad tx poolmanager swap-exact-amount-in 2000000ufury 1 --swap-route-pool-ids 5 --swap-route-denoms uion --from val --keyring-backend test -b=block --chain-id=localfurya --fees 10000ufury",
 		CustomFieldParsers: map[string]osmocli.CustomFieldParserFn{
 			"Routes": osmocli.FlagOnlyParser(swapAmountInRoutes),
 		},
@@ -61,7 +61,7 @@ func NewSwapExactAmountOutCmd() (*osmocli.TxCliDesc, *types.MsgSwapExactAmountOu
 	return &osmocli.TxCliDesc{
 		Use:              "swap-exact-amount-out",
 		Short:            "swap exact amount out",
-		Example:          "osmosisd tx poolmanager swap-exact-amount-out 100uion 1000000 --swap-route-pool-ids 1 --swap-route-denoms uosmo --from val --keyring-backend test -b=block --chain-id=localosmosis --fees 10000uosmo",
+		Example:          "furyad tx poolmanager swap-exact-amount-out 100uion 1000000 --swap-route-pool-ids 1 --swap-route-denoms ufury --from val --keyring-backend test -b=block --chain-id=localfurya --fees 10000ufury",
 		NumArgs:          2,
 		ParseAndBuildMsg: NewBuildSwapExactAmountOutMsg,
 		Flags:            osmocli.FlagDesc{RequiredFlags: []*flag.FlagSet{FlagSetMultihopSwapRoutes()}},
@@ -72,7 +72,7 @@ func NewSplitRouteSwapExactAmountIn() (*osmocli.TxCliDesc, *types.MsgSplitRouteS
 	return &osmocli.TxCliDesc{
 		Use:   "split-route-swap-exact-amount-in",
 		Short: "split route swap exact amount in",
-		Example: `osmosisd tx poolmanager split-route-swap-exact-amount-in uosmo 1 --routes-file="./routes.json" --from val --keyring-backend test -b=block --chain-id=localosmosis --fees 10000uosmo
+		Example: `furyad tx poolmanager split-route-swap-exact-amount-in ufury 1 --routes-file="./routes.json" --from val --keyring-backend test -b=block --chain-id=localfurya --fees 10000ufury
 		- routes.json
 		{
 			"Route": [
@@ -84,7 +84,7 @@ func NewSplitRouteSwapExactAmountIn() (*osmocli.TxCliDesc, *types.MsgSplitRouteS
 				},
 				{
 				"pool_id": 2,
-				"token_out_denom": "uosmo"
+				"token_out_denom": "ufury"
 				}
 			  ],
 			  "token_in_amount": 1000
@@ -97,7 +97,7 @@ func NewSplitRouteSwapExactAmountIn() (*osmocli.TxCliDesc, *types.MsgSplitRouteS
 				},
 				{
 				"pool_id": 4,
-				"token_out_denom": "uosmo"
+				"token_out_denom": "ufury"
 				}
 			  ],
 			  "token_in_amount": 999
@@ -118,7 +118,7 @@ func NewSplitRouteSwapExactAmountOut() (*osmocli.TxCliDesc, *types.MsgSplitRoute
 	return &osmocli.TxCliDesc{
 		Use:   "split-route-swap-exact-amount-out",
 		Short: "split route swap exact amount out",
-		Example: `osmosisd tx poolmanager split-route-swap-exact-amount-out uosmo 1 --routes-file="./routes.json" --from val --keyring-backend test -b=block --chain-id=localosmosis --fees 10000uosmo
+		Example: `furyad tx poolmanager split-route-swap-exact-amount-out ufury 1 --routes-file="./routes.json" --from val --keyring-backend test -b=block --chain-id=localfurya --fees 10000ufury
 		- routes.json
 		{
 			"route": [
@@ -130,7 +130,7 @@ func NewSplitRouteSwapExactAmountOut() (*osmocli.TxCliDesc, *types.MsgSplitRoute
 					},
 					{
 					"pool_id": 2,
-					"token_in_denom": "uosmo"
+					"token_in_denom": "ufury"
 					}
 				],
 				"token_out_amount": 1000
@@ -143,7 +143,7 @@ func NewSplitRouteSwapExactAmountOut() (*osmocli.TxCliDesc, *types.MsgSplitRoute
 					},
 					{
 					"pool_id": 4,
-					"token_in_denom": "uosmo"
+					"token_in_denom": "ufury"
 					}
 				],
 				"token_out_amount": 999
@@ -461,10 +461,10 @@ func NewCmdHandleDenomPairTakerFeeProposal() *cobra.Command {
 		Long: strings.TrimSpace(`Submit a denom pair taker fee proposal.
 
 Passing in denom-pairs-with-taker-fee separated by commas would be parsed automatically to pairs of denomPairTakerFee records.
-Ex) denom-pair-taker-fee-proposal uion,uosmo,0.0016,stake,uosmo,0.005,uatom,uosmo,0.0015 ->
-[uion<>uosmo, takerFee 0.16%]
-[stake<>uosmo, takerFee 0.5%]
-[uatom<>uosmo, removes from state since its being set to the default takerFee value]
+Ex) denom-pair-taker-fee-proposal uion,ufury,0.0016,stake,ufury,0.005,uatom,ufury,0.0015 ->
+[uion<>ufury, takerFee 0.16%]
+[stake<>ufury, takerFee 0.5%]
+[uatom<>ufury, removes from state since its being set to the default takerFee value]
 
 		`),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -517,10 +517,10 @@ func NewSetDenomPairTakerFeeCmd() *cobra.Command {
 		Long: strings.TrimSpace(`Allows admin addresses to set the taker fee for a denom pair.
 
 Passing in set-denom-pair-taker-fee separated by commas would be parsed automatically to pairs of denomPairTakerFee records.
-Ex) set-denom-pair-taker-fee uion,uosmo,0.0016,stake,uosmo,0.005,uatom,uosmo,0.0015 ->
-[uion<>uosmo, takerFee 0.16%]
-[stake<>uosmo, takerFee 0.5%]
-[uatom<>uosmo, removes from state since its being set to the default takerFee value]
+Ex) set-denom-pair-taker-fee uion,ufury,0.0016,stake,ufury,0.005,uatom,ufury,0.0015 ->
+[uion<>ufury, takerFee 0.16%]
+[stake<>ufury, takerFee 0.5%]
+[uatom<>ufury, removes from state since its being set to the default takerFee value]
 
 		`),
 		Args: cobra.ExactArgs(1),

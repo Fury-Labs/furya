@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cast"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 )
@@ -49,13 +49,13 @@ func NewMempoolFeeOptions(opts servertypes.AppOptions) MempoolFeeOptions {
 }
 
 func parseMaxGasWantedPerTx(opts servertypes.AppOptions) uint64 {
-	valueInterface := opts.Get("osmosis-mempool.max-gas-wanted-per-tx")
+	valueInterface := opts.Get("furya-mempool.max-gas-wanted-per-tx")
 	if valueInterface == nil {
 		return DefaultMaxGasWantedPerTx
 	}
 	value, err := cast.ToUint64E(valueInterface)
 	if err != nil {
-		panic("invalidly configured osmosis-mempool.max-gas-wanted-per-tx")
+		panic("invalidly configured furya-mempool.max-gas-wanted-per-tx")
 	}
 	return value
 }
@@ -69,18 +69,18 @@ func parseMinGasPriceForHighGasTx(opts servertypes.AppOptions) osmomath.Dec {
 }
 
 func parseDecFromConfig(opts servertypes.AppOptions, optName string, defaultValue osmomath.Dec) osmomath.Dec {
-	valueInterface := opts.Get("osmosis-mempool." + optName)
+	valueInterface := opts.Get("furya-mempool." + optName)
 	value := defaultValue
 	if valueInterface != nil {
 		valueStr, ok := valueInterface.(string)
 		if !ok {
-			panic("invalidly configured osmosis-mempool." + optName)
+			panic("invalidly configured furya-mempool." + optName)
 		}
 		var err error
 		// pre-pend 0 to allow the config to start with a decimal, e.g. ".01"
 		value, err = osmomath.NewDecFromStr("0" + valueStr)
 		if err != nil {
-			panic(fmt.Errorf("invalidly configured osmosis-mempool.%v, err= %v", optName, err))
+			panic(fmt.Errorf("invalidly configured furya-mempool.%v, err= %v", optName, err))
 		}
 	}
 	return value

@@ -32,16 +32,16 @@ import (
 	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app"
 
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
 
-	lockupkeeper "github.com/osmosis-labs/osmosis/v20/x/lockup/keeper"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	minttypes "github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	lockupkeeper "github.com/furya-labs/furya/v20/x/lockup/keeper"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 type KeeperTestHelper struct {
@@ -56,14 +56,14 @@ type KeeperTestHelper struct {
 	// this is not always enabled, because some tests may take a painful performance hit due to CacheKv.
 	withCaching bool
 
-	App         *app.OsmosisApp
+	App         *app.FuryaApp
 	Ctx         sdk.Context
 	QueryHelper *baseapp.QueryServiceTestHelper
 	TestAccs    []sdk.AccAddress
 }
 
 // Defines IDs for all supported
-// Osmosis pools. Additionally, encapsulates
+// Furya pools. Additionally, encapsulates
 // an internal gauge ID for each pool.
 // This struct is initialized and returned by
 // PrepareAllSupportedPools().
@@ -92,7 +92,7 @@ func init() {
 // Setup sets up basic environment for suite (App, Ctx, and test accounts)
 // preserves the caching enabled/disabled state.
 func (s *KeeperTestHelper) Setup() {
-	dir, err := os.MkdirTemp("", "osmosisd-test-home")
+	dir, err := os.MkdirTemp("", "furyad-test-home")
 	if err != nil {
 		panic(fmt.Sprintf("failed creating temporary directory: %v", err))
 	}
@@ -160,7 +160,7 @@ func (s *KeeperTestHelper) SetupWithLevelDb() func() {
 }
 
 func (s *KeeperTestHelper) setupGeneral() {
-	s.Ctx = s.App.BaseApp.NewContext(false, tmtypes.Header{Height: 1, ChainID: "osmosis-1", Time: defaultTestStartTime})
+	s.Ctx = s.App.BaseApp.NewContext(false, tmtypes.Header{Height: 1, ChainID: "furya-1", Time: defaultTestStartTime})
 	if s.withCaching {
 		s.Ctx, _ = s.Ctx.CacheContext()
 	}
@@ -403,10 +403,10 @@ func (s *KeeperTestHelper) SetupGammPoolsWithBondDenomMultiplier(multipliers []o
 	pools := []gammtypes.CFMMPoolI{}
 	for index, multiplier := range multipliers {
 		token := fmt.Sprintf("token%d", index)
-		uosmoAmount := gammtypes.InitPoolSharesSupply.ToLegacyDec().Mul(multiplier).RoundInt()
+		ufuryAmount := gammtypes.InitPoolSharesSupply.ToLegacyDec().Mul(multiplier).RoundInt()
 
 		s.FundAcc(acc1, sdk.NewCoins(
-			sdk.NewCoin(bondDenom, uosmoAmount.Mul(osmomath.NewInt(10))),
+			sdk.NewCoin(bondDenom, ufuryAmount.Mul(osmomath.NewInt(10))),
 			sdk.NewInt64Coin(token, 100000),
 		).Add(params.PoolCreationFee...))
 
@@ -416,7 +416,7 @@ func (s *KeeperTestHelper) SetupGammPoolsWithBondDenomMultiplier(multipliers []o
 			// pool assets
 			defaultFooAsset = balancer.PoolAsset{
 				Weight: osmomath.NewInt(100),
-				Token:  sdk.NewCoin(bondDenom, uosmoAmount),
+				Token:  sdk.NewCoin(bondDenom, ufuryAmount),
 			}
 			defaultBarAsset = balancer.PoolAsset{
 				Weight: osmomath.NewInt(100),

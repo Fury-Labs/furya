@@ -3,8 +3,8 @@ package keeper_test
 import (
 	"time"
 
-	"github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/lockup/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

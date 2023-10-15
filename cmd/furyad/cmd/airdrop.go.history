@@ -65,15 +65,15 @@ func setCosmosBech32Prefixes() {
 // ExportAirdropSnapshotCmd generates a snapshot.json from a provided cosmos-sdk v0.36 genesis export.
 func ExportAirdropSnapshotCmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "export-airdrop-snapshot [airdrop-to-denom] [input-genesis-file] [output-snapshot-json] --osmo-supply=[osmos-genesis-supply]",
+		Use:   "export-airdrop-snapshot [airdrop-to-denom] [input-genesis-file] [output-snapshot-json] --fury-supply=[osmos-genesis-supply]",
 		Short: "Export a quadratic fairdrop snapshot from a provided cosmos-sdk v0.36 genesis export",
 		Long: `Export a quadratic fairdrop snapshot from a provided cosmos-sdk v0.36 genesis export
 Sample genesis file:
 	https://raw.githubusercontent.com/cephalopodequipment/cosmoshub-3/master/genesis.json
 Example:
-	osmosisd export-airdrop-genesis uatom ~/.osmosisd/config/genesis.json ../snapshot.json --osmo-supply=100000000000000
+	furyad export-airdrop-genesis uatom ~/.furyad/config/genesis.json ../snapshot.json --fury-supply=100000000000000
 	- Check input genesis:
-		file is at ~/.osmosisd/config/genesis.json
+		file is at ~/.furyad/config/genesis.json
 	- Snapshot
 		file is at "../snapshot.json"
 `,
@@ -215,7 +215,7 @@ Example:
 				snapshotAccs[address] = acc
 			}
 
-			// iterate to find Osmo ownership percentage per account
+			// iterate to find Fury ownership percentage per account
 			for address, acc := range snapshotAccs {
 				acc.OsmoPercent = acc.OsmoBalance.ToLegacyDec().Quo(totalOsmoBalance.ToLegacyDec())
 				snapshotAccs[address] = acc

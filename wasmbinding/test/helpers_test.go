@@ -13,20 +13,20 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app"
 )
 
-func CreateTestInput() (*app.OsmosisApp, sdk.Context) {
-	osmosis := app.Setup(false)
-	ctx := osmosis.BaseApp.NewContext(false, tmproto.Header{Height: 1, ChainID: "osmosis-1", Time: time.Now().UTC()})
-	return osmosis, ctx
+func CreateTestInput() (*app.FuryaApp, sdk.Context) {
+	furya := app.Setup(false)
+	ctx := furya.BaseApp.NewContext(false, tmproto.Header{Height: 1, ChainID: "furya-1", Time: time.Now().UTC()})
+	return furya, ctx
 }
 
-func FundAccount(t *testing.T, ctx sdk.Context, osmosis *app.OsmosisApp, acct sdk.AccAddress) {
+func FundAccount(t *testing.T, ctx sdk.Context, furya *app.FuryaApp, acct sdk.AccAddress) {
 	t.Helper()
-	err := simapp.FundAccount(osmosis.BankKeeper, ctx, acct, sdk.NewCoins(
-		sdk.NewCoin("uosmo", osmomath.NewInt(10000000000)),
+	err := simapp.FundAccount(furya.BankKeeper, ctx, acct, sdk.NewCoins(
+		sdk.NewCoin("ufury", osmomath.NewInt(10000000000)),
 	))
 	require.NoError(t, err)
 }

@@ -7,11 +7,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/math"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 const (
@@ -120,7 +120,7 @@ func (p Pool) SpotPrice(ctx sdk.Context, quoteAssetDenom string, baseAssetDenom 
 
 	// The reason why we convert the result to Dec and then back to BigDec is to temporarily
 	// maintain backwards compatibility with the original implementation.
-	// TODO: remove before https://github.com/osmosis-labs/osmosis/issues/5726 is complete
+	// TODO: remove before https://github.com/furya-labs/furya/issues/5726 is complete
 	if baseAssetDenom == p.Token0 {
 		return osmomath.BigDecFromDec(p.CurrentSqrtPrice.PowerInteger(2).Dec()), nil
 	}

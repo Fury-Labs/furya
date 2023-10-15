@@ -6,13 +6,13 @@ import (
 	"cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/coinutil"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/coinutil"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
 )
 
 var (
@@ -422,7 +422,7 @@ func (s *KeeperTestSuite) Test_AfterEpochEnd_Group_CreateGroupsBetween() {
 
 // This test focuses on configuring volume by swapping instead of using
 // a direct volume setter helper in poolmanager contrary to all other tests.
-// Since we track volume in bond denom (OSMO), we first setup 2 pools that are paired with the bond denom.
+// Since we track volume in bond denom (FURY), we first setup 2 pools that are paired with the bond denom.
 // Next, we setup two pools that are to be packaged in group. One of the tokens in the pool is a token that is also
 // paired with bond denom in one of the first 2 pools.
 // Increase volume by swapping in the second pair of pools.
@@ -546,7 +546,7 @@ func (*KeeperTestSuite) computeExpectedDistributonAmountsFromVolume(coinsDistrib
 		currentDistribution := coinutil.MulDec(defaultCoins, volume.ToLegacyDec().Quo(totalVolumeDec))
 
 		// Note, the reason we do this is because otherwise
-		// the validation fails with 0uosmo expected vs "" actual
+		// the validation fails with 0ufury expected vs "" actual
 		// Since these are the same things, we equate the expected to an empty coins.
 		if currentDistribution.IsZero() {
 			currentDistribution = sdk.NewCoins()

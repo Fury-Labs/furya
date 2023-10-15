@@ -12,10 +12,10 @@ import (
 	"github.com/stretchr/testify/suite"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	accumPackage "github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	accumPackage "github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
 )
 
 type AccumTestSuite struct {

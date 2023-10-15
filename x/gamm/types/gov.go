@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	gammmigration "github.com/osmosis-labs/osmosis/v20/x/gamm/types/migration"
+	"github.com/furya-labs/furya/osmomath"
+	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
 )
 
 const (
@@ -21,13 +21,13 @@ const (
 // Init registers proposals to update and replace migration records.
 func init() {
 	govtypes.RegisterProposalType(ProposalTypeUpdateMigrationRecords)
-	govtypes.RegisterProposalTypeCodec(&UpdateMigrationRecordsProposal{}, "osmosis/UpdateMigrationRecordsProposal")
+	govtypes.RegisterProposalTypeCodec(&UpdateMigrationRecordsProposal{}, "furya/UpdateMigrationRecordsProposal")
 	govtypes.RegisterProposalType(ProposalTypeReplaceMigrationRecords)
-	govtypes.RegisterProposalTypeCodec(&ReplaceMigrationRecordsProposal{}, "osmosis/ReplaceMigrationRecordsProposal")
+	govtypes.RegisterProposalTypeCodec(&ReplaceMigrationRecordsProposal{}, "furya/ReplaceMigrationRecordsProposal")
 	govtypes.RegisterProposalType(ProposalTypeCreateConcentratedLiquidityPoolAndLinktoCFMM)
-	govtypes.RegisterProposalTypeCodec(&CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal{}, "osmosis/CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal")
+	govtypes.RegisterProposalTypeCodec(&CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal{}, "furya/CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal")
 	govtypes.RegisterProposalType(ProposalTypeSetScalingFactorController)
-	govtypes.RegisterProposalTypeCodec(&SetScalingFactorControllerProposal{}, "osmosis/SetScalingFactorControllerProposal")
+	govtypes.RegisterProposalTypeCodec(&SetScalingFactorControllerProposal{}, "furya/SetScalingFactorControllerProposal")
 }
 
 var (

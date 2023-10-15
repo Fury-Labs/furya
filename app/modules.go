@@ -15,17 +15,17 @@ import (
 	packetforward "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router"
 	packetforwardtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router/types"
 
-	ibchookstypes "github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
+	ibchookstypes "github.com/furya-labs/furya/x/ibc-hooks/types"
 
 	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
 	icatypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
 
 	icqtypes "github.com/cosmos/ibc-apps/modules/async-icq/v4/types"
 
-	downtimemodule "github.com/osmosis-labs/osmosis/v20/x/downtime-detector/module"
-	downtimetypes "github.com/osmosis-labs/osmosis/v20/x/downtime-detector/types"
+	downtimemodule "github.com/furya-labs/furya/v20/x/downtime-detector/module"
+	downtimetypes "github.com/furya-labs/furya/v20/x/downtime-detector/types"
 
-	ibc_hooks "github.com/osmosis-labs/osmosis/x/ibc-hooks"
+	ibc_hooks "github.com/furya-labs/furya/x/ibc-hooks"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
@@ -57,42 +57,42 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/osmosis-labs/osmosis/osmoutils/partialord"
-	appparams "github.com/osmosis-labs/osmosis/v20/app/params"
-	_ "github.com/osmosis-labs/osmosis/v20/client/docs/statik"
-	"github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
-	concentratedliquidity "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/clmodule"
-	concentratedliquiditytypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	cwpoolmodule "github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/module"
-	cosmwasmpooltypes "github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/types"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/ibc-rate-limit/ibcratelimitmodule"
-	ibcratelimittypes "github.com/osmosis-labs/osmosis/v20/x/ibc-rate-limit/types"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives"
-	incentivestypes "github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	"github.com/osmosis-labs/osmosis/v20/x/lockup"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	"github.com/osmosis-labs/osmosis/v20/x/mint"
-	minttypes "github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolincentives "github.com/osmosis-labs/osmosis/v20/x/pool-incentives"
-	poolincentivestypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
-	poolmanager "github.com/osmosis-labs/osmosis/v20/x/poolmanager/module"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev"
-	protorevtypes "github.com/osmosis-labs/osmosis/v20/x/protorev/types"
-	superfluid "github.com/osmosis-labs/osmosis/v20/x/superfluid"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory"
-	tokenfactorytypes "github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
-	"github.com/osmosis-labs/osmosis/v20/x/twap/twapmodule"
-	twaptypes "github.com/osmosis-labs/osmosis/v20/x/twap/types"
-	"github.com/osmosis-labs/osmosis/v20/x/txfees"
-	txfeestypes "github.com/osmosis-labs/osmosis/v20/x/txfees/types"
-	valsetpreftypes "github.com/osmosis-labs/osmosis/v20/x/valset-pref/types"
-	valsetprefmodule "github.com/osmosis-labs/osmosis/v20/x/valset-pref/valpref-module"
-	"github.com/osmosis-labs/osmosis/x/epochs"
-	epochstypes "github.com/osmosis-labs/osmosis/x/epochs/types"
+	"github.com/furya-labs/furya/osmoutils/partialord"
+	appparams "github.com/furya-labs/furya/v20/app/params"
+	_ "github.com/furya-labs/furya/v20/client/docs/statik"
+	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	concentratedliquidity "github.com/furya-labs/furya/v20/x/concentrated-liquidity/clmodule"
+	concentratedliquiditytypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	cwpoolmodule "github.com/furya-labs/furya/v20/x/cosmwasmpool/module"
+	cosmwasmpooltypes "github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	"github.com/furya-labs/furya/v20/x/gamm"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/ibc-rate-limit/ibcratelimitmodule"
+	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
+	"github.com/furya-labs/furya/v20/x/incentives"
+	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
+	"github.com/furya-labs/furya/v20/x/lockup"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/mint"
+	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
+	poolincentives "github.com/furya-labs/furya/v20/x/pool-incentives"
+	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	poolmanager "github.com/furya-labs/furya/v20/x/poolmanager/module"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/x/protorev"
+	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	superfluid "github.com/furya-labs/furya/v20/x/superfluid"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/v20/x/tokenfactory"
+	tokenfactorytypes "github.com/furya-labs/furya/v20/x/tokenfactory/types"
+	"github.com/furya-labs/furya/v20/x/twap/twapmodule"
+	twaptypes "github.com/furya-labs/furya/v20/x/twap/types"
+	"github.com/furya-labs/furya/v20/x/txfees"
+	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	valsetpreftypes "github.com/furya-labs/furya/v20/x/valset-pref/types"
+	valsetprefmodule "github.com/furya-labs/furya/v20/x/valset-pref/valpref-module"
+	"github.com/furya-labs/furya/x/epochs"
+	epochstypes "github.com/furya-labs/furya/x/epochs/types"
 )
 
 // moduleAccountPermissions defines module account permissions
@@ -127,7 +127,7 @@ var moduleAccountPermissions = map[string][]string{
 
 // appModules return modules to initialize module manager.
 func appModules(
-	app *OsmosisApp,
+	app *FuryaApp,
 	encodingConfig appparams.EncodingConfig,
 	skipGenesisInvariants bool,
 ) []module.AppModule {
@@ -220,7 +220,7 @@ func OrderEndBlockers(allModuleNames []string) []string {
 	ord.FirstElements(govtypes.ModuleName)
 	ord.LastElements(stakingtypes.ModuleName)
 
-	// only Osmosis modules with endblock code are: twap, crisis, govtypes, staking
+	// only Furya modules with endblock code are: twap, crisis, govtypes, staking
 	// we don't care about the relative ordering between them.
 	return ord.TotalOrdering()
 }
@@ -286,31 +286,31 @@ func ModuleAccountAddrs() map[string]bool {
 	return modAccAddrs
 }
 
-func (app *OsmosisApp) GetAccountKeeper() simtypes.AccountKeeper {
+func (app *FuryaApp) GetAccountKeeper() simtypes.AccountKeeper {
 	return app.AppKeepers.AccountKeeper
 }
 
-func (app *OsmosisApp) GetBankKeeper() simtypes.BankKeeper {
+func (app *FuryaApp) GetBankKeeper() simtypes.BankKeeper {
 	return app.AppKeepers.BankKeeper
 }
 
 // Required for ibctesting
-func (app *OsmosisApp) GetStakingKeeper() stakingkeeper.Keeper {
+func (app *FuryaApp) GetStakingKeeper() stakingkeeper.Keeper {
 	return *app.AppKeepers.StakingKeeper // Dereferencing the pointer
 }
 
-func (app *OsmosisApp) GetIBCKeeper() *ibckeeper.Keeper {
+func (app *FuryaApp) GetIBCKeeper() *ibckeeper.Keeper {
 	return app.AppKeepers.IBCKeeper // This is a *ibckeeper.Keeper
 }
 
-func (app *OsmosisApp) GetScopedIBCKeeper() capabilitykeeper.ScopedKeeper {
+func (app *FuryaApp) GetScopedIBCKeeper() capabilitykeeper.ScopedKeeper {
 	return app.AppKeepers.ScopedIBCKeeper
 }
 
-func (app *OsmosisApp) GetPoolManagerKeeper() simtypes.PoolManagerKeeper {
+func (app *FuryaApp) GetPoolManagerKeeper() simtypes.PoolManagerKeeper {
 	return app.AppKeepers.PoolManagerKeeper
 }
 
-func (app *OsmosisApp) GetTxConfig() client.TxConfig {
+func (app *FuryaApp) GetTxConfig() client.TxConfig {
 	return MakeEncodingConfig().TxConfig
 }

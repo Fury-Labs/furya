@@ -3,7 +3,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 )
 
 var (
@@ -14,7 +14,7 @@ var (
 	// first come first serve basis that is based on the order of the base denoms.
 	DefaultBaseDenoms = []BaseDenom{
 		{
-			Denom:    OsmosisDenomination,
+			Denom:    FuryaDenomination,
 			StepSize: osmomath.NewInt(1_000_000),
 		},
 	}

@@ -4,8 +4,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 // swapStrategy defines the interface for computing a swap.
@@ -135,7 +135,7 @@ func GetSqrtPriceLimit(priceLimit osmomath.BigDec, zeroForOne bool) (osmomath.Bi
 	// To keep state-compatibility with the original at-launch price range
 	// we utilize the same sqrt price function.
 	if priceLimit.GTE(types.MinSpotPriceBigDec) {
-		// Truncation is fine since previous Osmosis version only supported
+		// Truncation is fine since previous Furya version only supported
 		// 18 decimal price ranges.
 		sqrtPriceLimit, err := osmomath.MonotonicSqrt(priceLimit.Dec())
 		if err != nil {

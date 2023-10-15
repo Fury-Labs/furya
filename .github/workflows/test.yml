@@ -108,14 +108,14 @@ jobs:
     steps:
       - name: Clean up Pre-Existing E2E Docker containers
         run: |
-          # Remove containers with names starting with "osmo-test-"
-          docker ps -aqf "name=osmo-test-*" | xargs -r docker rm -f
+          # Remove containers with names starting with "fury-test-"
+          docker ps -aqf "name=fury-test-*" | xargs -r docker rm -f
 
           # Remove containers with names starting with "hermes-relayer"
           docker ps -aqf "name=hermes-relayer*" | xargs -r docker rm -f
 
           # Get a list of all networks
-          NETWORKS=$(docker network ls --filter "name=osmosis-testnet" --format "{{.ID}}")
+          NETWORKS=$(docker network ls --filter "name=furya-testnet" --format "{{.ID}}")
 
           # Remove all the disconnected networks
           for NETWORK in $NETWORKS; do
@@ -123,7 +123,7 @@ jobs:
               docker network rm $NETWORK
           done
 
-          echo "Done pruning osmosis-testnet networks."
+          echo "Done pruning furya-testnet networks."
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
@@ -137,7 +137,7 @@ jobs:
         with:
           load: true
           context: .
-          tags: osmosis:debug
+          tags: furya:debug
           # Use experimental Cache backend API:
           # https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md#cache-backend-api
           cache-from: type=gha
@@ -160,19 +160,19 @@ jobs:
           name: logs.tgz
           path: ./logs.tgz
         if: failure()
-      - name: 🧹 Clean up Osmosis Home
+      - name: 🧹 Clean up Furya Home
         if: always()
-        run: rm -rf $HOME/.osmosisd/ || true
+        run: rm -rf $HOME/.furyad/ || true
       - name: Clean up E2E Docker containers
         run: |
-          # Remove containers with names starting with "osmo-test-"
-          docker ps -aqf "name=osmo-test-*" | xargs -r docker rm -f
+          # Remove containers with names starting with "fury-test-"
+          docker ps -aqf "name=fury-test-*" | xargs -r docker rm -f
 
           # Remove containers with names starting with "hermes-relayer"
           docker ps -aqf "name=hermes-relayer*" | xargs -r docker rm -f
 
           # Get a list of all networks
-          NETWORKS=$(docker network ls --filter "name=osmosis-testnet" --format "{{.ID}}")
+          NETWORKS=$(docker network ls --filter "name=furya-testnet" --format "{{.ID}}")
 
           # Remove all the disconnected networks
           for NETWORK in $NETWORKS; do
@@ -180,4 +180,4 @@ jobs:
               docker network rm $NETWORK
           done
 
-          echo "Done pruning osmosis-testnet networks."
+          echo "Done pruning furya-testnet networks."

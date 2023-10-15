@@ -15,16 +15,16 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	appparams "github.com/osmosis-labs/osmosis/v20/app/params"
+	"github.com/furya-labs/furya/osmomath"
+	appparams "github.com/furya-labs/furya/v20/app/params"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 var _ types.QueryServer = Querier{}
@@ -257,7 +257,7 @@ func (q Querier) SuperfluidDelegationsByDelegator(goCtx context.Context, req *ty
 			return nil, err
 		}
 
-		// Find how many osmo tokens this delegation is worth at superfluids current risk adjustment
+		// Find how many fury tokens this delegation is worth at superfluids current risk adjustment
 		// and twap of the denom.
 		equivalentAmount, err := q.Keeper.GetSuperfluidOSMOTokens(ctx, baseDenom, lockedCoins.Amount)
 		if err != nil {
@@ -299,7 +299,7 @@ func (q Querier) UserConcentratedSuperfluidPositionsDelegated(goCtx context.Cont
 	}
 
 	// Query each position ID and determine if it has a lock ID associated with it.
-	// Construct a response with the position ID, lock ID, the amount of cl shares staked, and what those shares are worth in staked osmo tokens.
+	// Construct a response with the position ID, lock ID, the amount of cl shares staked, and what those shares are worth in staked fury tokens.
 	clPoolUserPositionRecords, err := q.filterConcentratedPositionLocks(ctx, positions, false)
 	if err != nil {
 		return nil, err
@@ -326,7 +326,7 @@ func (q Querier) UserConcentratedSuperfluidPositionsUndelegating(goCtx context.C
 	}
 
 	// Query each position ID and determine if it has a lock ID associated with it.
-	// Construct a response with the position ID, lock ID, the amount of cl shares staked, and what those shares are worth in staked osmo tokens.
+	// Construct a response with the position ID, lock ID, the amount of cl shares staked, and what those shares are worth in staked fury tokens.
 	clPoolUserPositionRecords, err := q.filterConcentratedPositionLocks(ctx, positions, true)
 	if err != nil {
 		return nil, err
@@ -534,7 +534,7 @@ func (q Querier) TotalDelegationByValidatorForDenom(goCtx context.Context, req *
 	}, nil
 }
 
-// TotalSuperfluidDelegations returns total amount of osmo delegated via superfluid staking.
+// TotalSuperfluidDelegations returns total amount of fury delegated via superfluid staking.
 func (q Querier) TotalSuperfluidDelegations(goCtx context.Context, _ *types.TotalSuperfluidDelegationsRequest) (*types.TotalSuperfluidDelegationsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
@@ -638,7 +638,7 @@ func (q Querier) UnpoolWhitelist(goCtx context.Context, req *types.QueryUnpoolWh
 
 func (q Querier) filterConcentratedPositionLocks(ctx sdk.Context, positions []model.Position, isUnbonding bool) ([]types.ConcentratedPoolUserPositionRecord, error) {
 	// Query each position ID and determine if it has a lock ID associated with it.
-	// Construct a response with the position ID, lock ID, the amount of cl shares staked, and what those shares are worth in staked osmo tokens.
+	// Construct a response with the position ID, lock ID, the amount of cl shares staked, and what those shares are worth in staked fury tokens.
 	var clPoolUserPositionRecords []types.ConcentratedPoolUserPositionRecord
 	for _, pos := range positions {
 		lockId, err := q.Keeper.clk.GetLockIdFromPositionId(ctx, pos.PositionId)

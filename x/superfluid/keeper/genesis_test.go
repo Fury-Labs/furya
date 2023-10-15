@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 	simapp "github.com/fury-labs/furya/v20/app"
 	"github.com/fury-labs/furya/v20/x/superfluid"
 	"github.com/fury-labs/furya/v20/x/superfluid/types"

@@ -4,9 +4,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 )
 
 var _ = suite.TestingSuite(nil)
@@ -42,7 +42,7 @@ func (s *KeeperTestSuite) TestGaugeReferencesManagement() {
 }
 
 func (s *KeeperTestSuite) TestGetGroupByGaugeID() {
-	// TODO: Re-enable this once gauge creation refactor is complete in https://github.com/osmosis-labs/osmosis/issues/6404
+	// TODO: Re-enable this once gauge creation refactor is complete in https://github.com/furya-labs/furya/issues/6404
 	s.T().Skip()
 
 	tests := map[string]struct {
@@ -85,7 +85,7 @@ func (s *KeeperTestSuite) TestGetGroupByGaugeID() {
 
 	for name, test := range tests {
 		s.Run(name, func() {
-			s.FundAcc(s.TestAccs[1], sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(100_000_000)))) // 1,000 osmo
+			s.FundAcc(s.TestAccs[1], sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(100_000_000)))) // 1,000 fury
 			clPool := s.PrepareConcentratedPool()                                                      // gaugeid = 1
 
 			// create 3 internal Gauge
@@ -95,7 +95,7 @@ func (s *KeeperTestSuite) TestGetGroupByGaugeID() {
 				internalGauges = append(internalGauges, internalGauge)
 			}
 
-			_, err := s.App.IncentivesKeeper.CreateGroup(s.Ctx, sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(100_000_000))), 1, s.TestAccs[1], internalGauges) // gauge id = 5
+			_, err := s.App.IncentivesKeeper.CreateGroup(s.Ctx, sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(100_000_000))), 1, s.TestAccs[1], internalGauges) // gauge id = 5
 			s.Require().NoError(err)
 
 			record, err := s.App.IncentivesKeeper.GetGroupByGaugeID(s.Ctx, test.groupGaugeId)
@@ -112,7 +112,7 @@ func (s *KeeperTestSuite) TestGetAllGroupsWithGauge() {
 
 	s.overwriteVolumes(groupPoolIds, []osmomath.Int{defaultVolumeAmount, defaultVolumeAmount, defaultVolumeAmount})
 	expectedStartTime := s.Ctx.BlockTime().UTC()
-	_, err := s.App.IncentivesKeeper.CreateGroup(s.Ctx, sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(100_000_000))), 1, s.TestAccs[0], groupPoolIds)
+	_, err := s.App.IncentivesKeeper.CreateGroup(s.Ctx, sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(100_000_000))), 1, s.TestAccs[0], groupPoolIds)
 	s.Require().NoError(err)
 
 	// Call GetAllGroupsWithGauge
@@ -154,7 +154,7 @@ func (s *KeeperTestSuite) TestGetAllGroupsWithGauge() {
 		Gauge: types.Gauge{
 			Id:                uint64(8),
 			DistributeTo:      lockuptypes.QueryCondition{LockQueryType: lockuptypes.ByGroup},
-			Coins:             sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(100_000_000))),
+			Coins:             sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(100_000_000))),
 			StartTime:         expectedStartTime,
 			NumEpochsPaidOver: 1,
 		},

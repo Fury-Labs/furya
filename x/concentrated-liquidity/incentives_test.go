@@ -8,14 +8,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/query"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/accum"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	cl "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	"github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/accum"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
 )
 
 var (
@@ -3557,7 +3557,7 @@ func (s *KeeperTestSuite) TestCollectIncentives_MinSpotPriceMigration() {
 	s.SetupTest()
 
 	incentiveAmount := osmomath.NewInt(1000)
-	incentiveCoin := sdk.NewCoin(OSMO, incentiveAmount)
+	incentiveCoin := sdk.NewCoin(FURY, incentiveAmount)
 	expectedTotalIncentiveRewards := sdk.NewCoins(incentiveCoin)
 	_, positions, _ := s.swapToMinTickAndBack(osmomath.ZeroDec(), expectedTotalIncentiveRewards)
 

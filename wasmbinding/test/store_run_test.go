@@ -14,15 +14,15 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/app"
+	"github.com/furya-labs/furya/v20/app/apptesting"
 )
 
 func TestNoStorageWithoutProposal(t *testing.T) {
 	// we use default config
-	osmosis, ctx := CreateTestInput()
+	furya, ctx := CreateTestInput()
 
-	wasmKeeper := osmosis.WasmKeeper
+	wasmKeeper := furya.WasmKeeper
 	// this wraps wasmKeeper, providing interfaces exposed to external messages
 	contractKeeper := keeper.NewDefaultPermissionKeeper(wasmKeeper)
 
@@ -35,9 +35,9 @@ func TestNoStorageWithoutProposal(t *testing.T) {
 	require.Error(t, err)
 }
 
-func storeCodeViaProposal(t *testing.T, ctx sdk.Context, osmosis *app.OsmosisApp, addr sdk.AccAddress) {
+func storeCodeViaProposal(t *testing.T, ctx sdk.Context, furya *app.FuryaApp, addr sdk.AccAddress) {
 	t.Helper()
-	govKeeper := osmosis.GovKeeper
+	govKeeper := furya.GovKeeper
 	wasmCode, err := os.ReadFile("../testdata/hackatom.wasm")
 	require.NoError(t, err)
 
@@ -60,11 +60,11 @@ func storeCodeViaProposal(t *testing.T, ctx sdk.Context, osmosis *app.OsmosisApp
 
 func TestStoreCodeProposal(t *testing.T) {
 	apptesting.SkipIfWSL(t)
-	osmosis, ctx := CreateTestInput()
+	furya, ctx := CreateTestInput()
 	myActorAddress := RandomAccountAddress()
-	wasmKeeper := osmosis.WasmKeeper
+	wasmKeeper := furya.WasmKeeper
 
-	storeCodeViaProposal(t, ctx, osmosis, myActorAddress)
+	storeCodeViaProposal(t, ctx, furya, myActorAddress)
 
 	// then
 	cInfo := wasmKeeper.GetCodeInfo(ctx, 1)
@@ -86,13 +86,13 @@ type HackatomExampleInitMsg struct {
 
 func TestInstantiateContract(t *testing.T) {
 	apptesting.SkipIfWSL(t)
-	osmosis, ctx := CreateTestInput()
+	furya, ctx := CreateTestInput()
 	funder := RandomAccountAddress()
 	benefit, arb := RandomAccountAddress(), RandomAccountAddress()
-	FundAccount(t, ctx, osmosis, funder)
+	FundAccount(t, ctx, furya, funder)
 
-	storeCodeViaProposal(t, ctx, osmosis, funder)
-	contractKeeper := keeper.NewDefaultPermissionKeeper(osmosis.WasmKeeper)
+	storeCodeViaProposal(t, ctx, furya, funder)
+	contractKeeper := keeper.NewDefaultPermissionKeeper(furya.WasmKeeper)
 	codeID := uint64(1)
 
 	initMsg := HackatomExampleInitMsg{
@@ -102,7 +102,7 @@ func TestInstantiateContract(t *testing.T) {
 	initMsgBz, err := json.Marshal(initMsg)
 	require.NoError(t, err)
 
-	funds := sdk.NewInt64Coin("uosmo", 123456)
+	funds := sdk.NewInt64Coin("ufury", 123456)
 	_, _, err = contractKeeper.Instantiate(ctx, codeID, funder, funder, initMsgBz, "demo contract", sdk.Coins{funds})
 	require.NoError(t, err)
 }

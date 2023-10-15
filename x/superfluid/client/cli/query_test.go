@@ -11,9 +11,9 @@ import (
 
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 type QueryTestSuite struct {
@@ -63,31 +63,31 @@ func (s *QueryTestSuite) TestQueriesNeverAlterState() {
 	}{
 		{
 			"Query all superfluild assets",
-			"/osmosis.superfluid.Query/AllAssets",
+			"/furya.superfluid.Query/AllAssets",
 			&types.AllAssetsRequest{},
 			&types.AllAssetsResponse{},
 		},
 		{
 			"Query all intermediary accounts",
-			"/osmosis.superfluid.Query/AllIntermediaryAccounts",
+			"/furya.superfluid.Query/AllIntermediaryAccounts",
 			&types.AllIntermediaryAccountsRequest{},
 			&types.AllIntermediaryAccountsResponse{},
 		},
 		{
-			"Query osmo equivalent multiplier of an asset",
-			"/osmosis.superfluid.Query/AssetMultiplier",
+			"Query fury equivalent multiplier of an asset",
+			"/furya.superfluid.Query/AssetMultiplier",
 			&types.AssetMultiplierRequest{Denom: "gamm/pool/1"},
 			&types.AssetMultiplierResponse{},
 		},
 		{
 			"Query asset type",
-			"/osmosis.superfluid.Query/AssetType",
+			"/furya.superfluid.Query/AssetType",
 			&types.AssetTypeRequest{Denom: "gamm/pool/1"},
 			&types.AssetTypeResponse{},
 		},
 		{
 			"Query connected intermediary account",
-			"/osmosis.superfluid.Query/ConnectedIntermediaryAccount",
+			"/furya.superfluid.Query/ConnectedIntermediaryAccount",
 			&types.ConnectedIntermediaryAccountRequest{LockId: 1},
 			&types.ConnectedIntermediaryAccountResponse{},
 		},
@@ -95,49 +95,49 @@ func (s *QueryTestSuite) TestQueriesNeverAlterState() {
 		// else the response is nil and theres a panic internally.
 		// {
 		// 	"Query estimate sfs delegated amount by validator & denom",
-		// 	"/osmosis.superfluid.Query/EstimateSuperfluidDelegatedAmountByValidatorDenom",
+		// 	"/furya.superfluid.Query/EstimateSuperfluidDelegatedAmountByValidatorDenom",
 		// 	&types.EstimateSuperfluidDelegatedAmountByValidatorDenomRequest{ValidatorAddress: s.val.String(), Denom: "gamm/pool/1"},
 		// 	&types.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse{},
 		// },
 		{
 			"Query params",
-			"/osmosis.superfluid.Query/Params",
+			"/furya.superfluid.Query/Params",
 			&types.QueryParamsRequest{},
 			&types.QueryParamsResponse{},
 		},
 		{
 			"Query sfs delegation amount",
-			"/osmosis.superfluid.Query/SuperfluidDelegationAmount",
+			"/furya.superfluid.Query/SuperfluidDelegationAmount",
 			&types.SuperfluidDelegationAmountRequest{ValidatorAddress: s.val.String(), Denom: "gamm/pool/1", DelegatorAddress: s.TestAccs[0].String()},
 			&types.SuperfluidDelegationAmountResponse{},
 		},
 		{
 			"Query sfs delegation by delegator",
-			"/osmosis.superfluid.Query/SuperfluidDelegationsByDelegator",
+			"/furya.superfluid.Query/SuperfluidDelegationsByDelegator",
 			&types.SuperfluidDelegationsByDelegatorRequest{DelegatorAddress: s.TestAccs[0].String()},
 			&types.SuperfluidDelegationsByDelegatorResponse{},
 		},
 		{
 			"Query sfs delegation by validator & denom",
-			"/osmosis.superfluid.Query/SuperfluidDelegationsByValidatorDenom",
+			"/furya.superfluid.Query/SuperfluidDelegationsByValidatorDenom",
 			&types.SuperfluidDelegationsByValidatorDenomRequest{ValidatorAddress: s.val.String(), Denom: "gamm/pool/1"},
 			&types.SuperfluidDelegationsByValidatorDenomResponse{},
 		},
 		{
 			"Query sfs undelegation by delegator",
-			"/osmosis.superfluid.Query/SuperfluidUndelegationsByDelegator",
+			"/furya.superfluid.Query/SuperfluidUndelegationsByDelegator",
 			&types.SuperfluidUndelegationsByDelegatorRequest{DelegatorAddress: s.TestAccs[0].String(), Denom: "gamm/pool/1"},
 			&types.SuperfluidUndelegationsByDelegatorResponse{},
 		},
 		{
 			"Query total sfs delegation by delegator",
-			"/osmosis.superfluid.Query/TotalDelegationByDelegator",
+			"/furya.superfluid.Query/TotalDelegationByDelegator",
 			&types.QueryTotalDelegationByDelegatorRequest{DelegatorAddress: s.TestAccs[0].String()},
 			&types.QueryTotalDelegationByDelegatorResponse{},
 		},
 		{
 			"Query total sfs delegations",
-			"/osmosis.superfluid.Query/TotalSuperfluidDelegations",
+			"/furya.superfluid.Query/TotalSuperfluidDelegations",
 			&types.TotalSuperfluidDelegationsRequest{},
 			&types.TotalSuperfluidDelegationsResponse{},
 		},

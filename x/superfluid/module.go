@@ -1,8 +1,8 @@
 /*
 The superfluid module handles all logic in relation to
-the superfluid staking feature on Osmosis. Namely:
-- Methods to lock funds and mint synthetic osmo for staking
-- Daily minting and burning of the purpose of adjusting synthetic osmo lockups.
+the superfluid staking feature on Furya. Namely:
+- Methods to lock funds and mint synthetic fury for staking
+- Daily minting and burning of the purpose of adjusting synthetic fury lockups.
 - Staking reward distribution via the intermediary account.
 */
 package superfluid
@@ -26,12 +26,12 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	osmosimtypes "github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/client/rest"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/client/cli"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/simulation"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	osmosimtypes "github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/furya-labs/furya/v20/x/mint/client/rest"
+	"github.com/furya-labs/furya/v20/x/superfluid/client/cli"
+	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
+	"github.com/furya-labs/furya/v20/x/superfluid/simulation"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 )
 
 var (

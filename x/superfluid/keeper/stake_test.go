@@ -5,13 +5,13 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	errorsmod "cosmossdk.io/errors"
 	"github.com/cosmos/cosmos-sdk/simapp"
@@ -76,14 +76,14 @@ func (s *KeeperTestSuite) TestSuperfluidDelegate() {
 
 			denoms, _ := s.SetupGammPoolsAndSuperfluidAssets([]osmomath.Dec{osmomath.NewDec(20), osmomath.NewDec(20)})
 
-			// get pre-superfluid delgations osmo supply and supplyWithOffset
+			// get pre-superfluid delgations fury supply and supplyWithOffset
 			presupply := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 			presupplyWithOffset := s.App.BankKeeper.GetSupplyWithOffset(s.Ctx, bondDenom)
 
 			// setup superfluid delegations
 			_, intermediaryAccs, locks := s.setupSuperfluidDelegations(valAddrs, tc.superDelegations, denoms)
 
-			// ensure post-superfluid delegations osmo supplywithoffset is the same while supply is not
+			// ensure post-superfluid delegations fury supplywithoffset is the same while supply is not
 			postsupply := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 			postsupplyWithOffset := s.App.BankKeeper.GetSupplyWithOffset(s.Ctx, bondDenom)
 			s.Require().False(postsupply.IsEqual(presupply), "presupply: %s   postsupply: %s", presupply, postsupply)
@@ -192,12 +192,12 @@ func (s *KeeperTestSuite) TestValidateLockForSFDelegate() {
 			name: "invalid lock - not superfluid asset",
 			lock: &lockuptypes.PeriodLock{
 				Owner:    lockOwner.String(),
-				Coins:    sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(100))),
+				Coins:    sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(100))),
 				Duration: time.Hour * 24 * 21,
 				ID:       1,
 			},
 			superfluidAssetToSet: types.SuperfluidAsset{Denom: DefaultGammAsset, AssetType: types.SuperfluidAssetTypeLPShare},
-			expectedErr:          errorsmod.Wrapf(types.ErrNonSuperfluidAsset, "denom: %s", "uosmo"),
+			expectedErr:          errorsmod.Wrapf(types.ErrNonSuperfluidAsset, "denom: %s", "ufury"),
 		},
 		{
 			name: "invalid lock - unbonding lockup not supported",
@@ -364,7 +364,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegate() {
 					lock = &lockuptypes.PeriodLock{}
 				}
 
-				// get pre-superfluid delgations osmo supply and supplyWithOffset
+				// get pre-superfluid delgations fury supply and supplyWithOffset
 				presupply := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 				presupplyWithOffset := s.App.BankKeeper.GetSupplyWithOffset(s.Ctx, bondDenom)
 
@@ -376,7 +376,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegate() {
 				}
 				s.Require().NoError(err)
 
-				// ensure post-superfluid delegations osmo supplywithoffset is the same while supply is not
+				// ensure post-superfluid delegations fury supplywithoffset is the same while supply is not
 				postsupply := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 				postsupplyWithOffset := s.App.BankKeeper.GetSupplyWithOffset(s.Ctx, bondDenom)
 				s.Require().False(postsupply.IsEqual(presupply), "presupply: %s   postsupply: %s", presupply, postsupply)
@@ -528,7 +528,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegateToConcentratedPosition() {
 					lock = &lockuptypes.PeriodLock{}
 				}
 
-				// get pre-superfluid delgations osmo supply and supplyWithOffset
+				// get pre-superfluid delgations fury supply and supplyWithOffset
 				presupply := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 				presupplyWithOffset := s.App.BankKeeper.GetSupplyWithOffset(s.Ctx, bondDenom)
 
@@ -540,7 +540,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegateToConcentratedPosition() {
 				}
 				s.Require().NoError(err)
 
-				// ensure post-superfluid delegations osmo supplywithoffset is the same while supply is not
+				// ensure post-superfluid delegations fury supplywithoffset is the same while supply is not
 				postsupply := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 				postsupplyWithOffset := s.App.BankKeeper.GetSupplyWithOffset(s.Ctx, bondDenom)
 				s.Require().False(postsupply.IsEqual(presupply), "presupply: %s   postsupply: %s", presupply, postsupply)
@@ -801,7 +801,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegateAndUnbondLock() {
 				intermediaryAcc := s.App.SuperfluidKeeper.GetIntermediaryAccount(s.Ctx, accAddr)
 				valAddr := intermediaryAcc.ValAddr
 
-				// get OSMO total supply and amount to be burned
+				// get FURY total supply and amount to be burned
 				bondDenom := s.App.StakingKeeper.BondDenom(s.Ctx)
 				supplyBefore := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 				osmoAmount, err := s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, intermediaryAcc.Denom, tc.unlockAmount)
@@ -817,7 +817,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegateAndUnbondLock() {
 
 				s.Require().NoError(err)
 
-				// check OSMO total supply and burnt amount
+				// check FURY total supply and burnt amount
 				s.Require().True(osmoAmount.IsPositive())
 				supplyAfter := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
 				s.Require().Equal(supplyAfter, supplyBefore.Sub(sdk.NewCoin(bondDenom, osmoAmount)))
@@ -1101,7 +1101,7 @@ func (s *KeeperTestSuite) TestUnbondConvertAndStake() {
 			}
 
 			// only test with test related denoms
-			balanceBeforeConvertLockToStake := s.App.BankKeeper.GetAllBalances(s.Ctx, sender).FilterDenoms([]string{"foo", "stake", "uosmo"})
+			balanceBeforeConvertLockToStake := s.App.BankKeeper.GetAllBalances(s.Ctx, sender).FilterDenoms([]string{"foo", "stake", "ufury"})
 
 			// system under test
 			totalAmtConverted, err := s.App.SuperfluidKeeper.UnbondConvertAndStake(s.Ctx, lockId, sender.String(), valAddr.String(), minAmountToStake, sharesToConvert)
@@ -1116,7 +1116,7 @@ func (s *KeeperTestSuite) TestUnbondConvertAndStake() {
 			s.delegationCheck(sender, originalValAddr, valAddr, totalAmtConverted)
 
 			// Bank check
-			balanceAfterConvertLockToStake := s.App.BankKeeper.GetAllBalances(s.Ctx, sender).FilterDenoms([]string{"foo", "stake", "uosmo"})
+			balanceAfterConvertLockToStake := s.App.BankKeeper.GetAllBalances(s.Ctx, sender).FilterDenoms([]string{"foo", "stake", "ufury"})
 			s.Require().True(balanceBeforeConvertLockToStake.IsEqual(balanceAfterConvertLockToStake))
 
 			// if unlocked, no need to check locks since there is no lock existing
@@ -1355,7 +1355,7 @@ func (s *KeeperTestSuite) TestConvertGammSharesToOsmoAndStake() {
 		},
 		"error: invalid val address": {
 			useInvalidValAddr: true,
-			expectedError:     "invalid Bech32 prefix; expected osmovaloper, got osmo",
+			expectedError:     "invalid Bech32 prefix; expected osmovaloper, got fury",
 		},
 		"error: min amount to stake exceeds actual amount staking": {
 			useMinAmtToStake: true,
@@ -1725,7 +1725,7 @@ func (s *KeeperTestSuite) getExpectedBondDenomPoolAmtAfterConvert(sender sdk.Acc
 
 	var nonOsmoCoin sdk.Coin
 	for _, exitCoin := range exitCoins {
-		// if coin is not uosmo, add it to non-osmo Coins
+		// if coin is not ufury, add it to non-fury Coins
 		if exitCoin.Denom != bondDenom {
 			nonOsmoCoin = exitCoin
 		}

@@ -7,10 +7,10 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/events"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/poolmanager/events"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 // swapExactAmountIn is an internal method for swapping an exact amount of tokens
@@ -18,7 +18,7 @@ import (
 // different spread factors as determined by multi-hops, or when recovering from
 // chain liveness failures.
 // TODO: investigate if spreadFactor can be unexported
-// https://github.com/osmosis-labs/osmosis/issues/3130
+// https://github.com/furya-labs/furya/issues/3130
 func (k Keeper) SwapExactAmountIn(
 	ctx sdk.Context,
 	sender sdk.AccAddress,

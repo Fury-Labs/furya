@@ -7,7 +7,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
 )
 
 const poolBalanceInvariantName = "pool-account-balance-equals-expected"

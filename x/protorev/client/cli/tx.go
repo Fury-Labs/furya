@@ -15,8 +15,8 @@ import (
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev/types"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/protorev/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -46,14 +46,14 @@ func CmdSetDeveloperHotRoutes() *osmocli.TxCliDesc {
 		Sample json file:
 		[
 			{
-				"token_in": "uosmo",
+				"token_in": "ufury",
 				"token_out": "ibc/123...",
 				"arb_routes" : [
 					{
 						"trades": [
 							{
 								"pool": 1,
-								"token_in": "uosmo",
+								"token_in": "ufury",
 								"token_out": "uatom"
 							},
 							{
@@ -64,7 +64,7 @@ func CmdSetDeveloperHotRoutes() *osmocli.TxCliDesc {
 							{
 								"pool": 0,
 								"token_in": "ibc/123...",
-								"token_out": "uosmo"
+								"token_out": "ufury"
 							}
 						],
 						"step_size": 1000000
@@ -185,7 +185,7 @@ func CmdSetBaseDenoms() *osmocli.TxCliDesc {
 		[
 			{
 				"step_size" : 10000,
-				"denom" : "uosmo"
+				"denom" : "ufury"
 			},
 			{
 				"step_size" : 10000,

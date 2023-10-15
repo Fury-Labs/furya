@@ -1,14 +1,14 @@
 syntax = "proto3";
-package osmosis.protorev.v1beta1;
+package furya.protorev.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/protorev/v1beta1/protorev.proto";
-import "osmosis/protorev/v1beta1/params.proto";
+import "furya/protorev/v1beta1/protorev.proto";
+import "furya/protorev/v1beta1/params.proto";
 import "cosmos_proto/cosmos.proto";
 
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/protorev/types";
+option go_package = "github.com/furya-labs/furya/v20/x/protorev/types";
 
 // GenesisState defines the protorev module's genesis state.
 message GenesisState {

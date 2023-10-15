@@ -1,7 +1,7 @@
 /*
 Package gamm contains a variety of generalized automated market maker
 functionality which provides the logic to create and interact with
-liquidity pools on the Osmosis DEX.
+liquidity pools on the Furya DEX.
  - Has pool creation, join pool, and exit pool logic
  - Token swap logic
  - GAMM pool queries
@@ -25,14 +25,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/client/cli"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/stableswap"
-	simulation "github.com/osmosis-labs/osmosis/v20/x/gamm/simulation"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/v2types"
+	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/furya-labs/furya/v20/x/gamm/client/cli"
+	"github.com/furya-labs/furya/v20/x/gamm/keeper"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	simulation "github.com/furya-labs/furya/v20/x/gamm/simulation"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/gamm/v2types"
 )
 
 var (

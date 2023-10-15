@@ -12,11 +12,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/x/protorev/keeper"
+	"github.com/furya-labs/furya/v20/x/protorev/types"
 )
 
 // BenchmarkBalancerSwapHighestLiquidityArb benchmarks a balancer swap that creates a single three hop arbitrage
@@ -45,7 +45,7 @@ func BenchmarkStableSwapHotRouteArb(b *testing.B) {
 			Routes: []poolmanagertypes.SwapAmountInRoute{
 				{
 					PoolId:        29,
-					TokenOutDenom: types.OsmosisDenomination,
+					TokenOutDenom: types.FuryaDenomination,
 				},
 			},
 			TokenIn:           sdk.NewCoin("usdc", osmomath.NewInt(10000)),
@@ -137,7 +137,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 				expectedNumOfTrades: osmomath.OneInt(),
 				expectedProfits: []sdk.Coin{
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(24848),
 					},
 				},
@@ -162,7 +162,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(5826),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(24848),
 					},
 				},
@@ -176,7 +176,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 				trades: []types.Trade{
 					{
 						Pool:     29,
-						TokenOut: types.OsmosisDenomination,
+						TokenOut: types.FuryaDenomination,
 						TokenIn:  "usdc",
 					},
 				},
@@ -187,7 +187,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(5826),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(56609900),
 					},
 				},
@@ -212,7 +212,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(15_767_231),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(56_609_900),
 					},
 				},
@@ -227,7 +227,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 					{
 						Pool:     38,
 						TokenOut: "ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7",
-						TokenIn:  types.OsmosisDenomination,
+						TokenIn:  types.FuryaDenomination,
 					},
 				},
 				expectedNumOfTrades: osmomath.NewInt(5),
@@ -237,7 +237,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(15_767_231),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(256_086_256),
 					},
 				},
@@ -262,7 +262,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(15_767_231),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(256_086_256),
 					},
 				},
@@ -287,7 +287,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(15_767_231),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(256_086_256),
 					},
 				},
@@ -312,7 +312,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 						Amount: osmomath.NewInt(15_767_231),
 					},
 					{
-						Denom:  types.OsmosisDenomination,
+						Denom:  types.FuryaDenomination,
 						Amount: osmomath.NewInt(256_086_256),
 					},
 				},
@@ -335,7 +335,7 @@ func (s *KeeperTestSuite) TestAnteHandle() {
 			s.Ctx = s.Ctx.WithMinGasPrices(sdk.NewDecCoins())
 
 			gasLimit := uint64(500000)
-			txFee := sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(10000)))
+			txFee := sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(10000)))
 
 			privs, accNums, accSeqs := []cryptotypes.PrivKey{priv0}, []uint64{0}, []uint64{0}
 			signerData := authsigning.SignerData{
@@ -499,7 +499,7 @@ func (s *KeeperTestSuite) TestExtractSwappedPools() {
 					{
 						PoolId:        22,
 						TokenOutDenom: "ibc/BE1BB42D4BE3C30D50B68D7C41DB4DFCE9678E8EF8C539F6E6A9345048894FCC",
-						TokenInDenom:  "uosmo",
+						TokenInDenom:  "ufury",
 					},
 				},
 			},
@@ -692,7 +692,7 @@ func setUpBenchmarkSuite(msgs []sdk.Msg) (*KeeperTestSuite, authsigning.Tx, sdk.
 	priv0, _, addr0 := testdata.KeyTestPubAddr()
 	acc1 := s.App.AccountKeeper.NewAccountWithAddress(s.Ctx, addr0)
 	s.App.AccountKeeper.SetAccount(s.Ctx, acc1)
-	err = simapp.FundAccount(s.App.BankKeeper, s.Ctx, addr0, sdk.NewCoins(sdk.NewCoin(types.OsmosisDenomination, osmomath.NewInt(10000))))
+	err = simapp.FundAccount(s.App.BankKeeper, s.Ctx, addr0, sdk.NewCoins(sdk.NewCoin(types.FuryaDenomination, osmomath.NewInt(10000))))
 	s.Require().NoError(err)
 
 	// Build the tx
@@ -711,7 +711,7 @@ func setUpBenchmarkSuite(msgs []sdk.Msg) (*KeeperTestSuite, authsigning.Tx, sdk.
 		s.clientCtx.TxConfig,
 		accSeqs[0],
 	)
-	tx := s.BuildTx(txBuilder, msgs, sigV2, "", sdk.NewCoins(sdk.NewCoin(types.OsmosisDenomination, osmomath.NewInt(10000))), 500000)
+	tx := s.BuildTx(txBuilder, msgs, sigV2, "", sdk.NewCoins(sdk.NewCoin(types.FuryaDenomination, osmomath.NewInt(10000))), 500000)
 
 	// Set up the post handler
 	protoRevDecorator := keeper.NewProtoRevDecorator(*s.App.ProtoRevKeeper)

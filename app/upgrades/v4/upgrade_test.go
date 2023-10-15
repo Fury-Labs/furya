@@ -11,8 +11,8 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/v20/app"
-	v4 "github.com/osmosis-labs/osmosis/v20/app/upgrades/v4"
+	"github.com/furya-labs/furya/v20/app"
+	v4 "github.com/furya-labs/furya/v20/app/upgrades/v4"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
@@ -22,12 +22,12 @@ type UpgradeTestSuite struct {
 	suite.Suite
 
 	ctx sdk.Context
-	app *app.OsmosisApp
+	app *app.FuryaApp
 }
 
 func (s *UpgradeTestSuite) SetupTest() {
 	s.app = app.Setup(false)
-	s.ctx = s.app.BaseApp.NewContext(false, tmproto.Header{Height: 1, ChainID: "osmosis-1", Time: time.Now().UTC()})
+	s.ctx = s.app.BaseApp.NewContext(false, tmproto.Header{Height: 1, ChainID: "furya-1", Time: time.Now().UTC()})
 }
 
 func TestKeeperTestSuite(t *testing.T) {
@@ -50,7 +50,7 @@ func (s *UpgradeTestSuite) TestUpgradePayments() {
 				// mint coins to distribution module / feepool.communitypool
 
 				bal := int64(1000000000000)
-				coin := sdk.NewInt64Coin("uosmo", bal)
+				coin := sdk.NewInt64Coin("ufury", bal)
 				coins := sdk.NewCoins(coin)
 				err := s.app.BankKeeper.MintCoins(s.ctx, "mint", coins)
 				s.Require().NoError(err)
@@ -85,9 +85,9 @@ func (s *UpgradeTestSuite) TestUpgradePayments() {
 					s.Require().NoError(err)
 					amount, err := strconv.ParseInt(strings.TrimSpace(payment[1]), 10, 64)
 					s.Require().NoError(err)
-					coin := sdk.NewInt64Coin("uosmo", amount)
+					coin := sdk.NewInt64Coin("ufury", amount)
 
-					accBal := s.app.BankKeeper.GetBalance(s.ctx, addr, "uosmo")
+					accBal := s.app.BankKeeper.GetBalance(s.ctx, addr, "ufury")
 					s.Require().Equal(coin, accBal)
 
 					total += amount
@@ -100,18 +100,18 @@ func (s *UpgradeTestSuite) TestUpgradePayments() {
 
 				// check that distribution module account balance has been reduced correctly
 				distAddr := s.app.AccountKeeper.GetModuleAddress("distribution")
-				distBal := s.app.BankKeeper.GetBalance(s.ctx, distAddr, "uosmo")
-				s.Require().Equal(distBal, sdk.NewInt64Coin("uosmo", expectedBal))
+				distBal := s.app.BankKeeper.GetBalance(s.ctx, distAddr, "ufury")
+				s.Require().Equal(distBal, sdk.NewInt64Coin("ufury", expectedBal))
 
 				// check that feepool.communitypool has been reduced correctly
 				feePool := s.app.DistrKeeper.GetFeePool(s.ctx)
-				s.Require().Equal(feePool.GetCommunityPool(), sdk.NewDecCoins(sdk.NewInt64DecCoin("uosmo", expectedBal)))
+				s.Require().Equal(feePool.GetCommunityPool(), sdk.NewDecCoins(sdk.NewInt64DecCoin("ufury", expectedBal)))
 
 				// Check that gamm Minimum Fee has been set correctly
 
 				// Kept as comments for recordkeeping. Since SetParams is now private, the changes being tested for can no longer be made:
 				//  	gammParams := s.app.GAMMKeeper.GetParams(suite.ctx)
-				//  	expectedCreationFee := sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.OneInt()))
+				//  	expectedCreationFee := sdk.NewCoins(sdk.NewCoin("ufury", osmomath.OneInt()))
 				//  	s.Require().Equal(gammParams.PoolCreationFee, expectedCreationFee)
 			},
 			true,

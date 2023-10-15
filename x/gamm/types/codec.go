@@ -13,23 +13,23 @@ import (
 // on the provided LegacyAmino codec. These types are used for Amino JSON serialization.
 func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterInterface((*CFMMPoolI)(nil), nil)
-	cdc.RegisterConcrete(&MsgJoinPool{}, "osmosis/gamm/join-pool", nil)
-	cdc.RegisterConcrete(&MsgExitPool{}, "osmosis/gamm/exit-pool", nil)
-	cdc.RegisterConcrete(&MsgSwapExactAmountIn{}, "osmosis/gamm/swap-exact-amount-in", nil)
-	cdc.RegisterConcrete(&MsgSwapExactAmountOut{}, "osmosis/gamm/swap-exact-amount-out", nil)
-	cdc.RegisterConcrete(&MsgJoinSwapExternAmountIn{}, "osmosis/gamm/join-swap-extern-amount-in", nil)
-	cdc.RegisterConcrete(&MsgJoinSwapShareAmountOut{}, "osmosis/gamm/join-swap-share-amount-out", nil)
-	cdc.RegisterConcrete(&MsgExitSwapExternAmountOut{}, "osmosis/gamm/exit-swap-extern-amount-out", nil)
-	cdc.RegisterConcrete(&MsgExitSwapShareAmountIn{}, "osmosis/gamm/exit-swap-share-amount-in", nil)
-	cdc.RegisterConcrete(&UpdateMigrationRecordsProposal{}, "osmosis/gamm/update-migration-records-proposal", nil)
-	cdc.RegisterConcrete(&ReplaceMigrationRecordsProposal{}, "osmosis/gamm/replace-migration-records-proposal", nil)
-	cdc.RegisterConcrete(&CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal{}, "osmosis/gamm/create-cl-pool-and-cfmm-link", nil)
-	cdc.RegisterConcrete(&SetScalingFactorControllerProposal{}, "osmosis/gamm/scaling-factor-controller", nil)
+	cdc.RegisterConcrete(&MsgJoinPool{}, "furya/gamm/join-pool", nil)
+	cdc.RegisterConcrete(&MsgExitPool{}, "furya/gamm/exit-pool", nil)
+	cdc.RegisterConcrete(&MsgSwapExactAmountIn{}, "furya/gamm/swap-exact-amount-in", nil)
+	cdc.RegisterConcrete(&MsgSwapExactAmountOut{}, "furya/gamm/swap-exact-amount-out", nil)
+	cdc.RegisterConcrete(&MsgJoinSwapExternAmountIn{}, "furya/gamm/join-swap-extern-amount-in", nil)
+	cdc.RegisterConcrete(&MsgJoinSwapShareAmountOut{}, "furya/gamm/join-swap-share-amount-out", nil)
+	cdc.RegisterConcrete(&MsgExitSwapExternAmountOut{}, "furya/gamm/exit-swap-extern-amount-out", nil)
+	cdc.RegisterConcrete(&MsgExitSwapShareAmountIn{}, "furya/gamm/exit-swap-share-amount-in", nil)
+	cdc.RegisterConcrete(&UpdateMigrationRecordsProposal{}, "furya/gamm/update-migration-records-proposal", nil)
+	cdc.RegisterConcrete(&ReplaceMigrationRecordsProposal{}, "furya/gamm/replace-migration-records-proposal", nil)
+	cdc.RegisterConcrete(&CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal{}, "furya/gamm/create-cl-pool-and-cfmm-link", nil)
+	cdc.RegisterConcrete(&SetScalingFactorControllerProposal{}, "furya/gamm/scaling-factor-controller", nil)
 }
 
 func RegisterInterfaces(registry types.InterfaceRegistry) {
 	registry.RegisterInterface(
-		"osmosis.gamm.v1beta1.PoolI", // N.B.: the old proto-path is preserved for backwards-compatibility.
+		"furya.gamm.v1beta1.PoolI", // N.B.: the old proto-path is preserved for backwards-compatibility.
 		(*CFMMPoolI)(nil),
 	)
 

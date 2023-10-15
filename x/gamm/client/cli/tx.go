@@ -12,13 +12,13 @@ import (
 	"github.com/spf13/cobra"
 	flag "github.com/spf13/pflag"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/stableswap"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	gammmigration "github.com/osmosis-labs/osmosis/v20/x/gamm/types/migration"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/tx"
@@ -174,7 +174,7 @@ func NewStableSwapAdjustScalingFactorsCmd() *cobra.Command {
 	cmd := osmocli.TxCliDesc{
 		Use:              "adjust-scaling-factors --pool-id=[pool-id]  --scaling-factors=[scaling-factors]",
 		Short:            "adjust scaling factors",
-		Example:          "osmosisd adjust-scaling-factors --pool-id=1 --scaling-factors=\"100, 100\"",
+		Example:          "furyad adjust-scaling-factors --pool-id=1 --scaling-factors=\"100, 100\"",
 		NumArgs:          0,
 		ParseAndBuildMsg: NewStableSwapAdjustScalingFactorsMsg,
 	}.BuildCommandCustomFn()
@@ -364,15 +364,15 @@ Sample proposal file:
 	"pool-id": 1,
 	"controller-address": "osmoYYY"
 }
->>> osmosisd tx gov submit-proposal set-scaling-factor-controller-proposal \
+>>> furyad tx gov submit-proposal set-scaling-factor-controller-proposal \
         --proposal proposal.json \
-		--deposit 1600000000uosmo \
+		--deposit 1600000000ufury \
 
 Sample proposal with flags
->>> osmosisd tx gov submit-proposal set-scaling-factor-controller-proposal \
+>>> furyad tx gov submit-proposal set-scaling-factor-controller-proposal \
         --title "Set Scaling Factor Controller Proposal" \
 		--description "Change scaling factor controller address from osmoXXX to osmoYYY"
-		--deposit 1600000000uosmo
+		--deposit 1600000000ufury
 		--pool-id 1
 		--controller-address osmoYYY
 		`),

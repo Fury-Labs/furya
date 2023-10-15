@@ -1,10 +1,10 @@
 syntax = "proto3";
-package osmosis.poolmanager.v1beta1;
+package furya.poolmanager.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/poolmanager/v1beta1/genesis.proto";
-import "osmosis/poolmanager/v1beta1/tx.proto";
-import "osmosis/poolmanager/v1beta1/swap_route.proto";
+import "furya/poolmanager/v1beta1/genesis.proto";
+import "furya/poolmanager/v1beta1/tx.proto";
+import "furya/poolmanager/v1beta1/swap_route.proto";
 
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
@@ -13,18 +13,18 @@ import "google/protobuf/any.proto";
 import "cosmos_proto/cosmos.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/queryproto";
+option go_package = "github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto";
 
 service Query {
   rpc Params(ParamsRequest) returns (ParamsResponse) {
-    option (google.api.http).get = "/osmosis/poolmanager/v1beta1/Params";
+    option (google.api.http).get = "/furya/poolmanager/v1beta1/Params";
   }
 
   // Estimates swap amount out given in.
   rpc EstimateSwapExactAmountIn(EstimateSwapExactAmountInRequest)
       returns (EstimateSwapExactAmountInResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/{pool_id}/estimate/swap_exact_amount_in";
+        "/furya/poolmanager/v1beta1/{pool_id}/estimate/swap_exact_amount_in";
   }
 
   // EstimateSwapExactAmountInWithPrimitiveTypes is an alternative query for
@@ -34,21 +34,21 @@ service Query {
   // value, thus they are required to have the same length and are grouped
   // together as pairs.
   // example usage:
-  // http://0.0.0.0:1317/osmosis/poolmanager/v1beta1/1/estimate/
+  // http://0.0.0.0:1317/furya/poolmanager/v1beta1/1/estimate/
   // swap_exact_amount_in_with_primitive_types?token_in=100000stake&routes_token_out_denom=uatom
   // &routes_token_out_denom=uion&routes_pool_id=1&routes_pool_id=2
   rpc EstimateSwapExactAmountInWithPrimitiveTypes(
       EstimateSwapExactAmountInWithPrimitiveTypesRequest)
       returns (EstimateSwapExactAmountInResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/{pool_id}/estimate/"
+        "/furya/poolmanager/v1beta1/{pool_id}/estimate/"
         "swap_exact_amount_in_with_primitive_types";
   }
 
   rpc EstimateSinglePoolSwapExactAmountIn(
       EstimateSinglePoolSwapExactAmountInRequest)
       returns (EstimateSwapExactAmountInResponse) {
-    option (google.api.http).get = "/osmosis/poolmanager/v1beta1/{pool_id}/"
+    option (google.api.http).get = "/furya/poolmanager/v1beta1/{pool_id}/"
                                    "estimate/single_pool_swap_exact_amount_in";
   }
 
@@ -56,7 +56,7 @@ service Query {
   rpc EstimateSwapExactAmountOut(EstimateSwapExactAmountOutRequest)
       returns (EstimateSwapExactAmountOutResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/{pool_id}/estimate/swap_exact_amount_out";
+        "/furya/poolmanager/v1beta1/{pool_id}/estimate/swap_exact_amount_out";
   }
 
   // Estimates swap amount in given out.
@@ -64,7 +64,7 @@ service Query {
       EstimateSwapExactAmountOutWithPrimitiveTypesRequest)
       returns (EstimateSwapExactAmountOutResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/{pool_id}/estimate/"
+        "/furya/poolmanager/v1beta1/{pool_id}/estimate/"
         "swap_exact_amount_out_with_primitive_types";
   }
 
@@ -72,58 +72,58 @@ service Query {
       EstimateSinglePoolSwapExactAmountOutRequest)
       returns (EstimateSwapExactAmountOutResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/{pool_id}/estimate_out/"
+        "/furya/poolmanager/v1beta1/{pool_id}/estimate_out/"
         "single_pool_swap_exact_amount_out";
   }
 
-  // Returns the total number of pools existing in Osmosis.
+  // Returns the total number of pools existing in Furya.
   rpc NumPools(NumPoolsRequest) returns (NumPoolsResponse) {
-    option (google.api.http).get = "/osmosis/poolmanager/v1beta1/num_pools";
+    option (google.api.http).get = "/furya/poolmanager/v1beta1/num_pools";
   }
 
   // Pool returns the Pool specified by the pool id
   rpc Pool(PoolRequest) returns (PoolResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/pools/{pool_id}";
+        "/furya/poolmanager/v1beta1/pools/{pool_id}";
   }
 
-  // AllPools returns all pools on the Osmosis chain sorted by IDs.
+  // AllPools returns all pools on the Furya chain sorted by IDs.
   rpc AllPools(AllPoolsRequest) returns (AllPoolsResponse) {
-    option (google.api.http).get = "/osmosis/poolmanager/v1beta1/all-pools";
+    option (google.api.http).get = "/furya/poolmanager/v1beta1/all-pools";
   }
 
   // SpotPrice defines a gRPC query handler that returns the spot price given
   // a base denomination and a quote denomination.
   rpc SpotPrice(SpotPriceRequest) returns (SpotPriceResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/pools/{pool_id}/prices";
+        "/furya/poolmanager/pools/{pool_id}/prices";
   }
 
   // TotalPoolLiquidity returns the total liquidity of the specified pool.
   rpc TotalPoolLiquidity(TotalPoolLiquidityRequest)
       returns (TotalPoolLiquidityResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/pools/{pool_id}/total_pool_liquidity";
+        "/furya/poolmanager/v1beta1/pools/{pool_id}/total_pool_liquidity";
   }
 
   // TotalLiquidity returns the total liquidity across all pools.
   rpc TotalLiquidity(TotalLiquidityRequest) returns (TotalLiquidityResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/pools/total_liquidity";
+        "/furya/poolmanager/v1beta1/pools/total_liquidity";
   }
 
   // TotalVolumeForPool returns the total volume of the specified pool.
   rpc TotalVolumeForPool(TotalVolumeForPoolRequest)
       returns (TotalVolumeForPoolResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/pools/{pool_id}/total_volume";
+        "/furya/poolmanager/v1beta1/pools/{pool_id}/total_volume";
   }
 
   // TradingPairTakerFee returns the taker fee for a given set of denoms
   rpc TradingPairTakerFee(TradingPairTakerFeeRequest)
       returns (TradingPairTakerFeeResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/pools/trading_pair_takerfee";
+        "/furya/poolmanager/v1beta1/pools/trading_pair_takerfee";
   }
 
   // EstimateTradeBasedOnPriceImpact returns an estimated trade based on price
@@ -132,7 +132,7 @@ service Query {
   rpc EstimateTradeBasedOnPriceImpact(EstimateTradeBasedOnPriceImpactRequest)
       returns (EstimateTradeBasedOnPriceImpactResponse) {
     option (google.api.http).get =
-        "/osmosis/poolmanager/v1beta1/{pool_id}/estimate_trade";
+        "/furya/poolmanager/v1beta1/{pool_id}/estimate_trade";
   }
 }
 

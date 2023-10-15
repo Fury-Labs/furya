@@ -13,7 +13,7 @@ const (
 
 func init() {
 	govtypes.RegisterProposalType(ProposalTypeCreateGroups)
-	govtypes.RegisterProposalTypeCodec(&CreateGroupsProposal{}, "osmosis/CreateGroupsProposal")
+	govtypes.RegisterProposalTypeCodec(&CreateGroupsProposal{}, "furya/CreateGroupsProposal")
 }
 
 var (

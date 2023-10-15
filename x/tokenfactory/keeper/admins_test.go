@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
 )
 
 func (s *KeeperTestSuite) TestAdminMsgs() {
@@ -133,7 +133,7 @@ func (s *KeeperTestSuite) TestMintDenom() {
 			desc: "error: try minting non-tokenfactory denom",
 			mintMsg: *types.NewMsgMintTo(
 				s.TestAccs[0].String(),
-				sdk.NewInt64Coin("uosmo", 10),
+				sdk.NewInt64Coin("ufury", 10),
 				s.TestAccs[1].String(),
 			),
 			expectPass: false,
@@ -230,7 +230,7 @@ func (s *KeeperTestSuite) TestBurnDenom() {
 			desc: "fail case - burn non-tokenfactory denom",
 			burnMsg: *types.NewMsgBurnFrom(
 				s.TestAccs[0].String(),
-				sdk.NewInt64Coin("uosmo", 10),
+				sdk.NewInt64Coin("ufury", 10),
 				moduleAdress.String(),
 			),
 			expectPass: false,
@@ -442,14 +442,14 @@ func (s *KeeperTestSuite) TestSetDenomMetaData() {
 						Exponent: 0,
 					},
 					{
-						Denom:    "uosmo",
+						Denom:    "ufury",
 						Exponent: 6,
 					},
 				},
 				Base:    s.defaultDenom,
-				Display: "uosmo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Display: "ufury",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass: true,
 		},
@@ -463,14 +463,14 @@ func (s *KeeperTestSuite) TestSetDenomMetaData() {
 						Exponent: 0,
 					},
 					{
-						Denom:    "uosmo",
+						Denom:    "ufury",
 						Exponent: 6,
 					},
 				},
 				Base:    fmt.Sprintf("factory/%s/litecoin", s.TestAccs[0].String()),
-				Display: "uosmo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Display: "ufury",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass: false,
 		},
@@ -480,18 +480,18 @@ func (s *KeeperTestSuite) TestSetDenomMetaData() {
 				Description: "yeehaw",
 				DenomUnits: []*banktypes.DenomUnit{
 					{
-						Denom:    "uosmo",
+						Denom:    "ufury",
 						Exponent: 0,
 					},
 					{
-						Denom:    "uosmoo",
+						Denom:    "ufuryo",
 						Exponent: 6,
 					},
 				},
-				Base:    "uosmo",
-				Display: "uosmoo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Base:    "ufury",
+				Display: "ufuryo",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass: false,
 		},
@@ -505,14 +505,14 @@ func (s *KeeperTestSuite) TestSetDenomMetaData() {
 						Exponent: 0,
 					},
 					{
-						Denom:    "uosmo",
+						Denom:    "ufury",
 						Exponent: 6,
 					},
 				},
 				Base:    s.defaultDenom,
-				Display: "uosmo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Display: "ufury",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass: false,
 		},
@@ -527,9 +527,9 @@ func (s *KeeperTestSuite) TestSetDenomMetaData() {
 					},
 				},
 				Base:    s.defaultDenom,
-				Display: "uosmo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Display: "ufury",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass: false,
 		},

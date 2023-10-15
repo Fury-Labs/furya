@@ -1,17 +1,17 @@
 syntax = "proto3";
-package osmosis.concentratedliquidity.v1beta1;
+package furya.concentratedliquidity.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "cosmos_proto/cosmos.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "google/protobuf/any.proto";
-import "osmosis/accum/v1beta1/accum.proto";
-import "osmosis/concentrated-liquidity/params.proto";
-import "osmosis/concentrated-liquidity/position.proto";
-import "osmosis/concentrated-liquidity/tickInfo.proto";
-import "osmosis/concentrated-liquidity/incentive_record.proto";
+import "furya/accum/v1beta1/accum.proto";
+import "furya/concentrated-liquidity/params.proto";
+import "furya/concentrated-liquidity/position.proto";
+import "furya/concentrated-liquidity/tickInfo.proto";
+import "furya/concentrated-liquidity/incentive_record.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types/genesis";
+option go_package = "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types/genesis";
 
 // FullTick contains tick index and pool id along with other tick model
 // information.
@@ -51,9 +51,9 @@ message PoolData {
 message PositionData {
   Position position = 1;
   uint64 lock_id = 2 [ (gogoproto.moretags) = "yaml:\"lock_id\"" ];
-  osmosis.accum.v1beta1.Record spread_reward_accum_record = 3
+  furya.accum.v1beta1.Record spread_reward_accum_record = 3
       [ (gogoproto.nullable) = false ];
-  repeated osmosis.accum.v1beta1.Record uptime_accum_records = 4
+  repeated furya.accum.v1beta1.Record uptime_accum_records = 4
       [ (gogoproto.nullable) = false ];
 }
 
@@ -81,5 +81,5 @@ message AccumObject {
   // Accumulator's name (pulled from AccumulatorContent)
   string name = 1 [ (gogoproto.moretags) = "yaml:\"name\"" ];
 
-  osmosis.accum.v1beta1.AccumulatorContent accum_content = 2;
+  furya.accum.v1beta1.AccumulatorContent accum_content = 2;
 }

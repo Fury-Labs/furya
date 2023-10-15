@@ -5,8 +5,8 @@ package simulation
 import (
 	"math/rand"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/mint/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -25,7 +25,7 @@ const (
 )
 
 var (
-	// Taken from: // https://github.com/osmosis-labs/networks/raw/main/osmosis-1/genesis.json
+	// Taken from: // https://github.com/furya-labs/networks/raw/main/furya-1/genesis.json
 	distributionProportions = types.DistributionProportions{
 		Staking:          osmomath.NewDecWithPrec(25, 2),
 		PoolIncentives:   osmomath.NewDecWithPrec(45, 2),

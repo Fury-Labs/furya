@@ -1,13 +1,13 @@
 syntax = "proto3";
-package osmosis.gamm.v1beta1;
+package furya.gamm.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/gamm/v1beta1/genesis.proto";
-import "osmosis/gamm/v1beta1/shared.proto";
+import "furya/gamm/v1beta1/genesis.proto";
+import "furya/gamm/v1beta1/shared.proto";
 import "cosmos_proto/cosmos.proto";
 import "amino/amino.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/gamm/types";
+option go_package = "github.com/furya-labs/furya/v20/x/gamm/types";
 
 // ReplaceMigrationRecordsProposal is a gov Content type for updating the
 // migration records. If a ReplaceMigrationRecordsProposal passes, the
@@ -18,7 +18,7 @@ message ReplaceMigrationRecordsProposal {
   option (gogoproto.equal) = true;
   option (gogoproto.goproto_getters) = false;
   option (gogoproto.goproto_stringer) = false;
-  option (amino.name) = "osmosis/ReplaceMigrationRecordsProposal";
+  option (amino.name) = "furya/ReplaceMigrationRecordsProposal";
   option (cosmos_proto.implements_interface) = "cosmos.gov.v1beta1.Content";
 
   string title = 1;
@@ -50,7 +50,7 @@ message UpdateMigrationRecordsProposal {
   option (gogoproto.equal) = true;
   option (gogoproto.goproto_getters) = false;
   option (gogoproto.goproto_stringer) = false;
-  option (amino.name) = "osmosis/UpdateMigrationRecordsProposal";
+  option (amino.name) = "furya/UpdateMigrationRecordsProposal";
   option (cosmos_proto.implements_interface) = "cosmos.gov.v1beta1.Content";
 
   string title = 1;
@@ -87,7 +87,7 @@ message CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal {
   option (gogoproto.goproto_getters) = false;
   option (gogoproto.goproto_stringer) = false;
   option (amino.name) =
-      "osmosis/CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal";
+      "furya/CreateConcentratedLiquidityPoolsAndLinktoCFMMProposal";
   option (cosmos_proto.implements_interface) = "cosmos.gov.v1beta1.Content";
 
   string title = 1;
@@ -105,7 +105,7 @@ message SetScalingFactorControllerProposal {
   option (gogoproto.equal) = true;
   option (gogoproto.goproto_getters) = false;
   option (gogoproto.goproto_stringer) = false;
-  option (amino.name) = "osmosis/SetScalingFactorControllerProposal";
+  option (amino.name) = "furya/SetScalingFactorControllerProposal";
   option (cosmos_proto.implements_interface) = "cosmos.gov.v1beta1.Content";
 
   string title = 1;

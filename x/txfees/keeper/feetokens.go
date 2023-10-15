@@ -5,8 +5,8 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/txfees/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -34,7 +34,7 @@ func (k Keeper) ConvertToBaseToken(ctx sdk.Context, inputFee sdk.Coin) (sdk.Coin
 
 	// Note: spotPrice truncation is done here for maintaining state-compatibility with v19.x
 	// It should be changed to support full spot price precision before
-	// https://github.com/osmosis-labs/osmosis/issues/6064 is complete
+	// https://github.com/furya-labs/furya/issues/6064 is complete
 	return sdk.NewCoin(baseDenom, spotPrice.Dec().MulInt(inputFee.Amount).RoundInt()), nil
 }
 
@@ -61,7 +61,7 @@ func (k Keeper) CalcFeeSpotPrice(ctx sdk.Context, inputDenom string) (osmomath.B
 }
 
 // GetFeeToken returns the fee token record for a specific denom,
-// In our case the baseDenom is uosmo.
+// In our case the baseDenom is ufury.
 func (k Keeper) GetBaseDenom(ctx sdk.Context) (denom string, err error) {
 	store := ctx.KVStore(k.storeKey)
 

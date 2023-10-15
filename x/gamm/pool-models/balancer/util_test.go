@@ -7,9 +7,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
 )
 
 func createTestPool(t *testing.T, spreadFactor, exitFee osmomath.Dec, poolAssets ...balancer.PoolAsset) *balancer.Pool {

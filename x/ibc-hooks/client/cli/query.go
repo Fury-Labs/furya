@@ -9,9 +9,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/spf13/cobra"
 
-	"github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
+	"github.com/furya-labs/furya/x/ibc-hooks/keeper"
 
-	"github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
+	"github.com/furya-labs/furya/x/ibc-hooks/types"
 )
 
 func indexRunCmd(cmd *cobra.Command, args []string) error {

@@ -7,11 +7,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	incentiveskeeper "github.com/osmosis-labs/osmosis/v20/x/incentives/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	incentiveskeeper "github.com/furya-labs/furya/v20/x/incentives/keeper"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
 )
 
 var _ = suite.TestingSuite(nil)
@@ -41,7 +41,7 @@ var (
 	defaultTime = time.Unix(1, 0).UTC()
 
 	defaultGaugeCreationCoins = sdk.NewCoins(
-		sdk.NewCoin("uosmo", osmomath.NewInt(100000)),
+		sdk.NewCoin("ufury", osmomath.NewInt(100000)),
 		sdk.NewCoin("atom", osmomath.NewInt(99999)),
 	)
 
@@ -403,7 +403,7 @@ func (s *KeeperTestSuite) TestAddToGaugeRewards() {
 			name:  "valid case: valid gauge",
 			owner: s.TestAccs[0],
 			coinsToAdd: sdk.NewCoins(
-				sdk.NewCoin("uosmo", osmomath.NewInt(100000)),
+				sdk.NewCoin("ufury", osmomath.NewInt(100000)),
 				sdk.NewCoin("atom", osmomath.NewInt(99999)),
 			),
 			gaugeId:            1,
@@ -415,7 +415,7 @@ func (s *KeeperTestSuite) TestAddToGaugeRewards() {
 			name:  "valid case: valid gauge with >4 denoms",
 			owner: s.TestAccs[0],
 			coinsToAdd: sdk.NewCoins(
-				sdk.NewCoin("uosmo", osmomath.NewInt(100000)),
+				sdk.NewCoin("ufury", osmomath.NewInt(100000)),
 				sdk.NewCoin("atom", osmomath.NewInt(99999)),
 				sdk.NewCoin("mars", osmomath.NewInt(88888)),
 				sdk.NewCoin("akash", osmomath.NewInt(77777)),
@@ -433,7 +433,7 @@ func (s *KeeperTestSuite) TestAddToGaugeRewards() {
 			name:  "invalid case: gauge Id is not valid",
 			owner: s.TestAccs[0],
 			coinsToAdd: sdk.NewCoins(
-				sdk.NewCoin("uosmo", osmomath.NewInt(100000)),
+				sdk.NewCoin("ufury", osmomath.NewInt(100000)),
 				sdk.NewCoin("atom", osmomath.NewInt(99999)),
 			),
 			gaugeId:            0,
@@ -533,7 +533,7 @@ func (s *KeeperTestSuite) TestCreateGauge_NoLockGauges() {
 			distrTo: lockuptypes.QueryCondition{
 				LockQueryType: lockuptypes.NoLock,
 				// Note: this is invalid for NoLock gauges
-				Denom: "uosmo",
+				Denom: "ufury",
 			},
 			poolId: concentratedPoolId,
 

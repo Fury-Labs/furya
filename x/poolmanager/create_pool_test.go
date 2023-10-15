@@ -6,14 +6,14 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	clmodel "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model"
-	cwmodel "github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/model"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	stableswap "github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/stableswap"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
+	cwmodel "github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	stableswap "github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 func (s *KeeperTestSuite) TestPoolCreationFee() {
@@ -312,7 +312,7 @@ func (s *KeeperTestSuite) TestCreatePoolZeroLiquidityNoCreationFee() {
 
 			// Note: this is necessary for gauge creation in the after pool created hook.
 			// There is a check requiring positive supply existing on-chain.
-			s.MintCoins(sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.OneInt())))
+			s.MintCoins(sdk.NewCoins(sdk.NewCoin("ufury", osmomath.OneInt())))
 
 			pool, err := poolmanagerKeeper.CreateConcentratedPoolAsPoolManager(ctx, tc.msg)
 

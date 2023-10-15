@@ -1,8 +1,8 @@
 package superfluid
 
 import (
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

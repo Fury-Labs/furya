@@ -14,34 +14,34 @@ const (
 	// getData retrieves the data from the Uniswap subgraph and writes it to disk
 	// under pathToFilesFromRoot + positionsFileName path.
 	getData operation = iota
-	// convertPositions converts the data from the Uniswap subgraph into Osmosis
+	// convertPositions converts the data from the Uniswap subgraph into Furya
 	// genesis. It reads pathToFilesFromRoot + positionsFileName path
-	// run Osmosis app via apptesting, creates positions and writes the genesis
-	// under pathToFilesFromRoot + osmosisStateFileName path.
+	// run Furya app via apptesting, creates positions and writes the genesis
+	// under pathToFilesFromRoot + furyaStateFileName path.
 	convertPositions
-	// mergeSubgraphAndLocalOsmosisGenesis merges the genesis created from the subgraph data
-	// with the localosmosis genesis. This command is meant to be called inside the localosmosis
-	// container during setup (see setup.sh). It reads the existing genesis from localosmosisHomePath,
+	// mergeSubgraphAndLocalFuryaGenesis merges the genesis created from the subgraph data
+	// with the localfurya genesis. This command is meant to be called inside the localfurya
+	// container during setup (see setup.sh). It reads the existing genesis from localfuryaHomePath,
 	// updates the concentrated liquidity section to append the CL pool created from the subgraph data,
 	// its positions, ticks and accumulators.
-	mergeSubgraphAndLocalOsmosisGenesis
+	mergeSubgraphAndLocalFuryaGenesis
 )
 
 const (
 	pathToFilesFromRoot = "tests/cl-genesis-positions/"
 
 	positionsFileName       = "subgraph_positions.json"
-	osmosisGenesisFileName  = "genesis.json"
+	furyaGenesisFileName  = "genesis.json"
 	bigbangPosiionsFileName = "bigbang_positions.json"
 
-	localOsmosisHomePath = "/osmosis/.osmosisd/"
+	localFuryaHomePath = "/furya/.furyad/"
 
 	denom0 = "uusdc"
-	denom1 = "uosmo"
+	denom1 = "ufury"
 )
 
 var (
-	// This is lo-test1 address in localosmosis
+	// This is lo-test1 address in localfurya
 	defaultCreatorAddresses = []sdk.AccAddress{sdk.MustAccAddressFromBech32("osmo1cyyzpxplxdzkeea7kwsydadg87357qnahakaks"), sdk.MustAccAddressFromBech32("osmo18s5lynnmx37hq4wlrw9gdn68sg2uxp5rgk26vv")}
 
 	useKeyringAccounts bool
@@ -54,21 +54,21 @@ var (
 func main() {
 	var (
 		desiredOperation int
-		isLocalOsmosis   bool
+		isLocalFurya   bool
 	)
 
 	flag.BoolVar(&writeBigBangConfigToDisk, "big-bang", false, fmt.Sprintf("flag indicating whether to write the big bang config to disk at path %s", bigbangPosiionsFileName))
-	flag.BoolVar(&writeGenesisToDisk, "genesis", false, fmt.Sprintf("flag indicating whether to write the genesis file to disk at path %s", osmosisGenesisFileName))
+	flag.BoolVar(&writeGenesisToDisk, "genesis", false, fmt.Sprintf("flag indicating whether to write the genesis file to disk at path %s", furyaGenesisFileName))
 	flag.BoolVar(&useKeyringAccounts, "keyring", false, "flag indicating whether to use local test keyring accounts")
-	flag.BoolVar(&isLocalOsmosis, "localosmosis", false, "flag indicating whether this is being run inside the localosmosis container")
-	flag.IntVar(&desiredOperation, "operation", 0, fmt.Sprintf("operation to run:\nget subgraph data: %v, convert subgraph positions to osmo genesis: %v\nmerge converted subgraph genesis and localosmosis genesis: %v", getData, convertPositions, mergeSubgraphAndLocalOsmosisGenesis))
+	flag.BoolVar(&isLocalFurya, "localfurya", false, "flag indicating whether this is being run inside the localfurya container")
+	flag.IntVar(&desiredOperation, "operation", 0, fmt.Sprintf("operation to run:\nget subgraph data: %v, convert subgraph positions to fury genesis: %v\nmerge converted subgraph genesis and localfurya genesis: %v", getData, convertPositions, mergeSubgraphAndLocalFuryaGenesis))
 
 	flag.Parse()
 
-	fmt.Println("isLocalOsmosis:", isLocalOsmosis)
+	fmt.Println("isLocalFurya:", isLocalFurya)
 
 	pathToSaveFilesAt := pathToFilesFromRoot
-	if isLocalOsmosis {
+	if isLocalFurya {
 		pathToSaveFilesAt = ""
 	}
 
@@ -81,7 +81,7 @@ func main() {
 		GetUniV3SubgraphData(pathToSaveFilesAt + positionsFileName)
 		// See definition for more info.
 	case convertPositions:
-		fmt.Println("Converting positions from subgraph data to Osmosis genesis...")
+		fmt.Println("Converting positions from subgraph data to Furya genesis...")
 
 		var creatorAddresses []sdk.AccAddress
 		if useKeyringAccounts {
@@ -92,13 +92,13 @@ func main() {
 			creatorAddresses = defaultCreatorAddresses
 		}
 
-		ConvertSubgraphToOsmosisGenesis(creatorAddresses, pathToSaveFilesAt+positionsFileName)
+		ConvertSubgraphToFuryaGenesis(creatorAddresses, pathToSaveFilesAt+positionsFileName)
 		// See definition for more info.
-	case mergeSubgraphAndLocalOsmosisGenesis:
-		fmt.Println("Merging subgraph and local Osmosis genesis...")
-		clState, bankState := ConvertSubgraphToOsmosisGenesis(defaultCreatorAddresses, pathToSaveFilesAt+positionsFileName)
+	case mergeSubgraphAndLocalFuryaGenesis:
+		fmt.Println("Merging subgraph and local Furya genesis...")
+		clState, bankState := ConvertSubgraphToFuryaGenesis(defaultCreatorAddresses, pathToSaveFilesAt+positionsFileName)
 
-		EditLocalOsmosisGenesis(clState, bankState)
+		EditLocalFuryaGenesis(clState, bankState)
 	default:
 		panic("Invalid operation")
 	}

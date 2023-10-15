@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (
@@ -19,11 +19,11 @@ const (
 
 func init() {
 	govtypes.RegisterProposalType(ProposalTypeSetSuperfluidAssets)
-	govtypes.RegisterProposalTypeCodec(&SetSuperfluidAssetsProposal{}, "osmosis/SetSuperfluidAssetsProposal")
+	govtypes.RegisterProposalTypeCodec(&SetSuperfluidAssetsProposal{}, "furya/SetSuperfluidAssetsProposal")
 	govtypes.RegisterProposalType(ProposalTypeRemoveSuperfluidAssets)
-	govtypes.RegisterProposalTypeCodec(&RemoveSuperfluidAssetsProposal{}, "osmosis/RemoveSuperfluidAssetsProposal")
+	govtypes.RegisterProposalTypeCodec(&RemoveSuperfluidAssetsProposal{}, "furya/RemoveSuperfluidAssetsProposal")
 	govtypes.RegisterProposalType(ProposalTypeUpdateUnpoolWhitelist)
-	govtypes.RegisterProposalTypeCodec(&UpdateUnpoolWhiteListProposal{}, "osmosis/UpdateUnpoolWhiteListProposal")
+	govtypes.RegisterProposalTypeCodec(&UpdateUnpoolWhiteListProposal{}, "furya/UpdateUnpoolWhiteListProposal")
 }
 
 var (

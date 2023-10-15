@@ -6,10 +6,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	appParams "github.com/osmosis-labs/osmosis/v20/app/params"
-	valPref "github.com/osmosis-labs/osmosis/v20/x/valset-pref"
-	"github.com/osmosis-labs/osmosis/v20/x/valset-pref/types"
+	"github.com/furya-labs/furya/osmomath"
+	appParams "github.com/furya-labs/furya/v20/app/params"
+	valPref "github.com/furya-labs/furya/v20/x/valset-pref"
+	"github.com/furya-labs/furya/v20/x/valset-pref/types"
 )
 
 func (s *KeeperTestSuite) TestSetValidatorSetPreference() {
@@ -158,7 +158,7 @@ func (s *KeeperTestSuite) TestSetValidatorSetPreference() {
 			c := sdk.WrapSDKContext(s.Ctx)
 
 			if test.setExistingDelegations {
-				amountToFund := sdk.Coins{sdk.NewInt64Coin(sdk.DefaultBondDenom, 100_000_000)} // 100 osmo
+				amountToFund := sdk.Coins{sdk.NewInt64Coin(sdk.DefaultBondDenom, 100_000_000)} // 100 fury
 				s.FundAcc(test.delegator, amountToFund)
 
 				err := s.PrepareExistingDelegations(s.Ctx, valAddrs, test.delegator, test.amountToDelegate.Amount)
@@ -308,7 +308,7 @@ func (s *KeeperTestSuite) TestDelegateToValidatorSet() {
 }
 
 // TODO: Re-enable
-// https://github.com/osmosis-labs/osmosis/issues/6686
+// https://github.com/furya-labs/furya/issues/6686
 
 // func (s *KeeperTestSuite) TestUnDelegateFromValidatorSet() {
 // 	s.SetupTest()
@@ -468,7 +468,7 @@ func (s *KeeperTestSuite) TestDelegateToValidatorSet() {
 
 // 	for _, test := range tests {
 // 		s.Run(test.name, func() {
-// 			s.FundAcc(test.delegator, amountToFund) // 100 osmo
+// 			s.FundAcc(test.delegator, amountToFund) // 100 fury
 
 // 			// setup message server
 // 			msgServer := valPref.NewMsgServerImpl(s.App.ValidatorSetPreferenceKeeper)
@@ -699,7 +699,7 @@ func (s *KeeperTestSuite) TestUnDelegateFromRebalancedValidatorSet() {
 
 	for _, test := range tests {
 		s.Run(test.name, func() {
-			s.FundAcc(test.delegator, amountToFund) // 100 osmo
+			s.FundAcc(test.delegator, amountToFund) // 100 fury
 
 			// setup message server
 			msgServer := valPref.NewMsgServerImpl(s.App.ValidatorSetPreferenceKeeper)
@@ -954,7 +954,7 @@ func (s *KeeperTestSuite) TestWithdrawDelegationRewards() {
 
 	for _, test := range tests {
 		s.Run(test.name, func() {
-			s.FundAcc(test.delegator, amountToFund) // 100 osmo
+			s.FundAcc(test.delegator, amountToFund) // 100 fury
 
 			// setup message server
 			msgServer := valPref.NewMsgServerImpl(s.App.ValidatorSetPreferenceKeeper)
@@ -1020,7 +1020,7 @@ func (s *KeeperTestSuite) TestDelegateBondedTokens() {
 		expectPass           bool
 	}{
 		{
-			name:                 "DelegateBondedTokens with existing osmo denom lockId, bonded and <= 2 weeks bond duration",
+			name:                 "DelegateBondedTokens with existing fury denom lockId, bonded and <= 2 weeks bond duration",
 			delegator:            sdk.AccAddress([]byte("addr1---------------")),
 			lockId:               testLock[0].ID,
 			expectedUnlockedOsmo: sdk.NewCoin(appParams.BaseCoinUnit, osmomath.NewInt(60_000_000)), // delegator has 100osmo and creates 5 locks 10osmo each, forceUnlock only 1 lock

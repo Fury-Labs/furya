@@ -15,8 +15,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/params"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/params"
 
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
@@ -54,7 +54,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/config"
 
-	osmosis "github.com/osmosis-labs/osmosis/v20/app"
+	furya "github.com/furya-labs/furya/v20/app"
 )
 
 type AssetList struct {
@@ -86,10 +86,10 @@ type DenomUnitMap struct {
 }
 
 var (
-	//go:embed "osmosis-1-assetlist.json" "osmo-test-5-assetlist.json"
+	//go:embed "furya-1-assetlist.json" "fury-test-5-assetlist.json"
 	assetFS   embed.FS
-	mainnetId = "osmosis-1"
-	testnetId = "osmo-test-5"
+	mainnetId = "furya-1"
+	testnetId = "fury-test-5"
 )
 
 func loadAssetList(initClientCtx client.Context, cmd *cobra.Command, basedenomToIBC, IBCtoBasedenom bool) (map[string]DenomUnitMap, map[string]string) {
@@ -99,9 +99,9 @@ func loadAssetList(initClientCtx client.Context, cmd *cobra.Command, basedenomTo
 
 	fileName := ""
 	if chainId == mainnetId || chainId == "" {
-		fileName = "cmd/osmosisd/cmd/osmosis-1-assetlist-manual.json"
+		fileName = "cmd/furyad/cmd/furya-1-assetlist-manual.json"
 	} else if chainId == testnetId {
-		fileName = "cmd/osmosisd/cmd/osmo-test-5-assetlist-manual.json"
+		fileName = "cmd/furyad/cmd/fury-test-5-assetlist-manual.json"
 	} else {
 		return nil, nil
 	}
@@ -113,9 +113,9 @@ func loadAssetList(initClientCtx client.Context, cmd *cobra.Command, basedenomTo
 	if err != nil {
 		// If we can't open the local file, fall back to the embedded file.
 		if chainId == mainnetId || chainId == "" {
-			fileName = "osmosis-1-assetlist.json"
+			fileName = "furya-1-assetlist.json"
 		} else if chainId == testnetId {
-			fileName = "osmo-test-5-assetlist.json"
+			fileName = "fury-test-5-assetlist.json"
 		} else {
 			return nil, nil
 		}
@@ -260,12 +260,12 @@ func (cw *customWriter) Write(p []byte) (n int, err error) {
 // NewRootCmd creates a new root command for simd. It is called once in the
 // main function.
 func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
-	encodingConfig := osmosis.MakeEncodingConfig()
+	encodingConfig := furya.MakeEncodingConfig()
 	homeEnvironment := getHomeEnvironment()
 	homeDir, err := environmentNameToPath(homeEnvironment)
 	if err != nil {
 		// Failed to convert home environment to home path, using default home
-		homeDir = osmosis.DefaultNodeHome
+		homeDir = furya.DefaultNodeHome
 	}
 
 	initClientCtx := client.Context{}.
@@ -277,7 +277,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithAccountRetriever(types.AccountRetriever{}).
 		WithBroadcastMode(flags.BroadcastBlock).
 		WithHomeDir(homeDir).
-		WithViper("OSMOSIS")
+		WithViper("FURYA")
 
 	// Allows you to add extra params to your client.toml
 	// gas, gas-price, gas-adjustment, and human-readable-denoms
@@ -285,8 +285,8 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 	humanReadableDenomsInput, humanReadableDenomsOutput := GetHumanReadableDenomEnvVariables()
 
 	rootCmd := &cobra.Command{
-		Use:   "osmosisd",
-		Short: "Start osmosis app",
+		Use:   "furyad",
+		Short: "Start furya app",
 		PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 			// If not calling the set-env command, this is a no-op.
 			err := changeEnvPriorToSetup(cmd, &initClientCtx, args, homeDir)
@@ -396,7 +396,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 }
 
 func getHomeEnvironment() string {
-	envPath := filepath.Join(osmosis.DefaultNodeHome, ".env")
+	envPath := filepath.Join(furya.DefaultNodeHome, ".env")
 
 	// Use default node home if can't get environment.
 	// Overload must be used here in the event that the .env gets updated.
@@ -412,14 +412,14 @@ func getHomeEnvironment() string {
 // initAppConfig helps to override default appConfig template and configs.
 // return "", nil if no custom configuration is required for the application.
 func initAppConfig() (string, interface{}) {
-	type OsmosisMempoolConfig struct {
+	type FuryaMempoolConfig struct {
 		ArbitrageMinGasPrice string `mapstructure:"arbitrage-min-gas-fee"`
 	}
 
 	type CustomAppConfig struct {
 		serverconfig.Config
 
-		OsmosisMempoolConfig OsmosisMempoolConfig `mapstructure:"osmosis-mempool"`
+		FuryaMempoolConfig FuryaMempoolConfig `mapstructure:"furya-mempool"`
 	}
 
 	// Optionally allow the chain developer to overwrite the SDK's default
@@ -428,35 +428,35 @@ func initAppConfig() (string, interface{}) {
 	srvCfg.API.Enable = true
 	srvCfg.StateSync.SnapshotInterval = 1500
 	srvCfg.StateSync.SnapshotKeepRecent = 2
-	srvCfg.MinGasPrices = "0uosmo"
+	srvCfg.MinGasPrices = "0ufury"
 
 	// 128MB IAVL cache
 	srvCfg.IAVLCacheSize = 781250
 
-	memCfg := OsmosisMempoolConfig{ArbitrageMinGasPrice: "0.01"}
+	memCfg := FuryaMempoolConfig{ArbitrageMinGasPrice: "0.01"}
 
-	OsmosisAppCfg := CustomAppConfig{Config: *srvCfg, OsmosisMempoolConfig: memCfg}
+	FuryaAppCfg := CustomAppConfig{Config: *srvCfg, FuryaMempoolConfig: memCfg}
 
-	OsmosisAppTemplate := serverconfig.DefaultConfigTemplate + `
+	FuryaAppTemplate := serverconfig.DefaultConfigTemplate + `
 ###############################################################################
-###                      Osmosis Mempool Configuration                      ###
+###                      Furya Mempool Configuration                      ###
 ###############################################################################
 
-[osmosis-mempool]
+[furya-mempool]
 # This is the max allowed gas any tx.
 # This is only for local mempool purposes, and thus	is only ran on check tx.
 max-gas-wanted-per-tx = "25000000"
 
-# This is the minimum gas fee any arbitrage tx should have, denominated in uosmo per gas
-# Default value of ".005" then means that a tx with 1 million gas costs (.005 uosmo/gas) * 1_000_000 gas = .005 osmo
+# This is the minimum gas fee any arbitrage tx should have, denominated in ufury per gas
+# Default value of ".005" then means that a tx with 1 million gas costs (.005 ufury/gas) * 1_000_000 gas = .005 fury
 arbitrage-min-gas-fee = ".005"
 
-# This is the minimum gas fee any tx with high gas demand should have, denominated in uosmo per gas
-# Default value of ".0025" then means that a tx with 1 million gas costs (.0025 uosmo/gas) * 1_000_000 gas = .0025 osmo
+# This is the minimum gas fee any tx with high gas demand should have, denominated in ufury per gas
+# Default value of ".0025" then means that a tx with 1 million gas costs (.0025 ufury/gas) * 1_000_000 gas = .0025 fury
 min-gas-price-for-high-gas-tx = ".0025"
 `
 
-	return OsmosisAppTemplate, OsmosisAppCfg
+	return FuryaAppTemplate, FuryaAppCfg
 }
 
 // initRootCmd initializes root commands when creating a new root command for simd.
@@ -469,35 +469,35 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	debugCmd.AddCommand(DebugProtoMarshalledBytes())
 
 	rootCmd.AddCommand(
-		// genutilcli.InitCmd(osmosis.ModuleBasics, osmosis.DefaultNodeHome),
+		// genutilcli.InitCmd(furya.ModuleBasics, furya.DefaultNodeHome),
 		forceprune(),
-		InitCmd(osmosis.ModuleBasics, osmosis.DefaultNodeHome),
-		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, osmosis.DefaultNodeHome),
+		InitCmd(furya.ModuleBasics, furya.DefaultNodeHome),
+		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, furya.DefaultNodeHome),
 		genutilcli.MigrateGenesisCmd(),
 		ExportDeriveBalancesCmd(),
 		StakedToCSVCmd(),
-		AddGenesisAccountCmd(osmosis.DefaultNodeHome),
-		genutilcli.GenTxCmd(osmosis.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, osmosis.DefaultNodeHome),
-		genutilcli.ValidateGenesisCmd(osmosis.ModuleBasics),
-		PrepareGenesisCmd(osmosis.DefaultNodeHome, osmosis.ModuleBasics),
+		AddGenesisAccountCmd(furya.DefaultNodeHome),
+		genutilcli.GenTxCmd(furya.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, furya.DefaultNodeHome),
+		genutilcli.ValidateGenesisCmd(furya.ModuleBasics),
+		PrepareGenesisCmd(furya.DefaultNodeHome, furya.ModuleBasics),
 		tmcli.NewCompletionCmd(rootCmd, true),
-		testnetCmd(osmosis.ModuleBasics, banktypes.GenesisBalancesIterator{}),
+		testnetCmd(furya.ModuleBasics, banktypes.GenesisBalancesIterator{}),
 		tmcmds.RollbackStateCmd,
 		debugCmd,
 		ConfigCmd(),
 		ChangeEnvironmentCmd(),
 		PrintEnvironmentCmd(),
-		UpdateAssetListCmd(osmosis.DefaultNodeHome, osmosis.ModuleBasics),
+		UpdateAssetListCmd(furya.DefaultNodeHome, furya.ModuleBasics),
 	)
 
-	server.AddCommands(rootCmd, osmosis.DefaultNodeHome, newApp, createOsmosisAppAndExport, addModuleInitFlags)
+	server.AddCommands(rootCmd, furya.DefaultNodeHome, newApp, createFuryaAppAndExport, addModuleInitFlags)
 
 	// add keybase, auxiliary RPC, query, and tx child commands
 	rootCmd.AddCommand(
 		rpc.StatusCommand(),
 		queryCommand(),
 		txCommand(),
-		keys.Commands(osmosis.DefaultNodeHome),
+		keys.Commands(furya.DefaultNodeHome),
 	)
 	// add rosetta
 	rootCmd.AddCommand(server.RosettaCommand(encodingConfig.InterfaceRegistry, encodingConfig.Marshaler))
@@ -527,7 +527,7 @@ func queryCommand() *cobra.Command {
 		authcmd.QueryTxCmd(),
 	)
 
-	osmosis.ModuleBasics.AddQueryCommands(cmd)
+	furya.ModuleBasics.AddQueryCommands(cmd)
 	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
@@ -554,13 +554,13 @@ func txCommand() *cobra.Command {
 		authcmd.GetDecodeCommand(),
 	)
 
-	osmosis.ModuleBasics.AddTxCommands(cmd)
+	furya.ModuleBasics.AddTxCommands(cmd)
 	cmd.PersistentFlags().String(flags.FlagChainID, "", "The network chain ID")
 
 	return cmd
 }
 
-// newApp initializes and returns a new Osmosis app.
+// newApp initializes and returns a new Furya app.
 func newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, appOpts servertypes.AppOptions) servertypes.Application {
 	var cache sdk.MultiStorePersistentCache
 
@@ -593,7 +593,7 @@ func newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, appOpts serverty
 		wasmOpts = append(wasmOpts, wasmkeeper.WithVMCacheMetrics(prometheus.DefaultRegisterer))
 	}
 
-	return osmosis.NewOsmosisApp(
+	return furya.NewFuryaApp(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
@@ -612,16 +612,16 @@ func newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, appOpts serverty
 	)
 }
 
-// createOsmosisAppAndExport creates and exports the new Osmosis app, returns the state of the new Osmosis app for a genesis file.
-func createOsmosisAppAndExport(
+// createFuryaAppAndExport creates and exports the new Furya app, returns the state of the new Furya app for a genesis file.
+func createFuryaAppAndExport(
 	logger log.Logger, db dbm.DB, traceStore io.Writer, height int64, forZeroHeight bool, jailWhiteList []string,
 	appOpts servertypes.AppOptions, modulesToExport []string,
 ) (servertypes.ExportedApp, error) {
-	encCfg := osmosis.MakeEncodingConfig() // Ideally, we would reuse the one created by NewRootCmd.
+	encCfg := furya.MakeEncodingConfig() // Ideally, we would reuse the one created by NewRootCmd.
 	encCfg.Marshaler = codec.NewProtoCodec(encCfg.InterfaceRegistry)
 	loadLatest := height == -1
 	homeDir := cast.ToString(appOpts.Get(flags.FlagHome))
-	app := osmosis.NewOsmosisApp(logger, db, traceStore, loadLatest, map[int64]bool{}, homeDir, 0, appOpts, osmosis.EmptyWasmOpts)
+	app := furya.NewFuryaApp(logger, db, traceStore, loadLatest, map[int64]bool{}, homeDir, 0, appOpts, furya.EmptyWasmOpts)
 
 	if !loadLatest {
 		if err := app.LoadHeight(height); err != nil {
@@ -638,8 +638,8 @@ func UpdateAssetListCmd(defaultNodeHome string, mbm module.BasicManager) *cobra.
 		Short: "Updates asset list used by the CLI to replace ibc denoms with human readable names",
 		Long: `Updates asset list used by the CLI to replace ibc denoms with human readable names.
 Outputs:
-	- cmd/osmosisd/cmd/osmosis-1-assetlist-manual.json for osmosis-1
-	- cmd/osmosisd/cmd/osmo-test-5-assetlist-manual.json for osmo-test-5
+	- cmd/furyad/cmd/furya-1-assetlist-manual.json for furya-1
+	- cmd/furyad/cmd/fury-test-5-assetlist-manual.json for fury-test-5
 `,
 		Args: cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -647,11 +647,11 @@ Outputs:
 			fileName := ""
 
 			if args[0] == mainnetId || args[0] == "" {
-				assetListURL = "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/osmosis-1/osmosis-1.assetlist.json"
-				fileName = "cmd/osmosisd/cmd/osmosis-1-assetlist-manual.json"
+				assetListURL = "https://raw.githubusercontent.com/furya-labs/assetlists/main/furya-1/furya-1.assetlist.json"
+				fileName = "cmd/furyad/cmd/furya-1-assetlist-manual.json"
 			} else if args[0] == testnetId {
-				assetListURL = "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/osmo-test-5/osmo-test-5.assetlist.json"
-				fileName = "cmd/osmosisd/cmd/osmo-test-5-assetlist-manual.json"
+				assetListURL = "https://raw.githubusercontent.com/furya-labs/assetlists/main/fury-test-5/fury-test-5.assetlist.json"
+				fileName = "cmd/furyad/cmd/fury-test-5-assetlist-manual.json"
 			} else {
 				return nil
 			}
@@ -688,11 +688,11 @@ func genAutoCompleteCmd(rootCmd *cobra.Command) {
 		Long: `To configure your shell to load completions for each session, add to your profile:
 
 # bash example
-echo '. <(osmosisd enable-cli-autocomplete bash)' >> ~/.bash_profile
+echo '. <(furyad enable-cli-autocomplete bash)' >> ~/.bash_profile
 source ~/.bash_profile
 
 # zsh example
-echo '. <(osmosisd enable-cli-autocomplete zsh)' >> ~/.zshrc
+echo '. <(furyad enable-cli-autocomplete zsh)' >> ~/.zshrc
 source ~/.zshrc
 `,
 		DisableFlagsInUseLine: true,
@@ -714,7 +714,7 @@ source ~/.zshrc
 }
 
 // transformCoinValueToBaseInt transforms a cli input that has been split into a number and a denom into it's base int value and base denom.
-// i.e. 10.7osmo -> 10700000uosmo
+// i.e. 10.7osmo -> 10700000ufury
 // 12atom -> 12000000uatom
 // 15000000uakt -> 15000000uakt (does nothing since it's already in base denom format)
 func transformCoinValueToBaseInt(coinValue, coinDenom string, assetMap map[string]DenomUnitMap) (string, error) {

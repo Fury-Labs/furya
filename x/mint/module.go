@@ -1,8 +1,8 @@
 /*
 The `mint` module is responsible for creating tokens in a
 flexible way to reward validators, incentivize providing pool
-liquidity, provide funds for Osmosis governance,
-and pay developers to maintain and improve Osmosis.
+liquidity, provide funds for Furya governance,
+and pay developers to maintain and improve Furya.
   - Denom minting; reduction and reserve ratio settings
   - Token distribution proportions
   - Epoch start distribution settings
@@ -27,11 +27,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/osmosis-labs/osmosis/v20/x/mint/client/cli"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/client/rest"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/simulation"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/types"
+	"github.com/furya-labs/furya/v20/x/mint/client/cli"
+	"github.com/furya-labs/furya/v20/x/mint/client/rest"
+	"github.com/furya-labs/furya/v20/x/mint/keeper"
+	"github.com/furya-labs/furya/v20/x/mint/simulation"
+	"github.com/furya-labs/furya/v20/x/mint/types"
 )
 
 var (

@@ -8,13 +8,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	_ "github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/stableswap"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	_ "github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 var (
@@ -41,7 +41,7 @@ var (
 		sdk.NewCoin("bar", osmomath.NewInt(10000)),
 	)
 	defaultAcctFunds sdk.Coins = sdk.NewCoins(
-		sdk.NewCoin("uosmo", osmomath.NewInt(10000000000)),
+		sdk.NewCoin("ufury", osmomath.NewInt(10000000000)),
 		sdk.NewCoin("foo", osmomath.NewInt(10000000)),
 		sdk.NewCoin("bar", osmomath.NewInt(10000000)),
 		sdk.NewCoin("baz", osmomath.NewInt(10000000)),
@@ -857,7 +857,7 @@ func (s *KeeperTestSuite) TestJoinSwapExactAmountInConsistency() {
 		// TODO: Uncomment or remove this following test case once the referenced
 		// issue is resolved.
 		//
-		// Ref: https://github.com/osmosis-labs/osmosis/issues/1196
+		// Ref: https://github.com/furya-labs/furya/issues/1196
 		// {
 		// 	name:              "single coin with positive spread factor and zero exit fee",
 		// 	poolSpreadFactor:       osmomath.NewDecWithPrec(1, 2),

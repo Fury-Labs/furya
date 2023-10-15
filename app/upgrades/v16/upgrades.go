@@ -8,30 +8,30 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/keepers"
-	"github.com/osmosis-labs/osmosis/v20/app/upgrades"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/keepers"
+	"github.com/furya-labs/furya/v20/app/upgrades"
 
 	cosmwasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	cosmwasmpooltypes "github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/types"
-	superfluidtypes "github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
-	tokenfactorykeeper "github.com/osmosis-labs/osmosis/v20/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	cosmwasmpooltypes "github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	tokenfactorykeeper "github.com/furya-labs/furya/v20/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/furya-labs/furya/v20/x/tokenfactory/types"
 )
 
 const (
-	// DAI/OSMO pool ID
-	// https://app.osmosis.zone/pool/674
+	// DAI/FURY pool ID
+	// https://app.furya.zone/pool/674
 	// Note, new concentrated liquidity pool
 	// spread factor is initialized to be the same as the balancers pool spread factor of 0.2%.
 	DaiOsmoPoolId = uint64(674)
 	// Denom0 translates to a base asset while denom1 to a quote asset
 	// We want quote asset to be DAI so that when the limit orders on ticks
 	// are implemented, we have tick spacing in terms of DAI as the quote.
-	DesiredDenom0 = "uosmo"
+	DesiredDenom0 = "ufury"
 	TickSpacing   = 100
 
 	// isPermissionlessPoolCreationEnabledCL is a boolean that determines if
@@ -54,7 +54,7 @@ var (
 	// from tick to price conversion. These increments are in a human
 	// understandeable magnitude only for token1 as a quote.
 	authorizedQuoteDenoms []string = []string{
-		"uosmo",
+		"ufury",
 		ATOMIBCDenom,
 		DAIIBCDenom,
 		USDCIBCDenom,
@@ -123,8 +123,8 @@ func CreateUpgradeHandler(
 		defaultConcentratedLiquidityParams.IsPermissionlessPoolCreationEnabled = IsPermissionlessPoolCreationEnabledCL
 		keepers.ConcentratedLiquidityKeeper.SetParams(ctx, defaultConcentratedLiquidityParams)
 
-		// Create a concentrated liquidity pool for DAI/OSMO.
-		// Link the DAI/OSMO balancer pool to the cl pool.
+		// Create a concentrated liquidity pool for DAI/FURY.
+		// Link the DAI/FURY balancer pool to the cl pool.
 		clPool, err := keepers.GAMMKeeper.CreateCanonicalConcentratedLiquidityPoolAndMigrationLink(ctx, DaiOsmoPoolId, DesiredDenom0, SpreadFactor, TickSpacing)
 		if err != nil {
 			return nil, err
@@ -134,10 +134,10 @@ func CreateUpgradeHandler(
 
 		// Create a position to initialize the balancerPool.
 
-		// Get community pool and DAI/OSMO pool address.
+		// Get community pool and DAI/FURY pool address.
 		communityPoolAddress := keepers.AccountKeeper.GetModuleAddress(distrtypes.ModuleName)
 
-		// Determine the amount of OSMO that can be bought with 1 DAI.
+		// Determine the amount of FURY that can be bought with 1 DAI.
 		oneDai := sdk.NewCoin(DAIIBCDenom, osmomath.NewInt(1000000000000000000))
 		daiOsmoGammPool, err := keepers.PoolManagerKeeper.GetPool(ctx, DaiOsmoPoolId)
 		if err != nil {

@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/cobra"
 
 	// "github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
 )
 
 // GetTxCmd returns the transaction commands for this module
@@ -29,7 +29,7 @@ func GetTxCmd() *cobra.Command {
 func NewCreateDenomCmd() *cobra.Command {
 	return osmocli.BuildTxCli[*types.MsgCreateDenom](&osmocli.TxCliDesc{
 		Use:   "create-denom",
-		Short: "create a new denom from an account. (Costs osmo though!)",
+		Short: "create a new denom from an account. (Costs fury though!)",
 	})
 }
 

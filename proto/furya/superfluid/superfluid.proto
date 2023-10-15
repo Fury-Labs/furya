@@ -1,13 +1,13 @@
 syntax = "proto3";
-package osmosis.superfluid;
+package furya.superfluid;
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/lockup/lock.proto";
+import "furya/lockup/lock.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/superfluid/types";
+option go_package = "github.com/furya-labs/furya/v20/x/superfluid/types";
 
 // SuperfluidAssetType indicates whether the superfluid asset is
 // a native token, lp share of a pool, or concentrated share of a pool
@@ -32,7 +32,7 @@ message SuperfluidAsset {
 }
 
 // SuperfluidIntermediaryAccount takes the role of intermediary between LP token
-// and OSMO tokens for superfluid staking. The intermediary account is the
+// and FURY tokens for superfluid staking. The intermediary account is the
 // actual account responsible for delegation, not the validator account itself.
 message SuperfluidIntermediaryAccount {
   // Denom indicates the denom of the superfluid asset.
@@ -42,9 +42,9 @@ message SuperfluidIntermediaryAccount {
   uint64 gauge_id = 3;
 }
 
-// The Osmo-Equivalent-Multiplier Record for epoch N refers to the osmo worth we
+// The Fury-Equivalent-Multiplier Record for epoch N refers to the fury worth we
 // treat an LP share as having, for all of epoch N. Eventually this is intended
-// to be set as the Time-weighted-average-osmo-backing for the entire duration
+// to be set as the Time-weighted-average-fury-backing for the entire duration
 // of epoch N-1. (Thereby locking whats in use for epoch N as based on the prior
 // epochs rewards) However for now, this is not the TWAP but instead the spot
 // price at the boundary. For different types of assets in the future, it could
@@ -88,7 +88,7 @@ message ConcentratedPoolUserPositionRecord {
   string validator_address = 1;
   uint64 position_id = 2;
   uint64 lock_id = 3;
-  osmosis.lockup.SyntheticLock synthetic_lock = 4
+  furya.lockup.SyntheticLock synthetic_lock = 4
       [ (gogoproto.nullable) = false ];
   cosmos.base.v1beta1.Coin delegation_amount = 5 [
     (gogoproto.nullable) = false,

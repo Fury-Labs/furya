@@ -11,16 +11,16 @@ import (
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/x/ibc-hooks/keeper"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/x/ibc-hooks/keeper"
 
-	"github.com/osmosis-labs/osmosis/osmoutils"
+	"github.com/furya-labs/furya/osmoutils"
 
 	transfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 	channeltypes "github.com/cosmos/ibc-go/v4/modules/core/04-channel/types"
 	ibcexported "github.com/cosmos/ibc-go/v4/modules/core/exported"
 
-	"github.com/osmosis-labs/osmosis/x/ibc-hooks/types"
+	"github.com/furya-labs/furya/x/ibc-hooks/types"
 )
 
 type WasmHooks struct {

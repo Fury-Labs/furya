@@ -27,7 +27,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 
-	"github.com/osmosis-labs/osmosis/v20/app"
+	"github.com/furya-labs/furya/v20/app"
 )
 
 const (
@@ -94,13 +94,13 @@ func InitCmd(mbm module.BasicManager, defaultNodeHome string) *cobra.Command {
 				"44ff091135ef2c69421eacfa136860472ac26e60@65.21.141.212:2000",                              // Notional
 				"ec4d3571bf709ab78df61716e47b5ac03d077a1a@65.108.43.26:2000",                               // Notional
 				"4cb8e1e089bdf44741b32638591944dc15b7cce3@65.108.73.18:2000",                               // Notional
-				"f515a8599b40f0e84dfad935ba414674ab11a668@osmosis.blockpane.com:26656",                     // [ block pane ]
-				"6bcdbcfd5d2c6ba58460f10dbcfde58278212833@osmosis.artifact-staking.io:26656",               // Artifact Staking
-				"24841abfc8fbd401d8c86747eec375649a2e8a7e@osmosis.pbcups.org:26656",                        // Pbcups
-				"77bb5fb9b6964d6e861e91c1d55cf82b67d838b5@bd-osmosis-seed-mainnet-us-01.bdnodes.net:26656", // Blockdaemon US
-				"3243426ab56b67f794fa60a79cc7f11bc7aa752d@bd-osmosis-seed-mainnet-eu-02.bdnodes.net:26656", // Blockdaemon EU
-				"ebc272824924ea1a27ea3183dd0b9ba713494f83@osmosis-mainnet-seed.autostake.com:26716",        // AutoStake.com
-				"7c66126b64cd66bafd9ccfc721f068df451d31a3@osmosis-seed.sunshinevalidation.io:9393",         // Sunshine Validation
+				"f515a8599b40f0e84dfad935ba414674ab11a668@furya.blockpane.com:26656",                     // [ block pane ]
+				"6bcdbcfd5d2c6ba58460f10dbcfde58278212833@furya.artifact-staking.io:26656",               // Artifact Staking
+				"24841abfc8fbd401d8c86747eec375649a2e8a7e@furya.pbcups.org:26656",                        // Pbcups
+				"77bb5fb9b6964d6e861e91c1d55cf82b67d838b5@bd-furya-seed-mainnet-us-01.bdnodes.net:26656", // Blockdaemon US
+				"3243426ab56b67f794fa60a79cc7f11bc7aa752d@bd-furya-seed-mainnet-eu-02.bdnodes.net:26656", // Blockdaemon EU
+				"ebc272824924ea1a27ea3183dd0b9ba713494f83@furya-mainnet-seed.autostake.com:26716",        // AutoStake.com
+				"7c66126b64cd66bafd9ccfc721f068df451d31a3@furya-seed.sunshinevalidation.io:9393",         // Sunshine Validation
 			}
 			config.P2P.Seeds = strings.Join(seeds, ",")
 			config.P2P.MaxNumInboundPeers = 80
@@ -198,12 +198,12 @@ func InitCmd(mbm module.BasicManager, defaultNodeHome string) *cobra.Command {
 }
 
 func CreateEnvFile(cmd *cobra.Command) error {
-	// Check if .env file was created in /.osmosisd
+	// Check if .env file was created in /.furyad
 	envPath := filepath.Join(app.DefaultNodeHome, ".env")
 	if _, err := os.Stat(envPath); err != nil {
 		// If not exist, we create a new .env file with node dir passed
 		if os.IsNotExist(err) {
-			// Create ./osmosisd if not exist
+			// Create ./furyad if not exist
 			if _, err = os.Stat(app.DefaultNodeHome); err != nil {
 				if os.IsNotExist(err) {
 					err = os.MkdirAll(app.DefaultNodeHome, 0777)
@@ -225,7 +225,7 @@ func CreateEnvFile(cmd *cobra.Command) error {
 				fmt.Println("using mainnet environment")
 				nodeHome = EnvMainnet
 			}
-			_, err = envFile.WriteString(fmt.Sprintf("OSMOSISD_ENVIRONMENT=%s", nodeHome))
+			_, err = envFile.WriteString(fmt.Sprintf("FURYAD_ENVIRONMENT=%s", nodeHome))
 			if err != nil {
 				return err
 			}

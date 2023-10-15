@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	incentiveskeeper "github.com/osmosis-labs/osmosis/v20/x/incentives/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/incentives/types"
-	poolincentivetypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	incentiveskeeper "github.com/furya-labs/furya/v20/x/incentives/keeper"
+	"github.com/furya-labs/furya/v20/x/incentives/types"
+	poolincentivetypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 )
 
 type createGroupTestCase struct {
@@ -121,7 +121,7 @@ var (
 				numEpochPaidOver:    types.PerpetualNumEpochsPaidOver,
 				poolIDs:             []uint64{poolInfo.BalancerPoolID, poolInfo.ConcentratedPoolID},
 				poolVolumesToSet:    []osmomath.Int{defaultVolumeAmount, defaultVolumeAmount},
-				expectErr:           fmt.Errorf("0uosmo is smaller than %s: insufficient funds", defaultCoins),
+				expectErr:           fmt.Errorf("0ufury is smaller than %s: insufficient funds", defaultCoins),
 			},
 			{
 				name:                "error: owner does not have enough funds to pay creation fee",
@@ -220,7 +220,7 @@ func (s *KeeperTestSuite) TestCreateGroup() {
 			)
 
 			// Set a custom creation fee to avoid test balances having false positives
-			// due to having OSMO added during test setup
+			// due to having FURY added during test setup
 			s.App.IncentivesKeeper.SetParam(s.Ctx, types.KeyGroupCreationFee, customGroupCreationFee)
 
 			// Fund fee once to a specific test account

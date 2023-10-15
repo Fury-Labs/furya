@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 	"github.com/fury-labs/furya/v20/x/protorev/keeper"
 	"github.com/fury-labs/furya/v20/x/protorev/types"
 )

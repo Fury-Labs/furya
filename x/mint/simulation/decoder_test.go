@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	simapp "github.com/osmosis-labs/osmosis/v20/app"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/simulation"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/types"
+	"github.com/furya-labs/furya/osmomath"
+	simapp "github.com/furya-labs/furya/v20/app"
+	"github.com/furya-labs/furya/v20/x/mint/simulation"
+	"github.com/furya-labs/furya/v20/x/mint/types"
 
 	"github.com/cosmos/cosmos-sdk/types/kv"
 )

@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"fmt"
 
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -217,14 +217,14 @@ func (s *KeeperTestSuite) TestSetDenomMetaDataMsg() {
 						Exponent: 0,
 					},
 					{
-						Denom:    "uosmo",
+						Denom:    "ufury",
 						Exponent: 6,
 					},
 				},
 				Base:    s.defaultDenom,
-				Display: "uosmo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Display: "ufury",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass:          true,
 			expectedMessageEvents: 1,
@@ -239,14 +239,14 @@ func (s *KeeperTestSuite) TestSetDenomMetaDataMsg() {
 						Exponent: 0,
 					},
 					{
-						Denom:    "uosmo",
+						Denom:    "ufury",
 						Exponent: 6,
 					},
 				},
 				Base:    fmt.Sprintf("factory/%s/litecoin", s.TestAccs[0].String()),
-				Display: "uosmo",
-				Name:    "OSMO",
-				Symbol:  "OSMO",
+				Display: "ufury",
+				Name:    "FURY",
+				Symbol:  "FURY",
 			}),
 			expectedPass: false,
 		},

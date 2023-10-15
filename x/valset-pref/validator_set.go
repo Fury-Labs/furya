@@ -9,11 +9,11 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	appParams "github.com/osmosis-labs/osmosis/v20/app/params"
-	lockuptypes "github.com/osmosis-labs/osmosis/v20/x/lockup/types"
-	"github.com/osmosis-labs/osmosis/v20/x/valset-pref/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	appParams "github.com/furya-labs/furya/v20/app/params"
+	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/furya-labs/furya/v20/x/valset-pref/types"
 )
 
 type valSet struct {
@@ -132,7 +132,7 @@ func (k Keeper) DelegateToValidatorSet(ctx sdk.Context, delegatorAddr string, co
 // NOTE: check README.md for more verbose description of the algorithm.
 // TODO: This is currently disabled.
 // Properly implement for vratio > 1 to hit steps 5-7, then re-enable
-// https://github.com/osmosis-labs/osmosis/issues/6686
+// https://github.com/furya-labs/furya/issues/6686
 func (k Keeper) UndelegateFromValidatorSet(ctx sdk.Context, delegatorAddr string, undelegation sdk.Coin) error {
 	// TODO: Change to GetDelegationPreferences
 	existingSet, err := k.GetValSetPreferencesWithDelegations(ctx, delegatorAddr)
@@ -245,8 +245,8 @@ func (k Keeper) UndelegateFromRebalancedValidatorSet(ctx sdk.Context, delegatorA
 	// modified weights that consider their existing delegations. If there is no existing delegation, it returns an error.
 	// The new weights based on the existing delegations is returned, but the original valset preferences
 	// are not modified.
-	// For example, if someone's valset is 50/50 between two validators, but they have 10 OSMO delegated to validator A,
-	// and 90 OSMO delegated to validator B, the returned valset preference weight will be 10/90.
+	// For example, if someone's valset is 50/50 between two validators, but they have 10 FURY delegated to validator A,
+	// and 90 FURY delegated to validator B, the returned valset preference weight will be 10/90.
 
 	existingSet, err := k.GetValSetPreferencesWithDelegations(ctx, delegatorAddr)
 	if err != nil {
@@ -508,9 +508,9 @@ func (k Keeper) withdrawExistingValSetStakingPosition(ctx sdk.Context, delegator
 	return nil
 }
 
-// ForceUnlockBondedOsmo allows breaking of a bonded lockup (by ID) of osmo, of length <= 2 weeks.
-// We want to later have osmo incentives get auto-staked, we want people w/ no staking positions to
-// get their osmo auto-locked. This function takes all that osmo and stakes according to your
+// ForceUnlockBondedOsmo allows breaking of a bonded lockup (by ID) of fury, of length <= 2 weeks.
+// We want to later have fury incentives get auto-staked, we want people w/ no staking positions to
+// get their fury auto-locked. This function takes all that fury and stakes according to your
 // current validator set preference.
 // (Note: Noting that there is an implicit valset preference if you've already staked)
 // CONTRACT: This method should **never** be used alone.
@@ -536,7 +536,7 @@ func (k Keeper) ForceUnlockBondedOsmo(ctx sdk.Context, lockID uint64, delegatorA
 		return sdk.Coin{}, err
 	}
 
-	// Takes unlocked osmo, and delegate according to valset pref
+	// Takes unlocked fury, and delegate according to valset pref
 	unlockedOsmoCoin := sdk.Coin{Denom: appParams.BaseCoinUnit, Amount: lockedOsmoAmount}
 
 	return unlockedOsmoCoin, nil
@@ -636,7 +636,7 @@ func (k Keeper) GetValSetStruct(validator types.ValidatorPreference, amountFromS
 	return val_struct, val_struct_zero_amount
 }
 
-// check if lock owner matches the delegator, contains only uosmo and is bonded for <= 2weeks
+// check if lock owner matches the delegator, contains only ufury and is bonded for <= 2weeks
 func (k Keeper) validateLockForForceUnlock(ctx sdk.Context, lockID uint64, delegatorAddr string) (*lockuptypes.PeriodLock, osmomath.Int, error) {
 	// Checks if sender is lock ID owner
 	lock, err := k.lockupKeeper.GetLockByID(ctx, lockID)
@@ -655,14 +655,14 @@ func (k Keeper) validateLockForForceUnlock(ctx sdk.Context, lockID uint64, deleg
 		return nil, osmomath.Int{}, fmt.Errorf("lock fails to meet expected invariant, it contains multiple coins")
 	}
 
-	// check that the lock denom is uosmo
+	// check that the lock denom is ufury
 	if coin.Denom == appParams.BaseCoinUnit {
 		lockedOsmoAmount = lockedOsmoAmount.Add(coin.Amount)
 	}
 
-	// check if there is enough uosmo token in the lock
+	// check if there is enough ufury token in the lock
 	if lockedOsmoAmount.LTE(osmomath.NewInt(0)) {
-		return nil, osmomath.Int{}, fmt.Errorf("lock does not contain osmo denom, or there isn't enough osmo to unbond")
+		return nil, osmomath.Int{}, fmt.Errorf("lock does not contain fury denom, or there isn't enough fury to unbond")
 	}
 
 	// Checks if lock ID is bonded and ensure that the duration is <= 2 weeks

@@ -7,15 +7,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/simulation"
 	db "github.com/tendermint/tm-db"
 
-	simexec "github.com/osmosis-labs/osmosis/v20/simulation/executor"
+	simexec "github.com/furya-labs/furya/v20/simulation/executor"
 
-	"github.com/osmosis-labs/osmosis/v20/app"
-	"github.com/osmosis-labs/osmosis/v20/simulation/simtypes"
+	"github.com/furya-labs/furya/v20/app"
+	"github.com/furya-labs/furya/v20/simulation/simtypes"
 )
 
-func OsmosisAppCreator(logger log.Logger, db db.DB) simtypes.AppCreator {
+func FuryaAppCreator(logger log.Logger, db db.DB) simtypes.AppCreator {
 	return func(homepath string, legacyInvariantPeriod uint, baseappOptions ...func(*baseapp.BaseApp)) simtypes.App {
-		return app.NewOsmosisApp(
+		return app.NewFuryaApp(
 			logger,
 			db,
 			nil,
@@ -29,7 +29,7 @@ func OsmosisAppCreator(logger log.Logger, db db.DB) simtypes.AppCreator {
 	}
 }
 
-var OsmosisInitFns = simexec.InitFunctions{
+var FuryaInitFns = simexec.InitFunctions{
 	RandomAccountFn: simexec.WrapRandAccFnForResampling(simulation.RandomAccounts, app.ModuleAccountAddrs()),
 	InitChainFn:     InitChainFn(),
 }

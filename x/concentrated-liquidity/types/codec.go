@@ -13,21 +13,21 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterInterface((*ConcentratedPoolExtension)(nil), nil)
 
 	// msgs
-	cdc.RegisterConcrete(&MsgCreatePosition{}, "osmosis/cl-create-position", nil)
-	cdc.RegisterConcrete(&MsgAddToPosition{}, "osmosis/cl-add-to-position", nil)
-	cdc.RegisterConcrete(&MsgWithdrawPosition{}, "osmosis/cl-withdraw-position", nil)
-	cdc.RegisterConcrete(&MsgCollectSpreadRewards{}, "osmosis/cl-col-sp-rewards", nil)
-	cdc.RegisterConcrete(&MsgCollectIncentives{}, "osmosis/cl-collect-incentives", nil)
-	cdc.RegisterConcrete(&MsgFungifyChargedPositions{}, "osmosis/cl-fungify-charged-positions", nil)
+	cdc.RegisterConcrete(&MsgCreatePosition{}, "furya/cl-create-position", nil)
+	cdc.RegisterConcrete(&MsgAddToPosition{}, "furya/cl-add-to-position", nil)
+	cdc.RegisterConcrete(&MsgWithdrawPosition{}, "furya/cl-withdraw-position", nil)
+	cdc.RegisterConcrete(&MsgCollectSpreadRewards{}, "furya/cl-col-sp-rewards", nil)
+	cdc.RegisterConcrete(&MsgCollectIncentives{}, "furya/cl-collect-incentives", nil)
+	cdc.RegisterConcrete(&MsgFungifyChargedPositions{}, "furya/cl-fungify-charged-positions", nil)
 
 	// gov proposals
-	cdc.RegisterConcrete(&CreateConcentratedLiquidityPoolsProposal{}, "osmosis/create-cl-pools-proposal", nil)
-	cdc.RegisterConcrete(&TickSpacingDecreaseProposal{}, "osmosis/cl-tick-spacing-dec-prop", nil)
+	cdc.RegisterConcrete(&CreateConcentratedLiquidityPoolsProposal{}, "furya/create-cl-pools-proposal", nil)
+	cdc.RegisterConcrete(&TickSpacingDecreaseProposal{}, "furya/cl-tick-spacing-dec-prop", nil)
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterInterface(
-		"osmosis.concentratedliquidity.v1beta1.ConcentratedPoolExtension",
+		"furya.concentratedliquidity.v1beta1.ConcentratedPoolExtension",
 		(*ConcentratedPoolExtension)(nil),
 	)
 

@@ -6,13 +6,13 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/client/cli"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/pool-models/balancer"
-	"github.com/osmosis-labs/osmosis/v20/x/gamm/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/gamm/client/cli"
+	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/furya-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 
 	"github.com/cosmos/cosmos-sdk/testutil"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -332,10 +332,10 @@ func TestGetCmdSpotPrice(t *testing.T) {
 	desc, _ := cli.GetCmdSpotPrice()
 	tcs := map[string]osmocli.QueryCliTestCase[*types.QuerySpotPriceRequest]{
 		"basic test": {
-			Cmd: "1 uosmo ibc/111",
+			Cmd: "1 ufury ibc/111",
 			ExpectedQuery: &types.QuerySpotPriceRequest{
 				PoolId:          1,
-				BaseAssetDenom:  "uosmo",
+				BaseAssetDenom:  "ufury",
 				QuoteAssetDenom: "ibc/111",
 			},
 		},

@@ -12,8 +12,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	"gopkg.in/yaml.v2"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
 )
 
 type decimalTestSuite struct {
@@ -1201,7 +1201,7 @@ func (s *decimalTestSuite) TestPowerInteger() {
 			expectedResult: osmomath.MustNewBigDecFromStr("85070591730234615865843651857942052864"),
 		},
 
-		// osmomath.Dec test vectors copied from osmosis-labs/cosmos-sdk:
+		// osmomath.Dec test vectors copied from furya-labs/cosmos-sdk:
 
 		"1.0 ^ (10) => 1.0": {
 			base:     osmomath.OneBigDec(),

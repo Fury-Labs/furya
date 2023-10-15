@@ -3,11 +3,11 @@ use std::str::FromStr;
 
 use cosmwasm_std::{Coin, Decimal};
 
-use osmosis_std::types::osmosis::poolmanager::v1beta1::SwapAmountInRoute;
-use osmosis_test_tube::osmosis_std::types::cosmos::bank::v1beta1::QueryAllBalancesRequest;
-use osmosis_test_tube::osmosis_std::types::cosmwasm::wasm::v1::MsgExecuteContractResponse;
-use osmosis_test_tube::{
-    Account, Bank, Module, OsmosisTestApp, RunnerError, RunnerExecuteResult, SigningAccount, Wasm,
+use furya_std::types::furya::poolmanager::v1beta1::SwapAmountInRoute;
+use furya_test_tube::furya_std::types::cosmos::bank::v1beta1::QueryAllBalancesRequest;
+use furya_test_tube::furya_std::types::cosmwasm::wasm::v1::MsgExecuteContractResponse;
+use furya_test_tube::{
+    Account, Bank, Module, FuryaTestApp, RunnerError, RunnerExecuteResult, SigningAccount, Wasm,
 };
 use swaprouter::msg::{ExecuteMsg, Slippage};
 use test_env::*;
@@ -17,13 +17,13 @@ test_swap!(
     should succeed,
 
     msg = ExecuteMsg::Swap {
-        input_coin: Coin::new(1000, "uosmo"),
+        input_coin: Coin::new(1000, "ufury"),
         output_denom: "uion".to_string(),
         slippage: Slippage::MinOutputAmount(1u128.into()),
         route: None,
     },
     funds: [
-        Coin::new(1000, "uosmo")
+        Coin::new(1000, "ufury")
     ]
 );
 
@@ -32,13 +32,13 @@ test_swap!(
     "Insufficient Funds: execute wasm contract failed",
 
     msg = ExecuteMsg::Swap {
-        input_coin: Coin::new(1000, "uosmo"),
+        input_coin: Coin::new(1000, "ufury"),
         output_denom: "uion".to_string(),
         slippage: Slippage::MinOutputAmount(1u128.into()),
         route: None,
     },
     funds: [
-        Coin::new(10, "uosmo")
+        Coin::new(10, "ufury")
     ]
 );
 
@@ -47,7 +47,7 @@ test_swap!(
     "Insufficient Funds: execute wasm contract failed",
 
     msg = ExecuteMsg::Swap {
-        input_coin: Coin::new(1000, "uosmo"),
+        input_coin: Coin::new(1000, "ufury"),
         output_denom: "uion".to_string(),
         slippage: Slippage::MinOutputAmount(1u128.into()),
         route: None,
@@ -62,23 +62,23 @@ test_swap!(
     "dispatch: submessages: uion token is lesser than min amount: calculated amount is lesser than min amount",
 
     msg = ExecuteMsg::Swap {
-        input_coin: Coin::new(1000, "uosmo"),
+        input_coin: Coin::new(1000, "ufury"),
         output_denom: "uion".to_string(),
         slippage: Slippage::MinOutputAmount(1000000000000000000000000u128.into()),
         route: None,
     },
     funds: [
-        Coin::new(1000, "uosmo")
+        Coin::new(1000, "ufury")
     ]
 );
 
 test_swap!(
     non_existant_route should failed_with
-    "alloc::vec::Vec<osmosis_std::types::osmosis::poolmanager::v1beta1::SwapAmountInRoute> not found: execute wasm contract failed",
+    "alloc::vec::Vec<furya_std::types::furya::poolmanager::v1beta1::SwapAmountInRoute> not found: execute wasm contract failed",
 
     msg = ExecuteMsg::Swap {
         input_coin: Coin::new(1000, "uion"),
-        output_denom: "uosmo".to_string(),
+        output_denom: "ufury".to_string(),
         slippage: Slippage::MinOutputAmount(1000000000000000000000000u128.into()),
         route: None,
     },
@@ -91,13 +91,13 @@ test_swap!(
     twap_based_swap
     should succeed,
     msg = ExecuteMsg::Swap {
-        input_coin: Coin::new(1000, "uosmo"),
+        input_coin: Coin::new(1000, "ufury"),
         output_denom: "uion".to_string(),
         slippage: Slippage::Twap{ window_seconds: Some(1), slippage_percentage: Decimal::from_str("5").unwrap() },
         route: None,
     },
     funds: [
-        Coin::new(10000, "uosmo")
+        Coin::new(10000, "ufury")
     ]
 );
 
@@ -143,7 +143,7 @@ fn setup_route_and_execute_swap(
     msg: &ExecuteMsg,
     funds: &[Coin],
 ) -> (
-    OsmosisTestApp,
+    FuryaTestApp,
     SigningAccount,
     RunnerExecuteResult<MsgExecuteContractResponse>,
 ) {
@@ -155,7 +155,7 @@ fn setup_route_and_execute_swap(
     let wasm = Wasm::new(&app);
 
     let initial_balance = [
-        Coin::new(INITIAL_AMOUNT, "uosmo"),
+        Coin::new(INITIAL_AMOUNT, "ufury"),
         Coin::new(INITIAL_AMOUNT, "uion"),
         Coin::new(INITIAL_AMOUNT, "uatom"),
     ];
@@ -163,9 +163,9 @@ fn setup_route_and_execute_swap(
     let sender = app.init_account(&initial_balance).unwrap();
 
     // setup route
-    // uosmo/uion = pool(2): uosmo/uatom -> pool(3): uatom/uion
+    // ufury/uion = pool(2): ufury/uatom -> pool(3): uatom/uion
     let set_route_msg = ExecuteMsg::SetRoute {
-        input_denom: "uosmo".to_string(),
+        input_denom: "ufury".to_string(),
         output_denom: "uion".to_string(),
         pool_route: vec![
             SwapAmountInRoute {
@@ -193,7 +193,7 @@ fn setup_route_and_execute_swap(
 }
 
 fn assert_input_decreased_and_output_increased(
-    app: &OsmosisTestApp,
+    app: &FuryaTestApp,
     sender: &str,
     msg: &ExecuteMsg,
 ) {
@@ -230,7 +230,7 @@ fn assert_input_decreased_and_output_increased(
 }
 
 fn get_amount(
-    balances: &Vec<osmosis_test_tube::osmosis_std::types::cosmos::base::v1beta1::Coin>,
+    balances: &Vec<furya_test_tube::furya_std::types::cosmos::base::v1beta1::Coin>,
     denom: &str,
 ) -> u128 {
     balances

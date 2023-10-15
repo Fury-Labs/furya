@@ -1,14 +1,14 @@
 syntax = "proto3";
-package osmosis.poolmanager.v1beta1;
+package furya.poolmanager.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/protobuf/any.proto";
 import "cosmos_proto/cosmos.proto";
 import "google/protobuf/duration.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/poolmanager/v1beta1/module_route.proto";
+import "furya/poolmanager/v1beta1/module_route.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types";
+option go_package = "github.com/furya-labs/furya/v20/x/poolmanager/types";
 
 // Params holds parameters for the poolmanager module
 message Params {
@@ -55,7 +55,7 @@ message TakerFeeParams {
     (gogoproto.nullable) = false
   ];
   // osmo_taker_fee_distribution defines the distribution of taker fees
-  // generated in OSMO. As of this writing, it has two catagories:
+  // generated in FURY. As of this writing, it has two catagories:
   // - staking_rewards: the percent of the taker fee that gets distributed to
   //   stakers.
   // - community_pool: the percent of the taker fee that gets sent to the
@@ -65,11 +65,11 @@ message TakerFeeParams {
     (gogoproto.nullable) = false
   ];
   // non_osmo_taker_fee_distribution defines the distribution of taker fees
-  // generated in non-OSMO. As of this writing, it has two categories:
-  // - staking_rewards: the percent of the taker fee that gets swapped to OSMO
+  // generated in non-FURY. As of this writing, it has two categories:
+  // - staking_rewards: the percent of the taker fee that gets swapped to FURY
   //   and then distirbuted to stakers.
   // - community_pool: the percent of the taker fee that gets sent to the
-  //   community pool. Note: If the non-OSMO asset is an authorized_quote_denom,
+  //   community pool. Note: If the non-FURY asset is an authorized_quote_denom,
   //   that denom is sent directly to the community pool. Otherwise, it is
   //   swapped to the community_pool_denom_to_swap_non_whitelisted_assets_to and
   //   then sent to the community pool as that denom.

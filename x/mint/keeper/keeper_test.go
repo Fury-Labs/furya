@@ -14,12 +14,12 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmoassert"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/mint/types"
-	poolincentivestypes "github.com/osmosis-labs/osmosis/v20/x/pool-incentives/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/mint/keeper"
+	"github.com/furya-labs/furya/v20/x/mint/types"
+	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
 )
 
 type KeeperTestSuite struct {
@@ -119,11 +119,11 @@ func (s *KeeperTestSuite) TestGetProportions() {
 		},
 		{
 			name:       "54617981 * .131/.273osmomath.NewInt(.62",
-			mintedCoin: sdk.NewCoin("uosmo", osmomath.NewInt(54617981)),
+			mintedCoin: sdk.NewCoin("ufury", osmomath.NewInt(54617981)),
 			ratio:      complexRatioDec, // .131/.273
 			// TODO: Should not be truncated. Remove truncation after rounding errors are addressed and resolved.
-			// Ref: https://github.com/osmosis-osmomath.NewInt(s/issues/1917
-			expectedCoin: sdk.NewCoin("uosmo", osmomath.NewInt(54617981).ToLegacyDec().Mul(complexRatioDec).TruncateInt()),
+			// Ref: https://github.com/furya-osmomath.NewInt(s/issues/1917
+			expectedCoin: sdk.NewCoin("ufury", osmomath.NewInt(54617981).ToLegacyDec().Mul(complexRatioDec).TruncateInt()),
 		},
 		{
 			name:         "1 * 1 = 1",
@@ -396,7 +396,7 @@ func (s *KeeperTestSuite) TestDistributeToModule() {
 				s.MintCoins(sdk.NewCoins(tc.preMintCoin))
 
 				// TODO: Should not be truncated. Remove truncation after rounding errors are addressed and resolved.
-				// Ref: https://github.com/osmosis-labs/osmosis/issues/1917
+				// Ref: https://github.com/furya-labs/furya/issues/1917
 				expectedDistributed := tc.mintedCoin.Amount.ToLegacyDec().Mul(tc.proportion).TruncateInt()
 				oldMintModuleBalanceAmount := bankKeeper.GetBalance(ctx, accountKeeper.GetModuleAddress(types.ModuleName), tc.mintedCoin.Denom).Amount
 				oldRecepientModuleBalanceAmount := bankKeeper.GetBalance(ctx, accountKeeper.GetModuleAddress(tc.recepientModule), tc.mintedCoin.Denom).Amount
@@ -631,7 +631,7 @@ func (s *KeeperTestSuite) TestDistributeDeveloperRewards() {
 				s.Require().NoError(mintKeeper.MintCoins(ctx, sdk.NewCoins(tc.preMintCoin)))
 
 				// TODO: Should not be truncated. Remove truncation after rounding errors are addressed and resolved.
-				// Ref: https://github.com/osmosis-labs/osmosis/issues/1917
+				// Ref: https://github.com/furya-labs/furya/issues/1917
 				expectedDistributed := tc.mintedCoin.Amount.ToLegacyDec().Mul(tc.proportion).TruncateInt()
 
 				oldMintModuleBalanceAmount := bankKeeper.GetBalance(ctx, accountKeeper.GetModuleAddress(types.ModuleName), tc.mintedCoin.Denom).Amount
@@ -678,7 +678,7 @@ func (s *KeeperTestSuite) TestDistributeDeveloperRewards() {
 				// Updated balances.
 
 				// Burn from mint module account. We over-allocate.
-				// To be fixed: https://github.com/osmosis-labs/osmosis/issues/2025
+				// To be fixed: https://github.com/furya-labs/furya/issues/2025
 				s.Require().Equal(oldMintModuleBalanceAmount.Sub(expectedDistributed).Int64(), actualMintModuleBalance.Amount.Int64())
 
 				// Allocate to community pool when no addresses are provided.
@@ -688,12 +688,12 @@ func (s *KeeperTestSuite) TestDistributeDeveloperRewards() {
 					return
 				}
 
-				// TODO: these should be equal, slightly off due to known rounding issues: https://github.com/osmosis-labs/osmosis/issues/1917
+				// TODO: these should be equal, slightly off due to known rounding issues: https://github.com/furya-labs/furya/issues/1917
 				// s.Require().Equal(oldDeveloperVestingModuleBalanceAmount.Sub(expectedDistributed).Int64(), actualDeveloperVestingModuleBalanceAmount.Int64())
 				expectedDistributedCommunityPool := osmomath.NewInt(0)
 
 				for i, weightedAddress := range tc.recepientAddresses {
-					// TODO: truncation should not occur: https://github.com/osmosis-labs/osmosis/issues/1917
+					// TODO: truncation should not occur: https://github.com/furya-labs/furya/issues/1917
 					expectedAllocation := expectedDistributed.ToLegacyDec().Mul(tc.recepientAddresses[i].Weight).TruncateInt()
 
 					if weightedAddress.Address == keeper.EmptyWeightedAddressReceiver {

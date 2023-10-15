@@ -7,13 +7,13 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	gammkeeper "github.com/osmosis-labs/osmosis/v20/x/gamm/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	gammkeeper "github.com/furya-labs/furya/v20/x/gamm/keeper"
+	"github.com/furya-labs/furya/v20/x/txfees/types"
 )
 
-// Every asset with a liquid osmo pairing pool on Osmosis, as of 12/01/21
-// Notably, Tick is not on this list because the osmo pool has $76 of liquidity.
-// Cheq'd and KRT are also not on this, due to neither having osmo pairings.
+// Every asset with a liquid fury pairing pool on Furya, as of 12/01/21
+// Notably, Tick is not on this list because the fury pool has $76 of liquidity.
+// Cheq'd and KRT are also not on this, due to neither having fury pairings.
 // We nolint because these are strings of whitelisted ibc denoms.
 //
 //nolint:gosec

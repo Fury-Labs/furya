@@ -15,8 +15,8 @@ import (
 
 	iavlstore "github.com/cosmos/cosmos-sdk/store/iavl"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils/sumtree"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils/sumtree"
 )
 
 type TreeTestSuite struct {

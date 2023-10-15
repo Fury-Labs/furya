@@ -140,7 +140,7 @@ pub struct MultiHopDenom {
 }
 
 // The name of the chain on which the contract using this lib is instantiated
-pub const CONTRACT_CHAIN: &str = "osmosis";
+pub const CONTRACT_CHAIN: &str = "furya";
 
 pub struct Registry<'a> {
     pub deps: Deps<'a>,
@@ -187,7 +187,7 @@ impl<'a> Registry<'a> {
     }
 
     /// Get a the name of the chain connected via channel `via_channel` on chain `on_chain`.
-    /// Example: get_connected_chain("osmosis", "channel-42") -> "juno"
+    /// Example: get_connected_chain("furya", "channel-42") -> "juno"
     pub fn get_connected_chain(
         &self,
         on_chain: &str,
@@ -209,8 +209,8 @@ impl<'a> Registry<'a> {
     }
 
     /// Get the channel id for the channel connecting chain `on_chain` to chain `for_chain`.
-    /// Example: get_channel("osmosis", "juno") -> "channel-0"
-    /// Example: get_channel("juno", "osmosis") -> "channel-42"
+    /// Example: get_channel("furya", "juno") -> "channel-0"
+    /// Example: get_channel("juno", "furya") -> "channel-42"
     pub fn get_channel(&self, for_chain: &str, on_chain: &str) -> Result<String, RegistryError> {
         self.deps
             .querier
@@ -268,7 +268,7 @@ impl<'a> Registry<'a> {
     }
 
     /// Get the bech32 prefix for the given chain
-    /// Example: get_bech32_prefix("osmosis") -> "osmo"
+    /// Example: get_bech32_prefix("furya") -> "fury"
     pub fn get_bech32_prefix(&self, chain: &str) -> Result<String, RegistryError> {
         self.debug(format!("Getting prefix for chain: {chain}"));
         let prefix: String = self
@@ -297,7 +297,7 @@ impl<'a> Registry<'a> {
     /// Get the chain that uses a bech32 prefix. If more than one chain uses the
     /// same prefix, return an error
     ///
-    /// Example: get_chain_for_bech32_prefix("osmo") -> "osmosis"
+    /// Example: get_chain_for_bech32_prefix("fury") -> "furya"
     pub fn get_chain_for_bech32_prefix(&self, prefix: &str) -> Result<String, RegistryError> {
         self.deps
             .querier
@@ -311,7 +311,7 @@ impl<'a> Registry<'a> {
     }
 
     /// Returns the IBC path the denom has taken to get to the current chain
-    /// Example: unwrap_denom_path("ibc/0A...") -> [{"local_denom":"ibc/0A","on":"osmosis","via":"channel-17"},{"local_denom":"ibc/1B","on":"middle_chain","via":"channel-75"},{"local_denom":"token0","on":"source_chain","via":null}
+    /// Example: unwrap_denom_path("ibc/0A...") -> [{"local_denom":"ibc/0A","on":"furya","via":"channel-17"},{"local_denom":"ibc/1B","on":"middle_chain","via":"channel-75"},{"local_denom":"token0","on":"source_chain","via":null}
     pub fn unwrap_denom_path(&self, denom: &str) -> Result<Vec<MultiHopDenom>, RegistryError> {
         self.debug(format!("Unwrapping denom {denom}"));
 
@@ -662,19 +662,19 @@ mod test {
             (
                 "channel-0",
                 "cosmos1tfejvgp5yzd8ypvn9t0e2uv2kcjf2laa8upya8",
-                "osmo",
+                "fury",
                 "osmo1sguz3gtyl2tjsdulwxmtprd68xtd43yyep6g5c554utz642sr8rqcgw0q6",
             ),
             (
                 "channel-1",
                 "cosmos1tfejvgp5yzd8ypvn9t0e2uv2kcjf2laa8upya8",
-                "osmo",
+                "fury",
                 "osmo1svnare87kluww5hnltv24m4dg72hst0qqwm5xslsvnwd22gftcussaz5l7",
             ),
             (
                 "channel-0",
                 "osmo12smx2wdlyttvyzvzg54y2vnqwq2qjateuf7thj",
-                "osmo",
+                "fury",
                 "osmo1vz8evs4ek3vnz4f8wy86nw9ayzn67y28vtxzjgxv6achc4pa8gesqldfz0",
             ),
             (

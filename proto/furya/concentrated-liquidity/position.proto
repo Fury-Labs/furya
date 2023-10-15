@@ -3,16 +3,16 @@ syntax = "proto3";
 // in order to use the correct packge. Decision made to use legacy package path
 // until clear steps for migration logic and the unknowns for state breaking are
 // investigated for changing proto package.
-package osmosis.concentratedliquidity.v1beta1;
+package furya.concentratedliquidity.v1beta1;
 
 import "cosmos_proto/cosmos.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "osmosis/lockup/lock.proto";
+import "furya/lockup/lock.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/model";
+option go_package = "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model";
 
 // Position contains position's id, address, pool id, lower tick, upper tick
 // join time, and liquidity.
@@ -68,5 +68,5 @@ message FullPositionBreakdown {
 
 message PositionWithPeriodLock {
   Position position = 1 [ (gogoproto.nullable) = false ];
-  osmosis.lockup.PeriodLock locks = 2 [ (gogoproto.nullable) = false ];
+  furya.lockup.PeriodLock locks = 2 [ (gogoproto.nullable) = false ];
 }

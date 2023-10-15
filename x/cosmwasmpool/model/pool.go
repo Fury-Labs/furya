@@ -5,12 +5,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/cosmwasm/msg"
-	"github.com/osmosis-labs/osmosis/v20/x/cosmwasmpool/types"
-	poolmanagertypes "github.com/osmosis-labs/osmosis/v20/x/poolmanager/types"
+	"github.com/furya-labs/furya/v20/x/cosmwasmpool/cosmwasm/msg"
+	"github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	cosmwasmutils "github.com/osmosis-labs/osmosis/osmoutils/cosmwasm"
+	"github.com/furya-labs/furya/osmomath"
+	cosmwasmutils "github.com/furya-labs/furya/osmoutils/cosmwasm"
 )
 
 // Pool encapsulates all data and behavior for interacting with a CW pool.

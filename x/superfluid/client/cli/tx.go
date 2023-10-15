@@ -8,10 +8,10 @@ import (
 	"github.com/spf13/cobra"
 	flag "github.com/spf13/pflag"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/osmoutils"
-	"github.com/osmosis-labs/osmosis/osmoutils/osmocli"
-	"github.com/osmosis-labs/osmosis/v20/x/superfluid/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/osmoutils"
+	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/furya-labs/furya/v20/x/superfluid/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -20,8 +20,8 @@ import (
 	govcli "github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	cltypes "github.com/osmosis-labs/osmosis/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/osmosis-labs/osmosis/v20/x/gamm/types"
+	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
 )
 
 // GetTxCmd returns the transaction commands for this module.
@@ -322,7 +322,7 @@ func NewCmdUpdateUnpoolWhitelistProposal() *cobra.Command {
 		Long: "This proposal will update the unpool whitelist if passed. " +
 			"Every pool id must be valid. If the pool id is invalid, the proposal will not be submitted. " +
 			"If the flag to overwrite is set, the whitelist is completely overridden. Otherwise, it is appended to the existing whitelist, having all duplicates removed.",
-		Example: "osmosisd tx gov submit-proposal update-unpool-whitelist --pool-ids \"1, 2, 3\" --title \"Title\" --description \"Description\"",
+		Example: "furyad tx gov submit-proposal update-unpool-whitelist --pool-ids \"1, 2, 3\" --title \"Title\" --description \"Description\"",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -371,7 +371,7 @@ func NewCreateFullRangePositionAndSuperfluidDelegateCmd() (*osmocli.TxCliDesc, *
 	return &osmocli.TxCliDesc{
 		Use:     "create-full-range-position-and-sf-delegate",
 		Short:   "creates a full range concentrated position and superfluid delegates it to the provided validator",
-		Example: "create-full-range-position-and-sf-delegate 100000000uosmo,10000udai 45 --from val --chain-id osmosis-1",
+		Example: "create-full-range-position-and-sf-delegate 100000000ufury,10000udai 45 --from val --chain-id furya-1",
 	}, &types.MsgCreateFullRangePositionAndSuperfluidDelegate{}
 }
 
@@ -414,7 +414,7 @@ func NewAddToConcentratedLiquiditySuperfluidPositionCmd() (*osmocli.TxCliDesc, *
 	return &osmocli.TxCliDesc{
 		Use:     "add-to-superfluid-cl-position",
 		Short:   "add to an existing superfluid staked concentrated liquidity position",
-		Example: "add-to-superfluid-cl-position 10 1000000000uosmo 10000000uion",
+		Example: "add-to-superfluid-cl-position 10 1000000000ufury 10000000uion",
 	}, &types.MsgAddToConcentratedLiquiditySuperfluidPosition{}
 }
 
@@ -422,15 +422,15 @@ func NewUnlockAndMigrateSharesToFullRangeConcentratedPositionCmd() (*osmocli.TxC
 	return &osmocli.TxCliDesc{
 		Use:     "unlock-and-migrate-to-cl",
 		Short:   "unlock and migrate gamm shares to full range concentrated position",
-		Example: "unlock-and-migrate-cl 10 25000000000gamm/pool/2 1000000000uosmo,10000000uion",
+		Example: "unlock-and-migrate-cl 10 25000000000gamm/pool/2 1000000000ufury,10000000uion",
 	}, &types.MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition{}
 }
 
 func NewUnbondConvertAndStake() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "unbond-convert-and-stake [lock-id] [valAddr] [min-amount-to-stake](optional) [shares-to-convert](optional)",
-		Short:   "instantly unbond any locked gamm shares convert them into osmo and stake",
-		Example: "unbond-convert-and-stake 10 osmo1xxx 100000uosmo",
+		Short:   "instantly unbond any locked gamm shares convert them into fury and stake",
+		Example: "unbond-convert-and-stake 10 osmo1xxx 100000ufury",
 		Args:    cobra.MinimumNArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)

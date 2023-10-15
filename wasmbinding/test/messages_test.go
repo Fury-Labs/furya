@@ -6,10 +6,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/wasmbinding"
-	"github.com/osmosis-labs/osmosis/v20/wasmbinding/bindings"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/wasmbinding"
+	"github.com/furya-labs/furya/v20/wasmbinding/bindings"
 
 	"github.com/stretchr/testify/require"
 )
@@ -17,7 +17,7 @@ import (
 func TestCreateDenom(t *testing.T) {
 	apptesting.SkipIfWSL(t)
 	actor := RandomAccountAddress()
-	osmosis, ctx := SetupCustomApp(t, actor)
+	furya, ctx := SetupCustomApp(t, actor)
 
 	specs := map[string]struct {
 		createDenom *bindings.CreateDenom
@@ -48,7 +48,7 @@ func TestCreateDenom(t *testing.T) {
 	for name, spec := range specs {
 		t.Run(name, func(t *testing.T) {
 			// when
-			gotErr := wasmbinding.PerformCreateDenom(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, actor, spec.createDenom)
+			gotErr := wasmbinding.PerformCreateDenom(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, actor, spec.createDenom)
 			// then
 			if spec.expErr {
 				require.Error(t, gotErr)
@@ -141,14 +141,14 @@ func TestChangeAdmin(t *testing.T) {
 	for name, spec := range specs {
 		t.Run(name, func(t *testing.T) {
 			// Setup
-			osmosis, ctx := SetupCustomApp(t, tokenCreator)
+			furya, ctx := SetupCustomApp(t, tokenCreator)
 
-			err := wasmbinding.PerformCreateDenom(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, tokenCreator, &bindings.CreateDenom{
+			err := wasmbinding.PerformCreateDenom(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, tokenCreator, &bindings.CreateDenom{
 				Subdenom: validDenom,
 			})
 			require.NoError(t, err)
 
-			err = wasmbinding.ChangeAdmin(osmosis.TokenFactoryKeeper, ctx, spec.actor, spec.changeAdmin)
+			err = wasmbinding.ChangeAdmin(furya.TokenFactoryKeeper, ctx, spec.actor, spec.changeAdmin)
 			if len(spec.expErrMsg) > 0 {
 				require.Error(t, err)
 				actualErrMsg := err.Error()
@@ -163,19 +163,19 @@ func TestChangeAdmin(t *testing.T) {
 func TestMint(t *testing.T) {
 	apptesting.SkipIfWSL(t)
 	creator := RandomAccountAddress()
-	osmosis, ctx := SetupCustomApp(t, creator)
+	furya, ctx := SetupCustomApp(t, creator)
 
 	// Create denoms for valid mint tests
 	validDenom := bindings.CreateDenom{
 		Subdenom: "MOON",
 	}
-	err := wasmbinding.PerformCreateDenom(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, &validDenom)
+	err := wasmbinding.PerformCreateDenom(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, &validDenom)
 	require.NoError(t, err)
 
 	emptyDenom := bindings.CreateDenom{
 		Subdenom: "",
 	}
-	err = wasmbinding.PerformCreateDenom(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, &emptyDenom)
+	err = wasmbinding.PerformCreateDenom(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, &emptyDenom)
 	require.NoError(t, err)
 
 	validDenomStr := fmt.Sprintf("factory/%s/%s", creator.String(), validDenom.Subdenom)
@@ -184,7 +184,7 @@ func TestMint(t *testing.T) {
 	lucky := RandomAccountAddress()
 
 	// lucky was broke
-	balances := osmosis.BankKeeper.GetAllBalances(ctx, lucky)
+	balances := furya.BankKeeper.GetAllBalances(ctx, lucky)
 	require.Empty(t, balances)
 
 	amount, ok := osmomath.NewIntFromString("8080")
@@ -265,7 +265,7 @@ func TestMint(t *testing.T) {
 	for name, spec := range specs {
 		t.Run(name, func(t *testing.T) {
 			// when
-			gotErr := wasmbinding.PerformMint(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, spec.mint)
+			gotErr := wasmbinding.PerformMint(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, spec.mint)
 			// then
 			if spec.expErr {
 				require.Error(t, gotErr)
@@ -279,25 +279,25 @@ func TestMint(t *testing.T) {
 func TestBurn(t *testing.T) {
 	apptesting.SkipIfWSL(t)
 	creator := RandomAccountAddress()
-	osmosis, ctx := SetupCustomApp(t, creator)
+	furya, ctx := SetupCustomApp(t, creator)
 
 	// Create denoms for valid burn tests
 	validDenom := bindings.CreateDenom{
 		Subdenom: "MOON",
 	}
-	err := wasmbinding.PerformCreateDenom(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, &validDenom)
+	err := wasmbinding.PerformCreateDenom(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, &validDenom)
 	require.NoError(t, err)
 
 	emptyDenom := bindings.CreateDenom{
 		Subdenom: "",
 	}
-	err = wasmbinding.PerformCreateDenom(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, &emptyDenom)
+	err = wasmbinding.PerformCreateDenom(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, &emptyDenom)
 	require.NoError(t, err)
 
 	lucky := RandomAccountAddress()
 
 	// lucky was broke
-	balances := osmosis.BankKeeper.GetAllBalances(ctx, lucky)
+	balances := furya.BankKeeper.GetAllBalances(ctx, lucky)
 	require.Empty(t, balances)
 
 	validDenomStr := fmt.Sprintf("factory/%s/%s", creator.String(), validDenom.Subdenom)
@@ -379,7 +379,7 @@ func TestBurn(t *testing.T) {
 				Amount:        mintAmount,
 				MintToAddress: creator.String(),
 			}
-			err := wasmbinding.PerformMint(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, mintBinding)
+			err := wasmbinding.PerformMint(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, mintBinding)
 			require.NoError(t, err)
 
 			emptyDenomMintBinding := &bindings.MintTokens{
@@ -387,11 +387,11 @@ func TestBurn(t *testing.T) {
 				Amount:        mintAmount,
 				MintToAddress: creator.String(),
 			}
-			err = wasmbinding.PerformMint(osmosis.TokenFactoryKeeper, osmosis.BankKeeper, ctx, creator, emptyDenomMintBinding)
+			err = wasmbinding.PerformMint(furya.TokenFactoryKeeper, furya.BankKeeper, ctx, creator, emptyDenomMintBinding)
 			require.NoError(t, err)
 
 			// when
-			gotErr := wasmbinding.PerformBurn(osmosis.TokenFactoryKeeper, ctx, creator, spec.burn)
+			gotErr := wasmbinding.PerformBurn(furya.TokenFactoryKeeper, ctx, creator, spec.burn)
 			// then
 			if spec.expErr {
 				require.Error(t, gotErr)

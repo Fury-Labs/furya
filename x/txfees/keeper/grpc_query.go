@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/osmosis-labs/osmosis/v20/x/txfees/types"
+	"github.com/furya-labs/furya/v20/x/txfees/types"
 )
 
 var _ types.QueryServer = Querier{}
@@ -51,7 +51,7 @@ func (q Querier) DenomSpotPrice(ctx context.Context, req *types.QueryDenomSpotPr
 		return nil, err
 	}
 
-	// TODO: remove truncation before https://github.com/osmosis-labs/osmosis/issues/6064 is fully complete.
+	// TODO: remove truncation before https://github.com/furya-labs/furya/issues/6064 is fully complete.
 	return &types.QueryDenomSpotPriceResponse{PoolID: feeToken.PoolID, SpotPrice: spotPrice.Dec()}, nil
 }
 

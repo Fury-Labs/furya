@@ -78,7 +78,7 @@
               "amount": "1000"
             },
             {
-              "denom": "uosmo",
+              "denom": "ufury",
               "amount": "500"
             }
           ]
@@ -91,7 +91,7 @@
               "amount": "1000"
             },
             {
-              "denom": "uosmo",
+              "denom": "ufury",
               "amount": "500"
             }
           ]
@@ -104,7 +104,7 @@
               "amount": "1000"
             },
             {
-              "denom": "uosmo",
+              "denom": "ufury",
               "amount": "500"
             }
           ]
@@ -117,7 +117,7 @@
               "amount": "1000"
             },
             {
-              "denom": "uosmo",
+              "denom": "ufury",
               "amount": "500"
             }
           ]
@@ -150,7 +150,7 @@
         ],
         "balancer_shares_reward_discount": "0.050000000000000000",
         "authorized_quote_denoms": [
-          "uosmo",
+          "ufury",
           "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
           "ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7",
           "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
@@ -175,7 +175,7 @@
     },
     "crisis": {
       "constant_fee": {
-        "denom": "uosmo",
+        "denom": "ufury",
         "amount": "500000000000"
       }
     },
@@ -352,7 +352,7 @@
       "params": {
         "pool_creation_fee": [
           {
-            "denom": "uosmo",
+            "denom": "ufury",
             "amount": "1000000000"
           }
         ]
@@ -388,7 +388,7 @@
                   "key": "b0K03QFChmMxpYoAE4xC7xxh9OkwPSYMhumnALMLmZg="
                 },
                 "value": {
-                  "denom": "uosmo",
+                  "denom": "ufury",
                   "amount": "100"
                 }
               }
@@ -449,7 +449,7 @@
                   "key": "9I47M+J6mKG30nDD54rI4rHBFASjU/2VLdG4CI59kvQ="
                 },
                 "value": {
-                  "denom": "uosmo",
+                  "denom": "ufury",
                   "amount": "100"
                 }
               }
@@ -510,7 +510,7 @@
                   "key": "DTDQZRkgWk5bZOBFqh/+2uzJZPHSXnbfhnqbZL+I7Rk="
                 },
                 "value": {
-                  "denom": "uosmo",
+                  "denom": "ufury",
                   "amount": "100"
                 }
               }
@@ -571,7 +571,7 @@
                   "key": "/JQbKAGu6YZ5RSIgNN9JHGWhw5hToo9sOsmSaqScyOc="
                 },
                 "value": {
-                  "denom": "uosmo",
+                  "denom": "ufury",
                   "amount": "100"
                 }
               }
@@ -617,7 +617,7 @@
       "deposit_params": {
         "min_deposit": [
           {
-            "denom": "uosmo",
+            "denom": "ufury",
             "amount": "1000000"
           }
         ],
@@ -686,7 +686,7 @@
         "distr_epoch_identifier": "15min",
         "group_creation_fee": [
           {
-            "denom": "uosmo",
+            "denom": "ufury",
             "amount": "100000000"
           }
         ],
@@ -738,7 +738,7 @@
         "epoch_provisions": "0.000000000000000000"
       },
       "params": {
-        "mint_denom": "uosmo",
+        "mint_denom": "ufury",
         "genesis_epoch_provisions": "821917808219.178082191780821917",
         "epoch_identifier": "15min",
         "reduction_period_in_epochs": "192",
@@ -824,7 +824,7 @@
     "params": null,
     "poolincentives": {
       "params": {
-        "minted_denom": "uosmo"
+        "minted_denom": "ufury"
       },
       "lockable_durations": [
         "1800s",
@@ -848,7 +848,7 @@
       "params": {
         "pool_creation_fee": [
           {
-            "denom": "uosmo",
+            "denom": "ufury",
             "amount": "1000000000"
           }
         ],
@@ -867,7 +867,7 @@
           "reduced_fee_whitelist": []
         },
         "authorized_quote_denoms": [
-          "uosmo",
+          "ufury",
           "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
           "ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7",
           "ibc/D189335C6E4A68B513C10AB227BF1C1D38C746766278BA3EEB4FB14124F1D858"
@@ -883,7 +883,7 @@
       "token_pair_arb_routes": [],
       "base_denoms": [
         {
-          "denom": "uosmo",
+          "denom": "ufury",
           "step_size": "1000000"
         }
       ],
@@ -939,7 +939,7 @@
         "max_validators": 100,
         "max_entries": 7,
         "historical_entries": 10000,
-        "bond_denom": "uosmo",
+        "bond_denom": "ufury",
         "min_commission_rate": "0.050000000000000000",
         "min_self_delegation": "0"
       },

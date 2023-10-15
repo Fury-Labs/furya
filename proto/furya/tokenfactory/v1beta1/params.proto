@@ -1,12 +1,12 @@
 syntax = "proto3";
-package osmosis.tokenfactory.v1beta1;
+package furya.tokenfactory.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "osmosis/tokenfactory/v1beta1/authorityMetadata.proto";
+import "furya/tokenfactory/v1beta1/authorityMetadata.proto";
 import "cosmos_proto/cosmos.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types";
+option go_package = "github.com/furya-labs/furya/v20/x/tokenfactory/types";
 
 // Params defines the parameters for the tokenfactory module.
 message Params {

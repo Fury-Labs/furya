@@ -12,9 +12,9 @@ ProtoRev is a module that:
 6. Mints the optimal amount of asset to swap in from the Bank module (as determined previously)
 7. Executes the MultiHopSwapExactAmountIn with the optimal input amount for the route
 8. Burns the same amount of asset previously minted to execute the swap
-9. Redistributes the profit captured back to the Osmosis ecosystem based on Governance.
+9. Redistributes the profit captured back to the Furya ecosystem based on Governance.
 
-For ecosystem context about the purpose of the module, please see the ProtoRev governance proposal discussion: [https://gov.osmosis.zone/discussion/7078-skip-x-osmosis-proposal-to-capture-mev-as-protocol-revenue-on-chain](https://gov.osmosis.zone/discussion/7078-skip-x-osmosis-proposal-to-capture-mev-as-protocol-revenue-on-chain)
+For ecosystem context about the purpose of the module, please see the ProtoRev governance proposal discussion: [https://gov.furya.zone/discussion/7078-skip-x-furya-proposal-to-capture-mev-as-protocol-revenue-on-chain](https://gov.furya.zone/discussion/7078-skip-x-furya-proposal-to-capture-mev-as-protocol-revenue-on-chain)
 
 # Concepts
 
@@ -137,11 +137,11 @@ message Trade {
 
 ### DenomPairToPool
 
-DenomPairToPool takes in a base denomination (read below) – denom that is used to build routes (ex. osmo, atom, usdc) – and a denom to match (akash, juno) and returns the highest liquidity pool id between the pair of denominations. For example, an input might look like (osmo, juno) —> poolID: 5. This store is directly tied to the highest liquidity method (described in state transitions below). Each base denomination is going to have its own set of denominations it maps to.
+DenomPairToPool takes in a base denomination (read below) – denom that is used to build routes (ex. fury, atom, usdc) – and a denom to match (akash, juno) and returns the highest liquidity pool id between the pair of denominations. For example, an input might look like (fury, juno) —> poolID: 5. This store is directly tied to the highest liquidity method (described in state transitions below). Each base denomination is going to have its own set of denominations it maps to.
 
 ### BaseDenoms
 
-BaseDenoms are the denominations that are used to build the highest liquidity routes. This will be configurable by the admin account, but will always maintain at least `uosmo` as a base denom. A base denom just means the denomination that will be used to start and end a cyclic arbitrage route. Base denoms can be added on as needed basis. 
+BaseDenoms are the denominations that are used to build the highest liquidity routes. This will be configurable by the admin account, but will always maintain at least `ufury` as a base denom. A base denom just means the denomination that will be used to start and end a cyclic arbitrage route. Base denoms can be added on as needed basis. 
 
 ***NOTE***: BaseDenoms do have a priority that is directly tied down to the order in the list of base denoms that are used i.e. BaseDenoms that are closer to the front of the list will likely be simulated and executed more often than those later in the list. This is done by design so that we can prioritize certain denoms over others in order to simulate and execute the most profitable trades.
 
@@ -167,7 +167,7 @@ The admin account is set through governance and has permissions to set hot route
 
 ### DeveloperAccount
 
-The developer account is set through a MsgSetDeveloperAccount tx. This is the account that will be able to withdraw a portion of the profits from `x/protorev` as specified by the Osmosis ↔ Skip proposal. Only the admin account has permission to make this message.
+The developer account is set through a MsgSetDeveloperAccount tx. This is the account that will be able to withdraw a portion of the profits from `x/protorev` as specified by the Furya ↔ Skip proposal. Only the admin account has permission to make this message.
 
 ### DaysSinceModuleGenesis
 
@@ -237,20 +237,20 @@ There are two primary methods for route generation: **Highest Liquidity Pools** 
 
 The highest liquidity pool method will always create cyclic arbitrage routes that have three pools. The routes that are created will always start and end with one of the denominations that are stored in BaseDenoms. The pool swapped against that the `postHandler` processes will always be the 2nd pool in the three-pool cyclic arbitrage route. 
 
-**Highest Liquidity Pools:** Updated via the daily epoch, the module iterates through all the pools and stores the highest liquidity pool for every asset that pairs with any of the base denominations the module stores (for example, the osmo/juno key will have a single pool id stored, that pool id having the most liquidity out of all the osmo/juno pools). New base denominations can be added or removed on an as needed basis by the admin account. A base denomination is just another way of describing the denomination we want to use for cyclic arbitrage. This store is then used to create routes at runtime after analyzing a swap. This store is updated through the `epoch` hook and when the admin account submits a `MsgSetBaseDenoms` tx.
+**Highest Liquidity Pools:** Updated via the daily epoch, the module iterates through all the pools and stores the highest liquidity pool for every asset that pairs with any of the base denominations the module stores (for example, the fury/juno key will have a single pool id stored, that pool id having the most liquidity out of all the fury/juno pools). New base denominations can be added or removed on an as needed basis by the admin account. A base denomination is just another way of describing the denomination we want to use for cyclic arbitrage. This store is then used to create routes at runtime after analyzing a swap. This store is updated through the `epoch` hook and when the admin account submits a `MsgSetBaseDenoms` tx.
 
 The simplest way to conceptualize how the route is generated is by the following example. Assume we have two base denominations that `x/protorev` is currently tracking.
 
 BaseDenoms
 
-- Osmosis
+- Furya
 - Atom
 
 Lets say the `postHandler` receives a transaction that contains a swap of **Juno** —> **Akash** on pool **4**. In this case, the module will attempt to create three-pool route where a base denomination is on either side of the route. For example, a route that it might create is
 
-- Osmosis —> Akash (on pool 1), Akash —> Juno (on pool 4), Juno —> Osmosis (on pool 2)
+- Furya —> Akash (on pool 1), Akash —> Juno (on pool 4), Juno —> Furya (on pool 2)
 
-It does so by finding the highest liquidity pool between (Osmosis, Akash) —> pool 1 and the highest liquidity pool between (Osmosis, Juno) —> pool 2. If there is no highest liquidity pool pair between (Osmosis, Juno) or (Osmosis, Akash), no route will be generated.
+It does so by finding the highest liquidity pool between (Furya, Akash) —> pool 1 and the highest liquidity pool between (Furya, Juno) —> pool 2. If there is no highest liquidity pool pair between (Furya, Juno) or (Furya, Akash), no route will be generated.
 
 **NOTE: Cyclic arbitrage routes will always go in the opposite direction of the original swap i.e. in this case we see Juno —> Akash so we know that the route must include a swap of Akash —> Juno.**
 
@@ -260,7 +260,7 @@ In both cases, the route that is built will always surround the pool of the orig
 
 ### Hot Route Method
 
-Populated through the admin account, the module’s keeper holds a KV store that associates token pairs (for example, osmo/juno) to the routes that result in a high percentage of arbitrage profit on Osmosis (as determined by external analysis).
+Populated through the admin account, the module’s keeper holds a KV store that associates token pairs (for example, fury/juno) to the routes that result in a high percentage of arbitrage profit on Furya (as determined by external analysis).
 
 The purpose of storing Hot Routes is a recognition that the Highest Liquidity Pool method may not present the best arbitrage routes. As such, hot routes can be configured by the admin account to store additional routes that may be more effective at capturing arbitrage opportunities. Each hot route will store a placeholder for where the current swapped pool will fit into the trade.
 
@@ -278,7 +278,7 @@ The module mints the optimal input amount of the coin to swap in from the `bankk
 
 **SetProtoRevAdminAccountProposal**
 
-As the landscape of pools on Osmosis evolves, an admin account will be able to add and remove routes for `x/protorev` to check for cyclic arbitrage opportunities along with several other optimization txs. Largely, the purpose of maintaining hot routes is to reduce the amount of computation that would otherwise be required to determine optimal paths at runtime. 
+As the landscape of pools on Furya evolves, an admin account will be able to add and remove routes for `x/protorev` to check for cyclic arbitrage opportunities along with several other optimization txs. Largely, the purpose of maintaining hot routes is to reduce the amount of computation that would otherwise be required to determine optimal paths at runtime. 
 
 This proposal is put in place in case the admin account needs to be transferred over. However, as mentioned above, it will be initialized to a trusted address on genesis.
 
@@ -342,7 +342,7 @@ The Epoch hook allows the module to update the information listed above using th
 
 ### Highest Liquidity Pools
 
-As described above, one method of determining cyclic arbitrage opportunities is to use the highest liquidity pools paired with any base denomination. While this calculation is done on genesis (with only Osmo configured), the pools may restructure over time and new tokens may end up being traded heavily with the base denominations. As such, it is necessary to update this over time so that the module’s logic in determining cyclic arbitrage opportunities is most optimal and updated. Using the `AfterEpochEnd` hook in combination with the `day` epoch identifier, we are able to successfully update the pool information every day. At runtime, `UpdatePools` will be executed and all of the internal pool info will be updated.
+As described above, one method of determining cyclic arbitrage opportunities is to use the highest liquidity pools paired with any base denomination. While this calculation is done on genesis (with only Fury configured), the pools may restructure over time and new tokens may end up being traded heavily with the base denominations. As such, it is necessary to update this over time so that the module’s logic in determining cyclic arbitrage opportunities is most optimal and updated. Using the `AfterEpochEnd` hook in combination with the `day` epoch identifier, we are able to successfully update the pool information every day. At runtime, `UpdatePools` will be executed and all of the internal pool info will be updated.
 
 ### Profit Distribution
 
@@ -569,7 +569,7 @@ type MsgSetBaseDenoms struct {
 // arbitrage trades. It contains the denom name alongside the step size of the
 // binary search that is used to find the optimal swap amount
 type BaseDenom struct {
-	// The denom i.e. name of the base denom (ex. uosmo)
+	// The denom i.e. name of the base denom (ex. ufury)
 	Denom string `protobuf:"bytes,1,opt,name=denom,proto3" json:"denom,omitempty"`
 	// The step size of the binary search that is used to find the optimal swap
 	// amount
@@ -581,7 +581,7 @@ Message statless validation fails if:
 
 - The admin is not a valid bech32 address
 - The signature of the user does not match the admin account’s
-- Osmosis is not the first base denom in the list
+- Furya is not the first base denom in the list
 - The step size for any of the base denoms is not set
 - There are duplicate base denoms
 
@@ -611,10 +611,10 @@ The `Enabled` parameters toggles all state transitions in the module. When the p
 
 ## CLI
 
-Find below a lost of `osmosisd` commands added with the `x/protorev` module. A CLI command can look like this:
+Find below a lost of `furyad` commands added with the `x/protorev` module. A CLI command can look like this:
 
 ```bash
-osmosisd query protorev params
+furyad query protorev params
 ```
 
 ### Queries
@@ -656,53 +656,53 @@ osmosisd query protorev params
 
 | Verb | Method | Description |
 | --- | --- | --- |
-| gRPC | osmosis.protorev.Query/Params | Queries the parameters of the module |
-| gRPC | osmosis.protorev.Query/GetProtoRevNumberOfTrades | Queries the number of arbitrage trades the module has executed |
-| gRPC | osmosis.protorev.Query/GetProtoRevProfitsByDenom | Queries the profits of the module by denom |
-| gRPC | osmosis.protorev.Query/GetProtoRevAllProfits | Queries all of the profits from the module |
-| gRPC | osmosis.protorev.Query/GetProtoRevStatisticsByRoute | Queries the number of arbitrages and profits that have been executed for a given route |
-| gRPC | osmosis.protorev.Query/GetProtoRevAllStatistics | Queries all of routes that the module has arbitrage against and the number of trades and profits that have been executed for each route |
-| gRPC | osmosis.protorev.Query/GetProtoRevTokenPairArbRoutes | Queries all of the hot routes that the module is currently arbitraging |
-| gRPC | osmosis.protorev.Query/GetProtoRevMaxPoolPointsPerTx | Queries the ProtoRev max pool points per transaction |
-| gRPC | osmosis.protorev.Query/GetProtoRevMaxPoolPointsPerBlock | Queries the ProtoRev max pool points per block |
-| gRPC | osmosis.protorev.Query/GetProtoRevAdminAccount | Queries the admin account of the ProtoRev |
-| gRPC | osmosis.protorev.Query/GetProtoRevDeveloperAccount | Queries the developer account of the ProtoRev |
-| gRPC | osmosis.protorev.Query/GetProtoRevBaseDenoms | Queries the ProtoRev base denoms used to create cyclic arbitrage routes |
-| gRPC | osmosis.protorev.Query/GetProtoRevEnabled | Queries whether the ProtoRev module is currently enabled |
-| gRPC | osmosis.protorev.Query/GetProtoRevPoolWeights | Queries the number of pool points each pool type will consume when executing and simulating trades |
-| gRPC | osmosis.protorev.Query/GetProtoRevPool | Queries the pool id for a given denom pair stored in ProtoRev |
-| GET | /osmosis/protorev/params | Queries the parameters of the module |
-| GET | /osmosis/protorev/number_of_trades | Queries the number of arbitrage trades the module has executed |
-| GET | /osmosis/protorev/profits_by_denom | Queries the profits of the module by denom |
-| GET | /osmosis/protorev/all_profits | Queries all of the profits from the module |
-| GET | /osmosis/protorev/statistics_by_route | Queries the number of arbitrages and profits that have happened for a given route |
-| GET | /osmosis/protorev/all_route_statistics | Queries all of routes that the module has arbitrage against and the number of trades and profits that have happened for each route |
-| GET | /osmosis/protorev/token_pair_arb_routes | Queries all of the hot routes that the module is currently arbitraging |
-| GET | /osmosis/protorev/max_pool_points_per_tx | Queries the maximum number of pool points that can be consumed per transaction |
-| GET | /osmosis/protorev/max_pool_points_per_block | Queries the maximum number of pool points that can be consumed per block |
-| GET | /osmosis/protorev/admin_account | Queries the admin account of the ProtoRev |
-| GET | /osmosis/protorev/developer_account | Queries the developer account of the ProtoRev |
-| GET | /osmosis/protorev/base_denoms | Queries the base denominations ProtoRev is currently using to create cyclic arbitrage routes |
-| GET | /osmosis/protorev/enabled | Queries whether the ProtoRev module is currently enabled |
-| GET | /osmosis/protorev/pool_weights | Queries the number of pool points each pool type will consume when executing and simulating trades |
-| GET | /osmosis/protorev/pool | Queries the pool id for a given denom pair stored in ProtoRev |
+| gRPC | furya.protorev.Query/Params | Queries the parameters of the module |
+| gRPC | furya.protorev.Query/GetProtoRevNumberOfTrades | Queries the number of arbitrage trades the module has executed |
+| gRPC | furya.protorev.Query/GetProtoRevProfitsByDenom | Queries the profits of the module by denom |
+| gRPC | furya.protorev.Query/GetProtoRevAllProfits | Queries all of the profits from the module |
+| gRPC | furya.protorev.Query/GetProtoRevStatisticsByRoute | Queries the number of arbitrages and profits that have been executed for a given route |
+| gRPC | furya.protorev.Query/GetProtoRevAllStatistics | Queries all of routes that the module has arbitrage against and the number of trades and profits that have been executed for each route |
+| gRPC | furya.protorev.Query/GetProtoRevTokenPairArbRoutes | Queries all of the hot routes that the module is currently arbitraging |
+| gRPC | furya.protorev.Query/GetProtoRevMaxPoolPointsPerTx | Queries the ProtoRev max pool points per transaction |
+| gRPC | furya.protorev.Query/GetProtoRevMaxPoolPointsPerBlock | Queries the ProtoRev max pool points per block |
+| gRPC | furya.protorev.Query/GetProtoRevAdminAccount | Queries the admin account of the ProtoRev |
+| gRPC | furya.protorev.Query/GetProtoRevDeveloperAccount | Queries the developer account of the ProtoRev |
+| gRPC | furya.protorev.Query/GetProtoRevBaseDenoms | Queries the ProtoRev base denoms used to create cyclic arbitrage routes |
+| gRPC | furya.protorev.Query/GetProtoRevEnabled | Queries whether the ProtoRev module is currently enabled |
+| gRPC | furya.protorev.Query/GetProtoRevPoolWeights | Queries the number of pool points each pool type will consume when executing and simulating trades |
+| gRPC | furya.protorev.Query/GetProtoRevPool | Queries the pool id for a given denom pair stored in ProtoRev |
+| GET | /furya/protorev/params | Queries the parameters of the module |
+| GET | /furya/protorev/number_of_trades | Queries the number of arbitrage trades the module has executed |
+| GET | /furya/protorev/profits_by_denom | Queries the profits of the module by denom |
+| GET | /furya/protorev/all_profits | Queries all of the profits from the module |
+| GET | /furya/protorev/statistics_by_route | Queries the number of arbitrages and profits that have happened for a given route |
+| GET | /furya/protorev/all_route_statistics | Queries all of routes that the module has arbitrage against and the number of trades and profits that have happened for each route |
+| GET | /furya/protorev/token_pair_arb_routes | Queries all of the hot routes that the module is currently arbitraging |
+| GET | /furya/protorev/max_pool_points_per_tx | Queries the maximum number of pool points that can be consumed per transaction |
+| GET | /furya/protorev/max_pool_points_per_block | Queries the maximum number of pool points that can be consumed per block |
+| GET | /furya/protorev/admin_account | Queries the admin account of the ProtoRev |
+| GET | /furya/protorev/developer_account | Queries the developer account of the ProtoRev |
+| GET | /furya/protorev/base_denoms | Queries the base denominations ProtoRev is currently using to create cyclic arbitrage routes |
+| GET | /furya/protorev/enabled | Queries whether the ProtoRev module is currently enabled |
+| GET | /furya/protorev/pool_weights | Queries the number of pool points each pool type will consume when executing and simulating trades |
+| GET | /furya/protorev/pool | Queries the pool id for a given denom pair stored in ProtoRev |
 
 ### Transactions
 
 | Verb | Method | Description |
 | --- | --- | --- |
-| gRPC | osmosis.protorev.Msg/SetHotRoutes | Sets the hot routes that will be explored when creating cyclic arbitrage routes. Can only be called by the admin account |
-| gRPC | osmosis.protorev.Msg/SetDeveloperAccount | Sets the account that can withdraw a portion of the profit from the ProtoRev module. Can only be called by the admin account |
-| gRPC | osmosis.protorev.Msg/SetMaxPoolPointsPerTx | Sets the maximum number of pool points that can be consumed per transaction |
-| gRPC | osmosis.protorev.Msg/SetMaxPoolPointsPerBlock | Sets the maximum number of routes that can be iterated per block |
-| gRPC | osmosis.protorev.Msg/SetBaseDenoms | Sets the base denominations the ProtoRev module will use to create cyclic arbitrage routes |
-| gRPC | osmosis.protorev.Msg/SetPoolWeights | Sets the amount of pool points each pool type will consume when executing and simulating trades |
-| POST | /osmosis/protorev/set_hot_routes | Sets the hot routes that will be explored when creating cyclic arbitrage routes. Can only be called by the admin account |
-| POST | /osmosis/protorev/set_developer_account | Sets the account that can withdraw a portion of the profit from the ProtoRev module. Can only be called by the admin account |
-| POST | /osmosis/protorev/set_max_pool_points_per_tx | Sets the maximum number of pool points that can be consumed per transaction |
-| POST | /osmosis/protorev/set_max_pool_points_per_block | Sets the maximum number of pool points that can be consumed per block |
-| POST | /osmosis/protorev/set_pool_weights | Sets the amount of pool points each pool type will consume when executing and simulating trades |
-| POST | /osmosis/protorev/set_base_denoms | Sets the base denominations that will be used by ProtoRev to construct cyclic arbitrage routes |
+| gRPC | furya.protorev.Msg/SetHotRoutes | Sets the hot routes that will be explored when creating cyclic arbitrage routes. Can only be called by the admin account |
+| gRPC | furya.protorev.Msg/SetDeveloperAccount | Sets the account that can withdraw a portion of the profit from the ProtoRev module. Can only be called by the admin account |
+| gRPC | furya.protorev.Msg/SetMaxPoolPointsPerTx | Sets the maximum number of pool points that can be consumed per transaction |
+| gRPC | furya.protorev.Msg/SetMaxPoolPointsPerBlock | Sets the maximum number of routes that can be iterated per block |
+| gRPC | furya.protorev.Msg/SetBaseDenoms | Sets the base denominations the ProtoRev module will use to create cyclic arbitrage routes |
+| gRPC | furya.protorev.Msg/SetPoolWeights | Sets the amount of pool points each pool type will consume when executing and simulating trades |
+| POST | /furya/protorev/set_hot_routes | Sets the hot routes that will be explored when creating cyclic arbitrage routes. Can only be called by the admin account |
+| POST | /furya/protorev/set_developer_account | Sets the account that can withdraw a portion of the profit from the ProtoRev module. Can only be called by the admin account |
+| POST | /furya/protorev/set_max_pool_points_per_tx | Sets the maximum number of pool points that can be consumed per transaction |
+| POST | /furya/protorev/set_max_pool_points_per_block | Sets the maximum number of pool points that can be consumed per block |
+| POST | /furya/protorev/set_pool_weights | Sets the amount of pool points each pool type will consume when executing and simulating trades |
+| POST | /furya/protorev/set_base_denoms | Sets the base denominations that will be used by ProtoRev to construct cyclic arbitrage routes |
 
 ## Events
 

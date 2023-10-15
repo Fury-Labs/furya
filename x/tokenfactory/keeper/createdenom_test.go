@@ -6,16 +6,16 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/app/apptesting"
-	"github.com/osmosis-labs/osmosis/v20/x/tokenfactory/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
 )
 
 func (s *KeeperTestSuite) TestMsgCreateDenom() {
 	var (
 		tokenFactoryKeeper = s.App.TokenFactoryKeeper
 		bankKeeper         = s.App.BankKeeper
-		denomCreationFee   = sdk.NewCoins(sdk.NewCoin("uosmo", osmomath.NewInt(1000000)))
+		denomCreationFee   = sdk.NewCoins(sdk.NewCoin("ufury", osmomath.NewInt(1000000)))
 	)
 
 	// Set the denom creation fee. It is currently turned off in favor
@@ -70,13 +70,13 @@ func (s *KeeperTestSuite) TestMsgCreateDenom() {
 	s.Require().NotEmpty(res.GetNewTokenDenom())
 
 	// Make sure that an address with a "/" in it can't create denoms
-	_, err = s.msgServer.CreateDenom(sdk.WrapSDKContext(s.Ctx), types.NewMsgCreateDenom("osmosis.eth/creator", "bitcoin"))
+	_, err = s.msgServer.CreateDenom(sdk.WrapSDKContext(s.Ctx), types.NewMsgCreateDenom("furya.eth/creator", "bitcoin"))
 	s.Require().Error(err)
 }
 
 func (s *KeeperTestSuite) TestCreateDenom() {
 	var (
-		primaryDenom            = "uosmo"
+		primaryDenom            = "ufury"
 		secondaryDenom          = apptesting.SecondaryDenom
 		defaultDenomCreationFee = types.Params{DenomCreationFee: sdk.NewCoins(sdk.NewCoin(primaryDenom, osmomath.NewInt(50000000)))}
 		twoDenomCreationFee     = types.Params{DenomCreationFee: sdk.NewCoins(sdk.NewCoin(primaryDenom, osmomath.NewInt(50000000)), sdk.NewCoin(secondaryDenom, osmomath.NewInt(50000000)))}

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 )
 
 const (

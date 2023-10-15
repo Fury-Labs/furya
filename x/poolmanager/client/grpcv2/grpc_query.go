@@ -2,7 +2,7 @@
 package grpcv2
 
 // THIS FILE IS GENERATED CODE, DO NOT EDIT
-// SOURCE AT `proto/osmosis/poolmanager/v2/query.yml`
+// SOURCE AT `proto/furya/poolmanager/v2/query.yml`
 
 import (
 	context "context"
@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/client"
-	"github.com/osmosis-labs/osmosis/v20/x/poolmanager/client/queryprotov2"
+	"github.com/furya-labs/furya/v20/x/poolmanager/client"
+	"github.com/furya-labs/furya/v20/x/poolmanager/client/queryprotov2"
 )
 
 type Querier struct {

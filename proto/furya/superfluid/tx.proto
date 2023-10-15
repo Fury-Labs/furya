@@ -1,14 +1,14 @@
 syntax = "proto3";
-package osmosis.superfluid;
+package furya.superfluid;
 
 import "gogoproto/gogo.proto";
 import "amino/amino.proto";
 import "google/protobuf/duration.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "google/protobuf/timestamp.proto";
-import "osmosis/superfluid/superfluid.proto";
+import "furya/superfluid/superfluid.proto";
 
-option go_package = "github.com/osmosis-labs/osmosis/v20/x/superfluid/types";
+option go_package = "github.com/furya-labs/furya/v20/x/superfluid/types";
 
 // Msg defines the Msg service.
 service Msg {
@@ -54,13 +54,13 @@ service Msg {
       returns (MsgAddToConcentratedLiquiditySuperfluidPositionResponse);
 
   // UnbondConvertAndStake breaks all locks / superfluid staked assets,
-  // converts them to osmo then stakes the osmo to the designated validator.
+  // converts them to fury then stakes the fury to the designated validator.
   rpc UnbondConvertAndStake(MsgUnbondConvertAndStake)
       returns (MsgUnbondConvertAndStakeResponse);
 }
 
 message MsgSuperfluidDelegate {
-  option (amino.name) = "osmosis/superfluid-delegate";
+  option (amino.name) = "furya/superfluid-delegate";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 lock_id = 2;
@@ -69,7 +69,7 @@ message MsgSuperfluidDelegate {
 message MsgSuperfluidDelegateResponse {}
 
 message MsgSuperfluidUndelegate {
-  option (amino.name) = "osmosis/superfluid-undelegate";
+  option (amino.name) = "furya/superfluid-undelegate";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 lock_id = 2;
@@ -77,7 +77,7 @@ message MsgSuperfluidUndelegate {
 message MsgSuperfluidUndelegateResponse {}
 
 message MsgSuperfluidUnbondLock {
-  option (amino.name) = "osmosis/superfluid-unbond-lock";
+  option (amino.name) = "furya/superfluid-unbond-lock";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 lock_id = 2;
@@ -109,7 +109,7 @@ message MsgSuperfluidUndelegateAndUnbondLockResponse {
 // and then does a superfluid lock from the newly created lockup, to the
 // specified validator addr.
 message MsgLockAndSuperfluidDelegate {
-  option (amino.name) = "osmosis/lock-and-superfluid-delegate";
+  option (amino.name) = "furya/lock-and-superfluid-delegate";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   repeated cosmos.base.v1beta1.Coin coins = 2 [
@@ -123,7 +123,7 @@ message MsgLockAndSuperfluidDelegateResponse { uint64 ID = 1; }
 // MsgCreateFullRangePositionAndSuperfluidDelegate creates a full range position
 // in a concentrated liquidity pool, then superfluid delegates.
 message MsgCreateFullRangePositionAndSuperfluidDelegate {
-  option (amino.name) = "osmosis/full-range-and-sf-delegate";
+  option (amino.name) = "furya/full-range-and-sf-delegate";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   repeated cosmos.base.v1beta1.Coin coins = 2 [
@@ -142,12 +142,12 @@ message MsgCreateFullRangePositionAndSuperfluidDelegateResponse {
 // associated with pool pool_id. If pool_id is not approved for unpooling by
 // governance, this is a no-op. Unpooling takes the locked gamm shares, and runs
 // "ExitPool" on it, to get the constituent tokens. e.g. z gamm/pool/1 tokens
-// ExitPools into constituent tokens x uatom, y uosmo. Then it creates a new
+// ExitPools into constituent tokens x uatom, y ufury. Then it creates a new
 // lock for every constituent token, with the duration associated with the lock.
 // If the lock was unbonding, the new lockup durations should be the time left
 // until unbond completion.
 message MsgUnPoolWhitelistedPool {
-  option (amino.name) = "osmosis/unpool-whitelisted-pool";
+  option (amino.name) = "furya/unpool-whitelisted-pool";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   uint64 pool_id = 2 [ (gogoproto.moretags) = "yaml:\"pool_id\"" ];
@@ -160,7 +160,7 @@ message MsgUnPoolWhitelistedPoolResponse {
 // =====================
 // MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition
 message MsgUnlockAndMigrateSharesToFullRangeConcentratedPosition {
-  option (amino.name) = "osmosis/unlock-and-migrate";
+  option (amino.name) = "furya/unlock-and-migrate";
 
   string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
   int64 lock_id = 2 [ (gogoproto.moretags) = "yaml:\"lock_id\"" ];
@@ -204,7 +204,7 @@ message MsgUnlockAndMigrateSharesToFullRangeConcentratedPositionResponse {
 
 // ===================== MsgAddToConcentratedLiquiditySuperfluidPosition
 message MsgAddToConcentratedLiquiditySuperfluidPosition {
-  option (amino.name) = "osmosis/add-to-cl-superfluid-position";
+  option (amino.name) = "furya/add-to-cl-superfluid-position";
 
   uint64 position_id = 1 [ (gogoproto.moretags) = "yaml:\"position_id\"" ];
   string sender = 2 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
@@ -246,7 +246,7 @@ message MsgAddToConcentratedLiquiditySuperfluidPositionResponse {
 
 // ===================== MsgUnbondConvertAndStake
 message MsgUnbondConvertAndStake {
-  option (amino.name) = "osmosis/unbond-convert-and-stake";
+  option (amino.name) = "furya/unbond-convert-and-stake";
 
   // lock ID to convert and stake.
   // lock id with 0 should be provided if converting liquid gamm shares to stake

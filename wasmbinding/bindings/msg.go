@@ -1,6 +1,6 @@
 package bindings
 
-import "github.com/osmosis-labs/osmosis/osmomath"
+import "github.com/furya-labs/furya/osmomath"
 
 type FuryaMsg struct {
 	/// Contracts can create denoms, namespaced under the contract's address.

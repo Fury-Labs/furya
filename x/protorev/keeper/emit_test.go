@@ -8,9 +8,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/crypto/tmhash"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev/keeper"
-	"github.com/osmosis-labs/osmosis/v20/x/protorev/types"
+	"github.com/furya-labs/furya/osmomath"
+	"github.com/furya-labs/furya/v20/x/protorev/keeper"
+	"github.com/furya-labs/furya/v20/x/protorev/types"
 )
 
 func (s *KeeperTestSuite) TestBackRunEvent() {
@@ -25,14 +25,14 @@ func (s *KeeperTestSuite) TestBackRunEvent() {
 		"basic valid": {
 			pool: keeper.SwapToBackrun{
 				PoolId:        1,
-				TokenInDenom:  "uosmo",
+				TokenInDenom:  "ufury",
 				TokenOutDenom: "uatom",
 			},
 			remainingTxPoolPoints:    100,
 			remainingBlockPoolPoints: 100,
 			profit:                   osmomath.NewInt(100),
 			tokenOutAmount:           osmomath.NewInt(100),
-			inputCoin:                sdk.NewCoin("uosmo", osmomath.NewInt(100)),
+			inputCoin:                sdk.NewCoin("ufury", osmomath.NewInt(100)),
 		},
 	}
 

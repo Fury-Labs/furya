@@ -441,8 +441,8 @@ dependencies = [
  "cw2",
  "enum-repr",
  "itertools 0.11.0",
- "osmosis-std 0.16.2",
- "osmosis-test-tube",
+ "furya-std 0.16.2",
+ "furya-test-tube",
  "prost 0.11.9",
  "registry",
  "schemars",
@@ -1307,14 +1307,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4d5d9eb14b174ee9aa2ef96dc2b94637a2d4b6e7cb873c7e171f0c20c6cf3eac"
 
 [[package]]
-name = "osmosis-std"
+name = "furya-std"
 version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "10d6fe6ac7fcba45ed61d738091d33c838c4cabbcf4892dc7aa56d19d39cc976"
 dependencies = [
  "chrono",
  "cosmwasm-std",
- "osmosis-std-derive 0.13.2",
+ "furya-std-derive 0.13.2",
  "prost 0.11.9",
  "prost-types",
  "schemars",
@@ -1323,14 +1323,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "osmosis-std"
+name = "furya-std"
 version = "0.16.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "75895e4db1a81ca29118e366365744f64314938327e4eedba8e6e462fb15e94f"
 dependencies = [
  "chrono",
  "cosmwasm-std",
- "osmosis-std-derive 0.16.2",
+ "furya-std-derive 0.16.2",
  "prost 0.11.9",
  "prost-types",
  "schemars",
@@ -1339,14 +1339,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "osmosis-std"
+name = "furya-std"
 version = "0.17.0-rc0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c0b022b748710ecdf1adc6a124c3bef29f17ef05e7fa1260a08889d1d53f9cc5"
 dependencies = [
  "chrono",
  "cosmwasm-std",
- "osmosis-std-derive 0.16.2",
+ "furya-std-derive 0.16.2",
  "prost 0.11.9",
  "prost-types",
  "schemars",
@@ -1355,7 +1355,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "osmosis-std-derive"
+name = "furya-std-derive"
 version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a455e262a6fdfd3914f3a4e11e6bc0ce491901cb9d507d7856d7ef6e129e90c6"
@@ -1367,7 +1367,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "osmosis-std-derive"
+name = "furya-std-derive"
 version = "0.16.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f47f0b2f22adb341bb59e5a3a1b464dde033181954bd055b9ae86d6511ba465b"
@@ -1380,7 +1380,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "osmosis-test-tube"
+name = "furya-test-tube"
 version = "17.0.0-rc0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "977a2b4f088dd704a47e96b5914e28465cfcdb1cb1145a1f9b45c219a9b145c5"
@@ -1389,7 +1389,7 @@ dependencies = [
  "bindgen",
  "cosmrs",
  "cosmwasm-std",
- "osmosis-std 0.17.0-rc0",
+ "furya-std 0.17.0-rc0",
  "prost 0.11.9",
  "serde",
  "serde_json",
@@ -1409,7 +1409,7 @@ dependencies = [
  "cw-storage-plus",
  "cw-utils",
  "cw2",
- "osmosis-std 0.16.2",
+ "furya-std 0.16.2",
  "registry",
  "serde-json-wasm",
  "swaprouter",
@@ -1638,8 +1638,8 @@ dependencies = [
  "cosmwasm-std",
  "hex",
  "itertools 0.11.0",
- "osmosis-std 0.13.2",
- "osmosis-std-derive 0.13.2",
+ "furya-std 0.13.2",
+ "furya-std-derive 0.13.2",
  "prost 0.11.9",
  "schemars",
  "serde",
@@ -2048,8 +2048,8 @@ dependencies = [
  "cosmwasm-std",
  "cw-storage-plus",
  "cw2",
- "osmosis-std 0.16.2",
- "osmosis-test-tube",
+ "furya-std 0.16.2",
+ "furya-test-tube",
  "schemars",
  "serde",
  "thiserror",
@@ -2191,7 +2191,7 @@ dependencies = [
  "base64",
  "cosmrs",
  "cosmwasm-std",
- "osmosis-std 0.17.0-rc0",
+ "furya-std 0.17.0-rc0",
  "prost 0.11.9",
  "serde",
  "serde_json",

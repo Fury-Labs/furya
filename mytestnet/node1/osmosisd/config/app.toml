@@ -8,7 +8,7 @@
 # The minimum gas prices a validator is willing to accept for processing a
 # transaction. A transaction's fees must meet the minimum of any denomination
 # specified in this config (e.g. 0.25token1;0.0001token2).
-minimum-gas-prices = "0uosmo"
+minimum-gas-prices = "0ufury"
 
 # The maximum gas a query coming over rest/grpc may consume.
 # If this is set to zero, the query can consume an unbounded amount of gas.
@@ -215,18 +215,18 @@ snapshot-interval = 0
 snapshot-keep-recent = 2
 
 ###############################################################################
-###                      Osmosis Mempool Configuration                      ###
+###                      Furya Mempool Configuration                      ###
 ###############################################################################
 
-[osmosis-mempool]
+[furya-mempool]
 # This is the max allowed gas any tx.
 # This is only for local mempool purposes, and thus	is only ran on check tx.
 max-gas-wanted-per-tx = "25000000"
 
-# This is the minimum gas fee any arbitrage tx should have, denominated in uosmo per gas
-# Default value of ".005" then means that a tx with 1 million gas costs (.005 uosmo/gas) * 1_000_000 gas = .005 osmo
+# This is the minimum gas fee any arbitrage tx should have, denominated in ufury per gas
+# Default value of ".005" then means that a tx with 1 million gas costs (.005 ufury/gas) * 1_000_000 gas = .005 fury
 arbitrage-min-gas-fee = ".005"
 
-# This is the minimum gas fee any tx with high gas demand should have, denominated in uosmo per gas
-# Default value of ".0025" then means that a tx with 1 million gas costs (.0025 uosmo/gas) * 1_000_000 gas = .0025 osmo
+# This is the minimum gas fee any tx with high gas demand should have, denominated in ufury per gas
+# Default value of ".0025" then means that a tx with 1 million gas costs (.0025 ufury/gas) * 1_000_000 gas = .0025 fury
 min-gas-price-for-high-gas-tx = ".0025"

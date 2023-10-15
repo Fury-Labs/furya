@@ -4,21 +4,21 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	"github.com/cosmos/cosmos-sdk/types/address"
 
-	"github.com/osmosis-labs/osmosis/osmomath"
+	"github.com/furya-labs/furya/osmomath"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
 const (
-	HumanCoinUnit = "osmo"
-	BaseCoinUnit  = "uosmo"
+	HumanCoinUnit = "fury"
+	BaseCoinUnit  = "ufury"
 	OsmoExponent  = 6
 
 	DefaultBondDenom = BaseCoinUnit
 
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address.
-	Bech32PrefixAccAddr = "osmo"
+	Bech32PrefixAccAddr = "fury"
 )
 
 var (
