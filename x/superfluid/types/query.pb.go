@@ -330,7 +330,7 @@ func (m *AssetMultiplierRequest) GetDenom() string {
 }
 
 type AssetMultiplierResponse struct {
-	FuryEquivalentMultiplier *FuryEquivalentMultiplierRecord `protobuf:"bytes,1,opt,name=osmo_equivalent_multiplier,json=osmoEquivalentMultiplier,proto3" json:"osmo_equivalent_multiplier,omitempty"`
+	FuryEquivalentMultiplier *FuryEquivalentMultiplierRecord `protobuf:"bytes,1,opt,name=fury_equivalent_multiplier,json=osmoEquivalentMultiplier,proto3" json:"fury_equivalent_multiplier,omitempty"`
 }
 
 func (m *AssetMultiplierResponse) Reset()         { *m = AssetMultiplierResponse{} }
@@ -724,7 +724,7 @@ func (m *QueryTotalDelegationByValidatorForDenomResponse) GetAssets() []Delegati
 type Delegations struct {
 	ValAddr        string                `protobuf:"bytes,1,opt,name=val_addr,json=valAddr,proto3" json:"val_addr,omitempty"`
 	AmountSfsd     cosmossdk_io_math.Int `protobuf:"bytes,2,opt,name=amount_sfsd,json=amountSfsd,proto3,customtype=cosmossdk.io/math.Int" json:"amount_sfsd" yaml:"amount_sfsd"`
-	FuryEquivalent cosmossdk_io_math.Int `protobuf:"bytes,3,opt,name=osmo_equivalent,json=osmoEquivalent,proto3,customtype=cosmossdk.io/math.Int" json:"osmo_equivalent" yaml:"osmo_equivalent"`
+	FuryEquivalent cosmossdk_io_math.Int `protobuf:"bytes,3,opt,name=fury_equivalent,json=osmoEquivalent,proto3,customtype=cosmossdk.io/math.Int" json:"fury_equivalent" yaml:"fury_equivalent"`
 }
 
 func (m *Delegations) Reset()         { *m = Delegations{} }

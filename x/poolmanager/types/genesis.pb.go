@@ -168,14 +168,14 @@ type TakerFeeParams struct {
 	// default_taker_fee is the fee used when creating a new pool that doesn't
 	// fall under a custom pool taker fee or stableswap taker fee category.
 	DefaultTakerFee cosmossdk_io_math.LegacyDec `protobuf:"bytes,1,opt,name=default_taker_fee,json=defaultTakerFee,proto3,customtype=cosmossdk.io/math.LegacyDec" json:"default_taker_fee"`
-	// osmo_taker_fee_distribution defines the distribution of taker fees
+	// fury_taker_fee_distribution defines the distribution of taker fees
 	// generated in FURY. As of this writing, it has two catagories:
 	//   - staking_rewards: the percent of the taker fee that gets distributed to
 	//     stakers.
 	//   - community_pool: the percent of the taker fee that gets sent to the
 	//     community pool.
-	FuryTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,2,opt,name=osmo_taker_fee_distribution,json=osmoTakerFeeDistribution,proto3" json:"osmo_taker_fee_distribution"`
-	// non_osmo_taker_fee_distribution defines the distribution of taker fees
+	FuryTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,2,opt,name=fury_taker_fee_distribution,json=osmoTakerFeeDistribution,proto3" json:"fury_taker_fee_distribution"`
+	// non_fury_taker_fee_distribution defines the distribution of taker fees
 	// generated in non-FURY. As of this writing, it has two categories:
 	//   - staking_rewards: the percent of the taker fee that gets swapped to FURY
 	//     and then distirbuted to stakers.
@@ -184,7 +184,7 @@ type TakerFeeParams struct {
 	//     that denom is sent directly to the community pool. Otherwise, it is
 	//     swapped to the community_pool_denom_to_swap_non_whitelisted_assets_to and
 	//     then sent to the community pool as that denom.
-	NonFuryTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,3,opt,name=non_osmo_taker_fee_distribution,json=nonFuryTakerFeeDistribution,proto3" json:"non_osmo_taker_fee_distribution"`
+	NonFuryTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,3,opt,name=non_fury_taker_fee_distribution,json=nonFuryTakerFeeDistribution,proto3" json:"non_fury_taker_fee_distribution"`
 	// admin_addresses is a list of addresses that are allowed to set and remove
 	// custom taker fees for denom pairs. Governance also has the ability to set
 	// and remove custom taker fees for denom pairs, but with the normal

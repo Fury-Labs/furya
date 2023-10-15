@@ -733,7 +733,7 @@ message AssetMultiplierRequest {
 };
 
 message AssetMultiplierResponse {
-  FuryEquivalentMultiplierRecord osmo_equivalent_multiplier = 1;
+  FuryEquivalentMultiplierRecord fury_equivalent_multiplier = 1;
 };
 
 message FuryEquivalentMultiplierRecord {

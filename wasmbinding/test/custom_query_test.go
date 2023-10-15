@@ -95,7 +95,7 @@ func storeReflectCode(t *testing.T, ctx sdk.Context, furya *app.FuryaApp, addr s
 	t.Helper()
 
 	govKeeper := furya.GovKeeper
-	wasmCode, err := os.ReadFile("../testdata/osmo_reflect.wasm")
+	wasmCode, err := os.ReadFile("../testdata/fury_reflect.wasm")
 	require.NoError(t, err)
 
 	src := wasmtypes.StoreCodeProposalFixture(func(p *wasmtypes.StoreCodeProposal) {

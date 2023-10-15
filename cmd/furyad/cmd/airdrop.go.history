@@ -30,7 +30,7 @@ type AppStateV036 struct {
 
 type Snapshot struct {
 	TotalAtomAmount         osmomath.Int `json:"total_atom_amount"`
-	TotalFurysAirdropAmount osmomath.Int `json:"total_osmo_amount"`
+	TotalFurysAirdropAmount osmomath.Int `json:"total_fury_amount"`
 	NumberAccounts          uint64  `json:"num_accounts"`
 
 	Accounts map[string]SnapshotAccount `json:"accounts"`
@@ -47,10 +47,10 @@ type SnapshotAccount struct {
 	AtomUnstakedBalance osmomath.Int `json:"atom_unstaked_balance"` // AtomStakedPercent = AtomStakedBalance / AtomBalance
 	AtomStakedPercent   osmomath.Dec `json:"atom_staked_percent"`
 
-	FuryBalance      osmomath.Int `json:"osmo_balance"`           // FuryBalance = sqrt( AtomBalance ) * (1 + 1.5 * atom staked percent)
-	FuryBalanceBase  osmomath.Int `json:"osmo_balance_base"`      // FuryBalanceBase = sqrt(atom balance)
-	FuryBalanceBonus osmomath.Int `json:"osmo_balance_bonus"`     // FuryBalanceBonus = FuryBalanceBase * (1.5 * atom staked percent)
-	FuryPercent      osmomath.Dec `json:"osmo_ownership_percent"` // FuryPercent = FuryNormalizedBalance / TotalFurySupply
+	FuryBalance      osmomath.Int `json:"fury_balance"`           // FuryBalance = sqrt( AtomBalance ) * (1 + 1.5 * atom staked percent)
+	FuryBalanceBase  osmomath.Int `json:"fury_balance_base"`      // FuryBalanceBase = sqrt(atom balance)
+	FuryBalanceBonus osmomath.Int `json:"fury_balance_bonus"`     // FuryBalanceBonus = FuryBalanceBase * (1.5 * atom staked percent)
+	FuryPercent      osmomath.Dec `json:"fury_ownership_percent"` // FuryPercent = FuryNormalizedBalance / TotalFurySupply
 }
 
 // setCosmosBech32Prefixes set config for cosmos address system

@@ -68,11 +68,11 @@ func (s *KeeperTestSuite) TestTotalDelegationByValidatorForAsset() {
 
 		for _, result := range res.Assets {
 			// check fury equivalent is correct
-			actual_response_osmo := result.FuryEquivalent
-			needed_response_osmo, err := s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(ctx, denom, osmomath.NewInt(delegation_amount))
+			actual_response_fury := result.FuryEquivalent
+			needed_response_fury, err := s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(ctx, denom, osmomath.NewInt(delegation_amount))
 			s.Require().NoError(err)
 
-			s.Require().Equal(actual_response_osmo, needed_response_osmo)
+			s.Require().Equal(actual_response_fury, needed_response_fury)
 
 			// check sfs'd asset amount correct
 			actual_response_asset := result.AmountSfsd
@@ -464,8 +464,8 @@ func (s *KeeperTestSuite) TestGRPCQueryTotalDelegationByDelegator() {
 			sdk.NewInt64Coin("ufury", 18000000),
 		)))
 
-		total_osmo_equivalent := sdk.NewCoin("ufury", expectAmount0.RoundInt().Add(expectAmount1.RoundInt()).Add(osmomath.NewInt(18000000)))
+		total_fury_equivalent := sdk.NewCoin("ufury", expectAmount0.RoundInt().Add(expectAmount1.RoundInt()).Add(osmomath.NewInt(18000000)))
 
-		s.Require().True(res.TotalEquivalentStakedAmount.IsEqual(total_osmo_equivalent))
+		s.Require().True(res.TotalEquivalentStakedAmount.IsEqual(total_fury_equivalent))
 	}
 }

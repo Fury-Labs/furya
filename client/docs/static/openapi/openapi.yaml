@@ -10203,7 +10203,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  osmo_equivalent_multiplier:
+                  fury_equivalent_multiplier:
                     type: object
                     properties:
                       epoch_number:
@@ -36710,7 +36710,7 @@ components:
     furya.superfluid.AssetMultiplierResponse:
       type: object
       properties:
-        osmo_equivalent_multiplier:
+        fury_equivalent_multiplier:
           type: object
           properties:
             epoch_number:
@@ -36840,7 +36840,7 @@ components:
           type: string
         amount_sfsd:
           type: string
-        osmo_equivalent:
+        fury_equivalent:
           type: string
     furya.superfluid.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse:
       type: object
@@ -37043,7 +37043,7 @@ components:
                 type: string
               amount_sfsd:
                 type: string
-              osmo_equivalent:
+              fury_equivalent:
                 type: string
     furya.superfluid.QueryUnpoolWhitelistResponse:
       type: object
