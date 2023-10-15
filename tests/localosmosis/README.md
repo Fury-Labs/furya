@@ -1,13 +1,13 @@
-# LocalOsmosis
+# LocalFurya
 
-LocalOsmosis is a complete Osmosis testnet containerized with Docker and orchestrated with a simple docker-compose file. LocalOsmosis comes preconfigured with opinionated, sensible defaults for a standard testing environment.
+LocalFurya is a complete Furya testnet containerized with Docker and orchestrated with a simple docker-compose file. LocalFurya comes preconfigured with opinionated, sensible defaults for a standard testing environment.
 
-LocalOsmosis comes in two flavors:
+LocalFurya comes in two flavors:
 
 1. No initial state: brand new testnet with no initial state. 
 2. With mainnet state: creates a testnet from a mainnet state export
 
-Both ways, the chain-id for LocalOsmosis is set to 'localfurya'.
+Both ways, the chain-id for LocalFurya is set to 'localfurya'.
 
 ## Prerequisites
 
@@ -23,13 +23,13 @@ sudo apt install docker.io -y
 sudo apt install docker-compose -y
 ```
 
-## 1. LocalOsmosis - No Initial State
+## 1. LocalFurya - No Initial State
 
-The following commands must be executed from the root folder of the Osmosis repository.
+The following commands must be executed from the root folder of the Furya repository.
 
 1. Make any change to the furya code that you want to test
 
-2. Initialize LocalOsmosis:
+2. Initialize LocalFurya:
 
 ```bash
 make localnet-init
@@ -40,7 +40,7 @@ The command:
 - Builds a local docker image with the latest changes
 - Cleans the `$HOME/.furyad-local` folder
 
-3. Start LocalOsmosis:
+3. Start LocalFurya:
 
 ```bash
 make localnet-start
@@ -48,7 +48,7 @@ make localnet-start
 
 > Note
 >
-> You can also start LocalOsmosis in detach mode with:
+> You can also start LocalFurya in detach mode with:
 >
 > `make localnet-startd`
 
@@ -75,9 +75,9 @@ make localnet-stop
 make localnet-clean
 ```
 
-## 2. LocalOsmosis - With Mainnet State
+## 2. LocalFurya - With Mainnet State
 
-Running LocalOsmosis with mainnet state is resource intensive and can take a bit of time.
+Running LocalFurya with mainnet state is resource intensive and can take a bit of time.
 It is recommended to only use this method if you are testing a new feature that must be thoroughly tested before pushing to production.
 
 A few things to note before getting started. The below method will only work if you are using the same version as mainnet. In other words,
@@ -101,7 +101,7 @@ source ~/.profile
 journalctl -u furyad.service -f
 ```
 
-3. Stop your Osmosis daemon
+3. Stop your Furya daemon
 
 ```sh
 systemctl stop furyad.service
@@ -116,12 +116,12 @@ furyad export 2> state_export.json
 
 After a while (~15 minutes), this will create a file called `state_export.json` which is a snapshot of the current mainnet state.
 
-### Use the state export in LocalOsmosis
+### Use the state export in LocalFurya
 
-1. Copy the `state_export.json` to the `LocalOsmosis/state_export` folder within the furya repo
+1. Copy the `state_export.json` to the `LocalFurya/state_export` folder within the furya repo
 
 ```sh
-cp $HOME/state_export.json $HOME/furya/tests/LocalOsmosis/state_export/
+cp $HOME/state_export.json $HOME/furya/tests/LocalFurya/state_export/
 ```
 
 6. Ensure you have docker and docker-compose installed:
@@ -147,7 +147,7 @@ The command:
 - Builds a local docker image with the latest changes
 - Cleans the `$HOME/.furyad` folder
 
-3. Start LocalOsmosis:
+3. Start LocalFurya:
 
 ```bash
 make localnet-state-export-start
@@ -155,7 +155,7 @@ make localnet-state-export-start
 
 > Note
 >
-> You can also start LocalOsmosis in detach mode with:
+> You can also start LocalFurya in detach mode with:
 >
 > `make localnet-state-export-startd`
 
@@ -206,9 +206,9 @@ Note: At some point, all the validators (except yours) will get jailed at the sa
 When this happens, it may take a little bit of time to process. Once all validators are jailed, you will continue to hit blocks as you did before.
 If you are only running the validator for a short time (< 24 hours) you will not experience this.
 
-## LocalOsmosis Accounts
+## LocalFurya Accounts
 
-LocalOsmosis is pre-configured with one validator and 9 accounts with ION and OSMO balances.
+LocalFurya is pre-configured with one validator and 9 accounts with ION and OSMO balances.
 
 | Account   | Address                                                                                                | Mnemonic                                                                                                                                                                   |
 |-----------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -234,7 +234,7 @@ To test a software upgrade, you can use the `submit_upgrade_proposal.sh` script 
 
 To use the script:
 
-1. make sure you have a running LocalOsmosis instance
+1. make sure you have a running LocalFurya instance
 
 2. run the following command:
 
@@ -255,7 +255,7 @@ Once the upgrade height is reached, you need to update your `localfurya` instanc
 
 There are two ways to do this:
 
-1. Change the image in the `docker-compose.yml` file to use the new version, and then restart LocalOsmosis using `make localnet-start`. For example:
+1. Change the image in the `docker-compose.yml` file to use the new version, and then restart LocalFurya using `make localnet-start`. For example:
 
 ```yaml
 services:
@@ -271,7 +271,7 @@ services:
     #     GO_VERSION: 1.20
 ```
 
-2. Checkout the Osmosis repository to a different `ref` that includes the new version, and then rebuild and restart LocalOsmosis using `make localnet-start`. Make sure to don't delete your `~/.furyad-local` folder.
+2. Checkout the Furya repository to a different `ref` that includes the new version, and then rebuild and restart LocalFurya using `make localnet-start`. Make sure to don't delete your `~/.furyad-local` folder.
 
 ## FAQ
 

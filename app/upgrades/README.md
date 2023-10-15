@@ -1,4 +1,4 @@
-# Osmosis Upgrades
+# Furya Upgrades
 
 This folder contains sub-folders for every furya upgrade. (Both state
 migrations, and hard forks) It also defines upgrade & hard fork structs,

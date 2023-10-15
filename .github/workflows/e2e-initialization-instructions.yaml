@@ -41,8 +41,8 @@ jobs:
             This PR includes modifications to the `tests/e2e/initialization` module.
             Please follow the instructions below:
 
-            1. Backport these changes to the previous Osmosis version's branch.
-            2. Run the script inside a Docker container to update genesis and configs for pre-upgrade Osmosis.
+            1. Backport these changes to the previous Furya version's branch.
+            2. Run the script inside a Docker container to update genesis and configs for pre-upgrade Furya.
             3. Merge the backported changes.
             4. The image will be built and uploaded to Docker Hub [here](https://hub.docker.com/r/osmolabs/furya-e2e-init-chain/tags).
             5. Grab the latest image and update it in the PR to the main branch replacing the `previousVersionInitTag` in the `furya/tests/e2e/containers/config.go`

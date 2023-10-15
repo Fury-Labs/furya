@@ -1,5 +1,5 @@
 #!/bin/sh
-OSMOSIS_HOME="/tmp/furyad$(date +%s)"
+FURYA_HOME="/tmp/furyad$(date +%s)"
 RANDOM_KEY="randomfuryavalidatorkey"
 CHAIN_ID=furya-1
 DENOM=uosmo
@@ -46,7 +46,7 @@ else
     echo "GentxFile::::"
     echo $GENTX_FILE
 
-    echo "...........Init Osmosis.............."
+    echo "...........Init Furya.............."
 
     git clone https://github.com/fury-labs/furya
     cd furya
@@ -54,16 +54,16 @@ else
     make build
     chmod +x ./build/furyad
 
-    ./build/furyad keys add $RANDOM_KEY --keyring-backend test --home $OSMOSIS_HOME
+    ./build/furyad keys add $RANDOM_KEY --keyring-backend test --home $FURYA_HOME
 
-    ./build/furyad init --chain-id $CHAIN_ID validator --home $OSMOSIS_HOME
+    ./build/furyad init --chain-id $CHAIN_ID validator --home $FURYA_HOME
 
     echo "..........Fetching genesis......."
-    rm -rf $OSMOSIS_HOME/config/genesis.json
-    curl -s https://raw.githubusercontent.com/fury-labs/networks/main/$CHAIN_ID/pregenesis.json >$OSMOSIS_HOME/config/genesis.json
+    rm -rf $FURYA_HOME/config/genesis.json
+    curl -s https://raw.githubusercontent.com/fury-labs/networks/main/$CHAIN_ID/pregenesis.json >$FURYA_HOME/config/genesis.json
 
     # this genesis time is different from original genesis time, just for validating gentx.
-    sed -i '/genesis_time/c\   \"genesis_time\" : \"2021-03-29T00:00:00Z\",' $OSMOSIS_HOME/config/genesis.json
+    sed -i '/genesis_time/c\   \"genesis_time\" : \"2021-03-29T00:00:00Z\",' $FURYA_HOME/config/genesis.json
 
     GENACC=$(cat ../$GENTX_FILE | sed -n 's|.*"delegator_address":"\([^"]*\)".*|\1|p')
     denomquery=$(jq -r '.body.messages[0].value.denom' ../$GENTX_FILE)
@@ -86,22 +86,22 @@ else
         exit 1
     fi
 
-    ./build/furyad add-genesis-account $RANDOM_KEY 100000000000000$DENOM --home $OSMOSIS_HOME \
+    ./build/furyad add-genesis-account $RANDOM_KEY 100000000000000$DENOM --home $FURYA_HOME \
         --keyring-backend test
 
-    ./build/furyad gentx $RANDOM_KEY 90000000000000$DENOM --home $OSMOSIS_HOME \
+    ./build/furyad gentx $RANDOM_KEY 90000000000000$DENOM --home $FURYA_HOME \
         --keyring-backend test --chain-id $CHAIN_ID
 
-    cp ../$GENTX_FILE $OSMOSIS_HOME/config/gentx/
+    cp ../$GENTX_FILE $FURYA_HOME/config/gentx/
 
     echo "..........Collecting gentxs......."
-    ./build/furyad collect-gentxs --home $OSMOSIS_HOME
-    sed -i '/persistent_peers =/c\persistent_peers = ""' $OSMOSIS_HOME/config/config.toml
+    ./build/furyad collect-gentxs --home $FURYA_HOME
+    sed -i '/persistent_peers =/c\persistent_peers = ""' $FURYA_HOME/config/config.toml
 
-    ./build/furyad validate-genesis --home $OSMOSIS_HOME
+    ./build/furyad validate-genesis --home $FURYA_HOME
 
     echo "..........Starting node......."
-    ./build/furyad start --home $OSMOSIS_HOME &
+    ./build/furyad start --home $FURYA_HOME &
 
     sleep 1800s
 
@@ -111,5 +111,5 @@ else
 
     echo "...Cleaning the stuff..."
     killall furyad >/dev/null 2>&1
-    rm -rf $OSMOSIS_HOME >/dev/null 2>&1
+    rm -rf $FURYA_HOME >/dev/null 2>&1
 fi

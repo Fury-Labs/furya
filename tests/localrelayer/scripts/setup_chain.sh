@@ -14,8 +14,8 @@ VALIDATOR_MNEMONIC=${VALIDATOR_MNEMONIC:-$DEFAULT_VALIDATOR_MNEMONIC}
 FAUCET_MNEMONIC=${FAUCET_MNEMONIC:-$DEFAULT_FAUCET_MNEMONIC}
 RELAYER_MNEMONIC=${RELAYER_MNEMONIC:-$DEFAULT_RELAYER_MNEMONIC}
 
-OSMOSIS_HOME=$HOME/.furyad
-CONFIG_FOLDER=$OSMOSIS_HOME/config
+FURYA_HOME=$HOME/.furyad
+CONFIG_FOLDER=$FURYA_HOME/config
 
 install_prerequisites () {
     apk add dasel
@@ -70,24 +70,24 @@ add_genesis_accounts () {
     
     # Validator
     echo "⚖️ Add validator account"
-    echo $VALIDATOR_MNEMONIC | furyad keys add $VALIDATOR_MONIKER --recover --keyring-backend=test --home $OSMOSIS_HOME
-    VALIDATOR_ACCOUNT=$(furyad keys show -a $VALIDATOR_MONIKER --keyring-backend test --home $OSMOSIS_HOME)
-    furyad add-genesis-account $VALIDATOR_ACCOUNT 100000000000uosmo,100000000000uion,100000000000stake --home $OSMOSIS_HOME
+    echo $VALIDATOR_MNEMONIC | furyad keys add $VALIDATOR_MONIKER --recover --keyring-backend=test --home $FURYA_HOME
+    VALIDATOR_ACCOUNT=$(furyad keys show -a $VALIDATOR_MONIKER --keyring-backend test --home $FURYA_HOME)
+    furyad add-genesis-account $VALIDATOR_ACCOUNT 100000000000uosmo,100000000000uion,100000000000stake --home $FURYA_HOME
     
     # Faucet
     echo "🚰 Add faucet account"
-    echo $FAUCET_MNEMONIC | furyad keys add faucet --recover --keyring-backend=test --home $OSMOSIS_HOME
-    FAUCET_ACCOUNT=$(furyad keys show -a faucet --keyring-backend test --home $OSMOSIS_HOME)
-    furyad add-genesis-account $FAUCET_ACCOUNT 100000000000uosmo,100000000000uion,100000000000stake --home $OSMOSIS_HOME
+    echo $FAUCET_MNEMONIC | furyad keys add faucet --recover --keyring-backend=test --home $FURYA_HOME
+    FAUCET_ACCOUNT=$(furyad keys show -a faucet --keyring-backend test --home $FURYA_HOME)
+    furyad add-genesis-account $FAUCET_ACCOUNT 100000000000uosmo,100000000000uion,100000000000stake --home $FURYA_HOME
 
     # Relayer
     echo "🔗 Add relayer account"
-    echo $RELAYER_MNEMONIC | furyad keys add relayer --recover --keyring-backend=test --home $OSMOSIS_HOME
-    RELAYER_ACCOUNT=$(furyad keys show -a relayer --keyring-backend test --home $OSMOSIS_HOME)
-    furyad add-genesis-account $RELAYER_ACCOUNT 1000000000uosmo,1000000000uion,1000000000stake --home $OSMOSIS_HOME
+    echo $RELAYER_MNEMONIC | furyad keys add relayer --recover --keyring-backend=test --home $FURYA_HOME
+    RELAYER_ACCOUNT=$(furyad keys show -a relayer --keyring-backend test --home $FURYA_HOME)
+    furyad add-genesis-account $RELAYER_ACCOUNT 1000000000uosmo,1000000000uion,1000000000stake --home $FURYA_HOME
     
-    furyad gentx $VALIDATOR_MONIKER 500000000uosmo --keyring-backend=test --chain-id=$CHAIN_ID --home $OSMOSIS_HOME
-    furyad collect-gentxs --home $OSMOSIS_HOME
+    furyad gentx $VALIDATOR_MONIKER 500000000uosmo --keyring-backend=test --chain-id=$CHAIN_ID --home $FURYA_HOME
+    furyad collect-gentxs --home $FURYA_HOME
 }
 
 edit_config () {
@@ -101,12 +101,12 @@ edit_config () {
 if [[ ! -d $CONFIG_FOLDER ]]
 then
     install_prerequisites
-    echo "🧪 Creating Osmosis home for $VALIDATOR_MONIKER"
-    echo $VALIDATOR_MNEMONIC | furyad init -o --chain-id=$CHAIN_ID --home $OSMOSIS_HOME --recover $VALIDATOR_MONIKER
+    echo "🧪 Creating Furya home for $VALIDATOR_MONIKER"
+    echo $VALIDATOR_MNEMONIC | furyad init -o --chain-id=$CHAIN_ID --home $FURYA_HOME --recover $VALIDATOR_MONIKER
     edit_genesis
     add_genesis_accounts
     edit_config
 fi
 
 echo "🏁 Starting $CHAIN_ID..."
-furyad start --home $OSMOSIS_HOME
+furyad start --home $FURYA_HOME

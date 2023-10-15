@@ -2,8 +2,8 @@
 set -e 
 set -o pipefail
 
-OSMOSIS_HOME=$HOME/.furyad
-CONFIG_FOLDER=$OSMOSIS_HOME/config
+FURYA_HOME=$HOME/.furyad
+CONFIG_FOLDER=$FURYA_HOME/config
 
 DEFAULT_MNEMONIC="bottom loan skill merry east cradle onion journey palm apology verb edit desert impose absurd oil bubble sweet glove shallow size build burst effort"
 DEFAULT_CHAIN_ID="localfurya"
@@ -59,18 +59,18 @@ then
     echo "Chain ID: $CHAIN_ID"
     echo "Moniker:  $MONIKER"
 
-    echo $MNEMONIC | furyad init -o --chain-id=$CHAIN_ID --home $OSMOSIS_HOME --recover $MONIKER 2> /dev/null
+    echo $MNEMONIC | furyad init -o --chain-id=$CHAIN_ID --home $FURYA_HOME --recover $MONIKER 2> /dev/null
     echo $MNEMONIC | furyad keys add my-key --recover --keyring-backend test > /dev/null 2>&1
 
     ACCOUNT_PUBKEY=$(furyad keys show --keyring-backend test my-key --pubkey | dasel -r json '.key' --plain)
     ACCOUNT_ADDRESS=$(furyad keys show -a --keyring-backend test my-key --bech acc)
 
-    VALIDATOR_PUBKEY_JSON=$(furyad tendermint show-validator --home $OSMOSIS_HOME)
+    VALIDATOR_PUBKEY_JSON=$(furyad tendermint show-validator --home $FURYA_HOME)
     VALIDATOR_PUBKEY=$(echo $VALIDATOR_PUBKEY_JSON | dasel -r json '.key' --plain)
-    VALIDATOR_HEX_ADDRESS=$(furyad debug pubkey $VALIDATOR_PUBKEY_JSON 2>&1 --home $OSMOSIS_HOME | grep Address | cut -d " " -f 2)
-    VALIDATOR_ACCOUNT_ADDRESS=$(furyad debug addr $VALIDATOR_HEX_ADDRESS 2>&1  --home $OSMOSIS_HOME | grep Acc | cut -d " " -f 3)
-    VALIDATOR_OPERATOR_ADDRESS=$(furyad debug addr $VALIDATOR_HEX_ADDRESS 2>&1  --home $OSMOSIS_HOME | grep Val | cut -d " " -f 3)
-    VALIDATOR_CONSENSUS_ADDRESS=$(furyad debug bech32-convert $VALIDATOR_OPERATOR_ADDRESS -p osmovalcons  --home $OSMOSIS_HOME 2>&1)
+    VALIDATOR_HEX_ADDRESS=$(furyad debug pubkey $VALIDATOR_PUBKEY_JSON 2>&1 --home $FURYA_HOME | grep Address | cut -d " " -f 2)
+    VALIDATOR_ACCOUNT_ADDRESS=$(furyad debug addr $VALIDATOR_HEX_ADDRESS 2>&1  --home $FURYA_HOME | grep Acc | cut -d " " -f 3)
+    VALIDATOR_OPERATOR_ADDRESS=$(furyad debug addr $VALIDATOR_HEX_ADDRESS 2>&1  --home $FURYA_HOME | grep Val | cut -d " " -f 3)
+    VALIDATOR_CONSENSUS_ADDRESS=$(furyad debug bech32-convert $VALIDATOR_OPERATOR_ADDRESS -p osmovalcons  --home $FURYA_HOME 2>&1)
 
     python3 -u testnetify.py \
     -i /furya/state_export.json \
@@ -88,4 +88,4 @@ then
     enable_cors
 fi
 
-furyad start --home $OSMOSIS_HOME --x-crisis-skip-assert-invariants
+furyad start --home $FURYA_HOME --x-crisis-skip-assert-invariants

@@ -6,8 +6,8 @@ type ImageConfig struct {
 	InitRepository string
 	InitTag        string
 
-	OsmosisRepository string
-	OsmosisTag        string
+	FuryaRepository string
+	FuryaTag        string
 
 	RelayerRepository string
 	RelayerTag        string
@@ -16,12 +16,12 @@ type ImageConfig struct {
 //nolint:deadcode
 const (
 	// Current Git branch furya repo/version. It is meant to be built locally.
-	// It is used when skipping upgrade by setting OSMOSIS_E2E_SKIP_UPGRADE to true).
+	// It is used when skipping upgrade by setting FURYA_E2E_SKIP_UPGRADE to true).
 	// This image should be pre-built with `make docker-build-debug` either in CI or locally.
 	CurrentBranchOsmoRepository = "furya"
 	CurrentBranchOsmoTag        = "debug"
 	// Pre-upgrade furya repo/tag to pull.
-	// It should be uploaded to Docker Hub. OSMOSIS_E2E_SKIP_UPGRADE should be unset
+	// It should be uploaded to Docker Hub. FURYA_E2E_SKIP_UPGRADE should be unset
 	// for this functionality to be used.
 	previousVersionOsmoRepository = "osmolabs/furya"
 	previousVersionOsmoTag        = "19.0.0-alpine"
@@ -46,8 +46,8 @@ func NewImageConfig(isUpgrade, isFork bool) ImageConfig {
 		// If upgrade is not tested, we do not need InitRepository and InitTag
 		// because we directly call the initialization logic without
 		// the need for Docker.
-		config.OsmosisRepository = CurrentBranchOsmoRepository
-		config.OsmosisTag = CurrentBranchOsmoTag
+		config.FuryaRepository = CurrentBranchOsmoRepository
+		config.FuryaTag = CurrentBranchOsmoTag
 		return config
 	}
 
@@ -61,16 +61,16 @@ func NewImageConfig(isUpgrade, isFork bool) ImageConfig {
 		// Normally, validators switch the binaries pre-fork height
 		// Then, once the fork height is reached, the state breaking-logic
 		// is run.
-		config.OsmosisRepository = CurrentBranchOsmoRepository
-		config.OsmosisTag = CurrentBranchOsmoTag
+		config.FuryaRepository = CurrentBranchOsmoRepository
+		config.FuryaTag = CurrentBranchOsmoTag
 	} else {
 		// Upgrades are run at the time when upgrade height is reached
 		// and are submitted via a governance proposal. Thefore, we
-		// must start running the previous Osmosis version. Then, the node
+		// must start running the previous Furya version. Then, the node
 		// should auto-upgrade, at which point we can restart the updated
-		// Osmosis validator container.
-		config.OsmosisRepository = previousVersionOsmoRepository
-		config.OsmosisTag = previousVersionOsmoTag
+		// Furya validator container.
+		config.FuryaRepository = previousVersionOsmoRepository
+		config.FuryaTag = previousVersionOsmoTag
 	}
 
 	return config

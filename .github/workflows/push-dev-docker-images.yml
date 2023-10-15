@@ -24,8 +24,8 @@ on:
 
 env:
   RUNNER_BASE_IMAGE_ALPINE: alpine:3.17
-  OSMOSIS_DEV_IMAGE_REPOSITORY: osmolabs/furya-dev
-  OSMOSIS_INIT_CHAIN_IMAGE_REPOSITORY: osmolabs/furya-e2e-init-chain
+  FURYA_DEV_IMAGE_REPOSITORY: osmolabs/furya-dev
+  FURYA_INIT_CHAIN_IMAGE_REPOSITORY: osmolabs/furya-e2e-init-chain
 
 jobs:
   docker:
@@ -51,13 +51,13 @@ jobs:
         run: |
           GITHUB_TAG=${{ github.ref_name }}
           echo "DOCKER_IMAGE_TAG=${GITHUB_TAG#v}" >> $GITHUB_ENV
-          echo "OSMOSIS_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "FURYA_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
       - name: Create Docker Image Tag for vN.x branch
         if: "!startsWith(github.ref, 'refs/tags/v')"
         run: |
           SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)
           echo "DOCKER_IMAGE_TAG=${{ github.ref_name }}-${SHORT_SHA}-$(date +%s)" >> $GITHUB_ENV
-          echo "OSMOSIS_VERSION=${{ github.ref_name }}-$SHORT_SHA" >> $GITHUB_ENV
+          echo "FURYA_VERSION=${{ github.ref_name }}-$SHORT_SHA" >> $GITHUB_ENV
       - name: Build and Push Docker Images
         uses: docker/build-push-action@v5
         with:
@@ -68,10 +68,10 @@ jobs:
           build-args: |
             GO_VERSION=${{ env.GO_VERSION }}
             RUNNER_IMAGE=${{ env.RUNNER_BASE_IMAGE_ALPINE }}
-            GIT_VERSION=${{ env.OSMOSIS_VERSION }}
+            GIT_VERSION=${{ env.FURYA_VERSION }}
             GIT_COMMIT=${{ github.sha }}
           tags: |
-            ${{ env.OSMOSIS_DEV_IMAGE_REPOSITORY }}:${{ env.DOCKER_IMAGE_TAG }}
+            ${{ env.FURYA_DEV_IMAGE_REPOSITORY }}:${{ env.DOCKER_IMAGE_TAG }}
       - name: Build and Push E2E Init Docker Images
         uses: docker/build-push-action@v5
         with:
@@ -82,4 +82,4 @@ jobs:
           build-args: |
             E2E_SCRIPT_NAME=chain
           tags: |
-            ${{ env.OSMOSIS_INIT_CHAIN_IMAGE_REPOSITORY }}:${{ env.DOCKER_IMAGE_TAG }}
+            ${{ env.FURYA_INIT_CHAIN_IMAGE_REPOSITORY }}:${{ env.DOCKER_IMAGE_TAG }}

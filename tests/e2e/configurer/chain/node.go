@@ -73,7 +73,7 @@ func (n *NodeConfig) Run() error {
 		for {
 			select {
 			case <-timeout:
-				n.t.Logf("Osmosis node failed to produce blocks")
+				n.t.Logf("Furya node failed to produce blocks")
 				break
 			case <-ticker.C:
 				_, err := n.QueryCurrentHeight()

@@ -3,20 +3,20 @@ use std::path::PathBuf;
 use cosmwasm_std::Coin;
 use crosschain_registry::msg::InstantiateMsg as RegistryInstantiate;
 use crosschain_swaps::msg::InstantiateMsg as CrosschainInstantiate;
-use furya_test_tube::{Account, OsmosisTestApp, SigningAccount};
+use furya_test_tube::{Account, FuryaTestApp, SigningAccount};
 use furya_test_tube::{Gamm, Module, Wasm};
 use serde::Serialize;
 use swaprouter::msg::InstantiateMsg as SwapRouterInstantiate;
 
 pub struct TestEnv {
-    pub app: OsmosisTestApp,
+    pub app: FuryaTestApp,
     pub swaprouter_address: String,
     pub crosschain_address: String,
     pub owner: SigningAccount,
 }
 impl TestEnv {
     pub fn new() -> Self {
-        let app = OsmosisTestApp::new();
+        let app = FuryaTestApp::new();
         let gamm = Gamm::new(&app);
         let wasm = Wasm::new(&app);
 
@@ -97,7 +97,7 @@ impl TestEnv {
 }
 
 fn deploy_contract<M>(
-    wasm: &Wasm<OsmosisTestApp>,
+    wasm: &Wasm<FuryaTestApp>,
     owner: &SigningAccount,
     code: Vec<u8>,
     instantiate_msg: &M,

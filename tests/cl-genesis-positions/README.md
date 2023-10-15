@@ -1,14 +1,14 @@
 # Concentrated Liquidity Realistic Position Generation Script
 
 This script adds realistic positions to localfurya by querying Ethereum's Uniswap WETH / USDC pool and converting it
-into Osmosis genesis.
+into Furya genesis.
 
 This script has 3 commands set via flags:
 
 - `getData` retrieves the data from the Uniswap subgraph and writes it to the disk
-- `convertPositions` converts the data from the Uniswap subgraph into Osmosis genesis by reading the file from the previous step
-and spinning up a mock Osmosis app to create positions on and, then, exporting genesis
-- `mergeSubgraphAndLocalOsmosisGenesis` merges the genesis created from the subgraph data with the localfurya genesis.
+- `convertPositions` converts the data from the Uniswap subgraph into Furya genesis by reading the file from the previous step
+and spinning up a mock Furya app to create positions on and, then, exporting genesis
+- `mergeSubgraphAndLocalFuryaGenesis` merges the genesis created from the subgraph data with the localfurya genesis.
 It is meant to only be called inside a localfurya container
 
 There are makefile commands defined that should help to interact with the script on the user's host machine.
@@ -23,7 +23,7 @@ cl-refresh-subgraph-positions:
 	go run ./tests/cl-genesis-positions --operation 0
 
 # This script converts the positions data created by the
-# cl-refresh-subgraph-positions makefile step into an Osmosis
+# cl-refresh-subgraph-positions makefile step into an Furya
 # genesis. It writes the file under tests/cl-genesis-positions/genesis.json
 cl-refresh-subgraph-genesis:
 	go run ./tests/cl-genesis-positions --operation 1

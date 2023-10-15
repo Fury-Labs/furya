@@ -99,7 +99,7 @@ jobs:
         run: |
           make build
           build/furyad version
-      - name: 🧪 Initialize Osmosis Node
+      - name: 🧪 Initialize Furya Node
         run: |
           rm -rf $HOME/.furyad/ || true
           build/furyad init runner -o
@@ -132,7 +132,7 @@ jobs:
 
           # Copy snapshot in Data folder
           cp -R /mnt/data/snapshots/$REPO_MAJOR_VERSION/$SNAPSHOT_ID/* $HOME/.furyad/
-      - name: 🧪 Configure Osmosis Node
+      - name: 🧪 Configure Furya Node
         run: |
           CONFIG_FOLDER=$HOME/.furyad/config
 
@@ -154,7 +154,7 @@ jobs:
 
           HALT_HEIGHT=$(($LAST_EPOCH_BLOCK_HEIGHT + ${{ env.DELTA_HALT_HEIGHT }}))
 
-          echo "Osmosis repo version: $REPO_MAJOR_VERSION"
+          echo "Furya repo version: $REPO_MAJOR_VERSION"
           echo "Last Epoch Height: $LAST_EPOCH_BLOCK_HEIGHT"
           echo "Halt Height: $HALT_HEIGHT"
 
@@ -170,8 +170,8 @@ jobs:
 
           # Download addrbook
           wget -q -O $CONFIG_FOLDER/addrbook.json ${{ env.ADDRBOOK_URL }}
-      - name: 🧪 Start Osmosis Node
+      - name: 🧪 Start Furya Node
         run: build/furyad start
-      - name: 🧹 Clean up Osmosis Home
+      - name: 🧹 Clean up Furya Home
         if: always()
         run: rm -rf $HOME/.furyad/ || true

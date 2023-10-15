@@ -1,4 +1,4 @@
-# Osmosis IBC Testing
+# Furya IBC Testing
 
 This package provides helpers, for overriding components of `ibctesting`.
 

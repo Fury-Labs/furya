@@ -1,6 +1,6 @@
 # GAMM
 
-The ``GAMM`` module (**G**eneralized **A**utomated **M**arket **M**aker) provides the logic to create and interact with liquidity pools on the Osmosis DEX.
+The ``GAMM`` module (**G**eneralized **A**utomated **M**arket **M**aker) provides the logic to create and interact with liquidity pools on the Furya DEX.
 
 ## Contents
 
@@ -15,7 +15,7 @@ The ``GAMM`` module (**G**eneralized **A**utomated **M**arket **M**aker) provide
 
 The `x/gamm` module implements an AMM using:
 - Balancer style pools with varying amounts and weights of assets in pools.
-- Stableswap pools have liquidity centered around a given spot price. See [here](https://github.com/fury-labs/furya/blob/main/x/gamm/pool-models/stableswap/README.md) for the spec of the Osmosis implementation.
+- Stableswap pools have liquidity centered around a given spot price. See [here](https://github.com/fury-labs/furya/blob/main/x/gamm/pool-models/stableswap/README.md) for the spec of the Furya implementation.
 
 Here we will explain basic GAMM concepts and give an overview of how GAMM module's code is organized to support both type of pools.
 
@@ -172,7 +172,7 @@ Pools have the following parameters:
 2. **ExitFee** -
     The exit fee is a fee that is applied to LP's that want to remove their liquidity from the pool. Suppose a pool has an exit fee `e`. If they currently have `S` LP shares, then when they remove their liquidity they get tokens worth `(1 - e)S` shares back. The remaining `eS` shares are then burned, and the tokens corresponding to these shares are kept as liquidity.
 3. **FutureGovernor** -
-    Osmosis plans to allow every pool to act as a DAO, with its own governance in a future upgrade. To facilitate this transition, we allow pools to specify who the governor should be as a string. There are currently 3 options for the future governor.
+    Furya plans to allow every pool to act as a DAO, with its own governance in a future upgrade. To facilitate this transition, we allow pools to specify who the governor should be as a string. There are currently 3 options for the future governor.
     - No one will govern it. This is done by leaving the future governor string as blank.
     - Allow a given address to govern it. This is done by setting the future governor as a bech32 address.
     - Lockups to a token. This is the full DAO scenario. The future governor specifies a token denomination `denom`, and a lockup duration `duration`. This says that "all tokens of denomination `denom` that are locked up for `duration` or longer, have equal say in governance of this pool".

@@ -1,6 +1,6 @@
 # Summary
 
-[Osmosis](./furya.md)
+[Furya](./furya.md)
 - [Decentralized Exchange](./core_dex.md)
    - [Weighted Pool](./dex/weighted.md)
    - [Stableswap Pool](./dex/stableswap.md)

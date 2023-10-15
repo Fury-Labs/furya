@@ -10,10 +10,10 @@ pub struct InstantiateMsg {
     /// The address that will be allowed to manage which swap_contract to use
     pub governor: String,
 
-    /// This should be an instance of the Osmosis swaprouter contract
+    /// This should be an instance of the Furya swaprouter contract
     pub swap_contract: String,
 
-    /// This should be an instance of the Osmosis registry contract
+    /// This should be an instance of the Furya registry contract
     pub registry_contract: String,
 }
 
@@ -43,7 +43,7 @@ pub enum FailedDeliveryAction {
 #[cw_serde]
 pub enum ExecuteMsg {
     /// Execute a swap and forward it to the receiver address on the specified ibc channel
-    OsmosisSwap {
+    FuryaSwap {
         /// The final denom to be received (as represented on furya)
         output_denom: String,
         /// The receiver of the IBC packet to be sent after the swap

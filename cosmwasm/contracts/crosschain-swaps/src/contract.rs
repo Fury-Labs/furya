@@ -54,7 +54,7 @@ pub fn execute(
 ) -> Result<Response, ContractError> {
     // IBC transfers support only one token at a time
     match msg {
-        ExecuteMsg::OsmosisSwap {
+        ExecuteMsg::FuryaSwap {
             output_denom,
             receiver,
             slippage,

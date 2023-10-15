@@ -77,11 +77,11 @@ func GetCmdNumPools() (*osmocli.QueryDescriptor, *queryproto.NumPoolsRequest) {
 	}, &queryproto.NumPoolsRequest{}
 }
 
-// GetCmdAllPools return all pools available across Osmosis modules.
+// GetCmdAllPools return all pools available across Furya modules.
 func GetCmdAllPools() (*osmocli.QueryDescriptor, *queryproto.AllPoolsRequest) {
 	return &osmocli.QueryDescriptor{
 		Use:   "all-pools",
-		Short: "Query all pools on the Osmosis chain",
+		Short: "Query all pools on the Furya chain",
 		Long:  "{{.Short}}",
 	}, &queryproto.AllPoolsRequest{}
 }

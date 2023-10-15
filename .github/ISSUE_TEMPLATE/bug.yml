@@ -21,7 +21,7 @@ body:
       required: true
   - type: input
     attributes:
-      label: Osmosis Version
+      label: Furya Version
       description: If applicable, specify the version you're using
       placeholder: 16.0.0, 17.0.0, main, etc.
     validations:

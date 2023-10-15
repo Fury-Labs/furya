@@ -5,7 +5,7 @@ set -e
 # it should have enough voting power to pass the proposal
 VALIDATOR_MNEMONIC="bottom loan skill merry east cradle onion journey palm apology verb edit desert impose absurd oil bubble sweet glove shallow size build burst effort"
 
-OSMOSIS_HOME=$HOME/.furyad-local/
+FURYA_HOME=$HOME/.furyad-local/
 RPC_NODE=http://localhost:26657/
 
 # Default upgrade version
@@ -41,7 +41,7 @@ get_chain_info() {
 make_proposal() {
     echo
     echo "${YELLOW}Creating software-upgrade proposal...${NC}"
-    OSMOSIS_CMD="furyad tx gov submit-proposal software-upgrade \
+    FURYA_CMD="furyad tx gov submit-proposal software-upgrade \
         $UPGRADE_VERSION \
         --title \"$UPGRADE_VERSION Upgrade\" \
         --description \"$UPGRADE_VERSION Upgrade\" \
@@ -54,11 +54,11 @@ make_proposal() {
         --keyring-backend test \
         -b block \
         --node $RPC_NODE \
-        --home $OSMOSIS_HOME \
+        --home $FURYA_HOME \
         --yes \
         -o json"
 
-    PROPOSAL_JSON=$(eval "$OSMOSIS_CMD")
+    PROPOSAL_JSON=$(eval "$FURYA_CMD")
     PROPOSAL_ID=$(echo "$PROPOSAL_JSON" | jq -r '.logs[0].events[] | select(.type == "submit_proposal") | .attributes[] | select(.key == "proposal_id") | .value')
 }
 
@@ -74,18 +74,18 @@ query_proposal() {
 vote_on_proposal() {
     echo
     echo "${YELLOW}Voting on proposal $PROPOSAL_ID...${NC}"
-    OSMOSIS_CMD="furyad tx gov vote $PROPOSAL_ID yes \
+    FURYA_CMD="furyad tx gov vote $PROPOSAL_ID yes \
         --from $KEY \
         --chain-id $CHAIN_ID \
         --fees $TX_FEES \
         --node $RPC_NODE \
-        --home $OSMOSIS_HOME \
+        --home $FURYA_HOME \
         --yes \
         --keyring-backend test \
         -o json"
 
     # Execute the command and capture the output
-    VOTE_OUTPUT=$(eval "$OSMOSIS_CMD")
+    VOTE_OUTPUT=$(eval "$FURYA_CMD")
     echo $VOTE_OUTPUT | jq
 
 }

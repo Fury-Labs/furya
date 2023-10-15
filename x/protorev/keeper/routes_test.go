@@ -33,9 +33,9 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 					{PoolId: 4, InputDenom: "bitcoin", OutputDenom: "Atom"},
 				},
 				{
-					{PoolId: 25, InputDenom: types.OsmosisDenomination, OutputDenom: "Atom"},
+					{PoolId: 25, InputDenom: types.FuryaDenomination, OutputDenom: "Atom"},
 					{PoolId: 1, InputDenom: "Atom", OutputDenom: "akash"},
-					{PoolId: 7, InputDenom: "akash", OutputDenom: types.OsmosisDenomination},
+					{PoolId: 7, InputDenom: "akash", OutputDenom: types.FuryaDenomination},
 				},
 			},
 		},
@@ -46,9 +46,9 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 			poolID:      55,
 			expectedRoutes: [][]TestRoute{
 				{
-					{PoolId: 25, InputDenom: types.OsmosisDenomination, OutputDenom: "Atom"},
+					{PoolId: 25, InputDenom: types.FuryaDenomination, OutputDenom: "Atom"},
 					{PoolId: 55, InputDenom: "Atom", OutputDenom: "bitcoin"},
-					{PoolId: 10, InputDenom: "bitcoin", OutputDenom: types.OsmosisDenomination},
+					{PoolId: 10, InputDenom: "bitcoin", OutputDenom: types.FuryaDenomination},
 				},
 				{
 					{PoolId: 55, InputDenom: "Atom", OutputDenom: "bitcoin"},
@@ -63,9 +63,9 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 			poolID:      19,
 			expectedRoutes: [][]TestRoute{
 				{
-					{PoolId: 9, InputDenom: types.OsmosisDenomination, OutputDenom: "ethereum"},
+					{PoolId: 9, InputDenom: types.FuryaDenomination, OutputDenom: "ethereum"},
 					{PoolId: 19, InputDenom: "ethereum", OutputDenom: "bitcoin"},
-					{PoolId: 10, InputDenom: "bitcoin", OutputDenom: types.OsmosisDenomination},
+					{PoolId: 10, InputDenom: "bitcoin", OutputDenom: types.FuryaDenomination},
 				},
 				{
 					{PoolId: 3, InputDenom: "Atom", OutputDenom: "ethereum"},
@@ -76,7 +76,7 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 		},
 		{
 			description:    "No route exists for swap in osmo and swap out Atom",
-			inputDenom:     types.OsmosisDenomination,
+			inputDenom:     types.FuryaDenomination,
 			outputDenom:    "Atom",
 			poolID:         25,
 			expectedRoutes: [][]TestRoute{},
@@ -84,29 +84,29 @@ func (s *KeeperTestSuite) TestBuildRoutes() {
 		{
 			description: "Route exists for swap on stable pool",
 			inputDenom:  "usdc",
-			outputDenom: types.OsmosisDenomination,
+			outputDenom: types.FuryaDenomination,
 			poolID:      29,
 			expectedRoutes: [][]TestRoute{
 				{
-					{PoolId: 29, InputDenom: types.OsmosisDenomination, OutputDenom: "usdc"},
+					{PoolId: 29, InputDenom: types.FuryaDenomination, OutputDenom: "usdc"},
 					{PoolId: 40, InputDenom: "usdc", OutputDenom: "busd"},
-					{PoolId: 30, InputDenom: "busd", OutputDenom: types.OsmosisDenomination},
+					{PoolId: 30, InputDenom: "busd", OutputDenom: types.FuryaDenomination},
 				},
 			},
 		},
 		{
 			description: "Two Pool Route exists for (osmo, atom)",
 			inputDenom:  "Atom",
-			outputDenom: types.OsmosisDenomination,
+			outputDenom: types.FuryaDenomination,
 			poolID:      51,
 			expectedRoutes: [][]TestRoute{
 				{
-					{PoolId: 51, InputDenom: types.OsmosisDenomination, OutputDenom: "Atom"},
-					{PoolId: 25, InputDenom: "Atom", OutputDenom: types.OsmosisDenomination},
+					{PoolId: 51, InputDenom: types.FuryaDenomination, OutputDenom: "Atom"},
+					{PoolId: 25, InputDenom: "Atom", OutputDenom: types.FuryaDenomination},
 				},
 				{
-					{PoolId: 25, InputDenom: "Atom", OutputDenom: types.OsmosisDenomination},
-					{PoolId: 51, InputDenom: types.OsmosisDenomination, OutputDenom: "Atom"},
+					{PoolId: 25, InputDenom: "Atom", OutputDenom: types.FuryaDenomination},
+					{PoolId: 51, InputDenom: types.FuryaDenomination, OutputDenom: "Atom"},
 				},
 			},
 		},
@@ -141,35 +141,35 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 	}{
 		{
 			description: "Route exists for swap in Atom and swap out Akash",
-			swapDenom:   types.OsmosisDenomination,
+			swapDenom:   types.FuryaDenomination,
 			swapIn:      "Atom",
 			swapOut:     "akash",
 			poolId:      1,
 			expectedRoute: []TestRoute{
-				{7, types.OsmosisDenomination, "akash"},
+				{7, types.FuryaDenomination, "akash"},
 				{1, "akash", "Atom"},
-				{25, "Atom", types.OsmosisDenomination},
+				{25, "Atom", types.FuryaDenomination},
 			},
 			hasRoute:                 true,
 			expectedRoutePointPoints: 6,
 		},
 		{
 			description: "Route exists for swap in Akash and swap out Atom",
-			swapDenom:   types.OsmosisDenomination,
+			swapDenom:   types.FuryaDenomination,
 			swapIn:      "akash",
 			swapOut:     "Atom",
 			poolId:      1,
 			expectedRoute: []TestRoute{
-				{25, types.OsmosisDenomination, "Atom"},
+				{25, types.FuryaDenomination, "Atom"},
 				{1, "Atom", "akash"},
-				{7, "akash", types.OsmosisDenomination},
+				{7, "akash", types.FuryaDenomination},
 			},
 			hasRoute:                 true,
 			expectedRoutePointPoints: 6,
 		},
 		{
 			description:              "Route does not exist for swap in Terra and swap out Atom because the pool does not exist",
-			swapDenom:                types.OsmosisDenomination,
+			swapDenom:                types.FuryaDenomination,
 			swapIn:                   "terra",
 			swapOut:                  "Atom",
 			poolId:                   7,
@@ -180,13 +180,13 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 		{
 			description: "Route exists for swap in Osmo and swap out Akash",
 			swapDenom:   "Atom",
-			swapIn:      types.OsmosisDenomination,
+			swapIn:      types.FuryaDenomination,
 			swapOut:     "akash",
 			poolId:      7,
 			expectedRoute: []TestRoute{
 				{1, "Atom", "akash"},
-				{7, "akash", types.OsmosisDenomination},
-				{25, types.OsmosisDenomination, "Atom"},
+				{7, "akash", types.FuryaDenomination},
+				{25, types.FuryaDenomination, "Atom"},
 			},
 			hasRoute:                 true,
 			expectedRoutePointPoints: 6,
@@ -195,11 +195,11 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 			description: "Route exists for swap in Akash and swap out Osmo",
 			swapDenom:   "Atom",
 			swapIn:      "akash",
-			swapOut:     types.OsmosisDenomination,
+			swapOut:     types.FuryaDenomination,
 			poolId:      7,
 			expectedRoute: []TestRoute{
-				{25, "Atom", types.OsmosisDenomination},
-				{7, types.OsmosisDenomination, "akash"},
+				{25, "Atom", types.FuryaDenomination},
+				{7, types.FuryaDenomination, "akash"},
 				{1, "akash", "Atom"},
 			},
 			hasRoute:                 true,
@@ -209,7 +209,7 @@ func (s *KeeperTestSuite) TestBuildHighestLiquidityRoute() {
 			description:              "Route does not exist for swap in Terra and swap out Osmo because the pool does not exist",
 			swapDenom:                "Atom",
 			swapIn:                   "terra",
-			swapOut:                  types.OsmosisDenomination,
+			swapOut:                  types.FuryaDenomination,
 			poolId:                   7,
 			expectedRoute:            []TestRoute{},
 			hasRoute:                 false,
@@ -255,41 +255,41 @@ func (s *KeeperTestSuite) TestBuildTwoPoolRoute() {
 		{
 			description: "two pool route can be created with base as token out",
 			swapDenom: types.BaseDenom{
-				Denom:    types.OsmosisDenomination,
+				Denom:    types.FuryaDenomination,
 				StepSize: osmomath.NewInt(1_000_000),
 			},
 			tokenIn:  "stake",
-			tokenOut: types.OsmosisDenomination,
+			tokenOut: types.FuryaDenomination,
 			poolId:   54,
 			expectedRoute: []TestRoute{
-				{PoolId: 54, InputDenom: types.OsmosisDenomination, OutputDenom: "stake"},
-				{PoolId: 55, InputDenom: "stake", OutputDenom: types.OsmosisDenomination},
+				{PoolId: 54, InputDenom: types.FuryaDenomination, OutputDenom: "stake"},
+				{PoolId: 55, InputDenom: "stake", OutputDenom: types.FuryaDenomination},
 			},
 			hasRoute: true,
 		},
 		{
 			description: "two pool route can be created with base as token in",
 			swapDenom: types.BaseDenom{
-				Denom:    types.OsmosisDenomination,
+				Denom:    types.FuryaDenomination,
 				StepSize: osmomath.NewInt(1_000_000),
 			},
-			tokenIn:  types.OsmosisDenomination,
+			tokenIn:  types.FuryaDenomination,
 			tokenOut: "stake",
 			poolId:   54,
 			expectedRoute: []TestRoute{
-				{PoolId: 55, InputDenom: types.OsmosisDenomination, OutputDenom: "stake"},
-				{PoolId: 54, InputDenom: "stake", OutputDenom: types.OsmosisDenomination},
+				{PoolId: 55, InputDenom: types.FuryaDenomination, OutputDenom: "stake"},
+				{PoolId: 54, InputDenom: "stake", OutputDenom: types.FuryaDenomination},
 			},
 			hasRoute: true,
 		},
 		{
 			description: "two pool route where swap is on the highest liquidity pool",
 			swapDenom: types.BaseDenom{
-				Denom:    types.OsmosisDenomination,
+				Denom:    types.FuryaDenomination,
 				StepSize: osmomath.NewInt(1_000_000),
 			},
 			tokenIn:       "stake",
-			tokenOut:      types.OsmosisDenomination,
+			tokenOut:      types.FuryaDenomination,
 			poolId:        55,
 			expectedRoute: []TestRoute{},
 			hasRoute:      false,
@@ -297,11 +297,11 @@ func (s *KeeperTestSuite) TestBuildTwoPoolRoute() {
 		{
 			description: "trade executes on pool not tracked by the module",
 			swapDenom: types.BaseDenom{
-				Denom:    types.OsmosisDenomination,
+				Denom:    types.FuryaDenomination,
 				StepSize: osmomath.NewInt(1_000_000),
 			},
 			tokenIn:       "stake",
-			tokenOut:      types.OsmosisDenomination,
+			tokenOut:      types.FuryaDenomination,
 			poolId:        1000000,
 			expectedRoute: []TestRoute{},
 			hasRoute:      false,
@@ -370,8 +370,8 @@ func (s *KeeperTestSuite) TestBuildHotRoutes() {
 			expectedRoutes: [][]TestRoute{
 				{
 					{34, "Atom", "test/1"},
-					{35, "test/1", types.OsmosisDenomination},
-					{36, types.OsmosisDenomination, "test/2"},
+					{35, "test/1", types.FuryaDenomination},
+					{36, types.FuryaDenomination, "test/2"},
 					{10, "test/2", "Atom"},
 				},
 			},

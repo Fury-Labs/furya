@@ -1,6 +1,6 @@
 # Governance
 
-Osmosis is a sovereign delegated Proof-of-Stake chain with its own validator set.
+Furya is a sovereign delegated Proof-of-Stake chain with its own validator set.
 Users delegate their stake to validators to secure the network while keeping the
 opportunity to overwrite validator's decision with their own vote.
 

@@ -75,7 +75,7 @@ pub fn unwrap_or_swap_and_forward(
             build_memo(None, env.contract.address.as_str())?,
             Some(Callback {
                 contract: env.contract.address.clone(),
-                msg: serde_cw_value::to_value(&ExecuteMsg::OsmosisSwap {
+                msg: serde_cw_value::to_value(&ExecuteMsg::FuryaSwap {
                     output_denom,
                     receiver: receiver.to_string(),
                     slippage,

@@ -2,8 +2,8 @@ package types
 
 import "github.com/osmosis-labs/osmosis/osmomath"
 
-// OsmosisDenomination stores the native denom name for Osmosis on chain used for route building
-var OsmosisDenomination string = "uosmo"
+// FuryaDenomination stores the native denom name for Furya on chain used for route building
+var FuryaDenomination string = "uosmo"
 
 // ----------------- Module Execution Time Constants ----------------- //
 

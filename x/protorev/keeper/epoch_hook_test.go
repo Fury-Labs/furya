@@ -38,11 +38,11 @@ func BenchmarkEpochHook(b *testing.B) {
 // DenomPairToPool stores.
 func (s *KeeperTestSuite) TestEpochHook() {
 	// All of the pools initialized in the setup function are available in keeper_test.go
-	// akash <-> types.OsmosisDenomination
-	// juno <-> types.OsmosisDenomination
-	// ethereum <-> types.OsmosisDenomination
-	// bitcoin <-> types.OsmosisDenomination
-	// canto <-> types.OsmosisDenomination
+	// akash <-> types.FuryaDenomination
+	// juno <-> types.FuryaDenomination
+	// ethereum <-> types.FuryaDenomination
+	// bitcoin <-> types.FuryaDenomination
+	// canto <-> types.FuryaDenomination
 	// and so on...
 
 	totalNumberExpected := 0

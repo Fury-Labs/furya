@@ -57,7 +57,7 @@ pub fn execute(
     msg: ExecuteMsg,
 ) -> Result<Response, ContractError> {
     match msg {
-        ExecuteMsg::OsmosisSwap { .. } => {
+        ExecuteMsg::FuryaSwap { .. } => {
             // IBC transfers support only one token at a time
             let coin = cw_utils::one_coin(&info)?;
             execute_swap(deps, env.contract.address, env.block.time, coin, msg)

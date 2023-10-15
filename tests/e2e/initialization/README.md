@@ -6,9 +6,9 @@ This package contains all logic necessary for initializing configuration
 data either for a new chain or a single node via Docker containers.
 
 The motivation for doing this via Docker is to be able to initialize
-configs of any Osmosis version.
+configs of any Furya version.
 
-For example, while the latest Osmosis version is v9,
+For example, while the latest Furya version is v9,
 we might want to spin up a chain of v8 and test the upgrade.
 
 Additionally, there are known file permission errors when initializing

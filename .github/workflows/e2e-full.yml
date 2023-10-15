@@ -84,7 +84,7 @@ jobs:
           name: logs.tgz
           path: ./logs.tgz
         if: failure()
-      - name: 🧹 Clean up Osmosis Home
+      - name: 🧹 Clean up Furya Home
         if: always()
         run: rm -rf $HOME/.furyad/ || true
       - name: Clean up E2E Docker containers

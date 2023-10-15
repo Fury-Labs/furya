@@ -6,11 +6,11 @@
 
 The `e2e` package defines an integration testing suite used for full
 end-to-end testing functionality. This package is decoupled from
-depending on the Osmosis codebase. It initializes the chains for testing
+depending on the Furya codebase. It initializes the chains for testing
 via Docker files. As a result, the test suite may provide the desired
-Osmosis version to Docker containers during the initialization. This
+Furya version to Docker containers during the initialization. This
 design allows for the opportunity of testing chain upgrades in the
-future by providing an older Osmosis version to the container,
+future by providing an older Furya version to the container,
 performing the chain upgrade, and running the latest test suite. When
 testing a normal upgrade, the e2e test suite submits an upgrade proposal at
 an upgrade height, ensures the upgrade happens at the desired height, and
@@ -45,7 +45,7 @@ Conceptually, we can split the e2e setup into 2 parts:
     by calling `chain.Init(...)` method in the `configurer/current.go`.
 
     If with the upgrade, the same `chain.Init(...)` function is run inside a Docker container
-    of the previous Osmosis version, inside `configurer/upgrade.go`. This is
+    of the previous Furya version, inside `configurer/upgrade.go`. This is
     needed to initialize chain configs and the genesis of the previous version that
     we are upgrading from. Note, we use the alpine image of the previous version,
     as functionality such as copying mnemonics across containers in unavailable in the
@@ -82,16 +82,16 @@ Conceptually, we can split the e2e setup into 2 parts:
     are as follows:
     
     - If only `isIBCEnabled`, we want to have 2 chains initialized at the
-    current branch version of Osmosis codebase
+    current branch version of Furya codebase
 
     - If only `isUpgradeEnabled`, that's invalid (we can decouple upgrade
      testing from IBC in a future PR)
 
     - If both `isIBCEnabled` and `isUpgradeEnabled`, we want 2 chain
-    with IBC initialized at the previous Osmosis version
+    with IBC initialized at the previous Furya version
 
     - If none are true, we only need one chain at the current branch version
-    of the Osmosis code
+    of the Furya code
 
 2. Setting up e2e components
 
@@ -103,12 +103,12 @@ Conceptually, we can split the e2e setup into 2 parts:
     - IBC testing
         - 2 chains are created connected by Hermes relayer
         - Upgrade Testing
-        - 2 chains of the older Osmosis version are created, and
+        - 2 chains of the older Furya version are created, and
         connected by Hermes relayer
     - Upgrade testing
         - CLI commands are run to create an upgrade proposal and approve it
         - Old version containers are stopped and the upgrade binary is added
-        - Current branch Osmosis version is spun up to continue with testing
+        - Current branch Furya version is spun up to continue with testing
     - State Sync Testing (WIP)
         - An additional full node is created after a chain has started.
         - This node is meant to state sync with the rest of the system.
@@ -122,7 +122,7 @@ Conceptually, we can split the e2e setup into 2 parts:
 The `initialization` package introduces the logic necessary for initializing a
 chain by creating a genesis file and all required configuration files
 such as the `app.toml`. In addition, it starts chain initialization.
-This package directly depends on the Osmosis codebase.
+This package directly depends on the Furya codebase.
 
 In addition, there is a Dockerfile `init-e2e.Dockerfile`.
 When executed, its container produces all files necessary for starting up a new chain. These
@@ -142,7 +142,7 @@ in the `initialization/chain` package.
 
 Please refer to `tests/e2e/initialization/README.md`
 
-### To build the debug Osmosis image
+### To build the debug Furya image
 
 ```sh
     make docker-build-debug
@@ -154,23 +154,23 @@ Some tests take a long time to run. Sometimes, we would like to disable them
 locally or in CI. The following are the environment variables to disable
 certain components of e2e testing.
 
-- `OSMOSIS_E2E_SKIP_UPGRADE` - when true, skips the upgrade tests.
-If OSMOSIS_E2E_SKIP_IBC is true, this must also be set to true because upgrade
+- `FURYA_E2E_SKIP_UPGRADE` - when true, skips the upgrade tests.
+If FURYA_E2E_SKIP_IBC is true, this must also be set to true because upgrade
 tests require IBC logic.
 
-- `OSMOSIS_E2E_SKIP_IBC` - when true, skips the IBC tests.
+- `FURYA_E2E_SKIP_IBC` - when true, skips the IBC tests.
 
-- `OSMOSIS_E2E_SKIP_STATE_SYNC` - when true, skips the state sync tests.
+- `FURYA_E2E_SKIP_STATE_SYNC` - when true, skips the state sync tests.
 
-- `OSMOSIS_E2E_SKIP_CLEANUP` - when true, avoids cleaning up the e2e Docker
+- `FURYA_E2E_SKIP_CLEANUP` - when true, avoids cleaning up the e2e Docker
 containers.
 
-- `OSMOSIS_E2E_FORK_HEIGHT` - when the above "IS_FORK" env variable is set to true, this is the string
+- `FURYA_E2E_FORK_HEIGHT` - when the above "IS_FORK" env variable is set to true, this is the string
 of the height in which the network should fork. This should match the ForkHeight set in constants.go
 
-- `OSMOSIS_E2E_UPGRADE_VERSION` - string of what version will be upgraded to (for example, "v10")
+- `FURYA_E2E_UPGRADE_VERSION` - string of what version will be upgraded to (for example, "v10")
 
-- `OSMOSIS_E2E_DEBUG_LOG` - when true, prints debug logs from executing CLI commands
+- `FURYA_E2E_DEBUG_LOG` - when true, prints debug logs from executing CLI commands
 via Docker containers. Set to true in CI by default.
 
 #### VS Code Debug Configuration
@@ -196,13 +196,13 @@ This debug configuration helps to run e2e tests locally and skip the desired tes
             ],
             "buildFlags": "-tags e2e",
             "env": {
-                "OSMOSIS_E2E": "True",
-                "OSMOSIS_E2E_SKIP_IBC": "true",
-                "OSMOSIS_E2E_SKIP_UPGRADE": "true",
-                "OSMOSIS_E2E_SKIP_CLEANUP": "true",
-                "OSMOSIS_E2E_SKIP_STATE_SYNC": "true",
-                "OSMOSIS_E2E_UPGRADE_VERSION": "v13",
-                "OSMOSIS_E2E_DEBUG_LOG": "true",
+                "FURYA_E2E": "True",
+                "FURYA_E2E_SKIP_IBC": "true",
+                "FURYA_E2E_SKIP_UPGRADE": "true",
+                "FURYA_E2E_SKIP_CLEANUP": "true",
+                "FURYA_E2E_SKIP_STATE_SYNC": "true",
+                "FURYA_E2E_UPGRADE_VERSION": "v13",
+                "FURYA_E2E_DEBUG_LOG": "true",
             },
             "preLaunchTask": "e2e-setup"
         }
@@ -230,7 +230,7 @@ This section contains common "gotchas" that is sometimes very good to know when 
     Example: you see `TestAddToExistingLock` failing. It might be because of something failing in test, of course. However, you need to keep in mind that something potentially
     broke during the `e2e` setup and because of that, lexicographically first test (currently `TestAddToExistingLock`) fails.
 
-    A way to deal with this problem: disable upgrade logic by setting `OSMOSIS_E2E_SKIP_UPGRADE` to `false` and see how test performs.
+    A way to deal with this problem: disable upgrade logic by setting `FURYA_E2E_SKIP_UPGRADE` to `false` and see how test performs.
 
 2. Node update failure before running `e2e_test.go`
 
@@ -255,13 +255,13 @@ Repository: <https://github.dev/informalsystems/hermes>
 
 ### Consensus Min Fee
 
-We set the following parameters Hermes configs to enable the consensus min fee in Osmosis:
+We set the following parameters Hermes configs to enable the consensus min fee in Furya:
 
     - `gas_price` - Specifies the price per gas used of the fee to submit a transaction and
     the denomination of the fee. The specified gas price should always be greater or equal to the `min-gas-price`
     configured on the chain. This is to ensure that at least some minimal price is 
     paid for each unit of gas per transaction.
-    In Osmosis, we set consensus min fee = .0025 uosmo / gas * 400000 gas = 1000
+    In Furya, we set consensus min fee = .0025 uosmo / gas * 400000 gas = 1000
     See ConsensusMinFee in x/txfees/types/constants.go
 
     - `default_gas` - the gas amount to use when simulation fails.

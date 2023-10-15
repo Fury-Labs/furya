@@ -1,7 +1,7 @@
 use std::ops::{Div, Mul};
 
 use cosmwasm_std::{Addr, Coin, Decimal, Deps, Timestamp, Uint128};
-use furya_std::shim::Timestamp as OsmosisTimestamp;
+use furya_std::shim::Timestamp as FuryaTimestamp;
 use furya_std::types::furya::poolmanager::v1beta1::{
     MsgSwapExactAmountIn, SwapAmountInRoute, TotalPoolLiquidityRequest,
 };
@@ -138,12 +138,12 @@ pub fn calculate_min_output_from_twap(
 
     // if duration is not provided, default to 1h
     let start_time = now.minus_seconds(window.unwrap_or(3600));
-    let start_time = OsmosisTimestamp {
+    let start_time = FuryaTimestamp {
         seconds: start_time.seconds() as i64,
         nanos: 0_i32,
     };
 
-    let end_time = OsmosisTimestamp {
+    let end_time = FuryaTimestamp {
         seconds: now.seconds() as i64,
         nanos: 0_i32,
     };

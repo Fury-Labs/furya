@@ -1,18 +1,18 @@
 use std::path::PathBuf;
 
 use cosmwasm_std::Coin;
-use furya_test_tube::{Account, OsmosisTestApp, SigningAccount};
+use furya_test_tube::{Account, FuryaTestApp, SigningAccount};
 use furya_test_tube::{Gamm, Module, Wasm};
 use swaprouter::msg::InstantiateMsg;
 
 pub struct TestEnv {
-    pub app: OsmosisTestApp,
+    pub app: FuryaTestApp,
     pub contract_address: String,
     pub owner: SigningAccount,
 }
 impl TestEnv {
     pub fn new() -> Self {
-        let app = OsmosisTestApp::new();
+        let app = FuryaTestApp::new();
         let gamm = Gamm::new(&app);
         let wasm = Wasm::new(&app);
 
