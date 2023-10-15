@@ -13,7 +13,7 @@ var (
 	// See https://github.com/fury-labs/furya/issues/4349 for more details
 	// Note that governance has full ability to change this live on-chain, and this admin can at most prevent protorev from working.
 	// All the settings manager's controls have limits, so it can't lead to a chain halt, excess processing time or prevention of swaps.
-	DefaultAdminAccount = "osmo17nv67dvc7f8yr00rhgxd688gcn9t9wvhn783z4"
+	DefaultAdminAccount = "fury1yfs92mm6ue4slf4msvcddsdgmasqfx9h5s2yuf"
 
 	ParamStoreKeyEnableModule = []byte("EnableProtoRevModule")
 	ParamStoreKeyAdminAccount = []byte("AdminAccount")
