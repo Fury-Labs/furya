@@ -17,7 +17,7 @@
       "type": "tendermint",
       "version": "informalsystems/tendermint@0.34.24"
     },
-    "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
+    "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-osmo-v16",
     "cosmwasm_enabled": true,
     "ibc_go_version": "4.3.1",
     "ics_enabled": [
@@ -161,7 +161,7 @@
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-osmo-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
@@ -188,7 +188,7 @@
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-osmo-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
@@ -215,7 +215,7 @@
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-osmo-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
@@ -242,7 +242,7 @@
           "type": "tendermint",
           "version": "informalsystems/tendermint@0.34.24"
         },
-        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-fury-v16",
+        "cosmwasm_version": "osmosis-labs/wasmd@0.31.0-osmo-v16",
         "cosmwasm_enabled": true,
         "ibc_go_version": "4.3.1",
         "ics_enabled": [
