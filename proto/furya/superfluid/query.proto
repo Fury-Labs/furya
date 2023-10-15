@@ -159,7 +159,7 @@ message AllAssetsResponse {
 
 message AssetMultiplierRequest { string denom = 1; };
 message AssetMultiplierResponse {
-  OsmoEquivalentMultiplierRecord osmo_equivalent_multiplier = 1;
+  FuryEquivalentMultiplierRecord osmo_equivalent_multiplier = 1;
 };
 
 message SuperfluidIntermediaryAccountInfo {

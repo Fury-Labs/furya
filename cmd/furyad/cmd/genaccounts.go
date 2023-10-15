@@ -178,7 +178,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 	return cmd
 }
 
-// func GetOsmoSnapshot(inputFile string) (Snapshot, error) {
+// func GetFurySnapshot(inputFile string) (Snapshot, error) {
 // 	snapshotJSON, err := os.Open(inputFile)
 // 	if err != nil {
 // 		return Snapshot{}, err
@@ -214,7 +214,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 	return ionAmts, nil
 // }
 
-// func CosmosToOsmoAddress(cosmosAddr string) (string, error) {
+// func CosmosToFuryAddress(cosmosAddr string) (string, error) {
 // 	_, bz, err := bech32.DecodeAndConvert(cosmosAddr)
 // 	if err != nil {
 // 		return "", err
@@ -243,7 +243,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			airdropAddrs := map[string]bool{}
 
 // 			// Read snapshot file
-// 			snapshot, err := GetOsmoSnapshot(args[0])
+// 			snapshot, err := GetFurySnapshot(args[0])
 // 			if err != nil {
 // 				return err
 // 			}
@@ -255,8 +255,8 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			}
 
 // 			for _, acc := range snapshot.Accounts {
-// 				if !acc.OsmoBalance.Equal(osmomath.ZeroInt()) {
-// 					osmoAddr, err := CosmosToOsmoAddress(acc.AtomAddress)
+// 				if !acc.FuryBalance.Equal(osmomath.ZeroInt()) {
+// 					osmoAddr, err := CosmosToFuryAddress(acc.AtomAddress)
 // 					if err != nil {
 // 						return err
 // 					}
@@ -266,7 +266,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			}
 
 // 			for addr := range ionAmts {
-// 				ionAddr, err := CosmosToOsmoAddress(addr)
+// 				ionAddr, err := CosmosToFuryAddress(addr)
 // 				if err != nil {
 // 					return err
 // 				}
@@ -328,7 +328,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			}
 
 // 			// Read snapshot file
-// 			snapshot, err := GetOsmoSnapshot(args[0])
+// 			snapshot, err := GetFurySnapshot(args[0])
 // 			if err != nil {
 // 				return err
 // 			}
@@ -356,7 +356,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			}
 
 // 			for addr, amt := range ionAmts {
-// 				address, err := CosmosToOsmoAddress(addr)
+// 				address, err := CosmosToFuryAddress(addr)
 // 				if err != nil {
 // 					return err
 // 				}
@@ -369,7 +369,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			}
 
 // 			// figure out normalizationFactor to normalize snapshot balances to desired airdrop supply
-// 			normalizationFactor := genesisParams.AirdropSupply.ToLegacyDec().QuoInt(snapshot.TotalOsmosAirdropAmount)
+// 			normalizationFactor := genesisParams.AirdropSupply.ToLegacyDec().QuoInt(snapshot.TotalFurysAirdropAmount)
 // 			fmt.Printf("normalization factor: %s\n", normalizationFactor)
 
 // 			bankGenState := banktypes.GetGenesisStateFromAppState(cdc, appState)
@@ -381,22 +381,22 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 			// for each account in the snapshot
 // 			for _, acc := range snapshot.Accounts {
 // 				// convert cosmos address to fury address
-// 				address, err := CosmosToOsmoAddress(acc.AtomAddress)
+// 				address, err := CosmosToFuryAddress(acc.AtomAddress)
 // 				if err != nil {
 // 					return err
 // 				}
 
 // 				// skip accounts with 0 balance
-// 				if !acc.OsmoBalanceBase.IsPositive() {
+// 				if !acc.FuryBalanceBase.IsPositive() {
 // 					continue
 // 				}
 
 // 				// get normalized fury balance for account
-// 				normalizedOsmoBalance := acc.OsmoBalance.ToLegacyDec().Mul(normalizationFactor)
+// 				normalizedFuryBalance := acc.FuryBalance.ToLegacyDec().Mul(normalizationFactor)
 
 // 				// initial liquid amounts
 // 				// We consistently round down to the nearest ufury
-// 				liquidAmount := normalizedOsmoBalance.Mul(osmomath.MustNewDecFromStr("0.2")).TruncateInt() // 20% of airdrop amount
+// 				liquidAmount := normalizedFuryBalance.Mul(osmomath.MustNewDecFromStr("0.2")).TruncateInt() // 20% of airdrop amount
 // 				liquidCoins := sdk.NewCoins(sdk.NewCoin(genesisParams.NativeCoinMetadatas[0].Base, liquidAmount))
 
 // 				if coins, ok := nonAirdropAccs[address]; ok {
@@ -410,7 +410,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 // 				})
 
 // 				// claimable balances
-// 				claimableAmount := normalizedOsmoBalance.Mul(osmomath.MustNewDecFromStr("0.8")).TruncateInt()
+// 				claimableAmount := normalizedFuryBalance.Mul(osmomath.MustNewDecFromStr("0.8")).TruncateInt()
 
 // 				claimRecords = append(claimRecords, claimtypes.ClaimRecord{
 // 					Address:                address,

@@ -32,7 +32,7 @@ const (
 
 var (
 	oneTrillion          = osmomath.NewInt(1e12)
-	defaultOsmoPoolAsset = balancer.PoolAsset{
+	defaultFuryPoolAsset = balancer.PoolAsset{
 		Token:  sdk.NewCoin("ufury", oneTrillion),
 		Weight: osmomath.NewInt(100),
 	}
@@ -41,7 +41,7 @@ var (
 		Weight: osmomath.NewInt(100),
 	}
 	oneTrillionEvenPoolAssets = []balancer.PoolAsset{
-		defaultOsmoPoolAsset,
+		defaultFuryPoolAsset,
 		defaultAtomPoolAsset,
 	}
 )
@@ -146,7 +146,7 @@ var calcSingleAssetJoinTestCases = []calcJoinSharesTestCase{
 		name:         "single tokensIn - unequal weights with 0.99 spread factor",
 		spreadFactor: osmomath.MustNewDecFromStr("0.99"),
 		poolAssets: []balancer.PoolAsset{
-			defaultOsmoPoolAsset,
+			defaultFuryPoolAsset,
 			{
 				Token:  sdk.NewInt64Coin("uatom", 1e12),
 				Weight: osmomath.NewInt(300),

@@ -96,7 +96,7 @@ func SimulateMsgSuperfluidDelegate(ak stakingtypes.AccountKeeper, bk osmosimtype
 				types.ModuleName, types.TypeMsgSuperfluidDelegate, "Account have no period lock"), nil, nil
 		}
 
-		multiplier := k.GetOsmoEquivalentMultiplier(ctx, lock.Coins[0].Denom)
+		multiplier := k.GetFuryEquivalentMultiplier(ctx, lock.Coins[0].Denom)
 		if multiplier.IsZero() {
 			return simtypes.NoOpMsg(
 				types.ModuleName, types.TypeMsgSuperfluidDelegate, "not able to do superfluid staking if asset Multiplier is zero"), nil, nil

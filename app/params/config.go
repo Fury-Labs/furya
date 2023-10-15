@@ -13,7 +13,7 @@ import (
 const (
 	HumanCoinUnit = "fury"
 	BaseCoinUnit  = "ufury"
-	OsmoExponent  = 6
+	FuryExponent  = 6
 
 	DefaultBondDenom = BaseCoinUnit
 
@@ -45,7 +45,7 @@ func RegisterDenoms() {
 	if err != nil {
 		panic(err)
 	}
-	err = sdk.RegisterDenom(BaseCoinUnit, osmomath.NewDecWithPrec(1, OsmoExponent))
+	err = sdk.RegisterDenom(BaseCoinUnit, osmomath.NewDecWithPrec(1, FuryExponent))
 	if err != nil {
 		panic(err)
 	}

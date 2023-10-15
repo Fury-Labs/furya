@@ -16,7 +16,7 @@ import (
 	"github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
-func (s *KeeperTestSuite) TestUpdateOsmoEquivalentMultipliers() {
+func (s *KeeperTestSuite) TestUpdateFuryEquivalentMultipliers() {
 	testCases := []struct {
 		name                  string
 		asset                 types.SuperfluidAsset
@@ -79,7 +79,7 @@ func (s *KeeperTestSuite) TestUpdateOsmoEquivalentMultipliers() {
 			poolCoins := sdk.NewCoins(sdk.NewCoin(stakeDenom, osmomath.NewInt(1000000000000000000)), sdk.NewCoin("foo", osmomath.NewInt(1000000000000000000)))
 
 			// Ensure that the multiplier is zero before the test
-			multiplier := superfluidKeeper.GetOsmoEquivalentMultiplier(ctx, tc.asset.Denom)
+			multiplier := superfluidKeeper.GetFuryEquivalentMultiplier(ctx, tc.asset.Denom)
 			s.Require().Equal(multiplier, osmomath.ZeroDec())
 
 			// Create the respective pool if the test case requires it
@@ -92,7 +92,7 @@ func (s *KeeperTestSuite) TestUpdateOsmoEquivalentMultipliers() {
 			}
 
 			// System under test
-			err := superfluidKeeper.UpdateOsmoEquivalentMultipliers(ctx, tc.asset, 1)
+			err := superfluidKeeper.UpdateFuryEquivalentMultipliers(ctx, tc.asset, 1)
 
 			if tc.expectedError != nil {
 				s.Require().Error(err)
@@ -100,7 +100,7 @@ func (s *KeeperTestSuite) TestUpdateOsmoEquivalentMultipliers() {
 
 				// Ensure unwind superfluid asset is called
 				// Check that multiplier was not set
-				multiplier := superfluidKeeper.GetOsmoEquivalentMultiplier(ctx, tc.asset.Denom)
+				multiplier := superfluidKeeper.GetFuryEquivalentMultiplier(ctx, tc.asset.Denom)
 				s.Require().Equal(multiplier, osmomath.ZeroDec())
 				// Check that the asset was deleted
 				_, err := superfluidKeeper.GetSuperfluidAsset(ctx, tc.asset.Denom)
@@ -109,7 +109,7 @@ func (s *KeeperTestSuite) TestUpdateOsmoEquivalentMultipliers() {
 				s.Require().NoError(err)
 
 				// Check that multiplier was set correctly
-				multiplier := superfluidKeeper.GetOsmoEquivalentMultiplier(ctx, tc.asset.Denom)
+				multiplier := superfluidKeeper.GetFuryEquivalentMultiplier(ctx, tc.asset.Denom)
 
 				if !tc.expectedZeroMultipler {
 					s.Require().NotEqual(multiplier, osmomath.ZeroDec())

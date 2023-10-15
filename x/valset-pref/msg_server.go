@@ -127,7 +127,7 @@ func (server msgServer) DelegateBondedTokens(goCtx context.Context, msg *types.M
 	}
 
 	// Message 1: force unlock bonded fury tokens.
-	unlockedOsmoToken, err := server.keeper.ForceUnlockBondedOsmo(ctx, msg.LockID, msg.Delegator)
+	unlockedFuryToken, err := server.keeper.ForceUnlockBondedFury(ctx, msg.LockID, msg.Delegator)
 	if err != nil {
 		return nil, err
 	}
@@ -138,7 +138,7 @@ func (server msgServer) DelegateBondedTokens(goCtx context.Context, msg *types.M
 	}
 
 	// Message 2: Perform fury token delegation.
-	_, err = server.DelegateToValidatorSet(goCtx, types.NewMsgDelegateToValidatorSet(delegator, unlockedOsmoToken))
+	_, err = server.DelegateToValidatorSet(goCtx, types.NewMsgDelegateToValidatorSet(delegator, unlockedFuryToken))
 	if err != nil {
 		return nil, err
 	}

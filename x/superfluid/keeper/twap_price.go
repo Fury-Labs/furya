@@ -14,15 +14,15 @@ import (
 // This function calculates the fury equivalent worth of an LP share.
 // It is intended to eventually use the TWAP of the worth of an LP share
 // once that is exposed from the gamm module.
-func (k Keeper) calculateOsmoBackingPerShare(pool gammtypes.CFMMPoolI, osmoInPool osmomath.Int) osmomath.Dec {
+func (k Keeper) calculateFuryBackingPerShare(pool gammtypes.CFMMPoolI, osmoInPool osmomath.Int) osmomath.Dec {
 	twap := osmoInPool.ToLegacyDec().Quo(pool.GetTotalShares().ToLegacyDec())
 	return twap
 }
 
-func (k Keeper) SetOsmoEquivalentMultiplier(ctx sdk.Context, epoch int64, denom string, multiplier osmomath.Dec) {
+func (k Keeper) SetFuryEquivalentMultiplier(ctx sdk.Context, epoch int64, denom string, multiplier osmomath.Dec) {
 	store := ctx.KVStore(k.storeKey)
 	prefixStore := prefix.NewStore(store, types.KeyPrefixTokenMultiplier)
-	priceRecord := types.OsmoEquivalentMultiplierRecord{
+	priceRecord := types.FuryEquivalentMultiplierRecord{
 		EpochNumber: epoch,
 		Denom:       denom,
 		Multiplier:  multiplier,
@@ -34,8 +34,8 @@ func (k Keeper) SetOsmoEquivalentMultiplier(ctx sdk.Context, epoch int64, denom 
 	prefixStore.Set([]byte(denom), bz)
 }
 
-func (k Keeper) GetSuperfluidOSMOTokens(ctx sdk.Context, denom string, amount osmomath.Int) (osmomath.Int, error) {
-	multiplier := k.GetOsmoEquivalentMultiplier(ctx, denom)
+func (k Keeper) GetSuperfluidFURYTokens(ctx sdk.Context, denom string, amount osmomath.Int) (osmomath.Int, error) {
+	multiplier := k.GetFuryEquivalentMultiplier(ctx, denom)
 	if multiplier.IsZero() {
 		return osmomath.ZeroInt(), nil
 	}
@@ -45,23 +45,23 @@ func (k Keeper) GetSuperfluidOSMOTokens(ctx sdk.Context, denom string, amount os
 	if err != nil {
 		return osmomath.ZeroInt(), err
 	}
-	return k.GetRiskAdjustedOsmoValue(ctx, decAmt.RoundInt()), nil
+	return k.GetRiskAdjustedFuryValue(ctx, decAmt.RoundInt()), nil
 }
 
-func (k Keeper) DeleteOsmoEquivalentMultiplier(ctx sdk.Context, denom string) {
+func (k Keeper) DeleteFuryEquivalentMultiplier(ctx sdk.Context, denom string) {
 	store := ctx.KVStore(k.storeKey)
 	prefixStore := prefix.NewStore(store, types.KeyPrefixTokenMultiplier)
 	prefixStore.Delete([]byte(denom))
 }
 
-func (k Keeper) GetOsmoEquivalentMultiplier(ctx sdk.Context, denom string) osmomath.Dec {
+func (k Keeper) GetFuryEquivalentMultiplier(ctx sdk.Context, denom string) osmomath.Dec {
 	store := ctx.KVStore(k.storeKey)
 	prefixStore := prefix.NewStore(store, types.KeyPrefixTokenMultiplier)
 	bz := prefixStore.Get([]byte(denom))
 	if bz == nil {
 		return osmomath.ZeroDec()
 	}
-	priceRecord := types.OsmoEquivalentMultiplierRecord{}
+	priceRecord := types.FuryEquivalentMultiplierRecord{}
 	err := proto.Unmarshal(bz, &priceRecord)
 	if err != nil {
 		panic(err)
@@ -69,15 +69,15 @@ func (k Keeper) GetOsmoEquivalentMultiplier(ctx sdk.Context, denom string) osmom
 	return priceRecord.Multiplier
 }
 
-func (k Keeper) GetAllOsmoEquivalentMultipliers(ctx sdk.Context) []types.OsmoEquivalentMultiplierRecord {
+func (k Keeper) GetAllFuryEquivalentMultipliers(ctx sdk.Context) []types.FuryEquivalentMultiplierRecord {
 	store := ctx.KVStore(k.storeKey)
 	prefixStore := prefix.NewStore(store, types.KeyPrefixTokenMultiplier)
 	iterator := prefixStore.Iterator(nil, nil)
 	defer iterator.Close()
 
-	priceRecords := []types.OsmoEquivalentMultiplierRecord{}
+	priceRecords := []types.FuryEquivalentMultiplierRecord{}
 	for ; iterator.Valid(); iterator.Next() {
-		priceRecord := types.OsmoEquivalentMultiplierRecord{}
+		priceRecord := types.FuryEquivalentMultiplierRecord{}
 
 		err := proto.Unmarshal(iterator.Value(), &priceRecord)
 		if err != nil {

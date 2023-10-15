@@ -348,7 +348,7 @@ func (s *IntegrationTestSuite) IBCTokenTransferAndCreatePool() {
 		srcNode   *chain.NodeConfig
 		recipient string
 	}{{chainA, chainB, chainANode, chainBNode.PublicAddress}, {chainB, chainA, chainBNode, chainANode.PublicAddress}}
-	tokens := []sdk.Coin{initialization.OsmoToken, initialization.StakeToken}
+	tokens := []sdk.Coin{initialization.FuryToken, initialization.StakeToken}
 
 	unlockFn := chain.IbcLockAddrs([]string{chainANode.PublicAddress, chainBNode.PublicAddress, initialization.ValidatorWalletName})
 	defer unlockFn()
@@ -458,11 +458,11 @@ func (s *IntegrationTestSuite) IBCTokenTransferRateLimiting() {
 
 	over := f * 0.02
 
-	paths := fmt.Sprintf(`{"channel_id": "channel-0", "denom": "%s", "quotas": [{"name":"testQuota", "duration": 86400, "send_recv": [1, 1]}] }`, initialization.OsmoToken.Denom)
+	paths := fmt.Sprintf(`{"channel_id": "channel-0", "denom": "%s", "quotas": [{"name":"testQuota", "duration": 86400, "send_recv": [1, 1]}] }`, initialization.FuryToken.Denom)
 
 	// Sending >1%
 	fmt.Println("Sending >1%")
-	chainANode.SendIBC(chainA, chainB, receiver, sdk.NewInt64Coin(initialization.OsmoDenom, int64(over)))
+	chainANode.SendIBC(chainA, chainB, receiver, sdk.NewInt64Coin(initialization.FuryDenom, int64(over)))
 
 	contract, err := chainANode.SetupRateLimiting(paths, chainANode.PublicAddress, chainA)
 	s.Require().NoError(err)
@@ -479,7 +479,7 @@ func (s *IntegrationTestSuite) IBCTokenTransferRateLimiting() {
 
 	// Sending <1%. Should work
 	fmt.Println("Sending <1%. Should work")
-	chainANode.SendIBC(chainA, chainB, receiver, sdk.NewInt64Coin(initialization.OsmoDenom, 1))
+	chainANode.SendIBC(chainA, chainB, receiver, sdk.NewInt64Coin(initialization.FuryDenom, 1))
 	// Sending >1%. Should fail
 	fmt.Println("Sending >1%. Should fail")
 	chainANode.FailIBCTransfer(initialization.ValidatorWalletName, receiver, fmt.Sprintf("%dufury", int(over)))

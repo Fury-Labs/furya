@@ -30,7 +30,7 @@ type AppStateV036 struct {
 
 type Snapshot struct {
 	TotalAtomAmount         osmomath.Int `json:"total_atom_amount"`
-	TotalOsmosAirdropAmount osmomath.Int `json:"total_osmo_amount"`
+	TotalFurysAirdropAmount osmomath.Int `json:"total_osmo_amount"`
 	NumberAccounts          uint64  `json:"num_accounts"`
 
 	Accounts map[string]SnapshotAccount `json:"accounts"`
@@ -47,10 +47,10 @@ type SnapshotAccount struct {
 	AtomUnstakedBalance osmomath.Int `json:"atom_unstaked_balance"` // AtomStakedPercent = AtomStakedBalance / AtomBalance
 	AtomStakedPercent   osmomath.Dec `json:"atom_staked_percent"`
 
-	OsmoBalance      osmomath.Int `json:"osmo_balance"`           // OsmoBalance = sqrt( AtomBalance ) * (1 + 1.5 * atom staked percent)
-	OsmoBalanceBase  osmomath.Int `json:"osmo_balance_base"`      // OsmoBalanceBase = sqrt(atom balance)
-	OsmoBalanceBonus osmomath.Int `json:"osmo_balance_bonus"`     // OsmoBalanceBonus = OsmoBalanceBase * (1.5 * atom staked percent)
-	OsmoPercent      osmomath.Dec `json:"osmo_ownership_percent"` // OsmoPercent = OsmoNormalizedBalance / TotalOsmoSupply
+	FuryBalance      osmomath.Int `json:"osmo_balance"`           // FuryBalance = sqrt( AtomBalance ) * (1 + 1.5 * atom staked percent)
+	FuryBalanceBase  osmomath.Int `json:"osmo_balance_base"`      // FuryBalanceBase = sqrt(atom balance)
+	FuryBalanceBonus osmomath.Int `json:"osmo_balance_bonus"`     // FuryBalanceBonus = FuryBalanceBase * (1.5 * atom staked percent)
+	FuryPercent      osmomath.Dec `json:"osmo_ownership_percent"` // FuryPercent = FuryNormalizedBalance / TotalFurySupply
 }
 
 // setCosmosBech32Prefixes set config for cosmos address system
@@ -170,7 +170,7 @@ Example:
 				snapshotAccs[address] = acc
 			}
 
-			totalOsmoBalance := osmomath.NewInt(0)
+			totalFuryBalance := osmomath.NewInt(0)
 			onePointFive := osmomath.MustNewDecFromStr("1.5")
 
 			for address, acc := range snapshotAccs {
@@ -180,9 +180,9 @@ Example:
 
 				if allAtoms.IsZero() {
 					acc.AtomStakedPercent = osmomath.ZeroDec()
-					acc.OsmoBalanceBase = osmomath.ZeroInt()
-					acc.OsmoBalanceBonus = osmomath.ZeroInt()
-					acc.OsmoBalance = osmomath.ZeroInt()
+					acc.FuryBalanceBase = osmomath.ZeroInt()
+					acc.FuryBalanceBonus = osmomath.ZeroInt()
+					acc.FuryBalance = osmomath.ZeroInt()
 					snapshotAccs[address] = acc
 					continue
 				}
@@ -191,46 +191,46 @@ Example:
 				stakedPercent := stakedAtoms.Quo(allAtoms)
 				acc.AtomStakedPercent = stakedPercent
 
-				baseOsmo, err := allAtoms.ApproxSqrt()
+				baseFury, err := allAtoms.ApproxSqrt()
 				if err != nil {
 					panic(fmt.Sprintf("failed to root atom balance: %s", err))
 				}
-				acc.OsmoBalanceBase = baseOsmo.RoundInt()
+				acc.FuryBalanceBase = baseFury.RoundInt()
 
-				bonusOsmo := baseOsmo.Mul(onePointFive).Mul(stakedPercent)
-				acc.OsmoBalanceBonus = bonusOsmo.RoundInt()
+				bonusFury := baseFury.Mul(onePointFive).Mul(stakedPercent)
+				acc.FuryBalanceBonus = bonusFury.RoundInt()
 
-				allOsmo := baseOsmo.Add(bonusOsmo)
-				// OsmoBalance = sqrt( all atoms) * (1 + 1.5) * (staked atom percent) =
-				acc.OsmoBalance = allOsmo.RoundInt()
+				allFury := baseFury.Add(bonusFury)
+				// FuryBalance = sqrt( all atoms) * (1 + 1.5) * (staked atom percent) =
+				acc.FuryBalance = allFury.RoundInt()
 
 				if allAtoms.LTE(osmomath.NewDec(1000000)) {
-					acc.OsmoBalanceBase = osmomath.ZeroInt()
-					acc.OsmoBalanceBonus = osmomath.ZeroInt()
-					acc.OsmoBalance = osmomath.ZeroInt()
+					acc.FuryBalanceBase = osmomath.ZeroInt()
+					acc.FuryBalanceBonus = osmomath.ZeroInt()
+					acc.FuryBalance = osmomath.ZeroInt()
 				}
 
-				totalOsmoBalance = totalOsmoBalance.Add(acc.OsmoBalance)
+				totalFuryBalance = totalFuryBalance.Add(acc.FuryBalance)
 
 				snapshotAccs[address] = acc
 			}
 
 			// iterate to find Fury ownership percentage per account
 			for address, acc := range snapshotAccs {
-				acc.OsmoPercent = acc.OsmoBalance.ToLegacyDec().Quo(totalOsmoBalance.ToLegacyDec())
+				acc.FuryPercent = acc.FuryBalance.ToLegacyDec().Quo(totalFuryBalance.ToLegacyDec())
 				snapshotAccs[address] = acc
 			}
 
 			snapshot := Snapshot{
 				TotalAtomAmount:         totalAtomBalance,
-				TotalOsmosAirdropAmount: totalOsmoBalance,
+				TotalFurysAirdropAmount: totalFuryBalance,
 				NumberAccounts:          uint64(len(snapshotAccs)),
 				Accounts:                snapshotAccs,
 			}
 
 			fmt.Printf("# accounts: %d\n", len(snapshotAccs))
 			fmt.Printf("atomTotalSupply: %s\n", totalAtomBalance.String())
-			fmt.Printf("osmoTotalSupply: %s\n", totalOsmoBalance.String())
+			fmt.Printf("osmoTotalSupply: %s\n", totalFuryBalance.String())
 
 			// export snapshot json
 			snapshotJSON, err := json.MarshalIndent(snapshot, "", "    ")

@@ -150,11 +150,11 @@ func CreateUpgradeHandler(
 func createCLPoolWithCommunityPoolPosition(ctx sdk.Context, keepers *keepers.AppKeepers, assetPair AssetPair, communityPoolAddress sdk.AccAddress) (clPoolCreationInfo, sdk.Coins, error) {
 	// Determine if base or quote asset is FURY and save the non-FURY asset.
 	osmoIn := sdk.NewCoin(FURY, osmomath.NewInt(100000))
-	nonOsmoAsset := ""
+	nonFuryAsset := ""
 	if assetPair.BaseAsset != FURY {
-		nonOsmoAsset = assetPair.BaseAsset
+		nonFuryAsset = assetPair.BaseAsset
 	} else {
-		nonOsmoAsset = assetPair.QuoteAsset
+		nonFuryAsset = assetPair.QuoteAsset
 	}
 
 	// Check if classic pool has enough liquidity to support a 0.1 FURY swap before creating a CL pool.
@@ -163,7 +163,7 @@ func createCLPoolWithCommunityPoolPosition(ctx sdk.Context, keepers *keepers.App
 	if err != nil {
 		return clPoolCreationInfo{}, sdk.Coins{}, err
 	}
-	_, err = keepers.GAMMKeeper.CalcOutAmtGivenIn(ctx, linkedClassicPool, osmoIn, nonOsmoAsset, assetPair.SpreadFactor)
+	_, err = keepers.GAMMKeeper.CalcOutAmtGivenIn(ctx, linkedClassicPool, osmoIn, nonFuryAsset, assetPair.SpreadFactor)
 	if err != nil {
 		return clPoolCreationInfo{}, sdk.Coins{}, err
 	}
@@ -188,17 +188,17 @@ func createCLPoolWithCommunityPoolPosition(ctx sdk.Context, keepers *keepers.App
 	commPoolBalanceQuoteAssetPre := keepers.BankKeeper.GetBalance(ctx, communityPoolAddress, assetPair.QuoteAsset)
 	commPoolBalancePre := sdk.NewCoins(commPoolBalanceBaseAssetPre, commPoolBalanceQuoteAssetPre)
 
-	// Swap 0.1 FURY for nonOsmoAsset from the community pool.
-	respectiveNonOsmoAssetInt, err := keepers.GAMMKeeper.SwapExactAmountIn(ctx, communityPoolAddress, linkedClassicPool, osmoIn, nonOsmoAsset, osmomath.ZeroInt(), linkedClassicPool.GetSpreadFactor(ctx))
+	// Swap 0.1 FURY for nonFuryAsset from the community pool.
+	respectiveNonFuryAssetInt, err := keepers.GAMMKeeper.SwapExactAmountIn(ctx, communityPoolAddress, linkedClassicPool, osmoIn, nonFuryAsset, osmomath.ZeroInt(), linkedClassicPool.GetSpreadFactor(ctx))
 	if err != nil {
 		return clPoolCreationInfo{}, sdk.Coins{}, err
 	}
-	ctx.Logger().Info(fmt.Sprintf("Swapped %s for %s%s from the community pool", osmoIn.String(), respectiveNonOsmoAssetInt.String(), nonOsmoAsset))
+	ctx.Logger().Info(fmt.Sprintf("Swapped %s for %s%s from the community pool", osmoIn.String(), respectiveNonFuryAssetInt.String(), nonFuryAsset))
 
-	respectiveNonOsmoAsset := sdk.NewCoin(nonOsmoAsset, respectiveNonOsmoAssetInt)
+	respectiveNonFuryAsset := sdk.NewCoin(nonFuryAsset, respectiveNonFuryAssetInt)
 
 	// Create a full range position via the community pool with the funds we calculated above.
-	fullRangeCoins := sdk.NewCoins(respectiveNonOsmoAsset, osmoIn)
+	fullRangeCoins := sdk.NewCoins(respectiveNonFuryAsset, osmoIn)
 	_, err = keepers.ConcentratedLiquidityKeeper.CreateFullRangePosition(ctx, clPoolId, communityPoolAddress, fullRangeCoins)
 	if err != nil {
 		return clPoolCreationInfo{}, sdk.Coins{}, err

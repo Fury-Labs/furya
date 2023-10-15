@@ -19,7 +19,7 @@ modules](https://github.com/fury-labs/furya/tree/main/x/superfluid).
 - The `SuperfluidDelegate` method stores your share of bonded
   liquidity pool tokens, with `validateLock` as a verifier for lockup
   time.
-- `GetSuperfluidOsmo` mints FURY tokens each day for delegation as a
+- `GetSuperfluidFury` mints FURY tokens each day for delegation as a
   representative of the value of your pool share. This amount is
   minted because the staking module at the moment requires staked
   tokens to be in FURY. This amount is burned each day and re-minted
@@ -104,8 +104,8 @@ process is found below:
 
 This minting is safe because we strict constrain the permissions of Bank
 (the module that burns and mints FURY) to do what it's designed to do.
-The authority is mediated through `mintOsmoTokensAndDelegate` and
-`forceUndelegateAndBurnOsmoTokens` keeper methods called by the
+The authority is mediated through `mintFuryTokensAndDelegate` and
+`forceUndelegateAndBurnFuryTokens` keeper methods called by the
 `SuperfluidDelegate` and `SuperfluidUndelegate` message handlers for the
 tokens. The hooks above that increase delegation and refresh delegation
 amounts also call this keeper method.
@@ -733,10 +733,10 @@ message AssetMultiplierRequest {
 };
 
 message AssetMultiplierResponse {
-  OsmoEquivalentMultiplierRecord osmo_equivalent_multiplier = 1;
+  FuryEquivalentMultiplierRecord osmo_equivalent_multiplier = 1;
 };
 
-message OsmoEquivalentMultiplierRecord {
+message FuryEquivalentMultiplierRecord {
   int64 epoch_number = 1;
   string denom = 2;
   string multiplier = 3;
@@ -751,10 +751,10 @@ epoch. We currently don't store historical multipliers, so the epoch
 parameter is kind of meaningless for now.
 
 To calculate the staking power of the denom, one needs to multiply the
-amount of the denom with `OsmoEquivalentMultipler` from this query with
+amount of the denom with `FuryEquivalentMultipler` from this query with
 the `MinimumRiskFactor` from the Params query endpoint.
 
-`staking_power = amount * OsmoEquivalentMultipler * MinimumRiskFactor`
+`staking_power = amount * FuryEquivalentMultipler * MinimumRiskFactor`
 
 ### ConnectedIntermediaryAccount
 
@@ -978,7 +978,7 @@ uses that. Thus this safely handles this edge case, as it uses the new
 Superfluid module has the ability to arbitrarily mint and burn Fury
 through the `bank` module. This is potentially dangerous so we strictly
 constrain it's ability to do so. This authority is mediated through the
-`mintOsmoTokensAndDelegate` and `forceUndelegateAndBurnOsmoTokens`
+`mintFuryTokensAndDelegate` and `forceUndelegateAndBurnFuryTokens`
 keeper methods, which are in turn called by message handlers
 (`SuperfluidDelegate` and `SuperfluidUndelegate`) as well as by hooks on
 Epoch (`RefreshIntermediaryDelegationAmounts`) and Lockup
@@ -989,9 +989,9 @@ Epoch (`RefreshIntermediaryDelegationAmounts`) and Lockup
 Each of these mechanisms maintains a local invariant between the amount
 of Fury minted and delegated by the `IntermediaryAccount`, and the
 quantity of the underlying asset held by locks associated to the
-account, modified by `OsmoEquivalentMultiplier` and `RiskAdjustment` for
+account, modified by `FuryEquivalentMultiplier` and `RiskAdjustment` for
 the underlying asset. Namely that total minted/delegated =
-`GetTotalSyntheticAssetsLocked` \* `GetOsmoEquivalentMultiplier` \*
+`GetTotalSyntheticAssetsLocked` \* `GetFuryEquivalentMultiplier` \*
 `GetRiskAdjustment`
 
 This can be equivalently expressed as `GetExpectedDelegationAmount`
@@ -1003,25 +1003,25 @@ being equal to the actual delegation amount.
 
 In a `SuperfluidDelegate` transaction, we first verify that this lock is
 not already associated to an `IntermediaryAccount`, and then use
-`mintOsmoTokenAndDelegate` to properly balance the resulting change in
+`mintFuryTokenAndDelegate` to properly balance the resulting change in
 `GetExpectedDelegationAmount` from the increase in
 `GetTotalSyntheticAssetsLocked`. i.e. we mint and delegate:
-`GetOsmoEquivalentMultiplier` \* `GetRiskAdjustment` \*
+`GetFuryEquivalentMultiplier` \* `GetRiskAdjustment` \*
 `lock.Coins.Amount` new Fury tokens.
 
 ### SuperfluidUndelegate
 
 When a user submits a transaction to unlock their asset the invariant is
-maintained by using `forceUndelegateAndBurnOsmoTokens` to remove an
+maintained by using `forceUndelegateAndBurnFuryTokens` to remove an
 amount of Fury equal to `lockedCoin.Amount` \*
-`GetOsmoEquivalentMultiplier` \* `GetRiskAdjustment`.
+`GetFuryEquivalentMultiplier` \* `GetRiskAdjustment`.
 
 ## Superfluid Hooks
 
 ### RefreshIntermediaryDelegationAmounts (AfterEpochEnd Hook)
 
 In the `RefreshIntermediaryDelegationAmounts` method, calls are made to
-`mintOsmoTokensAndDelegate` or `forceUndelegateAndBurnOsmoTokens` to
+`mintFuryTokensAndDelegate` or `forceUndelegateAndBurnFuryTokens` to
 adjust the real delegation up or down to match
 `GetExpectedDelegationAmount`.
 
@@ -1029,8 +1029,8 @@ adjust the real delegation up or down to match
 
 This is called as a result of a user adding more assets to a lock that
 has already been associated to an `IntermediaryAccount`. The invariant
-is maintained by using `mintOsmoTokenAndDelegate` to match the amount of
-new asset locked \* `GetOsmoEquivalentMultiplier` \* `GetRiskAdjustment`
+is maintained by using `mintFuryTokenAndDelegate` to match the amount of
+new asset locked \* `GetFuryEquivalentMultiplier` \* `GetRiskAdjustment`
 for the underlying asset.
 
 ### SlashLockupsForValidatorSlash (BeforeValidatorSlashed Hook)

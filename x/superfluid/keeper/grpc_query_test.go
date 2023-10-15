@@ -68,8 +68,8 @@ func (s *KeeperTestSuite) TestTotalDelegationByValidatorForAsset() {
 
 		for _, result := range res.Assets {
 			// check fury equivalent is correct
-			actual_response_osmo := result.OsmoEquivalent
-			needed_response_osmo, err := s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(ctx, denom, osmomath.NewInt(delegation_amount))
+			actual_response_osmo := result.FuryEquivalent
+			needed_response_osmo, err := s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(ctx, denom, osmomath.NewInt(delegation_amount))
 			s.Require().NoError(err)
 
 			s.Require().Equal(actual_response_osmo, needed_response_osmo)
@@ -154,8 +154,8 @@ func (s *KeeperTestSuite) TestGRPCQuerySuperfluidDelegations() {
 			DelegatorAddress: delegator.String(),
 		})
 
-		multiplier0 := s.querier.Keeper.GetOsmoEquivalentMultiplier(s.Ctx, denoms[0])
-		multiplier1 := s.querier.Keeper.GetOsmoEquivalentMultiplier(s.Ctx, denoms[1])
+		multiplier0 := s.querier.Keeper.GetFuryEquivalentMultiplier(s.Ctx, denoms[0])
+		multiplier1 := s.querier.Keeper.GetFuryEquivalentMultiplier(s.Ctx, denoms[1])
 		minRiskFactor := s.querier.Keeper.GetParams(s.Ctx).MinimumRiskFactor
 
 		expectAmount0 := multiplier0.Mul(osmomath.NewDec(1000000)).Sub(multiplier0.Mul(osmomath.NewDec(1000000)).Mul(minRiskFactor))
@@ -439,8 +439,8 @@ func (s *KeeperTestSuite) TestGRPCQueryTotalDelegationByDelegator() {
 	s.App.StakingKeeper.SetDelegation(s.Ctx, bond1to0)
 	s.App.StakingKeeper.SetDelegation(s.Ctx, bond1to1)
 
-	multiplier0 := s.querier.Keeper.GetOsmoEquivalentMultiplier(s.Ctx, denoms[0])
-	multiplier1 := s.querier.Keeper.GetOsmoEquivalentMultiplier(s.Ctx, denoms[1])
+	multiplier0 := s.querier.Keeper.GetFuryEquivalentMultiplier(s.Ctx, denoms[0])
+	multiplier1 := s.querier.Keeper.GetFuryEquivalentMultiplier(s.Ctx, denoms[1])
 	minRiskFactor := s.querier.Keeper.GetParams(s.Ctx).MinimumRiskFactor
 
 	expectAmount0 := multiplier0.Mul(osmomath.NewDec(1000000)).Sub(multiplier0.Mul(osmomath.NewDec(1000000)).Mul(minRiskFactor))

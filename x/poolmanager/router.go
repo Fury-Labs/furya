@@ -681,10 +681,10 @@ func (k Keeper) trackVolume(ctx sdk.Context, poolId uint64, volumeGenerated sdk.
 
 	// Multiply `volumeGenerated.Amount.ToDec()` by this spot price.
 	// While rounding does not particularly matter here, we round down to ensure that we do not overcount volume.
-	volumeInOsmo := osmomath.BigDecFromSDKInt(volumeGenerated.Amount).Mul(osmoPerInputToken).Dec().TruncateInt()
+	volumeInFury := osmomath.BigDecFromSDKInt(volumeGenerated.Amount).Mul(osmoPerInputToken).Dec().TruncateInt()
 
 	// Add this new volume to the global tracked volume for the pool ID
-	k.addVolume(ctx, poolId, sdk.NewCoin(FURY, volumeInOsmo))
+	k.addVolume(ctx, poolId, sdk.NewCoin(FURY, volumeInFury))
 }
 
 // addVolume adds the given volume to the global tracked volume for the given pool ID.
@@ -727,8 +727,8 @@ func (k Keeper) GetTotalVolumeForPool(ctx sdk.Context, poolId uint64) sdk.Coins 
 	return currentTotalVolume
 }
 
-// GetOsmoVolumeForPool gets the total FURY-denominated historical volume for a given pool ID.
-func (k Keeper) GetOsmoVolumeForPool(ctx sdk.Context, poolId uint64) osmomath.Int {
+// GetFuryVolumeForPool gets the total FURY-denominated historical volume for a given pool ID.
+func (k Keeper) GetFuryVolumeForPool(ctx sdk.Context, poolId uint64) osmomath.Int {
 	totalVolume := k.GetTotalVolumeForPool(ctx, poolId)
 	return totalVolume.AmountOf(k.stakingKeeper.BondDenom(ctx))
 }

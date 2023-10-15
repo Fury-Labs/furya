@@ -35,7 +35,7 @@ func (k Keeper) GetExpectedDelegationAmount(ctx sdk.Context, acc types.Superflui
 	totalSuperfluidDelegation := k.GetTotalSyntheticAssetsLocked(ctx, stakingSyntheticDenom(acc.Denom, acc.ValAddr))
 	// (2) Multiply the T tokens, by the number of superfluid fury per token, to get the total amount
 	// of fury we expect.
-	refreshedAmount, err := k.GetSuperfluidOSMOTokens(ctx, acc.Denom, totalSuperfluidDelegation)
+	refreshedAmount, err := k.GetSuperfluidFURYTokens(ctx, acc.Denom, totalSuperfluidDelegation)
 	if err != nil {
 		return osmomath.Int{}, err
 	}
@@ -81,9 +81,9 @@ func (k Keeper) RefreshIntermediaryDelegationAmounts(ctx sdk.Context) {
 
 		if refreshedAmount.GT(currentAmount) {
 			adjustment := refreshedAmount.Sub(currentAmount)
-			err = k.mintOsmoTokensAndDelegate(ctx, adjustment, acc)
+			err = k.mintFuryTokensAndDelegate(ctx, adjustment, acc)
 			if err != nil {
-				ctx.Logger().Error("Error in forceUndelegateAndBurnOsmoTokens, state update reverted", err)
+				ctx.Logger().Error("Error in forceUndelegateAndBurnFuryTokens, state update reverted", err)
 			}
 		} else if currentAmount.GT(refreshedAmount) {
 			// In this case, we want to change the IA's delegated balance to be refreshed Amount
@@ -92,9 +92,9 @@ func (k Keeper) RefreshIntermediaryDelegationAmounts(ctx sdk.Context) {
 			// and then burn that excessly delegated bits.
 			adjustment := currentAmount.Sub(refreshedAmount)
 
-			err := k.forceUndelegateAndBurnOsmoTokens(ctx, adjustment, acc)
+			err := k.forceUndelegateAndBurnFuryTokens(ctx, adjustment, acc)
 			if err != nil {
-				ctx.Logger().Error("Error in forceUndelegateAndBurnOsmoTokens, state update reverted", err)
+				ctx.Logger().Error("Error in forceUndelegateAndBurnFuryTokens, state update reverted", err)
 			}
 		} else {
 			ctx.Logger().Debug("Intermediary account already has correct delegation amount?" +
@@ -114,7 +114,7 @@ func (k Keeper) IncreaseSuperfluidDelegation(ctx sdk.Context, lockID uint64, amo
 
 	// mint FURY token based on the most recent fury equivalent multiplier
 	// of locked denom to denom module account
-	osmoAmt, err := k.GetSuperfluidOSMOTokens(ctx, acc.Denom, amount.AmountOf(acc.Denom))
+	osmoAmt, err := k.GetSuperfluidFURYTokens(ctx, acc.Denom, amount.AmountOf(acc.Denom))
 	if err != nil {
 		return err
 	}
@@ -122,7 +122,7 @@ func (k Keeper) IncreaseSuperfluidDelegation(ctx sdk.Context, lockID uint64, amo
 		return nil
 	}
 
-	err = k.mintOsmoTokensAndDelegate(ctx, osmoAmt, acc)
+	err = k.mintFuryTokensAndDelegate(ctx, osmoAmt, acc)
 	if err != nil {
 		return err
 	}
@@ -236,15 +236,15 @@ func (k Keeper) SuperfluidDelegate(ctx sdk.Context, sender string, lockID uint64
 
 	// Find how many new fury tokens this delegation is worth at superfluids current risk adjustment
 	// and twap of the denom.
-	amount, err := k.GetSuperfluidOSMOTokens(ctx, acc.Denom, lockedCoin.Amount)
+	amount, err := k.GetSuperfluidFURYTokens(ctx, acc.Denom, lockedCoin.Amount)
 	if err != nil {
 		return err
 	}
 	if amount.IsZero() {
-		return types.ErrOsmoEquivalentZeroNotAllowed
+		return types.ErrFuryEquivalentZeroNotAllowed
 	}
 
-	return k.mintOsmoTokensAndDelegate(ctx, amount, acc)
+	return k.mintFuryTokensAndDelegate(ctx, amount, acc)
 }
 
 // undelegateCommon is a helper function for SuperfluidUndelegate and superfluidUndelegateToConcentratedPosition.
@@ -281,11 +281,11 @@ func (k Keeper) undelegateCommon(ctx sdk.Context, sender string, lockID uint64) 
 	}
 
 	// undelegate this lock's delegation amount, and burn the minted fury.
-	amount, err := k.GetSuperfluidOSMOTokens(ctx, intermediaryAcc.Denom, lockedCoin.Amount)
+	amount, err := k.GetSuperfluidFURYTokens(ctx, intermediaryAcc.Denom, lockedCoin.Amount)
 	if err != nil {
 		return types.SuperfluidIntermediaryAccount{}, err
 	}
-	err = k.forceUndelegateAndBurnOsmoTokens(ctx, amount, intermediaryAcc)
+	err = k.forceUndelegateAndBurnFuryTokens(ctx, amount, intermediaryAcc)
 	if err != nil {
 		return types.SuperfluidIntermediaryAccount{}, err
 	}
@@ -446,8 +446,8 @@ func (k Keeper) alreadySuperfluidStaking(ctx sdk.Context, lockID uint64) bool {
 	return synthLock != (lockuptypes.SyntheticLock{})
 }
 
-// mintOsmoTokensAndDelegate mints osmoAmount of FURY tokens, and immediately delegate them to validator on behalf of intermediary account.
-func (k Keeper) mintOsmoTokensAndDelegate(ctx sdk.Context, osmoAmount osmomath.Int, intermediaryAccount types.SuperfluidIntermediaryAccount) error {
+// mintFuryTokensAndDelegate mints osmoAmount of FURY tokens, and immediately delegate them to validator on behalf of intermediary account.
+func (k Keeper) mintFuryTokensAndDelegate(ctx sdk.Context, osmoAmount osmomath.Int, intermediaryAccount types.SuperfluidIntermediaryAccount) error {
 	validator, err := k.validateValAddrForDelegate(ctx, intermediaryAccount.ValAddr)
 	if err != nil {
 		return err
@@ -477,10 +477,10 @@ func (k Keeper) mintOsmoTokensAndDelegate(ctx sdk.Context, osmoAmount osmomath.I
 	return err
 }
 
-// forceUndelegateAndBurnOsmoTokens force undelegates osmoAmount worth of delegation shares
+// forceUndelegateAndBurnFuryTokens force undelegates osmoAmount worth of delegation shares
 // from delegations between intermediary account and valAddr.
 // We take the returned tokens, and then immediately burn them.
-func (k Keeper) forceUndelegateAndBurnOsmoTokens(ctx sdk.Context,
+func (k Keeper) forceUndelegateAndBurnFuryTokens(ctx sdk.Context,
 	osmoAmount osmomath.Int, intermediaryAcc types.SuperfluidIntermediaryAccount,
 ) error {
 	valAddr, err := sdk.ValAddressFromBech32(intermediaryAcc.ValAddr)
@@ -569,7 +569,7 @@ func (k Keeper) IterateDelegations(ctx sdk.Context, delegator sdk.AccAddress, fn
 		}
 
 		// get fury-equivalent token amount
-		amount, err := k.GetSuperfluidOSMOTokens(ctx, interim.Denom, coin.Amount)
+		amount, err := k.GetSuperfluidFURYTokens(ctx, interim.Denom, coin.Amount)
 		if err != nil {
 			ctx.Logger().Error("failed to get fury equivalent of token", "Denom", interim.Denom, "Amount", coin.Amount, "Error", err)
 			continue
@@ -693,7 +693,7 @@ func (k Keeper) convertLockToStake(ctx sdk.Context, sender sdk.AccAddress, valAd
 		return osmomath.Int{}, err
 	}
 
-	totalAmtConverted, err = k.convertGammSharesToOsmoAndStake(ctx, sender, valAddr, poolIdLeaving, exitCoins, minAmtToStake, superfluidValAddr)
+	totalAmtConverted, err = k.convertGammSharesToFuryAndStake(ctx, sender, valAddr, poolIdLeaving, exitCoins, minAmtToStake, superfluidValAddr)
 	if err != nil {
 		return osmomath.Int{}, err
 	}
@@ -722,7 +722,7 @@ func (k Keeper) convertUnlockedToStake(ctx sdk.Context, sender sdk.AccAddress, v
 		return osmomath.Int{}, err
 	}
 
-	totalAmtConverted, err = k.convertGammSharesToOsmoAndStake(ctx, sender, valAddr, poolIdLeaving, exitCoins, minAmtToStake, "")
+	totalAmtConverted, err = k.convertGammSharesToFuryAndStake(ctx, sender, valAddr, poolIdLeaving, exitCoins, minAmtToStake, "")
 	if err != nil {
 		return osmomath.Int{}, err
 	}
@@ -730,24 +730,24 @@ func (k Keeper) convertUnlockedToStake(ctx sdk.Context, sender sdk.AccAddress, v
 	return totalAmtConverted, nil
 }
 
-// convertGammSharesToOsmoAndStake converts given gamm shares to fury by swapping in the given pool
+// convertGammSharesToFuryAndStake converts given gamm shares to fury by swapping in the given pool
 // then stakes it to the designated validator.
 // minAmtToStake works as slippage bound, and would error if total amount being staked is less than min amount to stake.
 // Depending on user inputs, valAddr and originalSuperfluidValAddr could be an empty string,
 // each leading to a different delegation scenario.
-func (k Keeper) convertGammSharesToOsmoAndStake(
+func (k Keeper) convertGammSharesToFuryAndStake(
 	ctx sdk.Context,
 	sender sdk.AccAddress, valAddr string,
 	poolIdLeaving uint64, exitCoins sdk.Coins, minAmtToStake osmomath.Int, originalSuperfluidValAddr string,
 ) (totalAmtCoverted osmomath.Int, err error) {
-	var nonOsmoCoins sdk.Coins
+	var nonFuryCoins sdk.Coins
 	bondDenom := k.sk.BondDenom(ctx)
 
 	// from the exit coins, separate non-bond denom and bond denom.
 	for _, exitCoin := range exitCoins {
 		// if coin is not ufury, add it to non-fury Coins
 		if exitCoin.Denom != bondDenom {
-			nonOsmoCoins = append(nonOsmoCoins, exitCoin)
+			nonFuryCoins = append(nonFuryCoins, exitCoin)
 		}
 	}
 	originalBondDenomAmt := exitCoins.AmountOf(bondDenom)
@@ -756,7 +756,7 @@ func (k Keeper) convertGammSharesToOsmoAndStake(
 	totalAmtCoverted = osmomath.ZeroInt()
 
 	// iterate over non-bond denom coins and swap them into bond denom
-	for _, coinToConvert := range nonOsmoCoins {
+	for _, coinToConvert := range nonFuryCoins {
 		tokenOutAmt, err := k.pmk.SwapExactAmountIn(ctx, sender, poolIdLeaving, coinToConvert, bondDenom, osmomath.ZeroInt())
 		if err != nil {
 			return osmomath.Int{}, err

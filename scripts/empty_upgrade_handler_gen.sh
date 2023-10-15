@@ -108,14 +108,14 @@ e2e_file=./tests/e2e/containers/config.go
 PREV_FURYA_DEV_TAG=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/osmolabs/furya/tags?page=1&page_size=100' | jq -r '.results[] | .name | select(.|test("^(?:v|)[0-9]+\\.0\\.0-alpine$"))' | grep --max-count=1 "")
 PREV_FURYA_E2E_TAG=$(curl -L -s 'https://registry.hub.docker.com/v2/repositories/osmolabs/furya-e2e-init-chain/tags?page=1&page_size=100' | jq -r '.results[] | .name | select(.|test("^(?:v|)[0-9]+\\.[0-9]+(?:$|\\.[0-9]+$)"))' | grep --max-count=1 "")
 
-# previousVersionOsmoTag  = PREV_FURYA_DEV_TAG
+# previousVersionFuryTag  = PREV_FURYA_DEV_TAG
 if [[ $version_create == v$(($(echo $PREV_FURYA_DEV_TAG | awk -F . '{print $1}')+1)) ]]; then	
     echo "Found previous furya-dev tag $PREV_FURYA_DEV_TAG"
-	sed -i '/previousVersionOsmoTag/s/".*"/'"\"$PREV_FURYA_DEV_TAG\""'/' $e2e_file
+	sed -i '/previousVersionFuryTag/s/".*"/'"\"$PREV_FURYA_DEV_TAG\""'/' $e2e_file
 else
     PREV_FURYA_DEV_TAG=v$((${version_create:1}-1)).0.0
     echo "Using pre-defined furya-dev tag: $PREV_FURYA_DEV_TAG"
-    sed -i '/previousVersionOsmoTag/s/".*"/'"\"$PREV_FURYA_DEV_TAG\""'/' $e2e_file
+    sed -i '/previousVersionFuryTag/s/".*"/'"\"$PREV_FURYA_DEV_TAG\""'/' $e2e_file
 fi
 
 # previousVersionInitTag  = PREV_FURYA_E2E_TAG

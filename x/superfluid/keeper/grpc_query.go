@@ -90,10 +90,10 @@ func (q Querier) AssetMultiplier(goCtx context.Context, req *types.AssetMultipli
 	epochInfo := q.Keeper.ek.GetEpochInfo(ctx, q.Keeper.GetEpochIdentifier(ctx))
 
 	return &types.AssetMultiplierResponse{
-		OsmoEquivalentMultiplier: &types.OsmoEquivalentMultiplierRecord{
+		FuryEquivalentMultiplier: &types.FuryEquivalentMultiplierRecord{
 			EpochNumber: epochInfo.CurrentEpoch,
 			Denom:       req.Denom,
-			Multiplier:  q.Keeper.GetOsmoEquivalentMultiplier(ctx, req.Denom),
+			Multiplier:  q.Keeper.GetFuryEquivalentMultiplier(ctx, req.Denom),
 		},
 	}, nil
 }
@@ -259,7 +259,7 @@ func (q Querier) SuperfluidDelegationsByDelegator(goCtx context.Context, req *ty
 
 		// Find how many fury tokens this delegation is worth at superfluids current risk adjustment
 		// and twap of the denom.
-		equivalentAmount, err := q.Keeper.GetSuperfluidOSMOTokens(ctx, baseDenom, lockedCoins.Amount)
+		equivalentAmount, err := q.Keeper.GetSuperfluidFURYTokens(ctx, baseDenom, lockedCoins.Amount)
 		if err != nil {
 			return nil, err
 		}
@@ -483,8 +483,8 @@ func (q Querier) EstimateSuperfluidDelegatedAmountByValidatorDenom(goCtx context
 		return nil, stakingtypes.ErrNoDelegation
 	}
 
-	syntheticOsmoAmt := delegation.Shares.Quo(val.DelegatorShares).MulInt(val.Tokens)
-	baseAmount := q.Keeper.UnriskAdjustOsmoValue(ctx, syntheticOsmoAmt).Quo(q.Keeper.GetOsmoEquivalentMultiplier(ctx, req.Denom)).RoundInt()
+	syntheticFuryAmt := delegation.Shares.Quo(val.DelegatorShares).MulInt(val.Tokens)
+	baseAmount := q.Keeper.UnriskAdjustFuryValue(ctx, syntheticFuryAmt).Quo(q.Keeper.GetFuryEquivalentMultiplier(ctx, req.Denom)).RoundInt()
 
 	return &types.EstimateSuperfluidDelegatedAmountByValidatorDenomResponse{
 		TotalDelegatedCoins: sdk.NewCoins(sdk.NewCoin(req.Denom, baseAmount)),
@@ -515,7 +515,7 @@ func (q Querier) TotalDelegationByValidatorForDenom(goCtx context.Context, req *
 			amount = amount.Add(record.DelegationAmount.Amount)
 		}
 
-		equivalentAmountOSMO, err := q.Keeper.GetSuperfluidOSMOTokens(ctx, req.Denom, amount)
+		equivalentAmountFURY, err := q.Keeper.GetSuperfluidFURYTokens(ctx, req.Denom, amount)
 		if err != nil {
 			return nil, err
 		}
@@ -523,7 +523,7 @@ func (q Querier) TotalDelegationByValidatorForDenom(goCtx context.Context, req *
 		result := types.Delegations{
 			ValAddr:        valAddr.String(),
 			AmountSfsd:     amount,
-			OsmoEquivalent: equivalentAmountOSMO,
+			FuryEquivalent: equivalentAmountFURY,
 		}
 
 		delegationsByValidator = append(delegationsByValidator, result)
@@ -557,8 +557,8 @@ func (q Querier) TotalSuperfluidDelegations(goCtx context.Context, _ *types.Tota
 			continue
 		}
 
-		syntheticOsmoAmt := delegation.Shares.Quo(val.DelegatorShares).MulInt(val.Tokens).RoundInt()
-		totalSuperfluidDelegated = totalSuperfluidDelegated.Add(syntheticOsmoAmt)
+		syntheticFuryAmt := delegation.Shares.Quo(val.DelegatorShares).MulInt(val.Tokens).RoundInt()
+		totalSuperfluidDelegated = totalSuperfluidDelegated.Add(syntheticFuryAmt)
 	}
 
 	return &types.TotalSuperfluidDelegationsResponse{
@@ -687,7 +687,7 @@ func (q Querier) filterConcentratedPositionLocks(ctx sdk.Context, positions []mo
 
 		baseDenom := lock.Coins.GetDenomByIndex(0)
 		lockedCoins := sdk.NewCoin(baseDenom, lock.GetCoins().AmountOf(baseDenom))
-		equivalentAmount, err := q.Keeper.GetSuperfluidOSMOTokens(ctx, baseDenom, lockedCoins.Amount)
+		equivalentAmount, err := q.Keeper.GetSuperfluidFURYTokens(ctx, baseDenom, lockedCoins.Amount)
 		if err != nil {
 			return nil, err
 		}

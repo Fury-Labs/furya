@@ -508,14 +508,14 @@ func (k Keeper) withdrawExistingValSetStakingPosition(ctx sdk.Context, delegator
 	return nil
 }
 
-// ForceUnlockBondedOsmo allows breaking of a bonded lockup (by ID) of fury, of length <= 2 weeks.
+// ForceUnlockBondedFury allows breaking of a bonded lockup (by ID) of fury, of length <= 2 weeks.
 // We want to later have fury incentives get auto-staked, we want people w/ no staking positions to
 // get their fury auto-locked. This function takes all that fury and stakes according to your
 // current validator set preference.
 // (Note: Noting that there is an implicit valset preference if you've already staked)
 // CONTRACT: This method should **never** be used alone.
-func (k Keeper) ForceUnlockBondedOsmo(ctx sdk.Context, lockID uint64, delegatorAddr string) (sdk.Coin, error) {
-	lock, lockedOsmoAmount, err := k.validateLockForForceUnlock(ctx, lockID, delegatorAddr)
+func (k Keeper) ForceUnlockBondedFury(ctx sdk.Context, lockID uint64, delegatorAddr string) (sdk.Coin, error) {
+	lock, lockedFuryAmount, err := k.validateLockForForceUnlock(ctx, lockID, delegatorAddr)
 	if err != nil {
 		return sdk.Coin{}, err
 	}
@@ -537,9 +537,9 @@ func (k Keeper) ForceUnlockBondedOsmo(ctx sdk.Context, lockID uint64, delegatorA
 	}
 
 	// Takes unlocked fury, and delegate according to valset pref
-	unlockedOsmoCoin := sdk.Coin{Denom: appParams.BaseCoinUnit, Amount: lockedOsmoAmount}
+	unlockedFuryCoin := sdk.Coin{Denom: appParams.BaseCoinUnit, Amount: lockedFuryAmount}
 
-	return unlockedOsmoCoin, nil
+	return unlockedFuryCoin, nil
 }
 
 // GetValAddrAndVal checks if the validator address is valid and the validator provided exists on chain.
@@ -647,7 +647,7 @@ func (k Keeper) validateLockForForceUnlock(ctx sdk.Context, lockID uint64, deleg
 		return nil, osmomath.Int{}, fmt.Errorf("delegator (%s) and lock owner (%s) does not match", delegatorAddr, lock.Owner)
 	}
 
-	lockedOsmoAmount := osmomath.NewInt(0)
+	lockedFuryAmount := osmomath.NewInt(0)
 
 	// check that lock contains only 1 token
 	coin, err := lock.SingleCoin()
@@ -657,11 +657,11 @@ func (k Keeper) validateLockForForceUnlock(ctx sdk.Context, lockID uint64, deleg
 
 	// check that the lock denom is ufury
 	if coin.Denom == appParams.BaseCoinUnit {
-		lockedOsmoAmount = lockedOsmoAmount.Add(coin.Amount)
+		lockedFuryAmount = lockedFuryAmount.Add(coin.Amount)
 	}
 
 	// check if there is enough ufury token in the lock
-	if lockedOsmoAmount.LTE(osmomath.NewInt(0)) {
+	if lockedFuryAmount.LTE(osmomath.NewInt(0)) {
 		return nil, osmomath.Int{}, fmt.Errorf("lock does not contain fury denom, or there isn't enough fury to unbond")
 	}
 
@@ -670,5 +670,5 @@ func (k Keeper) validateLockForForceUnlock(ctx sdk.Context, lockID uint64, deleg
 		return nil, osmomath.Int{}, fmt.Errorf("the tokens have to bonded and the duration has to be <= 2weeks")
 	}
 
-	return lock, lockedOsmoAmount, nil
+	return lock, lockedFuryAmount, nil
 }

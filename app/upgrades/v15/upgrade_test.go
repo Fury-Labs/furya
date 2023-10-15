@@ -168,7 +168,7 @@ func (s *UpgradeTestSuite) TestMigrateBalancerToStablePools() {
 	s.validateCons(tokenInStable, tokenIn)
 }
 
-func (s *UpgradeTestSuite) TestRegisterOsmoIonMetadata() {
+func (s *UpgradeTestSuite) TestRegisterFuryIonMetadata() {
 	s.SetupTest() // reset
 
 	expectedUosmodenom := "ufury"
@@ -185,7 +185,7 @@ func (s *UpgradeTestSuite) TestRegisterOsmoIonMetadata() {
 	s.Require().False(found)
 
 	// system under test.
-	v15.RegisterOsmoIonMetadata(ctx, *bankKeeper)
+	v15.RegisterFuryIonMetadata(ctx, *bankKeeper)
 
 	ufuryMetadata, found := s.App.BankKeeper.GetDenomMetaData(ctx, "ufury")
 	s.Require().True(found)

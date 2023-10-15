@@ -27,7 +27,7 @@ const (
 	// https://app.furya.zone/pool/674
 	// Note, new concentrated liquidity pool
 	// spread factor is initialized to be the same as the balancers pool spread factor of 0.2%.
-	DaiOsmoPoolId = uint64(674)
+	DaiFuryPoolId = uint64(674)
 	// Denom0 translates to a base asset while denom1 to a quote asset
 	// We want quote asset to be DAI so that when the limit orders on ticks
 	// are implemented, we have tick spacing in terms of DAI as the quote.
@@ -125,7 +125,7 @@ func CreateUpgradeHandler(
 
 		// Create a concentrated liquidity pool for DAI/FURY.
 		// Link the DAI/FURY balancer pool to the cl pool.
-		clPool, err := keepers.GAMMKeeper.CreateCanonicalConcentratedLiquidityPoolAndMigrationLink(ctx, DaiOsmoPoolId, DesiredDenom0, SpreadFactor, TickSpacing)
+		clPool, err := keepers.GAMMKeeper.CreateCanonicalConcentratedLiquidityPoolAndMigrationLink(ctx, DaiFuryPoolId, DesiredDenom0, SpreadFactor, TickSpacing)
 		if err != nil {
 			return nil, err
 		}
@@ -139,18 +139,18 @@ func CreateUpgradeHandler(
 
 		// Determine the amount of FURY that can be bought with 1 DAI.
 		oneDai := sdk.NewCoin(DAIIBCDenom, osmomath.NewInt(1000000000000000000))
-		daiOsmoGammPool, err := keepers.PoolManagerKeeper.GetPool(ctx, DaiOsmoPoolId)
+		daiFuryGammPool, err := keepers.PoolManagerKeeper.GetPool(ctx, DaiFuryPoolId)
 		if err != nil {
 			return nil, err
 		}
-		respectiveOsmo, err := keepers.GAMMKeeper.CalcOutAmtGivenIn(ctx, daiOsmoGammPool, oneDai, DesiredDenom0, osmomath.ZeroDec())
+		respectiveFury, err := keepers.GAMMKeeper.CalcOutAmtGivenIn(ctx, daiFuryGammPool, oneDai, DesiredDenom0, osmomath.ZeroDec())
 		if err != nil {
 			return nil, err
 		}
 
 		// Create a full range position via the community pool with the funds that were swapped.
-		fullRangeOsmoDaiCoins := sdk.NewCoins(respectiveOsmo, oneDai)
-		positionData, err := keepers.ConcentratedLiquidityKeeper.CreateFullRangePosition(ctx, clPoolId, communityPoolAddress, fullRangeOsmoDaiCoins)
+		fullRangeFuryDaiCoins := sdk.NewCoins(respectiveFury, oneDai)
+		positionData, err := keepers.ConcentratedLiquidityKeeper.CreateFullRangePosition(ctx, clPoolId, communityPoolAddress, fullRangeFuryDaiCoins)
 		if err != nil {
 			return nil, err
 		}
@@ -159,8 +159,8 @@ func CreateUpgradeHandler(
 
 		// Remove coins we used from the community pool to make the CL position
 		feePool := keepers.DistrKeeper.GetFeePool(ctx)
-		fulllRangeOsmoDaiCoinsUsed := sdk.NewCoins(sdk.NewCoin(DesiredDenom0, positionData.Amount0), sdk.NewCoin(DAIIBCDenom, positionData.Amount1))
-		newPool, negative := feePool.CommunityPool.SafeSub(sdk.NewDecCoinsFromCoins(fulllRangeOsmoDaiCoinsUsed...))
+		fulllRangeFuryDaiCoinsUsed := sdk.NewCoins(sdk.NewCoin(DesiredDenom0, positionData.Amount0), sdk.NewCoin(DAIIBCDenom, positionData.Amount1))
+		newPool, negative := feePool.CommunityPool.SafeSub(sdk.NewDecCoinsFromCoins(fulllRangeFuryDaiCoinsUsed...))
 		if negative {
 			return nil, fmt.Errorf("community pool cannot be negative: %s", newPool)
 		}

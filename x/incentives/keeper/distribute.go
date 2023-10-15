@@ -474,7 +474,7 @@ func (k Keeper) calculateGroupWeights(ctx sdk.Context, group types.Group) (types
 		}
 
 		// Get new volume for pool. Assert GTE gauge's weight
-		cumulativePoolVolume := k.pmk.GetOsmoVolumeForPool(ctx, poolId)
+		cumulativePoolVolume := k.pmk.GetFuryVolumeForPool(ctx, poolId)
 
 		// If new volume is 0, there was an issue with volume tracking. Return error.
 		// We expect this to be handled quietly in update logic but not in init logic.

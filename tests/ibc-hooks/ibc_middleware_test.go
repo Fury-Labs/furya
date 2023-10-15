@@ -749,7 +749,7 @@ func (suite *HooksTestSuite) SetupCrosschainSwaps(chainName Chain, setupForwardi
 
 	registryAddr, _, _, _ := suite.SetupCrosschainRegistry(chainName)
 	suite.setChainChannelLinks(registryAddr, chainName)
-	suite.setAllPrefixesToOsmo(registryAddr, chainName)
+	suite.setAllPrefixesToFury(registryAddr, chainName)
 	if setupForwarding {
 		suite.setForwardingOnAllChains(registryAddr)
 	}
@@ -892,7 +892,7 @@ func (suite *HooksTestSuite) setChainChannelLinks(registryAddr sdk.AccAddress, c
 
 }
 
-func (suite *HooksTestSuite) setAllPrefixesToOsmo(registryAddr sdk.AccAddress, chainName Chain) {
+func (suite *HooksTestSuite) setAllPrefixesToFury(registryAddr sdk.AccAddress, chainName Chain) {
 	chain := suite.GetChain(chainName)
 	ctx := chain.GetContext()
 	owner := chain.SenderAccount.GetAddress()
@@ -1011,7 +1011,7 @@ func (suite *HooksTestSuite) TestUnwrapToken() {
 	// Instantiate contract and set up three chains with funds sent between each
 	registryAddr, _, token0CBA, _ := suite.SetupCrosschainRegistry(ChainA)
 	suite.setChainChannelLinks(registryAddr, ChainA)
-	suite.setAllPrefixesToOsmo(registryAddr, ChainA)
+	suite.setAllPrefixesToFury(registryAddr, ChainA)
 	suite.setForwardingOnAllChains(registryAddr)
 
 	chain := suite.GetChain(ChainA)
@@ -1716,7 +1716,7 @@ func (suite *HooksTestSuite) TestMultiHopXCS() {
 		},
 
 		{
-			name: "Native to OsmoNative into same chain",
+			name: "Native to FuryNative into same chain",
 			// This is currently failing when running all tests together but not individually. TODO: Figure out why
 			sender:        actorChainB,
 			swapFor:       "token0",
@@ -1737,7 +1737,7 @@ func (suite *HooksTestSuite) TestMultiHopXCS() {
 		},
 
 		{
-			name:          "OsmoNative to Native into same chain",
+			name:          "FuryNative to Native into same chain",
 			sender:        actorChainB,
 			swapFor:       transfertypes.DenomTrace{Path: suite.GetPath(ChainA, ChainB), BaseDenom: "token1"}.IBCDenom(),
 			receiver:      actorChainB,

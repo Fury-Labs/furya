@@ -174,7 +174,7 @@ type TakerFeeParams struct {
 	//     stakers.
 	//   - community_pool: the percent of the taker fee that gets sent to the
 	//     community pool.
-	OsmoTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,2,opt,name=osmo_taker_fee_distribution,json=osmoTakerFeeDistribution,proto3" json:"osmo_taker_fee_distribution"`
+	FuryTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,2,opt,name=osmo_taker_fee_distribution,json=osmoTakerFeeDistribution,proto3" json:"osmo_taker_fee_distribution"`
 	// non_osmo_taker_fee_distribution defines the distribution of taker fees
 	// generated in non-FURY. As of this writing, it has two categories:
 	//   - staking_rewards: the percent of the taker fee that gets swapped to FURY
@@ -184,7 +184,7 @@ type TakerFeeParams struct {
 	//     that denom is sent directly to the community pool. Otherwise, it is
 	//     swapped to the community_pool_denom_to_swap_non_whitelisted_assets_to and
 	//     then sent to the community pool as that denom.
-	NonOsmoTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,3,opt,name=non_osmo_taker_fee_distribution,json=nonOsmoTakerFeeDistribution,proto3" json:"non_osmo_taker_fee_distribution"`
+	NonFuryTakerFeeDistribution TakerFeeDistributionPercentage `protobuf:"bytes,3,opt,name=non_osmo_taker_fee_distribution,json=nonFuryTakerFeeDistribution,proto3" json:"non_osmo_taker_fee_distribution"`
 	// admin_addresses is a list of addresses that are allowed to set and remove
 	// custom taker fees for denom pairs. Governance also has the ability to set
 	// and remove custom taker fees for denom pairs, but with the normal
@@ -237,16 +237,16 @@ func (m *TakerFeeParams) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TakerFeeParams proto.InternalMessageInfo
 
-func (m *TakerFeeParams) GetOsmoTakerFeeDistribution() TakerFeeDistributionPercentage {
+func (m *TakerFeeParams) GetFuryTakerFeeDistribution() TakerFeeDistributionPercentage {
 	if m != nil {
-		return m.OsmoTakerFeeDistribution
+		return m.FuryTakerFeeDistribution
 	}
 	return TakerFeeDistributionPercentage{}
 }
 
-func (m *TakerFeeParams) GetNonOsmoTakerFeeDistribution() TakerFeeDistributionPercentage {
+func (m *TakerFeeParams) GetNonFuryTakerFeeDistribution() TakerFeeDistributionPercentage {
 	if m != nil {
-		return m.NonOsmoTakerFeeDistribution
+		return m.NonFuryTakerFeeDistribution
 	}
 	return TakerFeeDistributionPercentage{}
 }
@@ -535,7 +535,7 @@ func (m *TakerFeeParams) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		}
 	}
 	{
-		size, err := m.NonOsmoTakerFeeDistribution.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.NonFuryTakerFeeDistribution.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -545,7 +545,7 @@ func (m *TakerFeeParams) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i--
 	dAtA[i] = 0x1a
 	{
-		size, err := m.OsmoTakerFeeDistribution.MarshalToSizedBuffer(dAtA[:i])
+		size, err := m.FuryTakerFeeDistribution.MarshalToSizedBuffer(dAtA[:i])
 		if err != nil {
 			return 0, err
 		}
@@ -672,9 +672,9 @@ func (m *TakerFeeParams) Size() (n int) {
 	_ = l
 	l = m.DefaultTakerFee.Size()
 	n += 1 + l + sovGenesis(uint64(l))
-	l = m.OsmoTakerFeeDistribution.Size()
+	l = m.FuryTakerFeeDistribution.Size()
 	n += 1 + l + sovGenesis(uint64(l))
-	l = m.NonOsmoTakerFeeDistribution.Size()
+	l = m.NonFuryTakerFeeDistribution.Size()
 	n += 1 + l + sovGenesis(uint64(l))
 	if len(m.AdminAddresses) > 0 {
 		for _, s := range m.AdminAddresses {
@@ -1064,7 +1064,7 @@ func (m *TakerFeeParams) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field OsmoTakerFeeDistribution", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field FuryTakerFeeDistribution", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1091,13 +1091,13 @@ func (m *TakerFeeParams) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.OsmoTakerFeeDistribution.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.FuryTakerFeeDistribution.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NonOsmoTakerFeeDistribution", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field NonFuryTakerFeeDistribution", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -1124,7 +1124,7 @@ func (m *TakerFeeParams) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.NonOsmoTakerFeeDistribution.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.NonFuryTakerFeeDistribution.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

@@ -330,7 +330,7 @@ func (m *AssetMultiplierRequest) GetDenom() string {
 }
 
 type AssetMultiplierResponse struct {
-	OsmoEquivalentMultiplier *OsmoEquivalentMultiplierRecord `protobuf:"bytes,1,opt,name=osmo_equivalent_multiplier,json=osmoEquivalentMultiplier,proto3" json:"osmo_equivalent_multiplier,omitempty"`
+	FuryEquivalentMultiplier *FuryEquivalentMultiplierRecord `protobuf:"bytes,1,opt,name=osmo_equivalent_multiplier,json=osmoEquivalentMultiplier,proto3" json:"osmo_equivalent_multiplier,omitempty"`
 }
 
 func (m *AssetMultiplierResponse) Reset()         { *m = AssetMultiplierResponse{} }
@@ -366,9 +366,9 @@ func (m *AssetMultiplierResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AssetMultiplierResponse proto.InternalMessageInfo
 
-func (m *AssetMultiplierResponse) GetOsmoEquivalentMultiplier() *OsmoEquivalentMultiplierRecord {
+func (m *AssetMultiplierResponse) GetFuryEquivalentMultiplier() *FuryEquivalentMultiplierRecord {
 	if m != nil {
-		return m.OsmoEquivalentMultiplier
+		return m.FuryEquivalentMultiplier
 	}
 	return nil
 }
@@ -724,7 +724,7 @@ func (m *QueryTotalDelegationByValidatorForDenomResponse) GetAssets() []Delegati
 type Delegations struct {
 	ValAddr        string                `protobuf:"bytes,1,opt,name=val_addr,json=valAddr,proto3" json:"val_addr,omitempty"`
 	AmountSfsd     cosmossdk_io_math.Int `protobuf:"bytes,2,opt,name=amount_sfsd,json=amountSfsd,proto3,customtype=cosmossdk.io/math.Int" json:"amount_sfsd" yaml:"amount_sfsd"`
-	OsmoEquivalent cosmossdk_io_math.Int `protobuf:"bytes,3,opt,name=osmo_equivalent,json=osmoEquivalent,proto3,customtype=cosmossdk.io/math.Int" json:"osmo_equivalent" yaml:"osmo_equivalent"`
+	FuryEquivalent cosmossdk_io_math.Int `protobuf:"bytes,3,opt,name=osmo_equivalent,json=osmoEquivalent,proto3,customtype=cosmossdk.io/math.Int" json:"osmo_equivalent" yaml:"osmo_equivalent"`
 }
 
 func (m *Delegations) Reset()         { *m = Delegations{} }
@@ -2865,9 +2865,9 @@ func (m *AssetMultiplierResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	_ = i
 	var l int
 	_ = l
-	if m.OsmoEquivalentMultiplier != nil {
+	if m.FuryEquivalentMultiplier != nil {
 		{
-			size, err := m.OsmoEquivalentMultiplier.MarshalToSizedBuffer(dAtA[:i])
+			size, err := m.FuryEquivalentMultiplier.MarshalToSizedBuffer(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -3164,9 +3164,9 @@ func (m *Delegations) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	var l int
 	_ = l
 	{
-		size := m.OsmoEquivalent.Size()
+		size := m.FuryEquivalent.Size()
 		i -= size
-		if _, err := m.OsmoEquivalent.MarshalTo(dAtA[i:]); err != nil {
+		if _, err := m.FuryEquivalent.MarshalTo(dAtA[i:]); err != nil {
 			return 0, err
 		}
 		i = encodeVarintQuery(dAtA, i, uint64(size))
@@ -4073,8 +4073,8 @@ func (m *AssetMultiplierResponse) Size() (n int) {
 	}
 	var l int
 	_ = l
-	if m.OsmoEquivalentMultiplier != nil {
-		l = m.OsmoEquivalentMultiplier.Size()
+	if m.FuryEquivalentMultiplier != nil {
+		l = m.FuryEquivalentMultiplier.Size()
 		n += 1 + l + sovQuery(uint64(l))
 	}
 	return n
@@ -4201,7 +4201,7 @@ func (m *Delegations) Size() (n int) {
 	}
 	l = m.AmountSfsd.Size()
 	n += 1 + l + sovQuery(uint64(l))
-	l = m.OsmoEquivalent.Size()
+	l = m.FuryEquivalent.Size()
 	n += 1 + l + sovQuery(uint64(l))
 	return n
 }
@@ -5066,7 +5066,7 @@ func (m *AssetMultiplierResponse) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field OsmoEquivalentMultiplier", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field FuryEquivalentMultiplier", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -5093,10 +5093,10 @@ func (m *AssetMultiplierResponse) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if m.OsmoEquivalentMultiplier == nil {
-				m.OsmoEquivalentMultiplier = &OsmoEquivalentMultiplierRecord{}
+			if m.FuryEquivalentMultiplier == nil {
+				m.FuryEquivalentMultiplier = &FuryEquivalentMultiplierRecord{}
 			}
-			if err := m.OsmoEquivalentMultiplier.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.FuryEquivalentMultiplier.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -5910,7 +5910,7 @@ func (m *Delegations) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field OsmoEquivalent", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field FuryEquivalent", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -5938,7 +5938,7 @@ func (m *Delegations) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			if err := m.OsmoEquivalent.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			if err := m.FuryEquivalent.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

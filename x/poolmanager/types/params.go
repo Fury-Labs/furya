@@ -15,8 +15,8 @@ import (
 var (
 	KeyPoolCreationFee                                = []byte("PoolCreationFee")
 	KeyDefaultTakerFee                                = []byte("DefaultTakerFee")
-	KeyOsmoTakerFeeDistribution                       = []byte("OsmoTakerFeeDistribution")
-	KeyNonOsmoTakerFeeDistribution                    = []byte("NonOsmoTakerFeeDistribution")
+	KeyFuryTakerFeeDistribution                       = []byte("FuryTakerFeeDistribution")
+	KeyNonFuryTakerFeeDistribution                    = []byte("NonFuryTakerFeeDistribution")
 	KeyAdminAddresses                                 = []byte("AdminAddresses")
 	KeyCommunityPoolDenomToSwapNonWhitelistedAssetsTo = []byte("CommunityPoolDenomToSwapNonWhitelistedAssetsTo")
 	KeyAuthorizedQuoteDenoms                          = []byte("AuthorizedQuoteDenoms")
@@ -30,15 +30,15 @@ func ParamKeyTable() paramtypes.KeyTable {
 
 func NewParams(poolCreationFee sdk.Coins,
 	defaultTakerFee osmomath.Dec,
-	osmoTakerFeeDistribution, nonOsmoTakerFeeDistribution TakerFeeDistributionPercentage,
+	osmoTakerFeeDistribution, nonFuryTakerFeeDistribution TakerFeeDistributionPercentage,
 	adminAddresses, authorizedQuoteDenoms []string,
 	communityPoolDenomToSwapNonWhitelistedAssetsTo string) Params {
 	return Params{
 		PoolCreationFee: poolCreationFee,
 		TakerFeeParams: TakerFeeParams{
 			DefaultTakerFee:                                defaultTakerFee,
-			OsmoTakerFeeDistribution:                       osmoTakerFeeDistribution,
-			NonOsmoTakerFeeDistribution:                    nonOsmoTakerFeeDistribution,
+			FuryTakerFeeDistribution:                       osmoTakerFeeDistribution,
+			NonFuryTakerFeeDistribution:                    nonFuryTakerFeeDistribution,
 			AdminAddresses:                                 adminAddresses,
 			CommunityPoolDenomToSwapNonWhitelistedAssetsTo: communityPoolDenomToSwapNonWhitelistedAssetsTo,
 		},
@@ -52,11 +52,11 @@ func DefaultParams() Params {
 		PoolCreationFee: sdk.Coins{sdk.NewInt64Coin(appparams.BaseCoinUnit, 1000_000_000)}, // 1000 FURY
 		TakerFeeParams: TakerFeeParams{
 			DefaultTakerFee: osmomath.ZeroDec(), // 0%
-			OsmoTakerFeeDistribution: TakerFeeDistributionPercentage{
+			FuryTakerFeeDistribution: TakerFeeDistributionPercentage{
 				StakingRewards: osmomath.MustNewDecFromStr("1"), // 100%
 				CommunityPool:  osmomath.MustNewDecFromStr("0"), // 0%
 			},
-			NonOsmoTakerFeeDistribution: TakerFeeDistributionPercentage{
+			NonFuryTakerFeeDistribution: TakerFeeDistributionPercentage{
 				StakingRewards: osmomath.MustNewDecFromStr("0.67"), // 67%
 				CommunityPool:  osmomath.MustNewDecFromStr("0.33"), // 33%
 			},
@@ -81,10 +81,10 @@ func (p Params) Validate() error {
 	if err := validateDefaultTakerFee(p.TakerFeeParams.DefaultTakerFee); err != nil {
 		return err
 	}
-	if err := validateTakerFeeDistribution(p.TakerFeeParams.OsmoTakerFeeDistribution); err != nil {
+	if err := validateTakerFeeDistribution(p.TakerFeeParams.FuryTakerFeeDistribution); err != nil {
 		return err
 	}
-	if err := validateTakerFeeDistribution(p.TakerFeeParams.NonOsmoTakerFeeDistribution); err != nil {
+	if err := validateTakerFeeDistribution(p.TakerFeeParams.NonFuryTakerFeeDistribution); err != nil {
 		return err
 	}
 	if err := validateAdminAddresses(p.TakerFeeParams.AdminAddresses); err != nil {
@@ -108,8 +108,8 @@ func (p *Params) ParamSetPairs() paramtypes.ParamSetPairs {
 	return paramtypes.ParamSetPairs{
 		paramtypes.NewParamSetPair(KeyPoolCreationFee, &p.PoolCreationFee, validatePoolCreationFee),
 		paramtypes.NewParamSetPair(KeyDefaultTakerFee, &p.TakerFeeParams.DefaultTakerFee, validateDefaultTakerFee),
-		paramtypes.NewParamSetPair(KeyOsmoTakerFeeDistribution, &p.TakerFeeParams.OsmoTakerFeeDistribution, validateTakerFeeDistribution),
-		paramtypes.NewParamSetPair(KeyNonOsmoTakerFeeDistribution, &p.TakerFeeParams.NonOsmoTakerFeeDistribution, validateTakerFeeDistribution),
+		paramtypes.NewParamSetPair(KeyFuryTakerFeeDistribution, &p.TakerFeeParams.FuryTakerFeeDistribution, validateTakerFeeDistribution),
+		paramtypes.NewParamSetPair(KeyNonFuryTakerFeeDistribution, &p.TakerFeeParams.NonFuryTakerFeeDistribution, validateTakerFeeDistribution),
 		paramtypes.NewParamSetPair(KeyAdminAddresses, &p.TakerFeeParams.AdminAddresses, validateAdminAddresses),
 		paramtypes.NewParamSetPair(KeyCommunityPoolDenomToSwapNonWhitelistedAssetsTo, &p.TakerFeeParams.CommunityPoolDenomToSwapNonWhitelistedAssetsTo, validateCommunityPoolDenomToSwapNonWhitelistedAssetsTo),
 		paramtypes.NewParamSetPair(KeyAuthorizedQuoteDenoms, &p.AuthorizedQuoteDenoms, validateAuthorizedQuoteDenoms),

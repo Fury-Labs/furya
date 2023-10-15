@@ -8,52 +8,52 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
-func (s *KeeperTestSuite) TestOsmoEquivalentMultiplierSetGetDeleteFlow() {
+func (s *KeeperTestSuite) TestFuryEquivalentMultiplierSetGetDeleteFlow() {
 	s.SetupTest()
 
 	// initial check
-	multipliers := s.App.SuperfluidKeeper.GetAllOsmoEquivalentMultipliers(s.Ctx)
+	multipliers := s.App.SuperfluidKeeper.GetAllFuryEquivalentMultipliers(s.Ctx)
 	s.Require().Len(multipliers, 0)
 
 	// set multiplier
-	s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, 1, DefaultGammAsset, osmomath.NewDec(2))
+	s.App.SuperfluidKeeper.SetFuryEquivalentMultiplier(s.Ctx, 1, DefaultGammAsset, osmomath.NewDec(2))
 
 	// get multiplier
-	multiplier := s.App.SuperfluidKeeper.GetOsmoEquivalentMultiplier(s.Ctx, DefaultGammAsset)
+	multiplier := s.App.SuperfluidKeeper.GetFuryEquivalentMultiplier(s.Ctx, DefaultGammAsset)
 	s.Require().Equal(multiplier, osmomath.NewDec(2))
 
 	// check multipliers
-	expectedMultipliers := []types.OsmoEquivalentMultiplierRecord{
+	expectedMultipliers := []types.FuryEquivalentMultiplierRecord{
 		{
 			EpochNumber: 1,
 			Denom:       DefaultGammAsset,
 			Multiplier:  osmomath.NewDec(2),
 		},
 	}
-	multipliers = s.App.SuperfluidKeeper.GetAllOsmoEquivalentMultipliers(s.Ctx)
+	multipliers = s.App.SuperfluidKeeper.GetAllFuryEquivalentMultipliers(s.Ctx)
 	s.Require().Equal(multipliers, expectedMultipliers)
 
 	// test last epoch price
-	multiplier = s.App.SuperfluidKeeper.GetOsmoEquivalentMultiplier(s.Ctx, DefaultGammAsset)
+	multiplier = s.App.SuperfluidKeeper.GetFuryEquivalentMultiplier(s.Ctx, DefaultGammAsset)
 	s.Require().Equal(multiplier, osmomath.NewDec(2))
 
 	// delete multiplier
-	s.App.SuperfluidKeeper.DeleteOsmoEquivalentMultiplier(s.Ctx, DefaultGammAsset)
+	s.App.SuperfluidKeeper.DeleteFuryEquivalentMultiplier(s.Ctx, DefaultGammAsset)
 
 	// get multiplier
-	multiplier = s.App.SuperfluidKeeper.GetOsmoEquivalentMultiplier(s.Ctx, DefaultGammAsset)
+	multiplier = s.App.SuperfluidKeeper.GetFuryEquivalentMultiplier(s.Ctx, DefaultGammAsset)
 	s.Require().Equal(multiplier, osmomath.NewDec(0))
 
 	// check multipliers
-	multipliers = s.App.SuperfluidKeeper.GetAllOsmoEquivalentMultipliers(s.Ctx)
+	multipliers = s.App.SuperfluidKeeper.GetAllFuryEquivalentMultipliers(s.Ctx)
 	s.Require().Len(multipliers, 0)
 
 	// test last epoch price
-	multiplier = s.App.SuperfluidKeeper.GetOsmoEquivalentMultiplier(s.Ctx, DefaultGammAsset)
+	multiplier = s.App.SuperfluidKeeper.GetFuryEquivalentMultiplier(s.Ctx, DefaultGammAsset)
 	s.Require().Equal(multiplier, osmomath.NewDec(0))
 }
 
-func (s *KeeperTestSuite) TestGetSuperfluidOSMOTokens() {
+func (s *KeeperTestSuite) TestGetSuperfluidFURYTokens() {
 	s.SetupTest()
 	minRiskFactor := s.App.SuperfluidKeeper.GetParams(s.Ctx).MinimumRiskFactor
 	poolCoins := sdk.NewCoins(sdk.NewCoin("stake", osmomath.NewInt(1000000000000000000)), sdk.NewCoin("foo", osmomath.NewInt(1000000000000000000)))
@@ -68,14 +68,14 @@ func (s *KeeperTestSuite) TestGetSuperfluidOSMOTokens() {
 	epoch := int64(1)
 
 	// Set multiplier
-	s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, epoch, gammShareDenom, multiplier)
+	s.App.SuperfluidKeeper.SetFuryEquivalentMultiplier(s.Ctx, epoch, gammShareDenom, multiplier)
 
 	// Get multiplier
-	multiplier = s.App.SuperfluidKeeper.GetOsmoEquivalentMultiplier(s.Ctx, gammShareDenom)
+	multiplier = s.App.SuperfluidKeeper.GetFuryEquivalentMultiplier(s.Ctx, gammShareDenom)
 	s.Require().Equal(multiplier, osmomath.NewDec(2))
 
 	// Should get error since asset is not superfluid enabled
-	osmoTokens, err := s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, gammShareDenom, testAmount)
+	osmoTokens, err := s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(s.Ctx, gammShareDenom, testAmount)
 	s.Require().Error(err)
 	s.Require().ErrorIs(err, types.ErrNonSuperfluidAsset)
 	s.Require().Equal(osmoTokens, osmomath.NewInt(0))
@@ -89,14 +89,14 @@ func (s *KeeperTestSuite) TestGetSuperfluidOSMOTokens() {
 	s.Require().NoError(err)
 
 	// Reset multiplier
-	s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, epoch, gammShareDenom, multiplier)
+	s.App.SuperfluidKeeper.SetFuryEquivalentMultiplier(s.Ctx, epoch, gammShareDenom, multiplier)
 
 	// Get superfluid FURY tokens
-	osmoTokens, err = s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, gammShareDenom, testAmount)
+	osmoTokens, err = s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(s.Ctx, gammShareDenom, testAmount)
 	s.Require().NoError(err)
 
 	// Adjust result with risk factor
-	osmoTokensRiskAdjusted := s.App.SuperfluidKeeper.GetRiskAdjustedOsmoValue(s.Ctx, osmoTokens)
+	osmoTokensRiskAdjusted := s.App.SuperfluidKeeper.GetRiskAdjustedFuryValue(s.Ctx, osmoTokens)
 
 	// Check result
 	s.Require().Equal(testAmount.ToLegacyDec().Mul(minRiskFactor).TruncateInt().String(), osmoTokensRiskAdjusted.String())
@@ -110,14 +110,14 @@ func (s *KeeperTestSuite) TestGetSuperfluidOSMOTokens() {
 	s.Require().NoError(err)
 
 	// Reset multiplier
-	s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, epoch, clShareDenom, multiplier)
+	s.App.SuperfluidKeeper.SetFuryEquivalentMultiplier(s.Ctx, epoch, clShareDenom, multiplier)
 
 	// Get superfluid FURY tokens
-	osmoTokens, err = s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, clShareDenom, testAmount)
+	osmoTokens, err = s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(s.Ctx, clShareDenom, testAmount)
 	s.Require().NoError(err)
 
 	// Adjust result with risk factor
-	osmoTokensRiskAdjusted = s.App.SuperfluidKeeper.GetRiskAdjustedOsmoValue(s.Ctx, osmoTokens)
+	osmoTokensRiskAdjusted = s.App.SuperfluidKeeper.GetRiskAdjustedFuryValue(s.Ctx, osmoTokens)
 
 	// Check result
 	s.Require().Equal(testAmount.ToLegacyDec().Mul(minRiskFactor).TruncateInt().String(), osmoTokensRiskAdjusted.String())

@@ -1014,7 +1014,7 @@ func (s *KeeperTestSuite) TestDelegateBondedTokens() {
 		name                 string
 		delegator            sdk.AccAddress
 		lockId               uint64
-		expectedUnlockedOsmo sdk.Coin
+		expectedUnlockedFury sdk.Coin
 		expectedDelegations  []osmomath.Dec
 		setValSet            bool
 		expectPass           bool
@@ -1023,7 +1023,7 @@ func (s *KeeperTestSuite) TestDelegateBondedTokens() {
 			name:                 "DelegateBondedTokens with existing fury denom lockId, bonded and <= 2 weeks bond duration",
 			delegator:            sdk.AccAddress([]byte("addr1---------------")),
 			lockId:               testLock[0].ID,
-			expectedUnlockedOsmo: sdk.NewCoin(appParams.BaseCoinUnit, osmomath.NewInt(60_000_000)), // delegator has 100osmo and creates 5 locks 10osmo each, forceUnlock only 1 lock
+			expectedUnlockedFury: sdk.NewCoin(appParams.BaseCoinUnit, osmomath.NewInt(60_000_000)), // delegator has 100osmo and creates 5 locks 10osmo each, forceUnlock only 1 lock
 			expectedDelegations:  []osmomath.Dec{osmomath.NewDec(2_000_000), osmomath.NewDec(3_300_000), osmomath.NewDec(1_200_000), osmomath.NewDec(3_500_000)},
 			setValSet:            true,
 			expectPass:           true,
@@ -1099,7 +1099,7 @@ func (s *KeeperTestSuite) TestDelegateBondedTokens() {
 				s.Require().Equal(len(existingLocks), len(testLock)-1)
 
 				balance := s.App.BankKeeper.GetBalance(s.Ctx, test.delegator, appParams.BaseCoinUnit)
-				s.Require().Equal(test.expectedUnlockedOsmo, balance)
+				s.Require().Equal(test.expectedUnlockedFury, balance)
 
 				// check if delegation has been done by checking if expectedDelegations matches after delegation
 				for i, val := range preferences {

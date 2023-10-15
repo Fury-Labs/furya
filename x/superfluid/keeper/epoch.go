@@ -43,7 +43,7 @@ func (k Keeper) AfterEpochStartBeginBlock(ctx sdk.Context) {
 	// Exclusive of current epoch's rewards, inclusive of next epoch's rewards.
 	ctx.Logger().Info("Update all fury equivalency multipliers")
 	for _, asset := range k.GetAllSuperfluidAssets(ctx) {
-		err := k.UpdateOsmoEquivalentMultipliers(ctx, asset, curEpoch)
+		err := k.UpdateFuryEquivalentMultipliers(ctx, asset, curEpoch)
 		if err != nil {
 			// UPDATE: balancer pools are expected to be skipped only on error due to being
 			// already well tested in production.
@@ -112,9 +112,9 @@ func (k Keeper) distributeSuperfluidGauges(ctx sdk.Context) {
 	}
 }
 
-func (k Keeper) UpdateOsmoEquivalentMultipliers(ctx sdk.Context, asset types.SuperfluidAsset, newEpochNumber int64) error {
+func (k Keeper) UpdateFuryEquivalentMultipliers(ctx sdk.Context, asset types.SuperfluidAsset, newEpochNumber int64) error {
 	if asset.AssetType == types.SuperfluidAssetTypeLPShare {
-		// LP_token_Osmo_equivalent = OSMO_amount_on_pool / LP_token_supply
+		// LP_token_Fury_equivalent = FURY_amount_on_pool / LP_token_supply
 		poolId := gammtypes.MustGetPoolIdFromShareDenom(asset.Denom)
 		pool, err := k.gk.GetPoolAndPoke(ctx, poolId)
 		if err != nil {
@@ -135,12 +135,12 @@ func (k Keeper) UpdateOsmoEquivalentMultipliers(ctx sdk.Context, asset types.Sup
 			return err
 		}
 
-		multiplier := k.calculateOsmoBackingPerShare(pool, osmoPoolAsset)
-		k.SetOsmoEquivalentMultiplier(ctx, newEpochNumber, asset.Denom, multiplier)
+		multiplier := k.calculateFuryBackingPerShare(pool, osmoPoolAsset)
+		k.SetFuryEquivalentMultiplier(ctx, newEpochNumber, asset.Denom, multiplier)
 	} else if asset.AssetType == types.SuperfluidAssetTypeConcentratedShare {
 		// https://github.com/fury-labs/furya/issues/6229
 		_ = osmoutils.ApplyFuncIfNoError(ctx, func(cacheCtx sdk.Context) error {
-			return k.updateConcentratedOsmoEquivalentMultiplier(cacheCtx, asset, newEpochNumber)
+			return k.updateConcentratedFuryEquivalentMultiplier(cacheCtx, asset, newEpochNumber)
 		})
 	} else if asset.AssetType == types.SuperfluidAssetTypeNative {
 		// TODO: Consider deleting superfluid asset type native
@@ -150,9 +150,9 @@ func (k Keeper) UpdateOsmoEquivalentMultipliers(ctx sdk.Context, asset types.Sup
 	return nil
 }
 
-// updateConcentratedOsmoEquivalentMultiplier runs the logic for updating the FURY equivalent multiplier for a concentrated liquidity pool.
-func (k Keeper) updateConcentratedOsmoEquivalentMultiplier(ctx sdk.Context, asset types.SuperfluidAsset, newEpochNumber int64) error {
-	// LP_token_Osmo_equivalent = OSMO_amount_on_pool / LP_token_supply
+// updateConcentratedFuryEquivalentMultiplier runs the logic for updating the FURY equivalent multiplier for a concentrated liquidity pool.
+func (k Keeper) updateConcentratedFuryEquivalentMultiplier(ctx sdk.Context, asset types.SuperfluidAsset, newEpochNumber int64) error {
+	// LP_token_Fury_equivalent = FURY_amount_on_pool / LP_token_supply
 	poolId := cltypes.MustGetPoolIdFromShareDenom(asset.Denom)
 	pool, err := k.clk.GetConcentratedPoolById(ctx, poolId)
 	if err != nil {
@@ -197,7 +197,7 @@ func (k Keeper) updateConcentratedOsmoEquivalentMultiplier(ctx sdk.Context, asse
 
 	// calculate multiplier and set it
 	multiplier := osmoPoolAsset.ToLegacyDec().Quo(fullRangeLiquidity)
-	k.SetOsmoEquivalentMultiplier(ctx, newEpochNumber, asset.Denom, multiplier)
+	k.SetFuryEquivalentMultiplier(ctx, newEpochNumber, asset.Denom, multiplier)
 
 	return nil
 }

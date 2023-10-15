@@ -61,7 +61,7 @@ message TakerFeeParams {
   // - community_pool: the percent of the taker fee that gets sent to the
   //   community pool.
   TakerFeeDistributionPercentage osmo_taker_fee_distribution = 2 [
-    (gogoproto.customname) = "OsmoTakerFeeDistribution",
+    (gogoproto.customname) = "FuryTakerFeeDistribution",
     (gogoproto.nullable) = false
   ];
   // non_osmo_taker_fee_distribution defines the distribution of taker fees
@@ -74,7 +74,7 @@ message TakerFeeParams {
   //   swapped to the community_pool_denom_to_swap_non_whitelisted_assets_to and
   //   then sent to the community pool as that denom.
   TakerFeeDistributionPercentage non_osmo_taker_fee_distribution = 3 [
-    (gogoproto.customname) = "NonOsmoTakerFeeDistribution",
+    (gogoproto.customname) = "NonFuryTakerFeeDistribution",
     (gogoproto.nullable) = false
   ];
   // admin_addresses is a list of addresses that are allowed to set and remove

@@ -613,7 +613,7 @@ func (s *KeeperTestHelper) SetupVolumeForPools(poolIDs []uint64, volumesForEachP
 		fmt.Printf("currentVolume %d %s\n", i, currentVolume)
 
 		// Retrieve the existing volume to add to it.
-		existingVolume := s.App.PoolManagerKeeper.GetOsmoVolumeForPool(s.Ctx, currentPoolID)
+		existingVolume := s.App.PoolManagerKeeper.GetFuryVolumeForPool(s.Ctx, currentPoolID)
 
 		s.App.PoolManagerKeeper.SetVolume(s.Ctx, currentPoolID, sdk.NewCoins(sdk.NewCoin(bondDenom, existingVolume.Add(currentVolume))))
 

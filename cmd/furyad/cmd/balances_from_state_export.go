@@ -212,12 +212,12 @@ Example:
 					acc = newDerivedAccount(address)
 				}
 
-				unbondingOsmos := osmomath.NewInt(0)
+				unbondingFurys := osmomath.NewInt(0)
 				for _, entry := range unbonding.Entries {
-					unbondingOsmos = unbondingOsmos.Add(entry.Balance)
+					unbondingFurys = unbondingFurys.Add(entry.Balance)
 				}
 
-				acc.UnbondingStake = acc.UnbondingStake.Add(unbondingOsmos)
+				acc.UnbondingStake = acc.UnbondingStake.Add(unbondingFurys)
 
 				snapshotAccs[address] = acc
 			}
@@ -237,9 +237,9 @@ Example:
 				}
 
 				val := validators[delegation.ValidatorAddress]
-				stakedOsmos := delegation.Shares.MulInt(val.Tokens).Quo(val.DelegatorShares).RoundInt()
+				stakedFurys := delegation.Shares.MulInt(val.Tokens).Quo(val.DelegatorShares).RoundInt()
 
-				acc.Staked = acc.Staked.Add(stakedOsmos)
+				acc.Staked = acc.Staked.Add(stakedFurys)
 
 				snapshotAccs[address] = acc
 			}

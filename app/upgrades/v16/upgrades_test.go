@@ -83,7 +83,7 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 				upgradeSetup()
 
 				// Create earlier pools
-				for i := uint64(1); i < v16.DaiOsmoPoolId; i++ {
+				for i := uint64(1); i < v16.DaiFuryPoolId; i++ {
 					s.PrepareBalancerPoolWithCoins(sdk.NewCoin("ufury", osmomath.NewInt(10000000000)), sdk.NewCoin("ibc/0CD3A0285E1341859B5E86B6AB7682F023D03E97607CCC1DC95706411D866DF7", defaultDaiAmount))
 				}
 
@@ -104,9 +104,9 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 				s.Require().NoError(err)
 
 				// Determine approx how much FURY will be used from community pool when 1 DAI used.
-				daiOsmoGammPool, err := s.App.PoolManagerKeeper.GetPool(s.Ctx, v16.DaiOsmoPoolId)
+				daiFuryGammPool, err := s.App.PoolManagerKeeper.GetPool(s.Ctx, v16.DaiFuryPoolId)
 				s.Require().NoError(err)
-				respectiveOsmo, err := s.App.GAMMKeeper.CalcOutAmtGivenIn(s.Ctx, daiOsmoGammPool, oneDai[0], v16.DesiredDenom0, osmomath.ZeroDec())
+				respectiveFury, err := s.App.GAMMKeeper.CalcOutAmtGivenIn(s.Ctx, daiFuryGammPool, oneDai[0], v16.DesiredDenom0, osmomath.ZeroDec())
 				s.Require().NoError(err)
 
 				// Retrieve the community pool balance before the upgrade
@@ -124,7 +124,7 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 
 				// Validate that the community pool balance has been reduced by the amount of FURY that was used to create the pool
 				// Note we use all the fury, but a small amount of DAI is left over due to rounding when creating the first position.
-				s.Require().Equal(communityPoolBalancePre.AmountOf("ufury").Sub(respectiveOsmo.Amount).String(), communityPoolBalancePost.AmountOf("ufury").String())
+				s.Require().Equal(communityPoolBalancePre.AmountOf("ufury").Sub(respectiveFury.Amount).String(), communityPoolBalancePost.AmountOf("ufury").String())
 				osmoassert.Equal(s.T(), multiplicativeTolerance, communityPoolBalancePre.AmountOf(v16.DAIIBCDenom), oneDai[0].Amount.Sub(communityPoolBalancePost.AmountOf(v16.DAIIBCDenom)))
 
 				// Validate that the fee pool community pool balance has been decreased by the amount of FURY/DAI that was used to create the pool
@@ -132,11 +132,11 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 				s.Require().Equal(communityPoolBalancePost.AmountOf(v16.DAIIBCDenom).String(), feePoolCommunityPoolPost.AmountOf(v16.DAIIBCDenom).TruncateInt().String())
 
 				// Get balancer pool's spot price.
-				balancerSpotPrice, err := s.App.GAMMKeeper.CalculateSpotPrice(s.Ctx, v16.DaiOsmoPoolId, v16.DAIIBCDenom, v16.DesiredDenom0)
+				balancerSpotPrice, err := s.App.GAMMKeeper.CalculateSpotPrice(s.Ctx, v16.DaiFuryPoolId, v16.DAIIBCDenom, v16.DesiredDenom0)
 				s.Require().NoError(err)
 
 				// Validate CL pool was created.
-				concentratedPool, err := s.App.PoolManagerKeeper.GetPool(s.Ctx, v16.DaiOsmoPoolId+1)
+				concentratedPool, err := s.App.PoolManagerKeeper.GetPool(s.Ctx, v16.DaiFuryPoolId+1)
 				s.Require().NoError(err)
 				s.Require().Equal(poolmanagertypes.Concentrated, concentratedPool.GetType())
 
@@ -156,7 +156,7 @@ func (s *UpgradeTestSuite) TestUpgrade() {
 
 				// Validate that the link is correct.
 				link := migrationInfo.BalancerToConcentratedPoolLinks[0]
-				s.Require().Equal(v16.DaiOsmoPoolId, link.BalancerPoolId)
+				s.Require().Equal(v16.DaiFuryPoolId, link.BalancerPoolId)
 				s.Require().Equal(concentratedPool.GetId(), link.ClPoolId)
 
 				// Check authorized denoms are set correctly.

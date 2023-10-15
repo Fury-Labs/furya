@@ -60,7 +60,7 @@ func CreateUpgradeHandler(
 
 		// Metadata for ufury and uion were missing prior to this upgrade.
 		// They are added in this upgrade.
-		registerOsmoIonMetadata(ctx, keepers.BankKeeper)
+		registerFuryIonMetadata(ctx, keepers.BankKeeper)
 
 		// Stride stXXX/XXX pools are being migrated from the standard balancer curve to the
 		// solidly stable curve.
@@ -81,8 +81,8 @@ func setICQParams(ctx sdk.Context, icqKeeper *icqkeeper.Keeper) {
 }
 
 func migrateBalancerPoolsToSolidlyStable(ctx sdk.Context, gammKeeper *gammkeeper.Keeper, bankKeeper bankkeeper.Keeper) {
-	// migrate stOSMO_OSMOPoolId, stJUNO_JUNOPoolId, stSTARS_STARSPoolId
-	pools := []uint64{stOSMO_OSMOPoolId, stJUNO_JUNOPoolId, stSTARS_STARSPoolId}
+	// migrate stFURY_FURYPoolId, stJUNO_JUNOPoolId, stSTARS_STARSPoolId
+	pools := []uint64{stFURY_FURYPoolId, stJUNO_JUNOPoolId, stSTARS_STARSPoolId}
 	for _, poolId := range pools {
 		migrateBalancerPoolToSolidlyStable(ctx, gammKeeper, bankKeeper, poolId)
 	}
@@ -253,7 +253,7 @@ func migrateNextPoolId(ctx sdk.Context, gammKeeper *gammkeeper.Keeper, poolmanag
 	}
 }
 
-func registerOsmoIonMetadata(ctx sdk.Context, bankKeeper bankkeeper.Keeper) {
+func registerFuryIonMetadata(ctx sdk.Context, bankKeeper bankkeeper.Keeper) {
 	ufuryMetadata := banktypes.Metadata{
 		Description: "The native token of Furya",
 		DenomUnits: []*banktypes.DenomUnit{
@@ -264,7 +264,7 @@ func registerOsmoIonMetadata(ctx sdk.Context, bankKeeper bankkeeper.Keeper) {
 			},
 			{
 				Denom:    appParams.HumanCoinUnit,
-				Exponent: appParams.OsmoExponent,
+				Exponent: appParams.FuryExponent,
 				Aliases:  nil,
 			},
 		},

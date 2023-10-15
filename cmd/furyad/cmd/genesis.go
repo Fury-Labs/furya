@@ -253,7 +253,7 @@ func MainnetGenesisParams() GenesisParams {
 				},
 				{
 					Denom:    appParams.HumanCoinUnit,
-					Exponent: appParams.OsmoExponent,
+					Exponent: appParams.FuryExponent,
 					Aliases:  nil,
 				},
 			},

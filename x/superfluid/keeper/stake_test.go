@@ -804,7 +804,7 @@ func (s *KeeperTestSuite) TestSuperfluidUndelegateAndUnbondLock() {
 				// get FURY total supply and amount to be burned
 				bondDenom := s.App.StakingKeeper.BondDenom(s.Ctx)
 				supplyBefore := s.App.BankKeeper.GetSupply(s.Ctx, bondDenom)
-				osmoAmount, err := s.App.SuperfluidKeeper.GetSuperfluidOSMOTokens(s.Ctx, intermediaryAcc.Denom, tc.unlockAmount)
+				osmoAmount, err := s.App.SuperfluidKeeper.GetSuperfluidFURYTokens(s.Ctx, intermediaryAcc.Denom, tc.unlockAmount)
 				s.Require().NoError(err)
 
 				unbondLockStartTime := startTime.Add(time.Hour)
@@ -971,7 +971,7 @@ func (s *KeeperTestSuite) TestRefreshIntermediaryDelegationAmounts() {
 			}
 
 			for denom, multiplier := range tc.multipliersByDenom {
-				s.App.SuperfluidKeeper.SetOsmoEquivalentMultiplier(s.Ctx, 2, denom, multiplier)
+				s.App.SuperfluidKeeper.SetFuryEquivalentMultiplier(s.Ctx, 2, denom, multiplier)
 			}
 
 			s.App.SuperfluidKeeper.RefreshIntermediaryDelegationAmounts(s.Ctx)
@@ -986,7 +986,7 @@ func (s *KeeperTestSuite) TestRefreshIntermediaryDelegationAmounts() {
 				denom := intermediaryAcc.Denom
 				_, err := s.App.SuperfluidKeeper.GetSuperfluidAsset(s.Ctx, denom)
 				s.Require().NoError(err)
-				expAmount := s.App.SuperfluidKeeper.GetRiskAdjustedOsmoValue(s.Ctx, decAmt.RoundInt())
+				expAmount := s.App.SuperfluidKeeper.GetRiskAdjustedFuryValue(s.Ctx, decAmt.RoundInt())
 
 				// check delegation changes
 				valAddr, err := sdk.ValAddressFromBech32(intermediaryAcc.ValAddr)
@@ -1332,7 +1332,7 @@ func (s *KeeperTestSuite) TestConvertUnlockedToStake() {
 	}
 }
 
-func (s *KeeperTestSuite) TestConvertGammSharesToOsmoAndStake() {
+func (s *KeeperTestSuite) TestConvertGammSharesToFuryAndStake() {
 	type tc struct {
 		useInvalidValAddr        bool
 		useMinAmtToStake         bool
@@ -1432,7 +1432,7 @@ func (s *KeeperTestSuite) TestConvertGammSharesToOsmoAndStake() {
 			poolBeforeNonBondDenomAmt := poolLiquidityBeforeSwap.AmountOf("foo")
 
 			// system under test.
-			totalAmtConverted, err := s.App.SuperfluidKeeper.ConvertGammSharesToOsmoAndStake(s.Ctx, sender, valAddrString, poolId, exitCoins, minAmtToStake, originalSuperfluidValAddr)
+			totalAmtConverted, err := s.App.SuperfluidKeeper.ConvertGammSharesToFuryAndStake(s.Ctx, sender, valAddrString, poolId, exitCoins, minAmtToStake, originalSuperfluidValAddr)
 			if tc.expectedError != "" {
 				s.Require().Equal(err.Error(), tc.expectedError)
 				s.Require().Error(err)
@@ -1723,14 +1723,14 @@ func (s *KeeperTestSuite) getExpectedBondDenomPoolAmtAfterConvert(sender sdk.Acc
 	exitCoins, err := s.App.GAMMKeeper.ExitPool(cc, sender, poolId, sharesToStake.Amount, sdk.NewCoins())
 	s.Require().NoError(err)
 
-	var nonOsmoCoin sdk.Coin
+	var nonFuryCoin sdk.Coin
 	for _, exitCoin := range exitCoins {
 		// if coin is not ufury, add it to non-fury Coins
 		if exitCoin.Denom != bondDenom {
-			nonOsmoCoin = exitCoin
+			nonFuryCoin = exitCoin
 		}
 	}
-	_, err = s.App.PoolManagerKeeper.SwapExactAmountIn(cc, sender, poolId, nonOsmoCoin, bondDenom, osmomath.ZeroInt())
+	_, err = s.App.PoolManagerKeeper.SwapExactAmountIn(cc, sender, poolId, nonFuryCoin, bondDenom, osmomath.ZeroInt())
 	s.Require().NoError(err)
 	expectedLiquidity, err := s.App.GAMMKeeper.GetTotalPoolLiquidity(cc, poolId)
 	s.Require().NoError(err)

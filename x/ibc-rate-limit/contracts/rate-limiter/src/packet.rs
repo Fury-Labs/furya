@@ -284,11 +284,11 @@ pub mod tests {
     // The following tests should pass
     //
 
-    const WRAPPED_OSMO_ON_HUB_TRACE: &str = "transfer/channel-141/ufury";
+    const WRAPPED_FURY_ON_HUB_TRACE: &str = "transfer/channel-141/ufury";
     const WRAPPED_ATOM_ON_FURYA_TRACE: &str = "transfer/channel-0/uatom";
     const WRAPPED_ATOM_ON_FURYA_HASH: &str =
         "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2";
-    const WRAPPED_OSMO_ON_HUB_HASH: &str =
+    const WRAPPED_FURY_ON_HUB_HASH: &str =
         "ibc/14F9BC3E44B8A9C1BE1FB08980FAB87034C9905EF17CF2F5008FC085218811CC";
 
     #[test]
@@ -330,16 +330,16 @@ pub mod tests {
         let packet = Packet::mock(
             format!("channel-141"),                // from: hub
             format!("channel-0"),                  // to: furya
-            WRAPPED_OSMO_ON_HUB_TRACE.to_string(), // unwrapped before reaching the contract
+            WRAPPED_FURY_ON_HUB_TRACE.to_string(), // unwrapped before reaching the contract
             0_u128.into(),
         );
-        assert_eq!(packet.local_denom(&FlowType::Out), WRAPPED_OSMO_ON_HUB_HASH);
+        assert_eq!(packet.local_denom(&FlowType::Out), WRAPPED_FURY_ON_HUB_HASH);
 
         // receive
         let packet = Packet::mock(
             format!("channel-141"),                // from: hub
             format!("channel-0"),                  // to: furya
-            WRAPPED_OSMO_ON_HUB_TRACE.to_string(), // unwrapped before reaching the contract
+            WRAPPED_FURY_ON_HUB_TRACE.to_string(), // unwrapped before reaching the contract
             0_u128.into(),
         );
         assert_eq!(packet.local_denom(&FlowType::In), "ufury");
@@ -354,13 +354,13 @@ pub mod tests {
             format!("ufury"),
             0_u128.into(),
         );
-        assert_eq!(packet.local_denom(&FlowType::In), WRAPPED_OSMO_ON_HUB_HASH);
+        assert_eq!(packet.local_denom(&FlowType::In), WRAPPED_FURY_ON_HUB_HASH);
 
         // ufury on the hub sent back to the furya
         let packet = Packet::mock(
             format!("channel-141"),                // from: hub
             format!("channel-0"),                  // to: furya
-            WRAPPED_OSMO_ON_HUB_TRACE.to_string(), // unwrapped before reaching the contract
+            WRAPPED_FURY_ON_HUB_TRACE.to_string(), // unwrapped before reaching the contract
             0_u128.into(),
         );
         assert_eq!(packet.local_denom(&FlowType::In), "ufury");

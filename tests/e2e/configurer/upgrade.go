@@ -126,13 +126,13 @@ func (uc *UpgradeConfigurer) CreatePreUpgradeState() error {
 
 	go func() {
 		defer wg.Done()
-		chainA.SendIBC(chainB, chainBNode.PublicAddress, initialization.OsmoToken)
+		chainA.SendIBC(chainB, chainBNode.PublicAddress, initialization.FuryToken)
 		chainA.SendIBC(chainB, chainBNode.PublicAddress, initialization.StakeToken)
 	}()
 
 	go func() {
 		defer wg.Done()
-		chainB.SendIBC(chainA, chainANode.PublicAddress, initialization.OsmoToken)
+		chainB.SendIBC(chainA, chainANode.PublicAddress, initialization.FuryToken)
 		chainB.SendIBC(chainA, chainANode.PublicAddress, initialization.StakeToken)
 	}()
 
@@ -400,8 +400,8 @@ func (uc *UpgradeConfigurer) runForkUpgrade() {
 func (uc *UpgradeConfigurer) upgradeContainers(chainConfig *chain.Config, propHeight int64) error {
 	// upgrade containers to the locally compiled daemon
 	uc.t.Logf("starting upgrade for chain-id: %s...", chainConfig.Id)
-	uc.containerManager.FuryaRepository = containers.CurrentBranchOsmoRepository
-	uc.containerManager.FuryaTag = containers.CurrentBranchOsmoTag
+	uc.containerManager.FuryaRepository = containers.CurrentBranchFuryRepository
+	uc.containerManager.FuryaTag = containers.CurrentBranchFuryTag
 
 	for _, node := range chainConfig.NodeConfigs {
 		if err := node.Run(); err != nil {

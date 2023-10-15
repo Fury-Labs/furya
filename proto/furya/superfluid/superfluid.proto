@@ -49,7 +49,7 @@ message SuperfluidIntermediaryAccount {
 // epochs rewards) However for now, this is not the TWAP but instead the spot
 // price at the boundary. For different types of assets in the future, it could
 // change.
-message OsmoEquivalentMultiplierRecord {
+message FuryEquivalentMultiplierRecord {
   int64 epoch_number = 1;
   // superfluid asset denom, can be LP token or native token
   string denom = 2;

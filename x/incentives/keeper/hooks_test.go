@@ -20,7 +20,7 @@ var (
 	ETH   = apptesting.ETH
 	BAR   = apptesting.BAR
 	FOO   = apptesting.FOO
-	UOSMO = apptesting.UOSMO
+	UFURY = apptesting.UFURY
 
 	defaultAmount = osmomath.NewInt(100_000_000_000)
 
@@ -431,23 +431,23 @@ func (s *KeeperTestSuite) Test_AfterEpochEnd_Group_CreateGroupsBetween() {
 // Call AfterEpochEnd hook.
 // Validate that the distribution is correct.
 func (s *KeeperTestSuite) Test_AfterEpochEnd_Group_SwapAndDistribute() {
-	// Setup UOSMO as bond denom
+	// Setup UFURY as bond denom
 	stakingParams := s.App.StakingKeeper.GetParams(s.Ctx)
-	stakingParams.BondDenom = UOSMO
+	stakingParams.BondDenom = UFURY
 	s.App.StakingKeeper.SetParams(s.Ctx, stakingParams)
 
-	// Create UOSMO / USDC pool
+	// Create UFURY / USDC pool
 	s.PrepareCustomBalancerPool([]balancer.PoolAsset{
-		{Token: sdk.NewCoin(UOSMO, defaultAmount), Weight: sdk.OneInt()},
+		{Token: sdk.NewCoin(UFURY, defaultAmount), Weight: sdk.OneInt()},
 		{Token: sdk.NewCoin(USDC, defaultAmount), Weight: sdk.OneInt()},
 	}, balancer.PoolParams{
 		SwapFee: osmomath.ZeroDec(),
 		ExitFee: osmomath.ZeroDec(),
 	})
 
-	// Create UOSMO / BAR pool
+	// Create UFURY / BAR pool
 	s.PrepareCustomBalancerPool([]balancer.PoolAsset{
-		{Token: sdk.NewCoin(UOSMO, defaultAmount), Weight: sdk.OneInt()},
+		{Token: sdk.NewCoin(UFURY, defaultAmount), Weight: sdk.OneInt()},
 		{Token: sdk.NewCoin(BAR, defaultAmount), Weight: sdk.OneInt()},
 	}, balancer.PoolParams{
 		SwapFee: osmomath.ZeroDec(),
@@ -499,12 +499,12 @@ func (s *KeeperTestSuite) Test_AfterEpochEnd_Group_SwapAndDistribute() {
 func (s *KeeperTestSuite) increaseVolumeBySwap(poolID uint64, tokeInCoin sdk.Coin, expectedVolumeAmtIncrease osmomath.Int, denomOut string) {
 	s.FundAcc(s.TestAccs[0], sdk.NewCoins(tokeInCoin))
 
-	originalVoume := s.App.PoolManagerKeeper.GetOsmoVolumeForPool(s.Ctx, poolID)
+	originalVoume := s.App.PoolManagerKeeper.GetFuryVolumeForPool(s.Ctx, poolID)
 
 	_, err := s.App.PoolManagerKeeper.SwapExactAmountIn(s.Ctx, s.TestAccs[0], poolID, tokeInCoin, denomOut, osmomath.ZeroInt())
 	s.Require().NoError(err)
 
-	finalVolume := s.App.PoolManagerKeeper.GetOsmoVolumeForPool(s.Ctx, poolID)
+	finalVolume := s.App.PoolManagerKeeper.GetFuryVolumeForPool(s.Ctx, poolID)
 	s.Require().NotEqual(osmomath.ZeroInt().String(), finalVolume.String())
 	s.Require().Equal(expectedVolumeAmtIncrease.String(), finalVolume.Sub(originalVoume).String())
 }

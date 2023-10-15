@@ -17,7 +17,7 @@ func RandomizedGenState(simState *module.SimulationState) {
 			MinimumRiskFactor: osmomath.NewDecWithPrec(5, 2), // 5%
 		},
 		SuperfluidAssets:          []types.SuperfluidAsset{},
-		OsmoEquivalentMultipliers: []types.OsmoEquivalentMultiplierRecord{},
+		FuryEquivalentMultipliers: []types.FuryEquivalentMultiplierRecord{},
 	}
 
 	bz, err := json.MarshalIndent(&superfluidGenesis.Params, "", " ")

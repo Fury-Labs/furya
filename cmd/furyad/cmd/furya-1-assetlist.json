@@ -5742,9 +5742,9 @@
         ],
         "type_asset": "ics20",
         "base": "ibc/D176154B0C63D1F9C6DCFB4F70349EBF2E2B5A87A05902F57A6AE92B863E9AEC",
-        "name": "stOSMO",
+        "name": "stFURY",
         "display": "stosmo",
-        "symbol": "stOSMO",
+        "symbol": "stFURY",
         "traces": [
           {
             "type": "liquid-stake",
@@ -7783,7 +7783,7 @@
         "base": "ibc/42D24879D4569CE6477B7E88206ADBFE47C222C6CAD51A54083E4A72594269FC",
         "name": "Quicksilver Liquid Staked FURY",
         "display": "qosmo",
-        "symbol": "qOSMO",
+        "symbol": "qFURY",
         "traces": [
           {
             "type": "liquid-stake",

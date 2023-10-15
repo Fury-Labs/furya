@@ -36861,7 +36861,7 @@ components:
               NOTE: The amount field is an Int which implements the custom method
 
               signatures required by gogoproto.
-    furya.superfluid.OsmoEquivalentMultiplierRecord:
+    furya.superfluid.FuryEquivalentMultiplierRecord:
       type: object
       properties:
         epoch_number:

@@ -1121,7 +1121,7 @@ func (s *KeeperTestSuite) setUpTokenPairRoutes() {
 	// Stableswap Route
 	ufuryUSDC := types.NewTrade(0, types.FuryaDenomination, "usdc")
 	usdcBUSD := types.NewTrade(40, "usdc", "busd")
-	busdUOSMO := types.NewTrade(30, "busd", types.FuryaDenomination)
+	busdUFURY := types.NewTrade(30, "busd", types.FuryaDenomination)
 
 	// Atom Route
 	atomIBC1 := types.NewTrade(31, "Atom", "ibc/BE1BB42D4BE3C30D50B68D7C41DB4DFCE9678E8EF8C539F6E6A9345048894FCC")
@@ -1162,7 +1162,7 @@ func (s *KeeperTestSuite) setUpTokenPairRoutes() {
 			ArbRoutes: []types.Route{
 				{
 					StepSize: standardStepSize,
-					Trades:   []types.Trade{ufuryUSDC, usdcBUSD, busdUOSMO},
+					Trades:   []types.Trade{ufuryUSDC, usdcBUSD, busdUFURY},
 				},
 			},
 		},

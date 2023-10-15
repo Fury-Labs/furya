@@ -170,25 +170,25 @@ func (m *SuperfluidIntermediaryAccount) GetGaugeId() uint64 {
 // epochs rewards) However for now, this is not the TWAP but instead the spot
 // price at the boundary. For different types of assets in the future, it could
 // change.
-type OsmoEquivalentMultiplierRecord struct {
+type FuryEquivalentMultiplierRecord struct {
 	EpochNumber int64 `protobuf:"varint,1,opt,name=epoch_number,json=epochNumber,proto3" json:"epoch_number,omitempty"`
 	// superfluid asset denom, can be LP token or native token
 	Denom      string                      `protobuf:"bytes,2,opt,name=denom,proto3" json:"denom,omitempty"`
 	Multiplier cosmossdk_io_math.LegacyDec `protobuf:"bytes,3,opt,name=multiplier,proto3,customtype=cosmossdk.io/math.LegacyDec" json:"multiplier" yaml:"multiplier"`
 }
 
-func (m *OsmoEquivalentMultiplierRecord) Reset()         { *m = OsmoEquivalentMultiplierRecord{} }
-func (m *OsmoEquivalentMultiplierRecord) String() string { return proto.CompactTextString(m) }
-func (*OsmoEquivalentMultiplierRecord) ProtoMessage()    {}
-func (*OsmoEquivalentMultiplierRecord) Descriptor() ([]byte, []int) {
+func (m *FuryEquivalentMultiplierRecord) Reset()         { *m = FuryEquivalentMultiplierRecord{} }
+func (m *FuryEquivalentMultiplierRecord) String() string { return proto.CompactTextString(m) }
+func (*FuryEquivalentMultiplierRecord) ProtoMessage()    {}
+func (*FuryEquivalentMultiplierRecord) Descriptor() ([]byte, []int) {
 	return fileDescriptor_79d3c29d82dbb734, []int{2}
 }
-func (m *OsmoEquivalentMultiplierRecord) XXX_Unmarshal(b []byte) error {
+func (m *FuryEquivalentMultiplierRecord) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *OsmoEquivalentMultiplierRecord) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *FuryEquivalentMultiplierRecord) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_OsmoEquivalentMultiplierRecord.Marshal(b, m, deterministic)
+		return xxx_messageInfo_FuryEquivalentMultiplierRecord.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -198,26 +198,26 @@ func (m *OsmoEquivalentMultiplierRecord) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-func (m *OsmoEquivalentMultiplierRecord) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_OsmoEquivalentMultiplierRecord.Merge(m, src)
+func (m *FuryEquivalentMultiplierRecord) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FuryEquivalentMultiplierRecord.Merge(m, src)
 }
-func (m *OsmoEquivalentMultiplierRecord) XXX_Size() int {
+func (m *FuryEquivalentMultiplierRecord) XXX_Size() int {
 	return m.Size()
 }
-func (m *OsmoEquivalentMultiplierRecord) XXX_DiscardUnknown() {
-	xxx_messageInfo_OsmoEquivalentMultiplierRecord.DiscardUnknown(m)
+func (m *FuryEquivalentMultiplierRecord) XXX_DiscardUnknown() {
+	xxx_messageInfo_FuryEquivalentMultiplierRecord.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_OsmoEquivalentMultiplierRecord proto.InternalMessageInfo
+var xxx_messageInfo_FuryEquivalentMultiplierRecord proto.InternalMessageInfo
 
-func (m *OsmoEquivalentMultiplierRecord) GetEpochNumber() int64 {
+func (m *FuryEquivalentMultiplierRecord) GetEpochNumber() int64 {
 	if m != nil {
 		return m.EpochNumber
 	}
 	return 0
 }
 
-func (m *OsmoEquivalentMultiplierRecord) GetDenom() string {
+func (m *FuryEquivalentMultiplierRecord) GetDenom() string {
 	if m != nil {
 		return m.Denom
 	}
@@ -481,7 +481,7 @@ func init() {
 	proto.RegisterEnum("furya.superfluid.SuperfluidAssetType", SuperfluidAssetType_name, SuperfluidAssetType_value)
 	proto.RegisterType((*SuperfluidAsset)(nil), "furya.superfluid.SuperfluidAsset")
 	proto.RegisterType((*SuperfluidIntermediaryAccount)(nil), "furya.superfluid.SuperfluidIntermediaryAccount")
-	proto.RegisterType((*OsmoEquivalentMultiplierRecord)(nil), "furya.superfluid.OsmoEquivalentMultiplierRecord")
+	proto.RegisterType((*FuryEquivalentMultiplierRecord)(nil), "furya.superfluid.FuryEquivalentMultiplierRecord")
 	proto.RegisterType((*SuperfluidDelegationRecord)(nil), "furya.superfluid.SuperfluidDelegationRecord")
 	proto.RegisterType((*LockIdIntermediaryAccountConnection)(nil), "furya.superfluid.LockIdIntermediaryAccountConnection")
 	proto.RegisterType((*UnpoolWhitelistedPools)(nil), "furya.superfluid.UnpoolWhitelistedPools")
@@ -652,7 +652,7 @@ func (m *SuperfluidIntermediaryAccount) MarshalToSizedBuffer(dAtA []byte) (int, 
 	return len(dAtA) - i, nil
 }
 
-func (m *OsmoEquivalentMultiplierRecord) Marshal() (dAtA []byte, err error) {
+func (m *FuryEquivalentMultiplierRecord) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -662,12 +662,12 @@ func (m *OsmoEquivalentMultiplierRecord) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *OsmoEquivalentMultiplierRecord) MarshalTo(dAtA []byte) (int, error) {
+func (m *FuryEquivalentMultiplierRecord) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *OsmoEquivalentMultiplierRecord) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *FuryEquivalentMultiplierRecord) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -951,7 +951,7 @@ func (m *SuperfluidIntermediaryAccount) Size() (n int) {
 	return n
 }
 
-func (m *OsmoEquivalentMultiplierRecord) Size() (n int) {
+func (m *FuryEquivalentMultiplierRecord) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1291,7 +1291,7 @@ func (m *SuperfluidIntermediaryAccount) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *OsmoEquivalentMultiplierRecord) Unmarshal(dAtA []byte) error {
+func (m *FuryEquivalentMultiplierRecord) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1314,10 +1314,10 @@ func (m *OsmoEquivalentMultiplierRecord) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: OsmoEquivalentMultiplierRecord: wiretype end group for non-group")
+			return fmt.Errorf("proto: FuryEquivalentMultiplierRecord: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: OsmoEquivalentMultiplierRecord: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: FuryEquivalentMultiplierRecord: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
