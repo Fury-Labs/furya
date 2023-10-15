@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cast"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 
 	servertypes "github.com/cosmos/cosmos-sdk/server/types"
 )

@@ -9,11 +9,11 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 )
 
 type valSet struct {
@@ -132,7 +132,7 @@ func (k Keeper) DelegateToValidatorSet(ctx sdk.Context, delegatorAddr string, co
 // NOTE: check README.md for more verbose description of the algorithm.
 // TODO: This is currently disabled.
 // Properly implement for vratio > 1 to hit steps 5-7, then re-enable
-// https://github.com/furya-labs/furya/issues/6686
+// https://github.com/fury-labs/furya/issues/6686
 func (k Keeper) UndelegateFromValidatorSet(ctx sdk.Context, delegatorAddr string, undelegation sdk.Coin) error {
 	// TODO: Change to GetDelegationPreferences
 	existingSet, err := k.GetValSetPreferencesWithDelegations(ctx, delegatorAddr)

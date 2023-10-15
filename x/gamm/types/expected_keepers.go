@@ -7,12 +7,12 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	epochtypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/osmomath"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	epochtypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 // AccountKeeper defines the account contract that must be fulfilled when

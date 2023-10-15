@@ -15,12 +15,12 @@ import (
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	txfeetypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmomath"
+	txfeetypes "github.com/fury-labs/furya/v20/x/txfees/types"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/tests/furyaibctesting"
-	"github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/tests/furyaibctesting"
+	"github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 )
 
 type MiddlewareTestSuite struct {

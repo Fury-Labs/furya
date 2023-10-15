@@ -1,4 +1,4 @@
-module github.com/furya-labs/furya/osmoutils
+module github.com/fury-labs/furya/osmoutils
 
 go 1.20
 
@@ -8,8 +8,8 @@ require (
 	github.com/cosmos/iavl v0.19.7
 	github.com/cosmos/ibc-go/v4 v4.5.0
 	github.com/gogo/protobuf v1.3.3
-	github.com/furya-labs/furya/osmomath v0.0.7-0.20231011004221-fd24b80f8366
-	github.com/furya-labs/furya/v20 v20.0.0
+	github.com/fury-labs/furya/osmomath v0.0.7-0.20231011004221-fd24b80f8366
+	github.com/fury-labs/furya/v20 v20.0.0
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.8.4
@@ -140,12 +140,12 @@ require (
 )
 
 replace (
-	// Our cosmos-sdk branch is:  https://github.com/furya-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/furya-labs/cosmos-sdk/commit/05346fa12992
-	github.com/cosmos/cosmos-sdk => github.com/furya-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
+	// Our cosmos-sdk branch is:  https://github.com/fury-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/fury-labs/cosmos-sdk/commit/05346fa12992
+	github.com/cosmos/cosmos-sdk => github.com/fury-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
 	// use cosmos-compatible protobufs
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
-	github.com/furya-labs/furya/v20 => github.com/furya-labs/furya/v20 v20.0.0-20231013004957-68679fa93963
+	github.com/fury-labs/furya/v20 => github.com/fury-labs/furya/v20 v20.0.0-20231013004957-68679fa93963
 	github.com/tendermint/tendermint => github.com/informalsystems/tendermint v0.34.24
 
 	// use grpc compatible with cosmos protobufs

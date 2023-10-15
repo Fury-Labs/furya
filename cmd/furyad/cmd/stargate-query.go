@@ -12,9 +12,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/wasmbinding"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/wasmbinding"
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
@@ -23,18 +23,18 @@ import (
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	concentratedliquidityquery "github.com/furya-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
-	downtimequerytypes "github.com/furya-labs/furya/v20/x/downtime-detector/client/queryproto"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
-	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
-	poolmanagerqueryproto "github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
-	twapquerytypes "github.com/furya-labs/furya/v20/x/twap/client/queryproto"
-	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
-	epochtypes "github.com/furya-labs/furya/x/epochs/types"
+	concentratedliquidityquery "github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
+	downtimequerytypes "github.com/fury-labs/furya/v20/x/downtime-detector/client/queryproto"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
+	poolincentivestypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
+	poolmanagerqueryproto "github.com/fury-labs/furya/v20/x/poolmanager/client/queryproto"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
+	twapquerytypes "github.com/fury-labs/furya/v20/x/twap/client/queryproto"
+	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
+	epochtypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 // convert requested proto struct into proto marshalled bytes

@@ -9,12 +9,12 @@ import (
 	"github.com/stretchr/testify/require"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	osmoapp "github.com/furya-labs/furya/v20/app"
+	"github.com/fury-labs/furya/osmomath"
+	osmoapp "github.com/fury-labs/furya/v20/app"
 
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 var (

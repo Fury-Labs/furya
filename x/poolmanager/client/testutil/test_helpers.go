@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app"
-	poolmanagercli "github.com/furya-labs/furya/v20/x/poolmanager/client/cli"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app"
+	poolmanagercli "github.com/fury-labs/furya/v20/x/poolmanager/client/cli"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"

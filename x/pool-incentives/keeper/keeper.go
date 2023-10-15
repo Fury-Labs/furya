@@ -6,16 +6,16 @@ import (
 
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/furya-labs/furya/osmoutils"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/osmoutils"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 type Keeper struct {

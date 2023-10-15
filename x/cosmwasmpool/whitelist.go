@@ -3,7 +3,7 @@ package cosmwasmpool
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils"
 )
 
 // Whitelists the code id.

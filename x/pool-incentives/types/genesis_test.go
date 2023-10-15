@@ -7,7 +7,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 

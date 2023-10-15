@@ -9,16 +9,16 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/x/protorev"
-	protorevkeeper "github.com/furya-labs/furya/v20/x/protorev/keeper"
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/x/protorev"
+	protorevkeeper "github.com/fury-labs/furya/v20/x/protorev/keeper"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
 
-	furyaapp "github.com/furya-labs/furya/v20/app"
+	furyaapp "github.com/fury-labs/furya/v20/app"
 )
 
 type KeeperTestSuite struct {

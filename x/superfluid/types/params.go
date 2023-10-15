@@ -6,7 +6,7 @@ import (
 
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 // Parameter store keys.

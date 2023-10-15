@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 )
 
 type msgServer struct {

@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/furya-labs/furya/v20/x/gamm/client/cli"
-	"github.com/furya-labs/furya/v20/x/gamm/client/rest"
+	"github.com/fury-labs/furya/v20/x/gamm/client/cli"
+	"github.com/fury-labs/furya/v20/x/gamm/client/rest"
 
 	govclient "github.com/cosmos/cosmos-sdk/x/gov/client"
 )

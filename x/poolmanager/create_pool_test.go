@@ -6,14 +6,14 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	cwmodel "github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	stableswap "github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	"github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	clmodel "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	cwmodel "github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	stableswap "github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 func (s *KeeperTestSuite) TestPoolCreationFee() {

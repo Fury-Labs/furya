@@ -11,8 +11,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/pflag"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
 )
 
 // Parses arguments 1-1 from args

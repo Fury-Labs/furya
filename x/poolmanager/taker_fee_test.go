@@ -3,8 +3,8 @@ package poolmanager_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
 )
 
 // validates that the pool manager keeper can charge taker fees correctly.
@@ -63,7 +63,7 @@ func (s *KeeperTestSuite) TestChargeTakerFee() {
 			expectedResult: sdk.NewCoin(apptesting.ETH, defaultAmount),
 		},
 		// TODO: under more test cases
-		// https://github.com/furya-labs/furya/issues/6633
+		// https://github.com/fury-labs/furya/issues/6633
 		// - exactOut: false
 		// - sender does not have enough coins
 	}

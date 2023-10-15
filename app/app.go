@@ -15,7 +15,7 @@ import (
 
 	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
 
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils"
 
 	"github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/gorilla/mux"
@@ -48,27 +48,27 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	v10 "github.com/furya-labs/furya/v20/app/upgrades/v10"
-	v11 "github.com/furya-labs/furya/v20/app/upgrades/v11"
-	v12 "github.com/furya-labs/furya/v20/app/upgrades/v12"
-	v13 "github.com/furya-labs/furya/v20/app/upgrades/v13"
-	v14 "github.com/furya-labs/furya/v20/app/upgrades/v14"
-	v15 "github.com/furya-labs/furya/v20/app/upgrades/v15"
-	v16 "github.com/furya-labs/furya/v20/app/upgrades/v16"
-	v17 "github.com/furya-labs/furya/v20/app/upgrades/v17"
-	v18 "github.com/furya-labs/furya/v20/app/upgrades/v18"
-	v19 "github.com/furya-labs/furya/v20/app/upgrades/v19"
-	v20 "github.com/furya-labs/furya/v20/app/upgrades/v20"
-	v3 "github.com/furya-labs/furya/v20/app/upgrades/v3"
-	v4 "github.com/furya-labs/furya/v20/app/upgrades/v4"
-	v5 "github.com/furya-labs/furya/v20/app/upgrades/v5"
-	v6 "github.com/furya-labs/furya/v20/app/upgrades/v6"
-	v7 "github.com/furya-labs/furya/v20/app/upgrades/v7"
-	v8 "github.com/furya-labs/furya/v20/app/upgrades/v8"
-	v9 "github.com/furya-labs/furya/v20/app/upgrades/v9"
-	_ "github.com/furya-labs/furya/v20/client/docs/statik"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	v10 "github.com/fury-labs/furya/v20/app/upgrades/v10"
+	v11 "github.com/fury-labs/furya/v20/app/upgrades/v11"
+	v12 "github.com/fury-labs/furya/v20/app/upgrades/v12"
+	v13 "github.com/fury-labs/furya/v20/app/upgrades/v13"
+	v14 "github.com/fury-labs/furya/v20/app/upgrades/v14"
+	v15 "github.com/fury-labs/furya/v20/app/upgrades/v15"
+	v16 "github.com/fury-labs/furya/v20/app/upgrades/v16"
+	v17 "github.com/fury-labs/furya/v20/app/upgrades/v17"
+	v18 "github.com/fury-labs/furya/v20/app/upgrades/v18"
+	v19 "github.com/fury-labs/furya/v20/app/upgrades/v19"
+	v20 "github.com/fury-labs/furya/v20/app/upgrades/v20"
+	v3 "github.com/fury-labs/furya/v20/app/upgrades/v3"
+	v4 "github.com/fury-labs/furya/v20/app/upgrades/v4"
+	v5 "github.com/fury-labs/furya/v20/app/upgrades/v5"
+	v6 "github.com/fury-labs/furya/v20/app/upgrades/v6"
+	v7 "github.com/fury-labs/furya/v20/app/upgrades/v7"
+	v8 "github.com/fury-labs/furya/v20/app/upgrades/v8"
+	v9 "github.com/fury-labs/furya/v20/app/upgrades/v9"
+	_ "github.com/fury-labs/furya/v20/client/docs/statik"
 )
 
 const appName = "FuryaApp"
@@ -246,7 +246,7 @@ func NewFuryaApp(
 	// hook, we will get a nil pointer dereference error due to the hooks in the keeper not being
 	// setup yet. I will refrain from creating an issue in the sdk for now until after we unfork to 0.47,
 	// because I believe the concept of Routes is going away.
-	// https://github.com/furya-labs/furya/issues/6580
+	// https://github.com/fury-labs/furya/issues/6580
 	app.SetupHooks()
 
 	/****  Module Options ****/

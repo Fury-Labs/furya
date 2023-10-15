@@ -5,12 +5,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	appparams "github.com/furya-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/osmomath"
+	appparams "github.com/fury-labs/furya/v20/app/params"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/x/poolmanager/types"
-	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/x/poolmanager/types"
+	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 // SetDenomPairTakerFee sets the taker fee for the given trading pair.

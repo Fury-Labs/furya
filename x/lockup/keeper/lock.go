@@ -13,10 +13,10 @@ import (
 
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/sumtree"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/sumtree"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 // WithdrawAllMaturedLocks withdraws every lock thats in the process of unlocking, and has finished unlocking by

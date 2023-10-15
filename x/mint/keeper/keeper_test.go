@@ -14,12 +14,12 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/x/mint/keeper"
-	"github.com/furya-labs/furya/v20/x/mint/types"
-	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/x/mint/keeper"
+	"github.com/fury-labs/furya/v20/x/mint/types"
+	poolincentivestypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 
 type KeeperTestSuite struct {
@@ -396,7 +396,7 @@ func (s *KeeperTestSuite) TestDistributeToModule() {
 				s.MintCoins(sdk.NewCoins(tc.preMintCoin))
 
 				// TODO: Should not be truncated. Remove truncation after rounding errors are addressed and resolved.
-				// Ref: https://github.com/furya-labs/furya/issues/1917
+				// Ref: https://github.com/fury-labs/furya/issues/1917
 				expectedDistributed := tc.mintedCoin.Amount.ToLegacyDec().Mul(tc.proportion).TruncateInt()
 				oldMintModuleBalanceAmount := bankKeeper.GetBalance(ctx, accountKeeper.GetModuleAddress(types.ModuleName), tc.mintedCoin.Denom).Amount
 				oldRecepientModuleBalanceAmount := bankKeeper.GetBalance(ctx, accountKeeper.GetModuleAddress(tc.recepientModule), tc.mintedCoin.Denom).Amount
@@ -631,7 +631,7 @@ func (s *KeeperTestSuite) TestDistributeDeveloperRewards() {
 				s.Require().NoError(mintKeeper.MintCoins(ctx, sdk.NewCoins(tc.preMintCoin)))
 
 				// TODO: Should not be truncated. Remove truncation after rounding errors are addressed and resolved.
-				// Ref: https://github.com/furya-labs/furya/issues/1917
+				// Ref: https://github.com/fury-labs/furya/issues/1917
 				expectedDistributed := tc.mintedCoin.Amount.ToLegacyDec().Mul(tc.proportion).TruncateInt()
 
 				oldMintModuleBalanceAmount := bankKeeper.GetBalance(ctx, accountKeeper.GetModuleAddress(types.ModuleName), tc.mintedCoin.Denom).Amount
@@ -678,7 +678,7 @@ func (s *KeeperTestSuite) TestDistributeDeveloperRewards() {
 				// Updated balances.
 
 				// Burn from mint module account. We over-allocate.
-				// To be fixed: https://github.com/furya-labs/furya/issues/2025
+				// To be fixed: https://github.com/fury-labs/furya/issues/2025
 				s.Require().Equal(oldMintModuleBalanceAmount.Sub(expectedDistributed).Int64(), actualMintModuleBalance.Amount.Int64())
 
 				// Allocate to community pool when no addresses are provided.
@@ -688,12 +688,12 @@ func (s *KeeperTestSuite) TestDistributeDeveloperRewards() {
 					return
 				}
 
-				// TODO: these should be equal, slightly off due to known rounding issues: https://github.com/furya-labs/furya/issues/1917
+				// TODO: these should be equal, slightly off due to known rounding issues: https://github.com/fury-labs/furya/issues/1917
 				// s.Require().Equal(oldDeveloperVestingModuleBalanceAmount.Sub(expectedDistributed).Int64(), actualDeveloperVestingModuleBalanceAmount.Int64())
 				expectedDistributedCommunityPool := osmomath.NewInt(0)
 
 				for i, weightedAddress := range tc.recepientAddresses {
-					// TODO: truncation should not occur: https://github.com/furya-labs/furya/issues/1917
+					// TODO: truncation should not occur: https://github.com/fury-labs/furya/issues/1917
 					expectedAllocation := expectedDistributed.ToLegacyDec().Mul(tc.recepientAddresses[i].Weight).TruncateInt()
 
 					if weightedAddress.Address == keeper.EmptyWeightedAddressReceiver {

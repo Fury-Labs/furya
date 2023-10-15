@@ -13,8 +13,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app"
 )
 
 func CreateTestInput() (*app.FuryaApp, sdk.Context) {

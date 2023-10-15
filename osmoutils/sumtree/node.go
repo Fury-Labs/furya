@@ -5,7 +5,7 @@ import (
 
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 func NewLeaf(key []byte, acc osmomath.Int) *Leaf {

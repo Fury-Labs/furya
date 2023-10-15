@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmcli "github.com/tendermint/tendermint/libs/cli"
 
-	"github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/x/mint/client/cli"
+	"github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/x/mint/client/cli"
 
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"

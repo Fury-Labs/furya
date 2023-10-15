@@ -8,10 +8,10 @@ import (
 	"github.com/spf13/cobra"
 	flag "github.com/spf13/pflag"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmocli"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -20,8 +20,8 @@ import (
 	govcli "github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 // GetTxCmd returns the transaction commands for this module.

@@ -21,9 +21,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/furya-labs/furya/v20/simulation/executor/internal/executortypes"
-	"github.com/furya-labs/furya/v20/simulation/executor/internal/stats"
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/simulation/executor/internal/executortypes"
+	"github.com/fury-labs/furya/v20/simulation/executor/internal/stats"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
 )
 
 const AverageBlockTime = 6 * time.Second

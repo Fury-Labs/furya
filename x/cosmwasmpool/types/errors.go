@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 var (

@@ -9,7 +9,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 type AppCreator = func(homepath string, legacyInvariantPeriod uint, baseappOptions ...func(*baseapp.BaseApp)) App

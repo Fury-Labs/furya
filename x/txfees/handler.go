@@ -7,8 +7,8 @@ import (
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/furya-labs/furya/v20/x/txfees/keeper"
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/v20/x/txfees/keeper"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 func NewUpdateFeeTokenProposalHandler(k keeper.Keeper) govtypes.Handler {

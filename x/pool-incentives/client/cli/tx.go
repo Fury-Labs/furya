@@ -12,8 +12,8 @@ import (
 	govcli "github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 
 func NewCmdSubmitUpdatePoolIncentivesProposal() *cobra.Command {

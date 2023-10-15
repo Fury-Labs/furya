@@ -7,10 +7,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	lockupkeeper "github.com/furya-labs/furya/v20/x/lockup/keeper"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	lockupkeeper "github.com/fury-labs/furya/v20/x/lockup/keeper"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 func CreateUpgradeHandler(

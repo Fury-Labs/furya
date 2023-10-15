@@ -7,10 +7,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 type MigrationType int

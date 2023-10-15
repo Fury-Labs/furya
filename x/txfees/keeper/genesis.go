@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

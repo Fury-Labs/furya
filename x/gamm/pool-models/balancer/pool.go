@@ -10,10 +10,10 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/internal/cfmm_common"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/internal/cfmm_common"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 //nolint:deadcode

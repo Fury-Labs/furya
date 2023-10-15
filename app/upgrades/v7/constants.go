@@ -3,8 +3,8 @@ package v7
 import (
 	"github.com/CosmWasm/wasmd/x/wasm"
 
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 )

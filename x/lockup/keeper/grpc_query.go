@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 var _ types.QueryServer = Querier{}

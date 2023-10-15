@@ -8,7 +8,7 @@ import (
 
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	"github.com/furya-labs/furya/v20/x/twap/types"
+	"github.com/fury-labs/furya/v20/x/twap/types"
 )
 
 type Keeper struct {

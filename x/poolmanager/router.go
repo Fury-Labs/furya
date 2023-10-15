@@ -7,15 +7,15 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/queryproto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 // 1 << 256 - 1 where 256 is the max bit length defined for osmomath.Int

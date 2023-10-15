@@ -11,13 +11,13 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 
-	valPref "github.com/furya-labs/furya/v20/x/valset-pref"
+	valPref "github.com/fury-labs/furya/v20/x/valset-pref"
 )
 
 type KeeperTestSuite struct {

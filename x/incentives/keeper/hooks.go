@@ -3,9 +3,9 @@ package keeper
 import (
 	"fmt"
 
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	epochstypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	epochstypes "github.com/fury-labs/furya/x/epochs/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

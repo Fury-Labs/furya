@@ -11,7 +11,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/v20/wasmbinding/bindings"
+	"github.com/fury-labs/furya/v20/wasmbinding/bindings"
 )
 
 // StargateQuerier dispatches whitelisted stargate queries

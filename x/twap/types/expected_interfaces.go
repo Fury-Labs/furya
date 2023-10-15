@@ -3,7 +3,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 // AmmInterface is the functionality needed from a given pool ID, in order to maintain records and serve TWAPs.

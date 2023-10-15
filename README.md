@@ -5,16 +5,16 @@
 [![Project Status: Active -- The project has reached a stable, usable
 state and is being actively
 developed.](https://img.shields.io/badge/repo%20status-Active-green.svg?style=flat-square)](https://www.repostatus.org/#active)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue?style=flat-square&logo=go)](https://pkg.go.dev/github.com/furya-labs/furya/v11)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue?style=flat-square&logo=go)](https://pkg.go.dev/github.com/fury-labs/furya/v11)
 [![Go Report
-Card](https://goreportcard.com/badge/github.com/furya-labs/furya?style=flat-square)](https://goreportcard.com/report/github.com/furya-labs/furya/v11)
-[![Version](https://img.shields.io/github/tag/furya-labs/furya.svg?style=flat-square)](https://github.com/furya-labs/furya/releases/latest)
+Card](https://goreportcard.com/badge/github.com/fury-labs/furya?style=flat-square)](https://goreportcard.com/report/github.com/fury-labs/furya/v11)
+[![Version](https://img.shields.io/github/tag/fury-labs/furya.svg?style=flat-square)](https://github.com/fury-labs/furya/releases/latest)
 [![License:
-Apache-2.0](https://img.shields.io/github/license/furya-labs/furya.svg?style=flat-square)](https://github.com/furya-labs/furya/blob/main/LICENSE)
+Apache-2.0](https://img.shields.io/github/license/fury-labs/furya.svg?style=flat-square)](https://github.com/fury-labs/furya/blob/main/LICENSE)
 [![Lines Of
-Code](https://img.shields.io/tokei/lines/github/furya-labs/furya?style=flat-square)](https://github.com/furya-labs/furya)
+Code](https://img.shields.io/tokei/lines/github/fury-labs/furya?style=flat-square)](https://github.com/fury-labs/furya)
 [![GitHub
-Super-Linter](https://img.shields.io/github/actions/workflow/status/furya-labs/furya/lint.yml?style=flat-square&label=Lint)](https://github.com/marketplace/actions/super-linter)
+Super-Linter](https://img.shields.io/github/actions/workflow/status/fury-labs/furya/lint.yml?style=flat-square&label=Lint)](https://github.com/marketplace/actions/super-linter)
 [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/furya)
 
 Furya is a fair-launched, customizable automated market maker for
@@ -82,4 +82,4 @@ to use the SDK fork, and how to make / test updates to SDK branches.
 ## LocalFurya
 
 LocalFurya is a containerized local Furya testnet used for trying out new features locally. 
-LocalFurya documentation can be found [here](https://github.com/furya-labs/furya/tree/main/tests/localfurya)
+LocalFurya documentation can be found [here](https://github.com/fury-labs/furya/tree/main/tests/localfurya)

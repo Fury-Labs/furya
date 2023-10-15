@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/furya-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/v20/app/params"
 
 	"github.com/cosmos/cosmos-sdk/std"
 )

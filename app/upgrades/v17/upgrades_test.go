@@ -13,15 +13,15 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/app/keepers"
-	v17 "github.com/furya-labs/furya/v20/app/upgrades/v17"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
-	"github.com/furya-labs/furya/v20/x/twap/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	v17 "github.com/fury-labs/furya/v20/app/upgrades/v17"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/v20/x/twap/types"
 )
 
 type UpgradeTestSuite struct {

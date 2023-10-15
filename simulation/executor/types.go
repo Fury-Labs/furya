@@ -8,7 +8,7 @@ import (
 	legacysim "github.com/cosmos/cosmos-sdk/types/simulation"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
 )
 
 // AppStateFn returns the app state json bytes and the genesis accounts

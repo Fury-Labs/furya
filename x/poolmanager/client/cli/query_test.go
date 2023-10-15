@@ -4,13 +4,13 @@ import (
 	gocontext "context"
 	"testing"
 
-	"github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	poolmanagerqueryproto "github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	poolmanagerqueryproto "github.com/fury-labs/furya/v20/x/poolmanager/client/queryproto"
 )
 
 type QueryTestSuite struct {

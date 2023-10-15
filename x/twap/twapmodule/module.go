@@ -16,12 +16,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/furya-labs/furya/v20/x/twap"
-	twapclient "github.com/furya-labs/furya/v20/x/twap/client"
-	twapcli "github.com/furya-labs/furya/v20/x/twap/client/cli"
-	"github.com/furya-labs/furya/v20/x/twap/client/grpc"
-	"github.com/furya-labs/furya/v20/x/twap/client/queryproto"
-	"github.com/furya-labs/furya/v20/x/twap/types"
+	"github.com/fury-labs/furya/v20/x/twap"
+	twapclient "github.com/fury-labs/furya/v20/x/twap/client"
+	twapcli "github.com/fury-labs/furya/v20/x/twap/client/cli"
+	"github.com/fury-labs/furya/v20/x/twap/client/grpc"
+	"github.com/fury-labs/furya/v20/x/twap/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/twap/types"
 )
 
 var (

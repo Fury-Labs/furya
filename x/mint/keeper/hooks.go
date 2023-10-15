@@ -3,8 +3,8 @@ package keeper
 import (
 	"fmt"
 
-	"github.com/furya-labs/furya/v20/x/mint/types"
-	epochstypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/v20/x/mint/types"
+	epochstypes "github.com/fury-labs/furya/x/epochs/types"
 
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"

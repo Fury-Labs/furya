@@ -6,8 +6,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/address"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
 )
 
 func (s *TestSuite) TestCreateModuleAccount() {

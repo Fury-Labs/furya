@@ -8,7 +8,7 @@ import (
 
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils"
 )
 
 type Descriptor interface {

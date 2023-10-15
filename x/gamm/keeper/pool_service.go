@@ -8,9 +8,9 @@ import (
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 // CalculateSpotPrice returns the spot price of the quote asset in terms of the base asset,
@@ -46,7 +46,7 @@ func (k Keeper) CalculateSpotPrice(
 	}
 
 	// TODO: this is done to maintain state-compatibility with v19.x
-	// Remove after https://github.com/furya-labs/furya/issues/6064 is complete.
+	// Remove after https://github.com/fury-labs/furya/issues/6064 is complete.
 	spotPrice.ChopPrecisionMut(osmomath.DecPrecision)
 
 	// if spotPrice greater than max spot price, return an error

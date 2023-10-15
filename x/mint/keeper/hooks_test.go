@@ -6,18 +6,18 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	osmoapp "github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/x/mint/keeper"
-	"github.com/furya-labs/furya/v20/x/mint/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	osmoapp "github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/x/mint/keeper"
+	"github.com/fury-labs/furya/v20/x/mint/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 const (
 	// Most values here are taken from mainnet genesis to mimic real-world behavior:
-	// https://github.com/furya-labs/networks/raw/main/furya-1/genesis.json
+	// https://github.com/fury-labs/networks/raw/main/furya-1/genesis.json
 	defaultGenesisEpochProvisions = "821917808219.178082191780821917"
 	defaultEpochIdentifier        = "day"
 	// actual value taken from mainnet for sanity checking calculations.
@@ -430,7 +430,7 @@ func (s *KeeperTestSuite) TestAfterEpochEnd() {
 // Make sure that more specific test specs are added to validate the expected
 // supply for correctness.
 //
-// Ref: https://github.com/furya-labs/furya/issues/1917
+// Ref: https://github.com/fury-labs/furya/issues/1917
 func (s *KeeperTestSuite) TestAfterEpochEnd_FirstYearThirdening_RealParameters() {
 	app := osmoapp.Setup(false)
 	ctx := app.BaseApp.NewContext(false, tmproto.Header{})

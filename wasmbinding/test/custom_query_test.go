@@ -15,9 +15,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/wasmbinding/bindings"
+	"github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/wasmbinding/bindings"
 )
 
 func SetupCustomApp(t *testing.T, addr sdk.AccAddress) (*app.FuryaApp, sdk.Context) {

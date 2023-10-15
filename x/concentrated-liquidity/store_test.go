@@ -5,10 +5,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types/genesis"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types/genesis"
 )
 
 const (

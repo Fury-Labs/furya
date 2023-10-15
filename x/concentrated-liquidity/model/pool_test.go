@@ -9,12 +9,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	clmath "github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	clmath "github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (
@@ -217,7 +217,7 @@ func (s *ConcentratedPoolTestSuite) TestSpotPrice() {
 				// We use elipson due to sqrt approximation
 				elipson := osmomath.MustNewDecFromStr("0.0000000000000001")
 				// TODO: truncation is acceptable temporary
-				// remove before https://github.com/furya-labs/furya/issues/5726 is complete
+				// remove before https://github.com/fury-labs/furya/issues/5726 is complete
 				s.Require().True(spotPriceFromMethod.Dec().Sub(tc.expectedSpotPrice).Abs().LT(elipson))
 			}
 		})

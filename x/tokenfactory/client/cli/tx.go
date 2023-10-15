@@ -7,8 +7,8 @@ import (
 	"github.com/spf13/cobra"
 
 	// "github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/furya-labs/furya/osmoutils/osmocli"
-	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/v20/x/tokenfactory/types"
 )
 
 // GetTxCmd returns the transaction commands for this module

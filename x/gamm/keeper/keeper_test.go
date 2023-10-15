@@ -7,11 +7,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 type KeeperTestSuite struct {

@@ -7,10 +7,10 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 var emptyCoins = sdk.NewCoins()
@@ -243,7 +243,7 @@ func (k Keeper) GetPoolIdAndDurationFromGaugeRecord(ctx sdk.Context, gaugeRecord
 	} else if gaugeType == lockuptypes.ByDuration {
 		// Otherwise, it's a balancer pool so we set it to longest lockable duration
 		// TODO: add support for CW pools once there's clarity around default gauge type.
-		// Tracked in issue https://github.com/furya-labs/furya/issues/6403
+		// Tracked in issue https://github.com/fury-labs/furya/issues/6403
 		gaugeDuration, err = k.pik.GetLongestLockableDuration(ctx)
 		if err != nil {
 			return 0, 0, err

@@ -7,11 +7,11 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/lockup/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/osmomath"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/lockup/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

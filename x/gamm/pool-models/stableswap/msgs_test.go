@@ -7,10 +7,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmomath"
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	stableswap "github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	stableswap "github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 func baseCreatePoolMsgGen(sender sdk.AccAddress) *stableswap.MsgCreateStableswapPool {

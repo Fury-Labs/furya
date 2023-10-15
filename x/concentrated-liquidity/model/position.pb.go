@@ -17,7 +17,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	_ "github.com/gogo/protobuf/types"
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
-	types2 "github.com/furya-labs/furya/v20/x/lockup/types"
+	types2 "github.com/fury-labs/furya/v20/x/lockup/types"
 	io "io"
 	math "math"
 	math_bits "math/bits"

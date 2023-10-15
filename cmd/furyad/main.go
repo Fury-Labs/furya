@@ -5,9 +5,9 @@ import (
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	furya "github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/app/params"
-	"github.com/furya-labs/furya/v20/cmd/furyad/cmd"
+	furya "github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/v20/cmd/furyad/cmd"
 )
 
 func main() {

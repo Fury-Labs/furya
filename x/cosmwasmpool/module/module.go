@@ -15,14 +15,14 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
-	cosmwasmpool "github.com/furya-labs/furya/v20/x/cosmwasmpool"
-	moduleclient "github.com/furya-labs/furya/v20/x/cosmwasmpool/client"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/client/cli"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/client/grpc"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/client/queryproto"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
+	cosmwasmpool "github.com/fury-labs/furya/v20/x/cosmwasmpool"
+	moduleclient "github.com/fury-labs/furya/v20/x/cosmwasmpool/client"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/client/cli"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/client/grpc"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 )
 
 var (

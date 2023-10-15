@@ -3,10 +3,10 @@ package v14
 import (
 	store "github.com/cosmos/cosmos-sdk/store/types"
 
-	ibchookstypes "github.com/furya-labs/furya/x/ibc-hooks/types"
+	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
 
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	downtimetypes "github.com/furya-labs/furya/v20/x/downtime-detector/types"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	downtimetypes "github.com/fury-labs/furya/v20/x/downtime-detector/types"
 )
 
 // UpgradeName defines the on-chain upgrade name for the Furya v14 upgrade.

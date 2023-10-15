@@ -4,10 +4,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/x/mint/keeper"
-	"github.com/furya-labs/furya/v20/x/mint/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/x/mint/keeper"
+	"github.com/fury-labs/furya/v20/x/mint/types"
 )
 
 var customGenesis = types.NewGenesisState(

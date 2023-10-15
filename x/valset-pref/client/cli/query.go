@@ -3,7 +3,7 @@ package valsetprefcli
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
 	"github.com/fury-labs/furya/v20/x/valset-pref/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 )

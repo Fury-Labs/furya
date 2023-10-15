@@ -10,8 +10,8 @@ import (
 	transfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/tests/furyaibctesting"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/tests/furyaibctesting"
 )
 
 // Instantiate the cw20 and cw20-ics20 contract

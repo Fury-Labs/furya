@@ -8,14 +8,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/query"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/accum"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 var (

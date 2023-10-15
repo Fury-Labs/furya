@@ -16,7 +16,7 @@ import "google/protobuf/duration.proto";
 import "furya/concentrated-liquidity/position.proto";
 import "furya/concentrated-liquidity/incentive_record.proto";
 
-option go_package = "github.com/furya-labs/furya/v20/x/concentrated-liquidity/client/queryproto";
+option go_package = "github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto";
 
 service Query {
   // Pools returns all concentrated liquidity pools
@@ -214,7 +214,7 @@ message LiquidityNetInDirectionResponse {
   ];
   string current_sqrt_price = 4 [
 
-    (gogoproto.customtype) = "github.com/furya-labs/furya/osmomath.BigDec",
+    (gogoproto.customtype) = "github.com/fury-labs/furya/osmomath.BigDec",
     (gogoproto.moretags) = "yaml:\"current_sqrt_price\"",
     (gogoproto.nullable) = false
   ];

@@ -16,9 +16,9 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/furya-labs/furya/osmoutils/osmocli"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 )
 
 func NewTxCmd() *cobra.Command {

@@ -14,8 +14,8 @@ import (
 	govcli "github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/furya-labs/furya/osmoutils/osmocli"
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 const FlagFeeTokens = "fee-tokens"

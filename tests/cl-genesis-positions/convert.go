@@ -11,15 +11,15 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/accum"
-	"github.com/furya-labs/furya/v19/app"
-	"github.com/furya-labs/furya/v19/app/apptesting"
-	cl "github.com/furya-labs/furya/v19/x/concentrated-liquidity"
-	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/math"
-	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/model"
-	cltypes "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types"
-	clgenesis "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types/genesis"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/fury-labs/furya/v19/app"
+	"github.com/fury-labs/furya/v19/app/apptesting"
+	cl "github.com/fury-labs/furya/v19/x/concentrated-liquidity"
+	"github.com/fury-labs/furya/v19/x/concentrated-liquidity/math"
+	"github.com/fury-labs/furya/v19/x/concentrated-liquidity/model"
+	cltypes "github.com/fury-labs/furya/v19/x/concentrated-liquidity/types"
+	clgenesis "github.com/fury-labs/furya/v19/x/concentrated-liquidity/types/genesis"
 )
 
 type BigBangPositions struct {

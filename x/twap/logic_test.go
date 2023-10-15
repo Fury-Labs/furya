@@ -9,14 +9,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	"github.com/furya-labs/furya/v20/x/twap"
-	"github.com/furya-labs/furya/v20/x/twap/types"
-	"github.com/furya-labs/furya/v20/x/twap/types/twapmock"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/x/twap"
+	"github.com/fury-labs/furya/v20/x/twap/types"
+	"github.com/fury-labs/furya/v20/x/twap/types/twapmock"
 )
 
 var (

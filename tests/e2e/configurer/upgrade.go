@@ -10,12 +10,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	appparams "github.com/furya-labs/furya/v20/app/params"
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/chain"
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/config"
-	"github.com/furya-labs/furya/v20/tests/e2e/containers"
-	"github.com/furya-labs/furya/v20/tests/e2e/initialization"
+	"github.com/fury-labs/furya/osmomath"
+	appparams "github.com/fury-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/chain"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/config"
+	"github.com/fury-labs/furya/v20/tests/e2e/containers"
+	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
 )
 
 type UpgradeSettings struct {

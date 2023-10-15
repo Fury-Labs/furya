@@ -6,9 +6,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 )
 
 // SetPool stores the given pool in state.

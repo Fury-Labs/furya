@@ -8,7 +8,7 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v4/modules/core/04-channel/types"
 	ibcexported "github.com/cosmos/ibc-go/v4/modules/core/exported"
 
-	ibchooks "github.com/furya-labs/furya/x/ibc-hooks"
+	ibchooks "github.com/fury-labs/furya/x/ibc-hooks"
 )
 
 var (

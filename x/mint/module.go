@@ -27,11 +27,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/furya-labs/furya/v20/x/mint/client/cli"
-	"github.com/furya-labs/furya/v20/x/mint/client/rest"
-	"github.com/furya-labs/furya/v20/x/mint/keeper"
-	"github.com/furya-labs/furya/v20/x/mint/simulation"
-	"github.com/furya-labs/furya/v20/x/mint/types"
+	"github.com/fury-labs/furya/v20/x/mint/client/cli"
+	"github.com/fury-labs/furya/v20/x/mint/client/rest"
+	"github.com/fury-labs/furya/v20/x/mint/keeper"
+	"github.com/fury-labs/furya/v20/x/mint/simulation"
+	"github.com/fury-labs/furya/v20/x/mint/types"
 )
 
 var (

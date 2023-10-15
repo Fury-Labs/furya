@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 var _ types.QueryServer = Querier{}

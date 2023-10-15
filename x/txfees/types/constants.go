@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 // ConsensusMinFee is a governance set parameter from prop 354 (https://www.mintscan.io/furya/proposals/354)

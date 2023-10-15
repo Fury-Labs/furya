@@ -13,10 +13,10 @@ import (
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	transfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 //go:embed rate_limiter.wasm

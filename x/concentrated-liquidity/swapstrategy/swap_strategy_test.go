@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/swapstrategy"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/swapstrategy"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 type StrategyTestSuite struct {

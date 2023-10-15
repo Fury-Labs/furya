@@ -25,9 +25,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/furya-labs/furya/v20/x/txfees/client/cli"
-	"github.com/furya-labs/furya/v20/x/txfees/keeper"
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/v20/x/txfees/client/cli"
+	"github.com/fury-labs/furya/v20/x/txfees/keeper"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 var (

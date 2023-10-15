@@ -24,12 +24,12 @@ cd ..
 # move proto files to the right places
 #
 # Note: Proto files are suffixed with the current binary version.
-cp -r github.com/furya-labs/furya/v20/* ./
-cp -r github.com/furya-labs/furya/osmoutils ./
+cp -r github.com/fury-labs/furya/v20/* ./
+cp -r github.com/fury-labs/furya/osmoutils ./
 rm -rf github.com
 
 go mod tidy -compat=1.18
 
 # TODO: Uncomment once ORM/Pulsar support is needed.
 #
-# Ref: https://github.com/furya-labs/furya/pull/1589
+# Ref: https://github.com/fury-labs/furya/pull/1589

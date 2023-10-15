@@ -5,13 +5,13 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/osmomath"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/keeper"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 
 	errorsmod "cosmossdk.io/errors"
 	"github.com/cosmos/cosmos-sdk/simapp"

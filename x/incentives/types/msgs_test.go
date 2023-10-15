@@ -9,14 +9,14 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/app/apptesting"
 
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 // TestMsgCreateGauge tests if valid/invalid create gauge messages are properly validated/invalidated

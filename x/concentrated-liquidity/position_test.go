@@ -7,16 +7,16 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/accum"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (
@@ -2106,7 +2106,7 @@ func (s *KeeperTestSuite) TestNegativeTickRange_SpreadFactor() {
 	expectedTotalIncentiveRewards = expectedTotalIncentiveRewards.Add(rewardsPerSecond)
 
 	// This previously paniced due to the lack of support for negative range accumulators.
-	// See issue: https://github.com/furya-labs/furya/issues/5854
+	// See issue: https://github.com/fury-labs/furya/issues/5854
 	// We initialized the lower tick's accumulator (DefaultCurrTick - 25) to be greater than the upper tick's accumulator (DefaultCurrTick + 50)
 	// Whenever the current tick is above the position's range, we compute in range accumulator as upper tick accumulator - lower tick accumulator
 	// In this case, it ends up being negative, which is now supported.

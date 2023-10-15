@@ -3,7 +3,7 @@ package types
 import (
 	"fmt"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 // Creates a new TokenPairArbRoutes object

@@ -1,7 +1,7 @@
 package v4
 
 import (
-	"github.com/furya-labs/furya/v20/app/upgrades"
+	"github.com/fury-labs/furya/v20/app/upgrades"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 )

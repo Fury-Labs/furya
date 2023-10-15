@@ -10,10 +10,10 @@ import (
 	"github.com/stretchr/testify/require"
 	coretypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/config"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/config"
 
-	"github.com/furya-labs/furya/v20/tests/e2e/containers"
-	"github.com/furya-labs/furya/v20/tests/e2e/initialization"
+	"github.com/fury-labs/furya/v20/tests/e2e/containers"
+	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
 )
 
 type Config struct {

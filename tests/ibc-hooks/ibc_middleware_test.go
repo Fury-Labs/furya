@@ -11,18 +11,18 @@ import (
 
 	"github.com/CosmWasm/wasmd/x/wasm/types"
 
-	ibchookskeeper "github.com/furya-labs/furya/x/ibc-hooks/keeper"
+	ibchookskeeper "github.com/fury-labs/furya/x/ibc-hooks/keeper"
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
-	txfeetypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
+	txfeetypes "github.com/fury-labs/furya/v20/x/txfees/types"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/app/apptesting"
 
 	"github.com/stretchr/testify/suite"
 
@@ -33,9 +33,9 @@ import (
 	channeltypes "github.com/cosmos/ibc-go/v4/modules/core/04-channel/types"
 	ibctesting "github.com/cosmos/ibc-go/v4/testing"
 
-	"github.com/furya-labs/furya/v20/tests/furyaibctesting"
+	"github.com/fury-labs/furya/v20/tests/furyaibctesting"
 
-	"github.com/furya-labs/furya/v20/tests/ibc-hooks/testutils"
+	"github.com/fury-labs/furya/v20/tests/ibc-hooks/testutils"
 )
 
 type HooksTestSuite struct {

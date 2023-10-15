@@ -2,7 +2,7 @@ package v5
 
 import (
 	ibcconnectiontypes "github.com/cosmos/ibc-go/v4/modules/core/03-connection/types"
-	// bech32ibctypes "github.com/furya-labs/bech32-ibc/x/bech32ibc/types"
+	// bech32ibctypes "github.com/fury-labs/bech32-ibc/x/bech32ibc/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -10,9 +10,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/authz"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 func CreateUpgradeHandler(

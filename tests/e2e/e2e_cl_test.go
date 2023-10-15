@@ -9,19 +9,19 @@ import (
 
 	"cosmossdk.io/math"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/chain"
-	"github.com/furya-labs/furya/v20/tests/e2e/initialization"
-	clmath "github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/chain"
+	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
+	clmath "github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 // Note: do not use chain B in this test as it has taker fee set.

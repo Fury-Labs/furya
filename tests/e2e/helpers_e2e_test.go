@@ -10,11 +10,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/chain"
-	"github.com/furya-labs/furya/v20/tests/e2e/initialization"
-	"github.com/furya-labs/furya/v20/tests/e2e/util"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/chain"
+	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
+	"github.com/fury-labs/furya/v20/tests/e2e/util"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 var defaultFeePerTx = osmomath.NewInt(1000)

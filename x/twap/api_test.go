@@ -8,11 +8,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	sdkrand "github.com/furya-labs/furya/v20/simulation/simtypes/random"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/twap"
-	"github.com/furya-labs/furya/v20/x/twap/types"
+	"github.com/fury-labs/furya/osmomath"
+	sdkrand "github.com/fury-labs/furya/v20/simulation/simtypes/random"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/twap"
+	"github.com/fury-labs/furya/v20/x/twap/types"
 )
 
 var (

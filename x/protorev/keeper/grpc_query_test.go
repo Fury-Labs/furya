@@ -3,11 +3,11 @@ package keeper_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 // TestParams tests the query for params

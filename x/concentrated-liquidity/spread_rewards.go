@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/accum"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/accum"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 var emptyCoins = sdk.DecCoins(nil)

@@ -3,10 +3,10 @@ package v8
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	poolincentiveskeeper "github.com/furya-labs/furya/v20/x/pool-incentives/keeper"
-	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	poolincentiveskeeper "github.com/fury-labs/furya/v20/x/pool-incentives/keeper"
+	poolincentivestypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 
 // This file implements logic for accelerated incentive proposals.
@@ -15,7 +15,7 @@ import (
 // executing the equivalent result of the "UpdatePoolIncentives" proposals, inside of this upgrade logic.
 func applyPoolIncentivesUpdate(ctx sdk.Context, poolincentiveskeeper *poolincentiveskeeper.Keeper, records []poolincentivestypes.DistrRecord) {
 	// Notice that the pool incentives update proposal code, just calls UpdateDistrRecords:
-	// https://github.com/furya-labs/furya/blob/v7.3.0/x/pool-incentives/keeper/gov.go#L13-L15
+	// https://github.com/fury-labs/furya/blob/v7.3.0/x/pool-incentives/keeper/gov.go#L13-L15
 	// And that p.Records is the field output by the gov queries.
 
 	// If error, undo state update, log, and proceed. We don't want to stop the entire upgrade due to

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils"
 
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -16,7 +16,7 @@ import (
 	porttypes "github.com/cosmos/ibc-go/v4/modules/core/05-port/types"
 	"github.com/cosmos/ibc-go/v4/modules/core/exported"
 
-	"github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
+	"github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 )
 
 type IBCModule struct {

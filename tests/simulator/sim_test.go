@@ -12,14 +12,14 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/simapp/helpers"
 
-	"github.com/furya-labs/furya/osmomath"
-	osmosim "github.com/furya-labs/furya/v20/simulation/executor"
-	"github.com/furya-labs/furya/v20/simulation/simtypes/simlogger"
-	txfeetypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmomath"
+	osmosim "github.com/fury-labs/furya/v20/simulation/executor"
+	"github.com/fury-labs/furya/v20/simulation/simtypes/simlogger"
+	txfeetypes "github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 // Profile with:
-// /usr/local/go/bin/go test -benchmem -run=^$ github.com/furya-labs/furya/simapp -bench ^BenchmarkFullAppSimulation$ -Commit=true -cpuprofile cpu.out
+// /usr/local/go/bin/go test -benchmem -run=^$ github.com/fury-labs/furya/simapp -bench ^BenchmarkFullAppSimulation$ -Commit=true -cpuprofile cpu.out
 func BenchmarkFullAppSimulation(b *testing.B) {
 	// -Enabled=true -NumBlocks=1000 -BlockSize=200 \
 	// -Period=1 -Commit=true -Seed=57 -v -timeout 24h

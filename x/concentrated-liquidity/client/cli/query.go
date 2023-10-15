@@ -4,7 +4,7 @@ import (
 	"github.com/spf13/cobra"
 	flag "github.com/spf13/pflag"
 
-	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
 	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )

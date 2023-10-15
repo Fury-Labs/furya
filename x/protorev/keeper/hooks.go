@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/osmomath"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 type Hooks struct {

@@ -1,7 +1,7 @@
 package clmocks
 
 import (
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

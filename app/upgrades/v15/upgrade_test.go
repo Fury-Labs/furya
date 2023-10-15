@@ -12,17 +12,17 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	transfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	v15 "github.com/furya-labs/furya/v20/app/upgrades/v15"
-	gamm "github.com/furya-labs/furya/v20/x/gamm/keeper"
-	balancer "github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	v15 "github.com/fury-labs/furya/v20/app/upgrades/v15"
+	gamm "github.com/fury-labs/furya/v20/x/gamm/keeper"
+	balancer "github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 type UpgradeTestSuite struct {

@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
+	"github.com/fury-labs/furya/osmomath"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
 )
 
 const (

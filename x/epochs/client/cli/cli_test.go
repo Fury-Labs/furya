@@ -3,7 +3,7 @@ package cli_test
 import (
 	"testing"
 
-	"github.com/furya-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
 	"github.com/fury-labs/furya/x/epochs/client/cli"
 	"github.com/fury-labs/furya/x/epochs/types"
 )

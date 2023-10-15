@@ -1,6 +1,6 @@
 package swapstrategy
 
-import "github.com/furya-labs/furya/osmomath"
+import "github.com/fury-labs/furya/osmomath"
 
 func ComputeSpreadRewardChargePerSwapStepOutGivenIn(hasReachedTarget bool, amountIn, amountSpecifiedRemaining, spreadFactor osmomath.Dec) osmomath.Dec {
 	return computeSpreadRewardChargePerSwapStepOutGivenIn(hasReachedTarget, amountIn, amountSpecifiedRemaining, spreadFactor)

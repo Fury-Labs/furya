@@ -31,7 +31,7 @@ go mod edit -replace github.com/tendermint/tm-db=github.com/notional-labs/tm-db@
 go mod tidy
 go install -ldflags '-w -s -X github.com/cosmos/cosmos-sdk/types.DBBackend=pebbledb' -tags pebbledb ./...
 furyad init speedrun
-wget -O ~/.furyad/config/genesis.json https://github.com/furya-labs/networks/raw/main/furya-1/genesis.json
+wget -O ~/.furyad/config/genesis.json https://github.com/fury-labs/networks/raw/main/furya-1/genesis.json
 furyad start --db_backend pebbledb
 git reset --hard
 

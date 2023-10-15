@@ -164,7 +164,7 @@ changelog:
 # Docs: https://goreleaser.com/customization/release/
 release:
   github:
-    owner: furya-labs
+    owner: fury-labs
     name: furya
   replace_existing_draft: true
   header: |
@@ -172,7 +172,7 @@ release:
 
     ## Changelog
 
-    See the full changelog [here](https://github.com/furya-labs/furya/blob/v{{ .Version }}/CHANGELOG.md)
+    See the full changelog [here](https://github.com/fury-labs/furya/blob/v{{ .Version }}/CHANGELOG.md)
 
     ## ⚡️ Binaries
 
@@ -183,7 +183,7 @@ release:
     If you prefer to build from source, you can use the following commands:
 
     ````bash
-    git clone https://github.com/furya-labs/furya
+    git clone https://github.com/fury-labs/furya
     cd furya && git checkout v{{ .Version }}
     make install
     ````

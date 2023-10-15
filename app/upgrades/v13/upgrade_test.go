@@ -4,16 +4,16 @@ import (
 	"fmt"
 	"testing"
 
-	ibchookstypes "github.com/furya-labs/furya/x/ibc-hooks/types"
+	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
 
-	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
+	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/app/apptesting"
 )
 
 type UpgradeTestSuite struct {

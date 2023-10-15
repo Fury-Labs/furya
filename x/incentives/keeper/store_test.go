@@ -4,9 +4,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 var _ = suite.TestingSuite(nil)
@@ -42,7 +42,7 @@ func (s *KeeperTestSuite) TestGaugeReferencesManagement() {
 }
 
 func (s *KeeperTestSuite) TestGetGroupByGaugeID() {
-	// TODO: Re-enable this once gauge creation refactor is complete in https://github.com/furya-labs/furya/issues/6404
+	// TODO: Re-enable this once gauge creation refactor is complete in https://github.com/fury-labs/furya/issues/6404
 	s.T().Skip()
 
 	tests := map[string]struct {

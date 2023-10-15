@@ -11,11 +11,11 @@ import (
 	ante "github.com/cosmos/cosmos-sdk/x/auth/ante"
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	osmoante "github.com/furya-labs/furya/v20/ante"
-	v9 "github.com/furya-labs/furya/v20/app/upgrades/v9"
+	osmoante "github.com/fury-labs/furya/v20/ante"
+	v9 "github.com/fury-labs/furya/v20/app/upgrades/v9"
 
-	txfeeskeeper "github.com/furya-labs/furya/v20/x/txfees/keeper"
-	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
+	txfeeskeeper "github.com/fury-labs/furya/v20/x/txfees/keeper"
+	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 // Link to default ante handler used by cosmos sdk:

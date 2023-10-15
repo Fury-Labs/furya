@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	errorsmod "cosmossdk.io/errors"
 )

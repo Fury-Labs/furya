@@ -10,12 +10,12 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	sdkrand "github.com/furya-labs/furya/v20/simulation/simtypes/random"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/internal/cfmm_common"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/internal/test_helpers"
-	types "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	sdkrand "github.com/fury-labs/furya/v20/simulation/simtypes/random"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/internal/cfmm_common"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/internal/test_helpers"
+	types "github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 var (

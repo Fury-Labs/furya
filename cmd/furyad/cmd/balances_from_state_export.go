@@ -12,11 +12,11 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	appparams "github.com/furya-labs/furya/v20/app/params"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	appparams "github.com/fury-labs/furya/v20/app/params"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/server"

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/furya-labs/furya/osmomath"
-	ibchookstypes "github.com/furya-labs/furya/x/ibc-hooks/types"
+	"github.com/fury-labs/furya/osmomath"
+	ibchookstypes "github.com/fury-labs/furya/x/ibc-hooks/types"
 
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -15,16 +15,16 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 // clPoolCreationInfo encapsulates the returns from CL pool

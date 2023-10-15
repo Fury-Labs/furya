@@ -5,8 +5,8 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
@@ -34,7 +34,7 @@ func (k Keeper) ConvertToBaseToken(ctx sdk.Context, inputFee sdk.Coin) (sdk.Coin
 
 	// Note: spotPrice truncation is done here for maintaining state-compatibility with v19.x
 	// It should be changed to support full spot price precision before
-	// https://github.com/furya-labs/furya/issues/6064 is complete
+	// https://github.com/fury-labs/furya/issues/6064 is complete
 	return sdk.NewCoin(baseDenom, spotPrice.Dec().MulInt(inputFee.Amount).RoundInt()), nil
 }
 

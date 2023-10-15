@@ -3,12 +3,12 @@ package apptesting
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	gammkeeper "github.com/furya-labs/furya/v20/x/gamm/keeper"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	gammkeeper "github.com/fury-labs/furya/v20/x/gamm/keeper"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 const (

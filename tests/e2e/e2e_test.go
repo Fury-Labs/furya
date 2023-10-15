@@ -16,18 +16,18 @@ import (
 
 	packetforwardingtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	ibchookskeeper "github.com/furya-labs/furya/x/ibc-hooks/keeper"
+	"github.com/fury-labs/furya/osmomath"
+	ibchookskeeper "github.com/fury-labs/furya/x/ibc-hooks/keeper"
 
-	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/chain"
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/config"
-	"github.com/furya-labs/furya/v20/tests/e2e/initialization"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/chain"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/config"
+	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
 )
 
 var (
@@ -674,7 +674,7 @@ func (s *IntegrationTestSuite) AddToExistingLock() {
 // because twap keep time = epoch time / 4 and we use a timer
 // to wait for at least the twap keep time.
 func (s *IntegrationTestSuite) ArithmeticTWAP() {
-	s.T().Skip("TODO: investigate further: https://github.com/furya-labs/furya/issues/4342")
+	s.T().Skip("TODO: investigate further: https://github.com/fury-labs/furya/issues/4342")
 
 	const (
 		poolFile   = "nativeDenomThreeAssetPool.json"

@@ -5,9 +5,9 @@ import (
 
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	valPref "github.com/furya-labs/furya/v20/x/valset-pref"
-	"github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/osmomath"
+	valPref "github.com/fury-labs/furya/v20/x/valset-pref"
+	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 )
 
 func (s *KeeperTestSuite) TestValidateLockForForceUnlock() {

@@ -7,14 +7,14 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	sftypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/osmomath"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	clmodel "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	sftypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 func (s *KeeperTestSuite) TestInitializePool() {
@@ -306,14 +306,14 @@ func (s *KeeperTestSuite) TestCalculateSpotPrice() {
 	// ETH is token0 so its price will be the DefaultCurrSqrtPrice squared
 	spotPriceBaseETH, err := s.App.ConcentratedLiquidityKeeper.CalculateSpotPrice(s.Ctx, poolId, USDC, ETH)
 	s.Require().NoError(err)
-	// TODO: remove Dec truncation before https://github.com/furya-labs/furya/issues/5726 is complete
+	// TODO: remove Dec truncation before https://github.com/fury-labs/furya/issues/5726 is complete
 	// Currently exists for state-compatibility with v19.x
 	s.Require().Equal(spotPriceBaseETH.Dec(), DefaultCurrSqrtPrice.PowerInteger(2).Dec())
 
 	// test that we have correct values for reversed quote asset and base asset
 	spotPriceBaseUSDC, err := s.App.ConcentratedLiquidityKeeper.CalculateSpotPrice(s.Ctx, poolId, ETH, USDC)
 	s.Require().NoError(err)
-	// TODO: remove Dec truncation before https://github.com/furya-labs/furya/issues/5726 is complete
+	// TODO: remove Dec truncation before https://github.com/fury-labs/furya/issues/5726 is complete
 	// Currently exists for state-compatibility with v19.x
 	s.Require().Equal(spotPriceBaseUSDC.Dec(), osmomath.OneBigDec().Quo(DefaultCurrSqrtPrice.PowerInteger(2)).Dec())
 

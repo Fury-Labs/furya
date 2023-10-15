@@ -6,9 +6,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmocli"
-	"github.com/furya-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/v20/x/lockup/types"
 )
 
 var testAddresses = osmoutils.CreateRandomAccounts(3)

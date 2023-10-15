@@ -12,8 +12,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/furya-labs/furya/v20/simulation/executor/internal/stats"
-	"github.com/furya-labs/furya/v20/simulation/simtypes/simlogger"
+	"github.com/fury-labs/furya/v20/simulation/executor/internal/stats"
+	"github.com/fury-labs/furya/v20/simulation/simtypes/simlogger"
 )
 
 // List of available flags for the simulator

@@ -1,6 +1,6 @@
 package accum_test
 
-import "github.com/furya-labs/furya/osmoutils/accum"
+import "github.com/fury-labs/furya/osmoutils/accum"
 
 // TestOptionsValidate tests that the options are validated correctly.
 func (suite *AccumTestSuite) TestOptionsValidate() {

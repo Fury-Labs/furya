@@ -11,12 +11,12 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	types "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	types "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 // InitializePool initializes a new concentrated liquidity pool with the given PoolI interface and creator address.

@@ -5,10 +5,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	poolmanager "github.com/furya-labs/furya/v20/x/poolmanager"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	poolmanager "github.com/fury-labs/furya/v20/x/poolmanager"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 func (s *KeeperTestHelper) RunBasicSwap(poolId uint64) {

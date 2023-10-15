@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-labs/furya/x/ibc-hooks/types"
+	"github.com/fury-labs/furya/x/ibc-hooks/types"
 	"strconv"
 )
 

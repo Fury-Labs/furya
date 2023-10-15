@@ -6,7 +6,7 @@ import (
 
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 
-	epochtypes "github.com/furya-labs/furya/x/epochs/types"
+	epochtypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 // Parameter store keys.

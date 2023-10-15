@@ -13,14 +13,14 @@ import (
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	v17 "github.com/furya-labs/furya/v20/app/upgrades/v17"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	v17 "github.com/fury-labs/furya/v20/app/upgrades/v17"
 
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/types"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 type UpgradeTestSuite struct {

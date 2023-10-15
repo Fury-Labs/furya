@@ -3,13 +3,13 @@ package keeper_test
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	"github.com/furya-labs/furya/v20/x/protorev/keeper"
-	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/keeper"
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/x/protorev/keeper"
+	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/keeper"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 // Mainnet Arb Route - 2 Asset, Same Weights (Block: 5905150)

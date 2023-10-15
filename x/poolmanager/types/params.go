@@ -3,9 +3,9 @@ package types
 import (
 	"fmt"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	appparams "github.com/furya-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	appparams "github.com/fury-labs/furya/v20/app/params"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"

@@ -26,12 +26,12 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	osmosimtypes "github.com/furya-labs/furya/v20/simulation/simtypes"
-	"github.com/furya-labs/furya/v20/x/mint/client/rest"
-	"github.com/furya-labs/furya/v20/x/superfluid/client/cli"
-	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
-	"github.com/furya-labs/furya/v20/x/superfluid/simulation"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	osmosimtypes "github.com/fury-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/x/mint/client/rest"
+	"github.com/fury-labs/furya/v20/x/superfluid/client/cli"
+	"github.com/fury-labs/furya/v20/x/superfluid/keeper"
+	"github.com/fury-labs/furya/v20/x/superfluid/simulation"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 var (

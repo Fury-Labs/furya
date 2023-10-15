@@ -3,14 +3,14 @@ package v8
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/keepers"
 )
 
 // RunForkLogic executes height-gated on-chain fork logic for the Furya v8
 // upgrade.
 func RunForkLogic(ctx sdk.Context, appKeepers *keepers.AppKeepers) {
 	// Only proceed with v8 for mainnet, testnets need not adjust their pool incentives or unbonding.
-	// https://github.com/furya-labs/furya/issues/1609
+	// https://github.com/fury-labs/furya/issues/1609
 	if ctx.ChainID() != "furya-1" {
 		return
 	}

@@ -3,7 +3,7 @@ package types
 import (
 	"time"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 const (

@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-labs/furya/v20/x/ibc-rate-limit/client"
-	"github.com/furya-labs/furya/v20/x/ibc-rate-limit/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/ibc-rate-limit/client"
+	"github.com/fury-labs/furya/v20/x/ibc-rate-limit/client/queryproto"
 )
 
 type Querier struct {

@@ -15,8 +15,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/params"
 
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
@@ -54,7 +54,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/client/config"
 
-	furya "github.com/furya-labs/furya/v20/app"
+	furya "github.com/fury-labs/furya/v20/app"
 )
 
 type AssetList struct {
@@ -647,10 +647,10 @@ Outputs:
 			fileName := ""
 
 			if args[0] == mainnetId || args[0] == "" {
-				assetListURL = "https://raw.githubusercontent.com/furya-labs/assetlists/main/furya-1/furya-1.assetlist.json"
+				assetListURL = "https://raw.githubusercontent.com/fury-labs/assetlists/main/furya-1/furya-1.assetlist.json"
 				fileName = "cmd/furyad/cmd/furya-1-assetlist-manual.json"
 			} else if args[0] == testnetId {
-				assetListURL = "https://raw.githubusercontent.com/furya-labs/assetlists/main/fury-test-5/fury-test-5.assetlist.json"
+				assetListURL = "https://raw.githubusercontent.com/fury-labs/assetlists/main/fury-test-5/fury-test-5.assetlist.json"
 				fileName = "cmd/furyad/cmd/fury-test-5-assetlist-manual.json"
 			} else {
 				return nil

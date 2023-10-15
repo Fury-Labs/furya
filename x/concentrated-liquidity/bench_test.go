@@ -10,14 +10,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	clmath "github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
-	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	clmath "github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"
+	clmodel "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
 )
 
 type BenchTestSuite struct {

@@ -23,13 +23,13 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
-	simulation "github.com/furya-labs/furya/v20/x/tokenfactory/simulation"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
+	simulation "github.com/fury-labs/furya/v20/x/tokenfactory/simulation"
 
-	"github.com/furya-labs/furya/v20/x/tokenfactory/client/cli"
-	"github.com/furya-labs/furya/v20/x/tokenfactory/keeper"
-	"github.com/furya-labs/furya/v20/x/tokenfactory/types"
+	"github.com/fury-labs/furya/v20/x/tokenfactory/client/cli"
+	"github.com/fury-labs/furya/v20/x/tokenfactory/keeper"
+	"github.com/fury-labs/furya/v20/x/tokenfactory/types"
 )
 
 var (

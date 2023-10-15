@@ -8,13 +8,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmomath"
-	_ "github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	_ "github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 var (
@@ -857,7 +857,7 @@ func (s *KeeperTestSuite) TestJoinSwapExactAmountInConsistency() {
 		// TODO: Uncomment or remove this following test case once the referenced
 		// issue is resolved.
 		//
-		// Ref: https://github.com/furya-labs/furya/issues/1196
+		// Ref: https://github.com/fury-labs/furya/issues/1196
 		// {
 		// 	name:              "single coin with positive spread factor and zero exit fee",
 		// 	poolSpreadFactor:       osmomath.NewDecWithPrec(1, 2),

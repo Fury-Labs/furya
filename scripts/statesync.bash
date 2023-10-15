@@ -18,7 +18,7 @@ go install -ldflags '-w -s -X github.com/cosmos/cosmos-sdk/types.DBBackend=pebbl
 
 # MAKE HOME FOLDER AND GET GENESIS
 furyad init test
-wget -O ~/.furyad/config/genesis.json https://github.com/furya-labs/furya/raw/main/networks/furya-1/genesis.json
+wget -O ~/.furyad/config/genesis.json https://github.com/fury-labs/furya/raw/main/networks/furya-1/genesis.json
 
 
 INTERVAL=1500

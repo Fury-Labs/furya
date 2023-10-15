@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"

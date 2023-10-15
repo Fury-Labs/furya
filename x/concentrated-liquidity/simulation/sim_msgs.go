@@ -8,14 +8,14 @@ import (
 	legacysimulationtype "github.com/cosmos/cosmos-sdk/types/simulation"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	osmosimtypes "github.com/furya-labs/furya/v20/simulation/simtypes"
-	sdkrand "github.com/furya-labs/furya/v20/simulation/simtypes/random"
-	clkeeper "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	clmodeltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
+	"github.com/fury-labs/furya/osmomath"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	osmosimtypes "github.com/fury-labs/furya/v20/simulation/simtypes"
+	sdkrand "github.com/fury-labs/furya/v20/simulation/simtypes/random"
+	clkeeper "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	clmodeltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
 )
 
 // preparePoolConfig defines the parameters for creating a new pool

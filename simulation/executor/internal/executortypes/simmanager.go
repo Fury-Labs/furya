@@ -15,8 +15,8 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"golang.org/x/exp/maps"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
 )
 
 // Manager defines a simulation manager that provides the high level utility

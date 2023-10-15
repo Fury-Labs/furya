@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
 )
 
 func TestGetPoolShareDenom(t *testing.T) {

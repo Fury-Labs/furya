@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 	"github.com/fury-labs/furya/v20/app/apptesting"
 	appParams "github.com/fury-labs/furya/v20/app/params"
 	"github.com/fury-labs/furya/v20/x/valset-pref/types"

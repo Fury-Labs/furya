@@ -12,7 +12,7 @@ import (
 	"github.com/cosmos/ibc-go/v4/testing/simapp/helpers"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/furya-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/app"
 )
 
 type TestChain struct {

@@ -7,8 +7,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	gammkeeper "github.com/furya-labs/furya/v20/x/gamm/keeper"
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	gammkeeper "github.com/fury-labs/furya/v20/x/gamm/keeper"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 // Every asset with a liquid fury pairing pool on Furya, as of 12/01/21

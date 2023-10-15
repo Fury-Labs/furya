@@ -7,8 +7,8 @@ import (
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/furya-labs/furya/v20/x/pool-incentives/keeper"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/keeper"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 
 // NewPoolIncentivesProposalHandler is a handler for governance proposals on new pool incentives.

@@ -1,7 +1,7 @@
 package txfee_filters
 
 import (
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

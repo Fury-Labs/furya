@@ -12,11 +12,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	"github.com/furya-labs/furya/v20/x/protorev/keeper"
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/x/protorev/keeper"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 // BenchmarkBalancerSwapHighestLiquidityArb benchmarks a balancer swap that creates a single three hop arbitrage

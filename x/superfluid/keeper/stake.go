@@ -6,12 +6,12 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
-	valsettypes "github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
+	valsettypes "github.com/fury-labs/furya/v20/x/valset-pref/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"

@@ -10,9 +10,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/swapstrategy"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/swapstrategy"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (
@@ -228,7 +228,7 @@ func (s *KeeperTestSuite) swapNearInitializedTickBoundary(r *rand.Rand, pool typ
 
 func (s *KeeperTestSuite) swapNearTickBoundary(r *rand.Rand, pool types.ConcentratedPoolExtension, targetTick int64, zfo bool) (didSwap bool, fatalErr bool) {
 	// TODO: remove this limit upon completion of the refactor in:
-	// https://github.com/furya-labs/furya/issues/5726
+	// https://github.com/fury-labs/furya/issues/5726
 	// Due to an intermediary refactor step where we have
 	// full range positions created in the extended full range it
 	// sometimes tries to swap to the V2 MinInitializedTick that

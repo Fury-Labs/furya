@@ -4,11 +4,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/v20/x/protorev/types"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

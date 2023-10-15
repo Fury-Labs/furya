@@ -8,18 +8,18 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
 
 	cosmwasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	cosmwasmpooltypes "github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
-	tokenfactorykeeper "github.com/furya-labs/furya/v20/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/furya-labs/furya/v20/x/tokenfactory/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	cosmwasmpooltypes "github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
+	tokenfactorykeeper "github.com/fury-labs/furya/v20/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/fury-labs/furya/v20/x/tokenfactory/types"
 )
 
 const (

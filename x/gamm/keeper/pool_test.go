@@ -7,13 +7,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/golang/mock/gomock"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/tests/mocks"
-	"github.com/furya-labs/furya/v20/x/gamm/keeper"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/tests/mocks"
+	"github.com/fury-labs/furya/v20/x/gamm/keeper"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 var (
@@ -31,7 +31,7 @@ var (
 // 	"github.com/cosmos/cosmos-sdk/simapp"
 // 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-// 	"github.com/furya-labs/furya/v20/x/gamm/types"
+// 	"github.com/fury-labs/furya/v20/x/gamm/types"
 // )
 
 // func (s *KeeperTestSuite) TestCleanupPool() {

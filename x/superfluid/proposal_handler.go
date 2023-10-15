@@ -7,9 +7,9 @@ import (
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/furya-labs/furya/v20/x/superfluid/keeper"
-	"github.com/furya-labs/furya/v20/x/superfluid/keeper/gov"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/keeper"
+	"github.com/fury-labs/furya/v20/x/superfluid/keeper/gov"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 func NewSuperfluidProposalHandler(k keeper.Keeper, ek types.EpochKeeper, gk types.GammKeeper) govtypes.Handler {

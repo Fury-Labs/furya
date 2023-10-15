@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/furya-labs/furya
+name: buf.build/fury-labs/furya
 deps:
   - buf.build/cosmos/cosmos-sdk
   - buf.build/cosmos/cosmos-proto

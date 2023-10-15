@@ -7,11 +7,11 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	epochstypes "github.com/furya-labs/furya/x/epochs/types"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	epochstypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 // AccountKeeper interface contains functions for getting accounts and the module address

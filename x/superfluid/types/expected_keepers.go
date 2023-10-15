@@ -7,14 +7,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	epochstypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	epochstypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 // LockupKeeper defines the expected interface needed to retrieve locks.

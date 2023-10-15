@@ -15,16 +15,16 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
-	gammsimulation "github.com/furya-labs/furya/v20/x/gamm/simulation"
-	"github.com/furya-labs/furya/v20/x/poolmanager"
-	pmclient "github.com/furya-labs/furya/v20/x/poolmanager/client"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/cli"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/grpc"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/grpcv2"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/queryproto"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/queryprotov2"
-	"github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
+	gammsimulation "github.com/fury-labs/furya/v20/x/gamm/simulation"
+	"github.com/fury-labs/furya/v20/x/poolmanager"
+	pmclient "github.com/fury-labs/furya/v20/x/poolmanager/client"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/cli"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/grpc"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/grpcv2"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/queryprotov2"
+	"github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 var (

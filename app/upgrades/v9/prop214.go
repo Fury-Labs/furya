@@ -3,9 +3,9 @@ package v9
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	gammkeeper "github.com/furya-labs/furya/v20/x/gamm/keeper"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/osmomath"
+	gammkeeper "github.com/fury-labs/furya/v20/x/gamm/keeper"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
 )
 
 // Executes prop214, https://www.mintscan.io/furya/proposals/214

@@ -4,7 +4,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils"
 )
 
 var expectedOutOfGasError = types.ErrorOutOfGas{Descriptor: "my func"}

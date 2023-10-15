@@ -8,8 +8,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	furyaApp "github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/app/params"
+	furyaApp "github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/app/params"
 )
 
 var (

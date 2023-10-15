@@ -9,10 +9,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	"github.com/furya-labs/furya/v20/wasmbinding/bindings"
+	"github.com/fury-labs/furya/v20/wasmbinding/bindings"
 
-	tokenfactorykeeper "github.com/furya-labs/furya/v20/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/furya-labs/furya/v20/x/tokenfactory/types"
+	tokenfactorykeeper "github.com/fury-labs/furya/v20/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/fury-labs/furya/v20/x/tokenfactory/types"
 )
 
 // CustomMessageDecorator returns decorator for custom CosmWasm bindings messages

@@ -3,8 +3,8 @@ package twap_test
 import (
 	"time"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 	"github.com/fury-labs/furya/v20/x/twap"
 	"github.com/fury-labs/furya/v20/x/twap/types"

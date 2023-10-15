@@ -3,7 +3,7 @@ package swapstrategy
 import (
 	"fmt"
 
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 // computeSpreadRewardChargePerSwapStepOutGivenIn returns the total spread factor charge per swap step given the parameters.

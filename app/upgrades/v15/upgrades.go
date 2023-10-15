@@ -3,7 +3,7 @@ package v15
 import (
 	packetforwardtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v4/router/types"
 
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -15,19 +15,19 @@ import (
 	icqkeeper "github.com/cosmos/ibc-apps/modules/async-icq/v4/keeper"
 	icqtypes "github.com/cosmos/ibc-apps/modules/async-icq/v4/types"
 
-	"github.com/furya-labs/furya/v20/wasmbinding"
-	ibcratelimit "github.com/furya-labs/furya/v20/x/ibc-rate-limit"
-	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
+	"github.com/fury-labs/furya/v20/wasmbinding"
+	ibcratelimit "github.com/fury-labs/furya/v20/x/ibc-rate-limit"
+	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
 
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	gammkeeper "github.com/furya-labs/furya/v20/x/gamm/keeper"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	"github.com/furya-labs/furya/v20/x/poolmanager"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	gammkeeper "github.com/fury-labs/furya/v20/x/gamm/keeper"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/v20/x/poolmanager"
 )
 
 func CreateUpgradeHandler(

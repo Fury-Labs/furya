@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export REPO=https://github.com/furya-labs/furya.git
+export REPO=https://github.com/fury-labs/furya.git
 export BRANCH=main
 export NODE=furyad
 export CLI=furyad

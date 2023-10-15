@@ -4,13 +4,13 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/crypto/ed25519"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
-	"github.com/furya-labs/furya/v20/x/superfluid/keeper/gov"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/keeper/gov"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 func (s *KeeperTestSuite) createGammPool(denoms []string) uint64 {

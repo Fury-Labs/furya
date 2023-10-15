@@ -16,12 +16,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	downtimedetector "github.com/furya-labs/furya/v20/x/downtime-detector"
-	downtimeclient "github.com/furya-labs/furya/v20/x/downtime-detector/client"
-	downtimecli "github.com/furya-labs/furya/v20/x/downtime-detector/client/cli"
-	"github.com/furya-labs/furya/v20/x/downtime-detector/client/grpc"
-	"github.com/furya-labs/furya/v20/x/downtime-detector/client/queryproto"
-	"github.com/furya-labs/furya/v20/x/downtime-detector/types"
+	downtimedetector "github.com/fury-labs/furya/v20/x/downtime-detector"
+	downtimeclient "github.com/fury-labs/furya/v20/x/downtime-detector/client"
+	downtimecli "github.com/fury-labs/furya/v20/x/downtime-detector/client/cli"
+	"github.com/fury-labs/furya/v20/x/downtime-detector/client/grpc"
+	"github.com/fury-labs/furya/v20/x/downtime-detector/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/downtime-detector/types"
 )
 
 var (

@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	validatorprefkeeper "github.com/furya-labs/furya/v20/x/valset-pref"
-	"github.com/furya-labs/furya/v20/x/valset-pref/client/queryproto"
+	validatorprefkeeper "github.com/fury-labs/furya/v20/x/valset-pref"
+	"github.com/fury-labs/furya/v20/x/valset-pref/client/queryproto"
 )
 
 type Querier struct {

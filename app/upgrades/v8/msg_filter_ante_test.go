@@ -7,9 +7,9 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/v20/app"
-	v8 "github.com/furya-labs/furya/v20/app/upgrades/v8"
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/v20/app"
+	v8 "github.com/fury-labs/furya/v20/app/upgrades/v8"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 func noOpAnteDecorator() sdk.AnteHandler {

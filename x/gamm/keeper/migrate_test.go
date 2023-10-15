@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
-	gammmigration "github.com/furya-labs/furya/v20/x/gamm/types/migration"
-	poolincentivestypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
+	gammmigration "github.com/fury-labs/furya/v20/x/gamm/types/migration"
+	poolincentivestypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 
 const (

@@ -11,8 +11,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 
-	"github.com/furya-labs/furya/v20/app/params"
-	tokenfactorytypes "github.com/furya-labs/furya/v20/x/tokenfactory/types"
+	"github.com/fury-labs/furya/v20/app/params"
+	tokenfactorytypes "github.com/fury-labs/furya/v20/x/tokenfactory/types"
 
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	authsign "github.com/cosmos/cosmos-sdk/x/auth/signing"

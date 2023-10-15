@@ -18,7 +18,7 @@ ibc denoms of tokens on furya, and when to use packet forward middleware vs call
 The second version of the contract simplifies this for users by keeping registries with the 
 necessary information and doing the token unwinding automatically. 
 
-This documentation is for the latest version of the contract. For v1, see the [previous docs](https://github.com/furya-labs/furya/tree/v15.x/cosmwasm/contracts/crosschain-swaps)
+This documentation is for the latest version of the contract. For v1, see the [previous docs](https://github.com/fury-labs/furya/tree/v15.x/cosmwasm/contracts/crosschain-swaps)
 
 ## Instantiation
 
@@ -318,7 +318,7 @@ To use this contract for crosschain swaps, the following are needed:
 This guide will walk you through the process of manually testing the cross-chain swapping functionality in Furya.
 
 To test this contract, we will use the 
-[localrelayer tool](https://github.com/furya-labs/furya/tree/main/tests/localrelayer). This tool will setup two 
+[localrelayer tool](https://github.com/fury-labs/furya/tree/main/tests/localrelayer). This tool will setup two 
 furya testnets and a relayer between them.
 
 

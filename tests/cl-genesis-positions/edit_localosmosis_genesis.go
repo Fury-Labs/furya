@@ -16,12 +16,12 @@ import (
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	furyaApp "github.com/furya-labs/furya/v19/app"
-	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/model"
+	furyaApp "github.com/fury-labs/furya/v19/app"
+	"github.com/fury-labs/furya/v19/x/concentrated-liquidity/model"
 
-	cltypes "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types"
-	clgenesis "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types/genesis"
-	poolmanagertypes "github.com/furya-labs/furya/v19/x/poolmanager/types"
+	cltypes "github.com/fury-labs/furya/v19/x/concentrated-liquidity/types"
+	clgenesis "github.com/fury-labs/furya/v19/x/concentrated-liquidity/types/genesis"
+	poolmanagertypes "github.com/fury-labs/furya/v19/x/poolmanager/types"
 )
 
 func EditLocalFuryaGenesis(updatedCLGenesis *clgenesis.GenesisState, updatedBankGenesis *banktypes.GenesisState) {

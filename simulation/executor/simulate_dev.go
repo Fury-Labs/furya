@@ -13,8 +13,8 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	tmtypes "github.com/tendermint/tendermint/types"
 
-	"github.com/furya-labs/furya/v20/simulation/executor/internal/stats"
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/simulation/executor/internal/stats"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
 )
 
 type simState struct {

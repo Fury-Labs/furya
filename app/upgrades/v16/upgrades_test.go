@@ -13,15 +13,15 @@ import (
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	v16 "github.com/furya-labs/furya/v20/app/upgrades/v16"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	cosmwasmpooltypes "github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	v16 "github.com/fury-labs/furya/v20/app/upgrades/v16"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	cosmwasmpooltypes "github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/types"
 )
 
 var (

@@ -15,16 +15,16 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/furya-labs/furya/osmomath"
-	appparams "github.com/furya-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/osmomath"
+	appparams "github.com/fury-labs/furya/v20/app/params"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 var _ types.QueryServer = Querier{}

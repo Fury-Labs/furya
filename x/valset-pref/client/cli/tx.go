@@ -10,9 +10,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmocli"
-	"github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmocli"
+	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 )
 
 func GetTxCmd() *cobra.Command {
@@ -20,7 +20,7 @@ func GetTxCmd() *cobra.Command {
 	osmocli.AddTxCmd(txCmd, NewSetValSetCmd)
 	osmocli.AddTxCmd(txCmd, NewDelValSetCmd)
 	// TODO: Uncomment when undelegate is implemented
-	// https://github.com/furya-labs/furya/issues/6686
+	// https://github.com/fury-labs/furya/issues/6686
 	//osmocli.AddTxCmd(txCmd, NewUnDelValSetCmd)
 	osmocli.AddTxCmd(txCmd, NewUndelRebalancedValSetCmd)
 	osmocli.AddTxCmd(txCmd, NewReDelValSetCmd)
@@ -48,7 +48,7 @@ func NewDelValSetCmd() (*osmocli.TxCliDesc, *types.MsgDelegateToValidatorSet) {
 }
 
 // TODO: Uncomment when undelegate is implemented
-// https://github.com/furya-labs/furya/issues/6686
+// https://github.com/fury-labs/furya/issues/6686
 // func NewUnDelValSetCmd() (*osmocli.TxCliDesc, *types.MsgUndelegateFromValidatorSet) {
 // 	return &osmocli.TxCliDesc{
 // 		Use:     "undelegate-valset",

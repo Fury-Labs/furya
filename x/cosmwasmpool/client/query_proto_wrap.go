@@ -3,8 +3,8 @@ package client
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/client/queryproto"
 )
 
 // This file should evolve to being code gen'd, off of `proto/poolmanager/v1beta/query.yml`

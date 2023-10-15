@@ -10,7 +10,7 @@ The module is built on top of the CosmWasm smart contracting platform, which pro
 Having pools in CosmWasm provides several benefits, one of which is avoiding the need for chain upgrades when introducing new functionalities or modifying existing ones related to liquidity pools. This advantage is particularly important in the context of speed of development and iteration.
 
 An example of a CosmWasm pool type:
-- [transmuter](https://github.com/furya-labs/transmuter)
+- [transmuter](https://github.com/fury-labs/transmuter)
 
 ## Key Components
 

@@ -1,8 +1,8 @@
 package v12
 
 import (
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	twaptypes "github.com/furya-labs/furya/v20/x/twap/types"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	twaptypes "github.com/fury-labs/furya/v20/x/twap/types"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 )

@@ -6,17 +6,17 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	poolManagerTypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	"github.com/furya-labs/furya/v20/x/superfluid/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	poolManagerTypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/x/superfluid/types"
 
 	store "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/keepers"
 )
 
 // UpgradeName defines the on-chain upgrade name for the Furya v17 upgrade.

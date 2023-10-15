@@ -10,7 +10,7 @@ import "furya/incentives/gauge.proto";
 import "furya/lockup/lock.proto";
 import "furya/incentives/group.proto";
 
-option go_package = "github.com/furya-labs/furya/v20/x/incentives/types";
+option go_package = "github.com/fury-labs/furya/v20/x/incentives/types";
 
 // Query defines the gRPC querier service
 service Query {

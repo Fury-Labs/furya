@@ -24,7 +24,7 @@ import sys
 from utils.versions import compare_versions, same_major, validate_tag
 from utils.go_mod import fetch_go_mod_from_tag, get_package_version
 
-chain_json_url = "https://raw.githubusercontent.com/furya-labs/furya/main/chain.schema.json"
+chain_json_url = "https://raw.githubusercontent.com/fury-labs/furya/main/chain.schema.json"
 DEBUG = False
 
 def fetch_data(url, url_type):
@@ -70,7 +70,7 @@ def checksums_to_binaries_json(checksums):
             if arch == 'all' or platform == 'windows':
                 continue
 
-            binaries[f"{platform}/{arch}"] = f"https://github.com/furya-labs/furya/releases/download/v{tag}/{filename}?checksum=sha256:{checksum}"
+            binaries[f"{platform}/{arch}"] = f"https://github.com/fury-labs/furya/releases/download/v{tag}/{filename}?checksum=sha256:{checksum}"
 
     return {
         "binaries": binaries
@@ -114,7 +114,7 @@ def create_version_info(version, height):
         ],
     }
     # Read binaries from the release sha256sum.txt
-    checksums_url = f"https://github.com/furya-labs/furya/releases/download/{version}/sha256sum.txt"
+    checksums_url = f"https://github.com/fury-labs/furya/releases/download/{version}/sha256sum.txt"
     checksums = fetch_data(checksums_url, 'text')
 
     binaries_json = checksums_to_binaries_json(checksums)

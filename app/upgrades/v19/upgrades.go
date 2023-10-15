@@ -5,14 +5,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 
-	"github.com/furya-labs/furya/v20/app/keepers"
-	"github.com/furya-labs/furya/v20/app/upgrades"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/v20/app/keepers"
+	"github.com/fury-labs/furya/v20/app/upgrades"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 
-	v18 "github.com/furya-labs/furya/v20/app/upgrades/v18"
+	v18 "github.com/fury-labs/furya/v20/app/upgrades/v18"
 )
 
 const lastPoolToCorrect = v18.FirstCLPoolId - 1

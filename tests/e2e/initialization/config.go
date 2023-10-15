@@ -18,21 +18,21 @@ import (
 	"github.com/gogo/protobuf/proto"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
-	incentivestypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
-	poolitypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	protorevtypes "github.com/furya-labs/furya/v20/x/protorev/types"
-	twaptypes "github.com/furya-labs/furya/v20/x/twap/types"
-	txfeestypes "github.com/furya-labs/furya/v20/x/txfees/types"
-	epochtypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
+	incentivestypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
+	poolitypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	protorevtypes "github.com/fury-labs/furya/v20/x/protorev/types"
+	twaptypes "github.com/fury-labs/furya/v20/x/twap/types"
+	txfeestypes "github.com/fury-labs/furya/v20/x/txfees/types"
+	epochtypes "github.com/fury-labs/furya/x/epochs/types"
 
 	types1 "github.com/cosmos/cosmos-sdk/codec/types"
 
-	"github.com/furya-labs/furya/v20/tests/e2e/util"
+	"github.com/fury-labs/furya/v20/tests/e2e/util"
 )
 
 // NodeConfig is a confiuration for the node supplied from the test runner

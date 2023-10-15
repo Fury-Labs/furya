@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
 	"github.com/fury-labs/furya/v20/x/gamm/types"
 )
 

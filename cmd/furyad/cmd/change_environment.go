@@ -11,7 +11,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 
-	"github.com/furya-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/app"
 )
 
 const (

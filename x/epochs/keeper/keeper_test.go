@@ -11,8 +11,8 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	epochskeeper "github.com/furya-labs/furya/x/epochs/keeper"
-	"github.com/furya-labs/furya/x/epochs/types"
+	epochskeeper "github.com/fury-labs/furya/x/epochs/keeper"
+	"github.com/fury-labs/furya/x/epochs/types"
 )
 
 type KeeperTestSuite struct {

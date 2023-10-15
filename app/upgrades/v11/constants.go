@@ -3,7 +3,7 @@ package v11
 import (
 	store "github.com/cosmos/cosmos-sdk/store/types"
 
-	"github.com/furya-labs/furya/v20/app/upgrades"
+	"github.com/fury-labs/furya/v20/app/upgrades"
 )
 
 // UpgradeName defines the on-chain upgrade name for the Furya v11 upgrade.

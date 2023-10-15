@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/client"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/client"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/client/queryproto"
 )
 
 type Querier struct {

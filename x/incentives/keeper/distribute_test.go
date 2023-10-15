@@ -9,14 +9,14 @@ import (
 
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/coinutil"
-	appParams "github.com/furya-labs/furya/v20/app/params"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	incentivetypes "github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	poolincentivetypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/coinutil"
+	appParams "github.com/fury-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	incentivetypes "github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	poolincentivetypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 var _ = suite.TestingSuite(nil)

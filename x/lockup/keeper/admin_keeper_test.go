@@ -3,7 +3,7 @@ package keeper_test
 import (
 	"time"
 
-	"github.com/furya-labs/furya/v20/x/lockup/keeper"
+	"github.com/fury-labs/furya/v20/x/lockup/keeper"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

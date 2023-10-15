@@ -9,7 +9,7 @@ import "cosmos/base/v1beta1/coin.proto";
 
 import "furya/cosmwasmpool/v1beta1/params.proto";
 
-option go_package = "github.com/furya-labs/furya/v20/x/cosmwasmpool/types";
+option go_package = "github.com/fury-labs/furya/v20/x/cosmwasmpool/types";
 
 // GenesisState defines the cosmwasmpool module's genesis state.
 message GenesisState {

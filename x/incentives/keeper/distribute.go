@@ -9,11 +9,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils/coinutil"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils/coinutil"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 // AllocateAcrossGauges for every gauge in the input, it updates the weights according to the splitting
@@ -44,7 +44,7 @@ func (k Keeper) AllocateAcrossGauges(ctx sdk.Context, activeGroups []types.Group
 
 		// Refetch group
 		// TODO: consider mutating receiver of syncGroupWeights instead of refetching.
-		// https://github.com/furya-labs/furya/issues/6556
+		// https://github.com/fury-labs/furya/issues/6556
 		group, err := k.GetGroupByGaugeID(ctx, group.GroupGaugeId)
 		if err != nil {
 			return err
@@ -104,7 +104,7 @@ func (k Keeper) AllocateAcrossGauges(ctx sdk.Context, activeGroups []types.Group
 		for gaugeIndex, distrRecord := range group.InternalGaugeInfo.GaugeRecords {
 			// Between 0 and 1. to determine the pro-rata share of the total amount to distribute
 			// TODO: handle division by zero gracefully and update test
-			// https://github.com/furya-labs/furya/issues/6558
+			// https://github.com/fury-labs/furya/issues/6558
 			gaugeDistributionRatio := distrRecord.CurrentWeight.ToLegacyDec().Quo(totalGroupWeight.ToLegacyDec())
 
 			// Loop through `coinsToDistribute` and get the amount to distribute to the current gauge
@@ -460,7 +460,7 @@ func (k Keeper) calculateGroupWeights(ctx sdk.Context, group types.Group) (types
 		} else {
 			// Otherwise, it's a balancer pool so we set it to longest lockable duration
 			// TODO: add support for CW pools once there's clarity around default gauge type.
-			// Tracked in issue https://github.com/furya-labs/furya/issues/6403
+			// Tracked in issue https://github.com/fury-labs/furya/issues/6403
 			gaugeDuration, err = k.pik.GetLongestLockableDuration(ctx)
 			if err != nil {
 				return types.Group{}, err

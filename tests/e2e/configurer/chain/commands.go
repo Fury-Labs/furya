@@ -15,14 +15,14 @@ import (
 	transfertypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
 	"github.com/tendermint/tendermint/libs/bytes"
 
-	"github.com/furya-labs/furya/osmomath"
-	appparams "github.com/furya-labs/furya/v20/app/params"
-	"github.com/furya-labs/furya/v20/tests/e2e/configurer/config"
-	"github.com/furya-labs/furya/v20/tests/e2e/initialization"
-	"github.com/furya-labs/furya/v20/tests/e2e/util"
+	"github.com/fury-labs/furya/osmomath"
+	appparams "github.com/fury-labs/furya/v20/app/params"
+	"github.com/fury-labs/furya/v20/tests/e2e/configurer/config"
+	"github.com/fury-labs/furya/v20/tests/e2e/initialization"
+	"github.com/fury-labs/furya/v20/tests/e2e/util"
 
-	ibcratelimittypes "github.com/furya-labs/furya/v20/x/ibc-rate-limit/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
+	ibcratelimittypes "github.com/fury-labs/furya/v20/x/ibc-rate-limit/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -31,7 +31,7 @@ import (
 	"github.com/tendermint/tendermint/p2p"
 	coretypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	app "github.com/furya-labs/furya/v20/app"
+	app "github.com/fury-labs/furya/v20/app"
 
 	paramsutils "github.com/cosmos/cosmos-sdk/x/params/client/utils"
 )

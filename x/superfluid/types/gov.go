@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 const (

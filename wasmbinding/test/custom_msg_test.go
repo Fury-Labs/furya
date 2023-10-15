@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
 
 	"github.com/stretchr/testify/require"
 
@@ -14,8 +14,8 @@ import (
 	wasmvmtypes "github.com/CosmWasm/wasmvm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/wasmbinding/bindings"
+	"github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/wasmbinding/bindings"
 )
 
 func TestCreateDenomMsg(t *testing.T) {

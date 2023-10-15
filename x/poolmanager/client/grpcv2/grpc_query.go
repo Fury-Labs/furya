@@ -11,8 +11,8 @@ import (
 	"google.golang.org/grpc/status"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client"
-	"github.com/furya-labs/furya/v20/x/poolmanager/client/queryprotov2"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client"
+	"github.com/fury-labs/furya/v20/x/poolmanager/client/queryprotov2"
 )
 
 type Querier struct {

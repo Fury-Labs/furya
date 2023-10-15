@@ -25,14 +25,14 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
-	"github.com/furya-labs/furya/v20/x/gamm/client/cli"
-	"github.com/furya-labs/furya/v20/x/gamm/keeper"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap"
-	simulation "github.com/furya-labs/furya/v20/x/gamm/simulation"
-	"github.com/furya-labs/furya/v20/x/gamm/types"
-	"github.com/furya-labs/furya/v20/x/gamm/v2types"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/x/gamm/client/cli"
+	"github.com/fury-labs/furya/v20/x/gamm/keeper"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap"
+	simulation "github.com/fury-labs/furya/v20/x/gamm/simulation"
+	"github.com/fury-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/v20/x/gamm/v2types"
 )
 
 var (

@@ -1,11 +1,11 @@
-module github.com/furya-labs/furya/osmomath
+module github.com/fury-labs/furya/osmomath
 
 go 1.20
 
 require (
 	cosmossdk.io/math v1.1.3-rc.1
 	github.com/cosmos/cosmos-sdk v0.47.5
-	github.com/furya-labs/furya/osmoutils v0.0.0-20230911115719-1d5a34978fe1
+	github.com/fury-labs/furya/osmoutils v0.0.0-20230911115719-1d5a34978fe1
 	github.com/stretchr/testify v1.8.4
 	gopkg.in/yaml.v2 v2.4.0
 )
@@ -87,8 +87,8 @@ require (
 )
 
 replace (
-	// Our cosmos-sdk branch is:  https://github.com/furya-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/furya-labs/cosmos-sdk/commit/05346fa12992
-	github.com/cosmos/cosmos-sdk => github.com/furya-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
+	// Our cosmos-sdk branch is:  https://github.com/fury-labs/cosmos-sdk, current branch: furya-main. Direct commit link: https://github.com/fury-labs/cosmos-sdk/commit/05346fa12992
+	github.com/cosmos/cosmos-sdk => github.com/fury-labs/cosmos-sdk v0.45.0-rc1.0.20230922030206-734f99fba785
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tendermint/tendermint => github.com/informalsystems/tendermint v0.34.24
 	// use grpc compatible with cosmos protobufs

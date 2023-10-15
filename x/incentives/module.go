@@ -27,12 +27,12 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	osmosimtypes "github.com/furya-labs/furya/v20/simulation/simtypes"
-	"github.com/furya-labs/furya/v20/x/incentives/client/cli"
-	"github.com/furya-labs/furya/v20/x/incentives/keeper"
-	"github.com/furya-labs/furya/v20/x/incentives/simulation"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	"github.com/furya-labs/furya/v20/x/mint/client/rest"
+	osmosimtypes "github.com/fury-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/x/incentives/client/cli"
+	"github.com/fury-labs/furya/v20/x/incentives/keeper"
+	"github.com/fury-labs/furya/v20/x/incentives/simulation"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	"github.com/fury-labs/furya/v20/x/mint/client/rest"
 )
 
 var (

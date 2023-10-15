@@ -32,16 +32,16 @@ import (
 	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app"
 
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 
-	lockupkeeper "github.com/furya-labs/furya/v20/x/lockup/keeper"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	minttypes "github.com/furya-labs/furya/v20/x/mint/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	lockupkeeper "github.com/fury-labs/furya/v20/x/lockup/keeper"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	minttypes "github.com/fury-labs/furya/v20/x/mint/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 type KeeperTestHelper struct {

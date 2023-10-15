@@ -29,9 +29,9 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/gov/simulation"
 
-	"github.com/furya-labs/furya/v20/x/pool-incentives/client/cli"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/keeper"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/types"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/client/cli"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/keeper"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
 )
 
 var (

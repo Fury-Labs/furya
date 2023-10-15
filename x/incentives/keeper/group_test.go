@@ -7,12 +7,12 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distrtypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	incentiveskeeper "github.com/furya-labs/furya/v20/x/incentives/keeper"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	poolincentivetypes "github.com/furya-labs/furya/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	incentiveskeeper "github.com/fury-labs/furya/v20/x/incentives/keeper"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	poolincentivetypes "github.com/fury-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 type createGroupTestCase struct {

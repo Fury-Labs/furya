@@ -7,15 +7,15 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	"github.com/furya-labs/furya/osmoutils/osmoassert"
-	cl "github.com/furya-labs/furya/v20/x/concentrated-liquidity"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/math"
-	"github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	clmodel "github.com/furya-labs/furya/v20/x/concentrated-liquidity/model"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
-	types "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	"github.com/fury-labs/furya/osmoutils/osmoassert"
+	cl "github.com/fury-labs/furya/v20/x/concentrated-liquidity"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/math"
+	"github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	clmodel "github.com/fury-labs/furya/v20/x/concentrated-liquidity/model"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
+	types "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 type lpTest struct {
@@ -249,7 +249,7 @@ var (
 
 	// Test cases corresponding to refactoring min spot price
 	// from 10^-12 to 10^-30.
-	// See: https://github.com/furya-labs/furya/issues/5726
+	// See: https://github.com/fury-labs/furya/issues/5726
 	// Note that each of these test cases is further configured
 	// inside TestCreatePosition by calling estimateLPMigrationCaseResults
 	// test helper.

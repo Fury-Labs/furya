@@ -13,11 +13,11 @@ import (
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	gammtypes "github.com/furya-labs/furya/v20/x/gamm/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"
 
-	superfluidtypes "github.com/furya-labs/furya/v20/x/superfluid/types"
+	superfluidtypes "github.com/fury-labs/furya/v20/x/superfluid/types"
 )
 
 const (

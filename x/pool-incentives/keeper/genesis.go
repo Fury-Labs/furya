@@ -3,9 +3,9 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/pool-incentives/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/pool-incentives/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
 )
 
 func (k Keeper) InitGenesis(ctx sdk.Context, genState *types.GenesisState) {
@@ -50,7 +50,7 @@ func (k Keeper) ExportGenesis(ctx sdk.Context) *types.GenesisState {
 		if pool.GetType() == poolmanagertypes.CosmWasm {
 			// TODO: remove this post-v19. In v19 we did not create a hook for cw pool gauges.
 			// Fix tracked in:
-			// https://github.com/furya-labs/furya/issues/6122
+			// https://github.com/fury-labs/furya/issues/6122
 			continue
 		}
 

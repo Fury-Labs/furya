@@ -19,16 +19,16 @@ import (
 	"github.com/tendermint/tendermint/crypto/ed25519"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	"github.com/furya-labs/furya/v20/x/gamm/pool-models/balancer"
-	gammv2types "github.com/furya-labs/furya/v20/x/gamm/v2types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	"github.com/fury-labs/furya/v20/x/gamm/pool-models/balancer"
+	gammv2types "github.com/fury-labs/furya/v20/x/gamm/v2types"
 
-	"github.com/furya-labs/furya/v20/app"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	epochtypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/v20/app"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	epochtypes "github.com/fury-labs/furya/x/epochs/types"
 
-	"github.com/furya-labs/furya/v20/wasmbinding"
+	"github.com/fury-labs/furya/v20/wasmbinding"
 )
 
 type StargateTestSuite struct {

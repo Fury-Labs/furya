@@ -17,16 +17,16 @@ import (
 	"github.com/ignite/cli/ignite/pkg/cosmosaccount"
 	"github.com/ignite/cli/ignite/pkg/cosmosclient"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/osmoutils"
-	clqueryproto "github.com/furya-labs/furya/v19/x/concentrated-liquidity/client/queryproto"
-	"github.com/furya-labs/furya/v19/x/concentrated-liquidity/model"
-	cltypes "github.com/furya-labs/furya/v19/x/concentrated-liquidity/types"
-	incentivestypes "github.com/furya-labs/furya/v19/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v19/x/lockup/types"
-	poolmanagerqueryproto "github.com/furya-labs/furya/v19/x/poolmanager/client/queryproto"
-	poolmanagertypes "github.com/furya-labs/furya/v19/x/poolmanager/types"
-	epochstypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmoutils"
+	clqueryproto "github.com/fury-labs/furya/v19/x/concentrated-liquidity/client/queryproto"
+	"github.com/fury-labs/furya/v19/x/concentrated-liquidity/model"
+	cltypes "github.com/fury-labs/furya/v19/x/concentrated-liquidity/types"
+	incentivestypes "github.com/fury-labs/furya/v19/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v19/x/lockup/types"
+	poolmanagerqueryproto "github.com/fury-labs/furya/v19/x/poolmanager/client/queryproto"
+	poolmanagertypes "github.com/fury-labs/furya/v19/x/poolmanager/types"
+	epochstypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 // operation defines the desired operation to be run by this script.

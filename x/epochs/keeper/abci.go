@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/x/epochs/types"
 
 	"github.com/cosmos/cosmos-sdk/telemetry"
 	sdk "github.com/cosmos/cosmos-sdk/types"

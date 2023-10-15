@@ -7,10 +7,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/simulation"
 	db "github.com/tendermint/tm-db"
 
-	simexec "github.com/furya-labs/furya/v20/simulation/executor"
+	simexec "github.com/fury-labs/furya/v20/simulation/executor"
 
-	"github.com/furya-labs/furya/v20/app"
-	"github.com/furya-labs/furya/v20/simulation/simtypes"
+	"github.com/fury-labs/furya/v20/app"
+	"github.com/fury-labs/furya/v20/simulation/simtypes"
 )
 
 func FuryaAppCreator(logger log.Logger, db db.DB) simtypes.AppCreator {

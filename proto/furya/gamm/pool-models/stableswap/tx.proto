@@ -6,7 +6,7 @@ import "gogoproto/gogo.proto";
 import "amino/amino.proto";
 import "furya/gamm/pool-models/stableswap/stableswap_pool.proto";
 
-option go_package = "github.com/furya-labs/furya/v20/x/gamm/pool-models/stableswap";
+option go_package = "github.com/fury-labs/furya/v20/x/gamm/pool-models/stableswap";
 
 service Msg {
   rpc CreateStableswapPool(MsgCreateStableswapPool)

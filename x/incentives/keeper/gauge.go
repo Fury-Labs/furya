@@ -15,11 +15,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/incentives/types"
-	lockuptypes "github.com/furya-labs/furya/v20/x/lockup/types"
-	poolmanagertypes "github.com/furya-labs/furya/v20/x/poolmanager/types"
-	epochtypes "github.com/furya-labs/furya/x/epochs/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
+	lockuptypes "github.com/fury-labs/furya/v20/x/lockup/types"
+	poolmanagertypes "github.com/fury-labs/furya/v20/x/poolmanager/types"
+	epochtypes "github.com/fury-labs/furya/x/epochs/types"
 )
 
 var byGroupQueryCondition = lockuptypes.QueryCondition{LockQueryType: lockuptypes.ByGroup}
@@ -234,7 +234,7 @@ func (k Keeper) CreateGauge(ctx sdk.Context, isPerpetual bool, owner sdk.AccAddr
 	// 1. It is not used anywhere in the codebase.
 	// 2. There is a bug where we initHooks after we init gov routes. Therefore,
 	// if we attempt to call a method that calls a hook via a gov prop, it will panic.
-	// https://github.com/furya-labs/furya/issues/6580
+	// https://github.com/fury-labs/furya/issues/6580
 	// k.hooks.AfterCreateGauge(ctx, gauge.Id)
 	return gauge.Id, nil
 }

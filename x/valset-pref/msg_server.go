@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/v20/x/valset-pref/types"
 )
 
 type msgServer struct {

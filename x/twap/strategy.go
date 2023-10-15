@@ -1,7 +1,7 @@
 package twap
 
 import (
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/osmomath"
 	"github.com/fury-labs/furya/v20/x/twap/types"
 
 	gammtypes "github.com/fury-labs/furya/v20/x/gamm/types"

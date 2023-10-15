@@ -11,7 +11,7 @@ import "furya/concentrated-liquidity/position.proto";
 import "furya/concentrated-liquidity/tickInfo.proto";
 import "furya/concentrated-liquidity/incentive_record.proto";
 
-option go_package = "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types/genesis";
+option go_package = "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types/genesis";
 
 // FullTick contains tick index and pool id along with other tick model
 // information.

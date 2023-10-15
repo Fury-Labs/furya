@@ -6,8 +6,8 @@ import (
 
 	errorsmod "cosmossdk.io/errors"
 
-	"github.com/furya-labs/furya/osmomath"
-	cltypes "github.com/furya-labs/furya/v20/x/concentrated-liquidity/types"
+	"github.com/fury-labs/furya/osmomath"
+	cltypes "github.com/fury-labs/furya/v20/x/concentrated-liquidity/types"
 )
 
 // x/superfluid module errors.

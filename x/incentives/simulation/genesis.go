@@ -7,7 +7,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/furya-labs/furya/v20/x/incentives/types"
+	"github.com/fury-labs/furya/v20/x/incentives/types"
 )
 
 // Simulation parameter constants.

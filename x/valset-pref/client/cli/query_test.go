@@ -7,11 +7,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/furya-labs/furya/v20/app/apptesting"
-	valPref "github.com/furya-labs/furya/v20/x/valset-pref"
-	"github.com/furya-labs/furya/v20/x/valset-pref/client/queryproto"
-	"github.com/furya-labs/furya/v20/x/valset-pref/types"
-	"github.com/furya-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/app/apptesting"
+	valPref "github.com/fury-labs/furya/v20/x/valset-pref"
+	"github.com/fury-labs/furya/v20/x/valset-pref/client/queryproto"
+	"github.com/fury-labs/furya/v20/x/valset-pref/types"
+	"github.com/fury-labs/furya/osmomath"
 )
 
 type QueryTestSuite struct {

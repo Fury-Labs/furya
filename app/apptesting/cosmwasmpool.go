@@ -8,12 +8,12 @@ import (
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/furya-labs/furya/osmoutils/cosmwasm"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/cosmwasm/msg"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/cosmwasm/msg/transmuter"
-	"github.com/furya-labs/furya/v20/x/cosmwasmpool/model"
+	"github.com/fury-labs/furya/osmoutils/cosmwasm"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/cosmwasm/msg"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/cosmwasm/msg/transmuter"
+	"github.com/fury-labs/furya/v20/x/cosmwasmpool/model"
 
-	cosmwasmpooltypes "github.com/furya-labs/furya/v20/x/cosmwasmpool/types"
+	cosmwasmpooltypes "github.com/fury-labs/furya/v20/x/cosmwasmpool/types"
 )
 
 const (

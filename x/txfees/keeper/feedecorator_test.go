@@ -11,9 +11,9 @@ import (
 
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	"github.com/furya-labs/furya/osmomath"
-	"github.com/furya-labs/furya/v20/x/txfees/keeper"
-	"github.com/furya-labs/furya/v20/x/txfees/types"
+	"github.com/fury-labs/furya/osmomath"
+	"github.com/fury-labs/furya/v20/x/txfees/keeper"
+	"github.com/fury-labs/furya/v20/x/txfees/types"
 )
 
 func (s *KeeperTestSuite) TestFeeDecorator() {
