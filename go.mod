@@ -30,7 +30,7 @@ require (
 	github.com/osmosis-labs/osmosis/x/ibc-hooks v0.0.9-0.20231014001935-1946419d44eb
 	github.com/pkg/errors v0.9.1
 	github.com/rakyll/statik v0.1.7
-	github.com/spf13/cast v1.5.1
+	github.com/spf13/cast v1.6.0
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.17.0
