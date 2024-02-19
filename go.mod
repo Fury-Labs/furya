@@ -38,7 +38,7 @@ require (
 	github.com/tendermint/tendermint v0.37.0-rc1
 	github.com/tendermint/tm-db v0.6.8-0.20220506192307-f628bb5dc95b
 	github.com/tidwall/btree v1.6.0
-	github.com/tidwall/gjson v1.16.0
+	github.com/tidwall/gjson v1.17.1
 	go.uber.org/multierr v1.11.0
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9
 	google.golang.org/genproto/googleapis/api v0.0.0-20230913181813-007df8e322eb
